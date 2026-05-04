@@ -1,0 +1,10 @@
+Hello,
+
+If you're already using this eCommerce engine, please follow the instructions below.
+
+-- Make sure to backup your database from your phpMyAdmin.
+-- After update, make sure all of your add-ons are updated.
+
+If you face any issue after update, contact us via our support center.
+
+Thank you
