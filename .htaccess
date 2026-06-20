@@ -1,30 +1,20 @@
+# Document root is the Laravel project root (Hostinger public_html). Forward every
+# request into the Laravel public/ folder so the app is served from there without
+# changing the hosting document root. Project files (app/, config/, .env, vendor/)
+# stay outside the served path.
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
-
     RewriteEngine On
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Handle Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    # If the request is not already pointing at /public, rewrite it there.
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 
-# Disable index view
+# Never list directories
 Options -Indexes
 
-# Hide a specific file
-<Files ~ "\.(env|json|config.js|md|gitignore|gitattributes|lock)$">
+# Block direct access to sensitive files (defense in depth)
+<Files ~ "\.(env|json|config\.js|md|gitignore|gitattributes|lock|log|sql|sh|ps1|py|yml|yaml)$">
     Order allow,deny
     Deny from all
 </Files>
@@ -38,7 +28,6 @@ Options -Indexes
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType text/x-javascript "access plus 1 month"
-    ExpiresByType application/x-shockwave-flash "access plus 1 month"
     ExpiresByType image/x-icon "access plus 1 year"
     ExpiresDefault "access plus 1 days"
 </IfModule>
