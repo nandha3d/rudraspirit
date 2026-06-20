@@ -19,9 +19,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
+          command_timeout: 10m
           script: |
-            mkdir -p /home/${{ secrets.SSH_USER }}/domains/rudraspirit.com/public_html
-            cd /home/${{ secrets.SSH_USER }}/domains/rudraspirit.com/public_html
+            cd ~/domains/rudraspirit.com/public_html
             if [ ! -d ".git" ]; then
               echo "Initializing repository on Hostinger..."
               git init
