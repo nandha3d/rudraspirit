@@ -9,24 +9,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Trigger Deployment Webhook
+        run: |
+          echo "🚀 Triggering deployment webhook..."
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -H "X-Deploy-Key: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}" \
+            "https://rudraspirit.com/deploy-webhook.php")
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+          
+          echo "Response: $BODY"
+          echo "HTTP Code: $HTTP_CODE"
+          
+          if [ "$HTTP_CODE" = "200" ]; then
+            echo "✅ Deployment triggered successfully!"
+          else
+            echo "❌ Webhook returned HTTP $HTTP_CODE"
+            exit 1
+          fi
 
-      - name: SSH and Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          command_timeout: 10m
-          script: |
-            cd ~/domains/rudraspirit.com/public_html
-            if [ ! -d ".git" ]; then
-              echo "Initializing repository on Hostinger..."
-              git init
-              git remote add origin https://github.com/nandha3d/rudraspirit.git
-              git fetch origin
-              git checkout -f main
-            fi
-            bash deploy.sh
