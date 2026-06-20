@@ -20,5 +20,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            mkdir -p /home/${{ secrets.SSH_USER }}/domains/rudraspirit.com/public_html
             cd /home/${{ secrets.SSH_USER }}/domains/rudraspirit.com/public_html
+            if [ ! -d ".git" ]; then
+              echo "Initializing repository on Hostinger..."
+              git init
+              git remote add origin https://github.com/nandha3d/rudraspirit.git
+              git fetch origin
+              git checkout -f main
+            fi
             bash deploy.sh
