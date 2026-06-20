@@ -217,6 +217,7 @@ Route::controller(SearchController::class)->group(function () {
     Route::post('/ajax-search', 'ajax_search')->name('search.ajax');
     Route::get('/category/{category_slug}', 'listingByCategory')->name('products.category');
     Route::get('/brand/{brand_slug}', 'listingByBrand')->name('products.brand');
+    Route::get('/rudraksha/{slug}', 'mukhi_info')->name('mukhi.info');
 });
 
 // Cart
@@ -228,6 +229,7 @@ Route::controller(CartController::class)->group(function () {
     Route::post('/cart/removeFromCart', 'removeFromCart')->name('cart.removeFromCart');
     Route::post('/cart/updateQuantity', 'updateQuantity')->name('cart.updateQuantity');
     Route::post('/cart/updateCartStatus', 'updateCartStatus')->name('cart.updateCartStatus');
+    Route::get('/cart/mini-summary', 'miniSummary')->name('cart.miniSummary');
 });
 
 //Paypal START
@@ -517,6 +519,16 @@ Route::controller(BlogController::class)->group(function () {
     Route::post('/blog/generate-slug', 'generateSlug')->name('generate.slug');
 
 });
+
+// Rudra Spirit theme — FAQ + About are not modeled as admin CMS pages, so they get
+// dedicated routes here. Must be registered before the PageController catch-all
+// '/{slug}' route below, otherwise that wildcard would swallow these URIs first.
+Route::get('/faq', function () {
+    return view('frontend.rudraspirit.faq');
+})->name('faq');
+Route::get('/about', function () {
+    return view('frontend.rudraspirit.about');
+})->name('rudraspirit.about');
 
 Route::controller(PageController::class)->group(function () {
     //mobile app balnk page for webview

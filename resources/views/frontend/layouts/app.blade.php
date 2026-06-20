@@ -75,6 +75,12 @@
     @if(get_setting('homepage_select') == 'thecore')
     <link rel="stylesheet" href="{{ static_asset('assets/css/thecore.css') }}">
     @endif
+    @if(get_setting('homepage_select') == 'rudraspirit')
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ static_asset('assets/css/rudraspirit.css?v=') }}{{ rand(1000, 9999) }}">
+    @endif
 
     <script>
         var AIZ = AIZ || {};
@@ -218,7 +224,7 @@
 @endphp
 
 </head>
-<body>
+<body @if(get_setting('homepage_select') == 'rudraspirit') class="aiz-rudraspirit" @endif>
     <!-- aiz-main-wrapper -->
     <div class="aiz-main-wrapper d-flex flex-column bg-white aiz-{{ get_setting('homepage_select') }}">
         @php
@@ -239,12 +245,12 @@
         <!-- footer -->
         @include('frontend.inc.footer')
 
-    </div>
+        @if(get_setting('use_floating_buttons') == 1)
+            <!-- Floating Buttons -->
+            @include('frontend.inc.floating_buttons')
+        @endif
 
-    @if(get_setting('use_floating_buttons') == 1)
-        <!-- Floating Buttons -->
-        @include('frontend.inc.floating_buttons')
-    @endif
+    </div>
 
     <div class="aiz-refresh">
         <div class="aiz-refresh-content"><div></div><div></div><div></div></div>
@@ -352,10 +358,13 @@
     @php
         $dynamic_popups = App\Models\DynamicPopup::where('status', 1)->orderBy('id', 'asc')->get();
         $popup_count = 0;
-        $hideWrapper = false;
-        if(count($dynamic_popups) == 1 && ($dynamic_popups[0]->id == 100 && $hasUnreviewed == false)) {
-            $hideWrapper = true;
-        }
+        $hasVisiblePopup = $dynamic_popups->contains(function ($popup) use ($hasUnreviewed) {
+            if ($popup->id == 100) {
+                return auth()->user() && $hasUnreviewed;
+            }
+            return true;
+        });
+        $hideWrapper = !$hasVisiblePopup;
     @endphp
 
     @if(count($dynamic_popups) > 0)
@@ -491,6 +500,9 @@
     <!-- SCRIPTS -->
     <script src="{{ static_asset('assets/js/vendors.js?v=') }}{{ get_setting('current_version') }}"></script>
     <script src="{{ static_asset('assets/js/aiz-core.js?v=') }}{{ rand(1000, 9999) }}"></script>
+    @if(get_setting('homepage_select') == 'rudraspirit')
+    <script src="{{ static_asset('assets/js/rudraspirit.js?v=') }}{{ rand(1000, 9999) }}"></script>
+    @endif
 
     {{-- WhatsaApp Chat --}}
     @if (get_setting('whatsapp_chat') == 1)
@@ -594,7 +606,7 @@
     </script>
 
     <script>
-        @if (Route::currentRouteName() == 'home' || Route::currentRouteName() == '/')
+        @if ((Route::currentRouteName() == 'home' || Route::currentRouteName() == '/') && get_setting('homepage_select') != 'rudraspirit')
 
             $.post('{{ route('home.section.featured') }}', {
                 _token: '{{ csrf_token() }}'
@@ -844,7 +856,7 @@
                 },
                 error: function () {
                     rightOffcanvas.innerHTML =
-                        '<p class="text-danger">{{ translate("Failed to load stock data") }}</p>';
+                        '<div class="p-3"><div class="d-flex justify-content-end"><button onclick="closeOffcanvas()" class="border-0 p-0 bg-transparent"><i class="la la-close fs-24"></i></button></div><p class="text-danger">{{ translate("Failed to load stock data") }}</p></div>';
                 }
             });
         }

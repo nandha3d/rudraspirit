@@ -1,4 +1,4 @@
-@extends('auth.layouts.authentication')
+@extends(get_setting('authentication_layout_select') == 'rudraspirit' ? 'auth.layouts.rudraspirit' : 'auth.layouts.authentication')
 
 @section('content')
 

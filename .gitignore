@@ -20,6 +20,8 @@ yarn-error.log
 .DS_Store
 .idea/
 /public/*
+!/public/assets/css/rudraspirit.css
+!/public/assets/js/rudraspirit.js
 updates/
 composer.lock
 *.lock

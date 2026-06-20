@@ -119,6 +119,7 @@
     </div>
 </section>
 
+@if (get_setting('homepage_select') != 'rudraspirit')
 <!-- footer subscription & icons -->
 <section class="py-3 text-light footer-widget border-bottom" style="border-color: #3d3d46 !important; background-color: #212129 !important;">
     <div class="container">
@@ -554,8 +555,12 @@
         @endif
     </div>
 </section>
+@endif
 
 <!-- FOOTER -->
+@if (get_setting('homepage_select') == 'rudraspirit')
+    @include('frontend.rudraspirit.partials.footer')
+@else
 <footer class="pt-3 pb-7 pb-xl-3 bg-black text-soft-light">
     <div class="container">
         <div class="row align-items-center py-3">
@@ -583,7 +588,9 @@
         </div>
     </div>
 </footer>
+@endif
 
+@if (get_setting('homepage_select') != 'rudraspirit')
 <!-- Mobile bottom nav -->
 <div class="aiz-mobile-bottom-nav d-xl-none fixed-bottom border-top border-sm-bottom border-sm-left border-sm-right mx-auto mb-sm-2" style="background-color: rgb(255 255 255 / 90%)!important;">
     <div class="row align-items-center gutters-5">
@@ -725,4 +732,5 @@
             @include('frontend.inc.user_side_nav')
         </div>
     </div>
+@endif
 @endif

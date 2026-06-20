@@ -200,14 +200,14 @@ class BlogController extends Controller
 
         $recent_blogs = Blog::where('status', 1)->orderBy('created_at', 'desc')->limit(9)->get();
 
-        return view("frontend.blog.listing", compact('blogs', 'selected_categories', 'search', 'recent_blogs'));
+        return view(get_setting('homepage_select') == 'rudraspirit' ? 'frontend.rudraspirit.blog.listing' : 'frontend.blog.listing', compact('blogs', 'selected_categories', 'search', 'recent_blogs'));
     }
 
     public function blog_details($slug)
     {
         $blog = Blog::where('slug', $slug)->first();
         $recent_blogs = Blog::where('status', 1)->orderBy('created_at', 'desc')->limit(9)->get();
-        return view("frontend.blog.details", compact('blog', 'recent_blogs'));
+        return view(get_setting('homepage_select') == 'rudraspirit' ? 'frontend.rudraspirit.blog.details' : 'frontend.blog.details', compact('blog', 'recent_blogs'));
     }
 
     public function generateSlug(Request $request)

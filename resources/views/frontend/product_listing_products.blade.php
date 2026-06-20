@@ -5,10 +5,14 @@
                 'product' => $product,
             ])
         @else
-            @include(
-                'frontend.product_box_for_listing_page',
-                ['product' => $product]
-            )
+            @if(get_setting('homepage_select') == 'rudraspirit')
+                @include('frontend.rudraspirit.partials.product_card', ['product' => $product])
+            @else
+                @include(
+                    'frontend.product_box_for_listing_page',
+                    ['product' => $product]
+                )
+            @endif
         @endif
     </div>
 @endforeach

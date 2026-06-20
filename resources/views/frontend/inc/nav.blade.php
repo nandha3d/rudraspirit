@@ -1,3 +1,6 @@
+@if (get_setting('homepage_select') == 'rudraspirit')
+    @include('frontend.rudraspirit.partials.header')
+@else
 <!-- Top Bar Banner -->
 @php
     $top_banner_background_color = get_setting('top_banner_background_color', get_setting('base_color'));
@@ -6,9 +9,9 @@
     $top_banner_image_for_tabs = get_setting('top_banner_image_for_tabs');
     $top_banner_image_for_mobile = get_setting('top_banner_image_for_mobile');
     $topBanners = \App\Models\TopBanner::where('status', 1)->orderBy('id','desc')->get();
-@endphp 
+@endphp
     @if (count($topBanners) > 0 || $top_banner_image != null)
-    <div class="position-relative top-banner removable-session z-1035 d-none" 
+    <div class="position-relative top-banner removable-session z-1035 d-none"
          data-key="top-banner" data-value="removed" style="background-color: {{ $top_banner_background_color }}">
         <div class="d-block text-reset h-40px h-lg-60px position-relative overflow-hidden">
 
@@ -42,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn text-white h-100 absolute-top-right set-session" 
+        <button class="btn text-white h-100 absolute-top-right set-session"
             data-key="top-banner" data-value="removed"
             data-toggle="remove-parent" data-parent=".top-banner">
             <i style="color: {{$top_banner_text_color}};" class="la la-close la-2x"></i>
@@ -50,6 +53,7 @@
     </div>
     @endif
 	@include('header.' .get_element_type_by_id(get_setting('header_element')))
+@endif
 <!-- Top Menu Sidebar -->
 <div class="aiz-top-menu-sidebar collapse-sidebar-wrap sidebar-xl sidebar-left d-lg-none z-1035">
     <div class="overlay overlay-fixed dark c-pointer" data-toggle="class-toggle" data-target=".aiz-top-menu-sidebar"

@@ -150,7 +150,7 @@ class SearchController extends Controller
                     break;
             }
             $products = $products->with('taxes')->paginate(12, ['*'], 'preorder_product')->appends(request()->query());
-            return view('frontend.product_listing', compact('products', 'query', 'category', 'categories', 'category_id', 'brand_id', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color', 'product_type', 'is_available'));
+            return view(get_setting('homepage_select') == 'rudraspirit' ? 'frontend.rudraspirit.product_listing' : 'frontend.product_listing', compact('products', 'query', 'category', 'categories', 'category_id', 'brand_id', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color', 'product_type', 'is_available'));
         }
 
 
@@ -299,7 +299,7 @@ class SearchController extends Controller
 
         $products = filter_products($products)->with('taxes')->paginate(24)->appends(request()->query());
         // return $brand_id;
-        return view('frontend.product_listing', compact('products', 'query', 'category', 'categories', 'category_id', 'brand_id', 'brand', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color', 'product_type', 'is_available', 'preorder_categories'));
+        return view(get_setting('homepage_select') == 'rudraspirit' ? 'frontend.rudraspirit.product_listing' : 'frontend.product_listing', compact('products', 'query', 'category', 'categories', 'category_id', 'brand_id', 'brand', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color', 'product_type', 'is_available', 'preorder_categories'));
     }
 
     public function index2(Request $request, $category_id = null, $brand_id = null)
@@ -717,5 +717,19 @@ class SearchController extends Controller
                 $this->categoryProductCount($child, $productCounts, $childrenKey);
             }
         }
+    }
+
+    public function mukhi_info($slug)
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+        
+        $mukhiNumber = null;
+        if (preg_match('/(\d+)\s*Mukhi/i', $product->getTranslation('name'), $matches)) {
+            $mukhiNumber = (int)$matches[1];
+        } elseif (preg_match('/(\d+)\s*Mukhi/i', $product->tags, $matches)) {
+            $mukhiNumber = (int)$matches[1];
+        }
+        
+        return view('frontend.rudraspirit.mukhi_info', compact('product', 'mukhiNumber'));
     }
 }

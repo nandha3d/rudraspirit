@@ -194,7 +194,7 @@ class PageController extends Controller
         $lang = get_system_language() ? get_system_language()->code : null;
         if($page != null){
             if($page->type == 'contact_us_page'){
-                return view('frontend.contact_us_page', compact('page','lang'));
+                return view(get_setting('homepage_select') == 'rudraspirit' ? 'frontend.rudraspirit.contact_us_page' : 'frontend.contact_us_page', compact('page','lang'));
             }elseif($page->type == 'about_us_page'){
                 return view('frontend.portfolio.about_us_page',  compact('page','lang'));
             }elseif($page->type == 'plans_page'){

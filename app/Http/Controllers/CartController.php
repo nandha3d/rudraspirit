@@ -42,7 +42,36 @@ class CartController extends Controller
             $carts = $carts->fresh();
         }
 
-        return view('frontend.view_cart', compact('carts'));
+        return view(get_setting('homepage_select') == 'rudraspirit' ? 'frontend.rudraspirit.view_cart' : 'frontend.view_cart', compact('carts'));
+    }
+
+    public function miniSummary(Request $request)
+    {
+        $carts = get_user_cart();
+        $items = [];
+        $total = 0;
+
+        foreach ($carts as $cart) {
+            $product = $cart->product;
+            if (!$product) {
+                continue;
+            }
+            $unitPrice = cart_product_price($cart, $product, false, false);
+            $lineTotal = $unitPrice * $cart->quantity;
+            $total += $lineTotal;
+
+            $items[] = [
+                'name' => $product->getTranslation('name'),
+                'qty' => $cart->quantity,
+                'unit_price_formatted' => single_price($unitPrice),
+                'line_total_formatted' => single_price($lineTotal),
+            ];
+        }
+
+        return response()->json([
+            'items' => $items,
+            'total_formatted' => single_price($total),
+        ]);
     }
 
     public function showCartModal(Request $request)

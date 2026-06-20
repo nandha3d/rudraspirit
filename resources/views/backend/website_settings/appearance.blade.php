@@ -204,6 +204,73 @@
             </div>
         </div>
 
+        <!-- RudraSpirit Theme Colors -->
+        @if (get_setting('homepage_select') == 'rudraspirit')
+        @php
+            $rsFields = [
+                'ink' => ['label' => 'Ink', 'default' => '#241B12'],
+                'gold' => ['label' => 'Gold', 'default' => '#B4894A'],
+                'gold_deep' => ['label' => 'Gold Deep', 'default' => '#7A4E1E'],
+                'dark' => ['label' => 'Dark', 'default' => '#15110C'],
+                'brown' => ['label' => 'Brown', 'default' => '#3A2A1C'],
+            ];
+            $rsPresets = [
+                'gold' => ['label' => 'Gold', 'ink' => '#241B12', 'gold' => '#B4894A', 'gold_deep' => '#7A4E1E', 'dark' => '#15110C', 'brown' => '#3A2A1C'],
+                'purple' => ['label' => 'Spiritual Purple', 'ink' => '#1A0A2A', 'gold' => '#E5C158', 'gold_deep' => '#B08B1A', 'dark' => '#311440', 'brown' => '#4D2063'],
+                'green' => ['label' => 'Forest Zen', 'ink' => '#081C10', 'gold' => '#68C290', 'gold_deep' => '#3A8F60', 'dark' => '#103522', 'brown' => '#1A4C32'],
+                'blue' => ['label' => 'Royal Navy', 'ink' => '#081320', 'gold' => '#6CADE7', 'gold_deep' => '#387BB5', 'dark' => '#112740', 'brown' => '#1B3B60'],
+                'orange' => ['label' => 'Sunset Terracotta', 'ink' => '#221008', 'gold' => '#F5A662', 'gold_deep' => '#C96720', 'dark' => '#4D2110', 'brown' => '#6E331B'],
+                'burgundy' => ['label' => 'Mystic Burgundy', 'ink' => '#1E070C', 'gold' => '#F07E8E', 'gold_deep' => '#B83244', 'dark' => '#4A101C', 'brown' => '#6E1C2E'],
+                'teal' => ['label' => 'Ocean Teal', 'ink' => '#061C1F', 'gold' => '#5BC5D6', 'gold_deep' => '#2A8E9E', 'dark' => '#113E45', 'brown' => '#1B5D68'],
+                'copper' => ['label' => 'Sacred Copper', 'ink' => '#201105', 'gold' => '#EBB36C', 'gold_deep' => '#BD6C24', 'dark' => '#542C0C', 'brown' => '#7C4419'],
+                'pink' => ['label' => 'Lotus Pink', 'ink' => '#1E0A16', 'gold' => '#FC94C6', 'gold_deep' => '#C74483', 'dark' => '#4F1A3B', 'brown' => '#702654'],
+                'charcoal' => ['label' => 'Aura Charcoal', 'ink' => '#14161C', 'gold' => '#A6B5C5', 'gold_deep' => '#748596', 'dark' => '#2A313C', 'brown' => '#3E4857'],
+            ];
+        @endphp
+        <div class="card">
+            <div class="card-header py-2">
+                <h6 class="fw-600 mb-0 fs-14">{{ translate('RudraSpirit Theme Colors') }}</h6>
+            </div>
+            <div class="card-body py-3">
+                <label class="fs-12 fw-600 text-muted mb-2 d-block">{{ translate('Quick Presets') }}</label>
+                <div class="d-flex flex-wrap mb-3" style="gap:14px;">
+                    @foreach ($rsPresets as $key => $preset)
+                        <div class="text-center">
+                            <button type="button" class="rs-preset-swatch p-0 border rounded-2 d-flex" title="{{ $preset['label'] }}"
+                                data-ink="{{ $preset['ink'] }}" data-gold="{{ $preset['gold'] }}" data-gold_deep="{{ $preset['gold_deep'] }}" data-dark="{{ $preset['dark'] }}" data-brown="{{ $preset['brown'] }}"
+                                style="width:52px;height:26px;overflow:hidden;cursor:pointer;">
+                                <span style="flex:1;background:{{ $preset['dark'] }};"></span>
+                                <span style="flex:1;background:{{ $preset['gold'] }};"></span>
+                                <span style="flex:1;background:{{ $preset['gold_deep'] }};"></span>
+                                <span style="flex:1;background:{{ $preset['brown'] }};"></span>
+                            </button>
+                            <span class="fs-11 text-muted d-block mt-1">{{ translate($preset['label']) }}</span>
+                        </div>
+                    @endforeach
+                </div>
+
+                <form action="{{ route('business_settings.update') }}" method="POST" id="rs-color-form">
+                    @csrf
+                    <div class="row">
+                        @foreach ($rsFields as $key => $field)
+                            <div class="col-md-6 mb-2">
+                                <label class="fs-12 mb-1">{{ translate($field['label']) }}</label>
+                                <div class="d-flex align-items-center" style="gap:8px;">
+                                    <input type="hidden" name="types[]" value="rudraspirit_color_{{ $key }}">
+                                    <input type="text" name="rudraspirit_color_{{ $key }}" class="form-control form-control-sm rs-color-text" data-field="{{ $key }}" placeholder="{{ $field['default'] }}" value="{{ get_setting('rudraspirit_color_' . $key, $field['default']) }}">
+                                    <input class="rs-color-pick border-0 rounded-2" data-field="{{ $key }}" type="color" value="{{ get_setting('rudraspirit_color_' . $key, $field['default']) }}" style="width:30px;height:30px;flex-shrink:0;padding:0;">
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="mt-2 text-right">
+                        <button type="submit" class="btn btn-success btn-sm rounded-2 fs-13 fw-700">{{ translate('Update') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        @endif
+
         <!-- Image Watermark -->
         <div class="card">
             <div class="card-header">
@@ -401,6 +468,26 @@
 
 @section('script')
 <script type="text/javascript">
+    $('.rs-preset-swatch').on('click', function() {
+        let $btn = $(this);
+        ['ink', 'gold', 'gold_deep', 'dark', 'brown'].forEach(function(field) {
+            let val = $btn.data(field);
+            $('.rs-color-text[data-field="' + field + '"]').val(val);
+            $('.rs-color-pick[data-field="' + field + '"]').val(val);
+        });
+    });
+
+    $('.rs-color-pick').on('input', function() {
+        $('.rs-color-text[data-field="' + $(this).data('field') + '"]').val($(this).val());
+    });
+
+    $('.rs-color-text').on('input', function() {
+        let val = $(this).val();
+        if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+            $('.rs-color-pick[data-field="' + $(this).data('field') + '"]').val(val);
+        }
+    });
+
     $('select[name="image_watermark_type"]').on('change', function() {
         let val = $(this).val();
         if (val == 'image') {
