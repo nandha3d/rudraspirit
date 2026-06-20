@@ -11,7 +11,7 @@ php artisan down --message="System is updating. Please try again in a few moment
 git pull origin main
 
 # 3. Install composer dependencies (no development dependencies)
-composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-audit --ignore-platform-reqs
+composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --ignore-platform-reqs
 
 # 4. Run database migrations
 php artisan migrate --force

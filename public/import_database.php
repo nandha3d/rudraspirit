@@ -1,6 +1,7 @@
 <?php
 // Secure key to prevent unauthorized execution
-if (!isset($_GET['key']) || $_GET['key'] !== 'rudra_deploy_2026') {
+$isCli = (php_sapi_name() === 'cli');
+if (!$isCli && (!isset($_GET['key']) || $_GET['key'] !== 'rudra_deploy_2026')) {
     die("Unauthorized access.");
 }
 
