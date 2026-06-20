@@ -10,7 +10,7 @@ class AddVerificationStatusToUsersTable extends Migration
     {
         if (!Schema::hasColumn('users', 'verification_status')) {
             Schema::table('users', function (Blueprint $table) {
-                $table->tinyInteger('verification_status')->default(1)->after('verification_code');
+                $table->tinyInteger('verification_status')->default(1);
             });
         }
     }
