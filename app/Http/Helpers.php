@@ -1437,6 +1437,96 @@ if (!function_exists('isAdmin')) {
     }
 }
 
+if (!function_exists('rudraspirit_root_category')) {
+    /**
+     * Root catalog category for the RudraSpirit theme.
+     * Slug is configurable via the `rudraspirit_root_category` business setting
+     * (default keeps the original 'rudraksha-beads' so nothing breaks if unset).
+     * Result is cached for the request to avoid the repeated per-render query.
+     */
+    function rudraspirit_root_category()
+    {
+        static $cat = false;
+        if ($cat === false) {
+            $slug = get_setting('rudraspirit_root_category', 'rudraksha-beads');
+            $cat = \App\Models\Category::where('slug', $slug)->first();
+        }
+        return $cat;
+    }
+}
+
+if (!function_exists('rudraspirit_mukhi_number')) {
+    /**
+     * Resolve the Mukhi number (1..14) for a product by reading its name then tags.
+     * Returns null when no "N Mukhi" pattern is found.
+     */
+    function rudraspirit_mukhi_number($product)
+    {
+        if (!$product) {
+            return null;
+        }
+        $name = method_exists($product, 'getTranslation') ? $product->getTranslation('name') : ($product->name ?? '');
+        if (preg_match('/(\d+)\s*Mukhi/i', (string) $name, $m)) {
+            return (int) $m[1];
+        }
+        if (preg_match('/(\d+)\s*Mukhi/i', (string) ($product->tags ?? ''), $m)) {
+            return (int) $m[1];
+        }
+        return null;
+    }
+}
+
+if (!function_exists('rudraspirit_mukhi_info')) {
+    /**
+     * MukhiInfo DB record for a product (by resolved mukhi number), or null.
+     * Request-cached per mukhi number. Safe if the table does not exist yet.
+     */
+    function rudraspirit_mukhi_info($product)
+    {
+        static $cache = [];
+        $number = rudraspirit_mukhi_number($product);
+        if ($number === null) {
+            return null;
+        }
+        if (!array_key_exists($number, $cache)) {
+            try {
+                $cache[$number] = \App\Models\MukhiInfo::where('mukhi_number', $number)->where('status', 1)->first();
+            } catch (\Throwable $e) {
+                $cache[$number] = null;
+            }
+        }
+        return $cache[$number];
+    }
+}
+
+if (!function_exists('rudraspirit_deal_ends_at')) {
+    /**
+     * End timestamp (unix seconds) for the home "Limited Time Deal" countdown.
+     * - If `rudraspirit_deal_end` setting is a future date/timestamp, use it.
+     * - Otherwise fall back to a deterministic rolling window anchored to a fixed
+     *   epoch so the timer no longer resets on every page load. Cycle length is
+     *   `rudraspirit_deal_cycle_hours` (default 72h).
+     */
+    function rudraspirit_deal_ends_at()
+    {
+        $set = get_setting('rudraspirit_deal_end');
+        if (!empty($set)) {
+            $ts = is_numeric($set) ? (int) $set : strtotime($set);
+            if ($ts && $ts > time()) {
+                return $ts;
+            }
+        }
+        $cycle = (int) get_setting('rudraspirit_deal_cycle_hours', 72) * 3600;
+        if ($cycle <= 0) {
+            $cycle = 72 * 3600;
+        }
+        $anchor = strtotime('2026-01-01 00:00:00');
+        $now = time();
+        $elapsed = max(0, $now - $anchor);
+        return $anchor + (intdiv($elapsed, $cycle) + 1) * $cycle;
+    }
+}
+
 if (!function_exists('isSeller')) {
     function isSeller()
     {

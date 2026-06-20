@@ -13,7 +13,7 @@
         <div>
             <div class="rs-footer-label">{{ translate('Explore') }}</div>
             <div style="display:flex;flex-direction:column;gap:11px;">
-                @php $rsParent = \App\Models\Category::where('slug', 'rudraksha-beads')->first(); @endphp
+                @php $rsParent = rudraspirit_root_category(); @endphp
                 <a href="{{ $rsParent ? route('products.category', $rsParent->slug) : route('categories.all') }}">{{ translate('Single Beads') }}</a>
                 <a href="{{ $rsParent ? route('products.category', $rsParent->slug) : route('categories.all') }}">{{ translate('Malas') }}</a>
                 <a href="{{ route('categories.all') }}">{{ translate('Collections') }}</a>

@@ -722,14 +722,10 @@ class SearchController extends Controller
     public function mukhi_info($slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
-        
-        $mukhiNumber = null;
-        if (preg_match('/(\d+)\s*Mukhi/i', $product->getTranslation('name'), $matches)) {
-            $mukhiNumber = (int)$matches[1];
-        } elseif (preg_match('/(\d+)\s*Mukhi/i', $product->tags, $matches)) {
-            $mukhiNumber = (int)$matches[1];
-        }
-        
-        return view('frontend.rudraspirit.mukhi_info', compact('product', 'mukhiNumber'));
+
+        $mukhiNumber = rudraspirit_mukhi_number($product);
+        $mukhiInfo = rudraspirit_mukhi_info($product);
+
+        return view('frontend.rudraspirit.mukhi_info', compact('product', 'mukhiNumber', 'mukhiInfo'));
     }
 }

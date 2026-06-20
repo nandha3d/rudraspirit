@@ -2133,6 +2133,21 @@
                                         <span class="aiz-side-nav-text">{{translate('Select Homepage')}}</span>
                                     </a>
                                 </li>
+                                <li class="aiz-side-nav-item">
+                                    <a href="{{ route('website.rudraspirit-settings') }}" class="aiz-side-nav-link {{ areActiveRoutes(['website.rudraspirit-settings'])}}">
+                                        <span class="aiz-side-nav-text">{{translate('RudraSpirit Theme')}}</span>
+                                    </a>
+                                </li>
+                                <li class="aiz-side-nav-item">
+                                    <a href="{{ route('mukhi-info.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['mukhi-info.index', 'mukhi-info.create', 'mukhi-info.edit'])}}">
+                                        <span class="aiz-side-nav-text">{{translate('Mukhi Information')}}</span>
+                                    </a>
+                                </li>
+                                <li class="aiz-side-nav-item">
+                                    <a href="{{ route('hero-slides.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['hero-slides.index', 'hero-slides.create', 'hero-slides.edit'])}}">
+                                        <span class="aiz-side-nav-text">{{translate('Home Hero Slides')}}</span>
+                                    </a>
+                                </li>
                             @endcan
                             @can('edit_website_page')
                                 <li class="aiz-side-nav-item">

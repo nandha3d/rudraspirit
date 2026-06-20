@@ -49,8 +49,8 @@
         <meta property="og:url" content="{{ route('home') }}" />
         <meta property="og:image" content="{{ $meta_image }}" />
         <meta property="og:description" content="{{ get_setting('meta_description') }}" />
-        <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
-        <meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}">
+        <meta property="og:site_name" content="{{ config('app.name') }}" />
+        <meta property="fb:app_id" content="{{ config('rudraspirit.facebook_pixel_id') }}">
     @endif
 
     <!-- Favicon -->
@@ -188,13 +188,13 @@
 
 @if (get_setting('google_analytics') == 1)
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('TRACKING_ID') }}"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('rudraspirit.tracking_id') }}"></script>
 
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', '{{ env('TRACKING_ID') }}');
+        gtag('config', '{{ config('rudraspirit.tracking_id') }}');
     </script>
 @endif
 
@@ -209,11 +209,11 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '{{ env('FACEBOOK_PIXEL_ID') }}');
+        fbq('init', '{{ config('rudraspirit.facebook_pixel_id') }}');
         fbq('track', 'PageView');
     </script>
     <noscript>
-        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ env('FACEBOOK_PIXEL_ID') }}&ev=PageView&noscript=1"/>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ config('rudraspirit.facebook_pixel_id') }}&ev=PageView&noscript=1"/>
     </noscript>
     <!-- End Facebook Pixel Code -->
 @endif
@@ -257,7 +257,7 @@
     </div>
 
 
-    @if (env("DEMO_MODE") == "On")
+    @if (config("rudraspirit.demo_mode") == "On")
         <!-- demo nav -->
         @include('frontend.inc.demo_nav')
     @endif
@@ -279,7 +279,7 @@
 
     <div class="aiz-custom-alert {{ get_setting('custom_alert_location') }}" id="aiz-custom-sale-alert">
         @foreach ($custom_alerts as $custom_alert)
-            @if($custom_alert->id == 1)
+            @if($custom_alert->id == config('rudraspirit.special_alerts.cookie'))
                 <div class="aiz-cookie-alert mb-3" style="box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.24);">
                     <div class="p-3 px-lg-2rem rounded-2" style="background: {{ $custom_alert->background_color }};">
                         <div class="text-{{ $custom_alert->text_color }} mb-3">
@@ -290,7 +290,7 @@
                         </button>
                     </div>
                 </div>
-            @elseif($custom_alert->id == 200)
+            @elseif($custom_alert->id == config('rudraspirit.special_alerts.club_point_review'))
                 @php
                     $showalert = true;
                     if(auth()->user()){
@@ -314,7 +314,7 @@
                         </div>
                     </div>
                 @endif                  
-            @elseif($custom_alert->id == 300) 
+            @elseif($custom_alert->id == config('rudraspirit.special_alerts.otp')) 
                 @php
                     if(auth()->check()){
                     $showcustomalert = true;
@@ -359,7 +359,7 @@
         $dynamic_popups = App\Models\DynamicPopup::where('status', 1)->orderBy('id', 'asc')->get();
         $popup_count = 0;
         $hasVisiblePopup = $dynamic_popups->contains(function ($popup) use ($hasUnreviewed) {
-            if ($popup->id == 100) {
+            if ($popup->id == config('rudraspirit.special_popups.unreviewed')) {
                 return auth()->user() && $hasUnreviewed;
             }
             return true;
@@ -382,7 +382,7 @@
                 @php
                     
                     $showPopup = true;
-                    if ($dynamic_popup->id == 100 ) {
+                    if ($dynamic_popup->id == config('rudraspirit.special_popups.unreviewed') ) {
                         if(auth()->user()){
                             $showPopup = $hasUnreviewed;
                         }else{
@@ -417,7 +417,7 @@
                                 {{ $dynamic_popup->summary }}
                             </p>
 
-                            @if($dynamic_popup->id == 1 && $dynamic_popup->show_subscribe_form == 'on')
+                            @if($dynamic_popup->id == config('rudraspirit.special_alerts.cookie') && $dynamic_popup->show_subscribe_form == 'on')
                                 <!-- Subscription form for ID 1 -->
                                 <form class="mt-3" method="POST" action="{{ route('subscribers.store') }}">
                                     @csrf
@@ -509,7 +509,7 @@
         <script type="text/javascript">
             (function () {
                 var options = {
-                    whatsapp: "{{ env('WHATSAPP_NUMBER') }}",
+                    whatsapp: "{{ config('rudraspirit.whatsapp_number') }}",
                     call_to_action: "{{ translate('Message us') }}",
                     position: "right", // Position may be 'right' or 'left'
                 };
@@ -1310,7 +1310,7 @@
         }
     </script>
 
-    @if (env("DEMO_MODE") == "On")
+    @if (config("rudraspirit.demo_mode") == "On")
         <script>
             var demoNav = document.querySelector('.aiz-demo-nav');
             var menuBtn = document.querySelector('.aiz-demo-nav-toggler');

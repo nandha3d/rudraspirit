@@ -21,8 +21,14 @@
             @endif
         </div>
         <div>
-            @if ($detailedProduct->tags)
-                <div style="font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--rs-gold);margin-bottom:14px;">{{ translate('Ruling Deity') }} &middot; {{ explode(',', $detailedProduct->tags)[0] }}</div>
+            @php
+                $rsDeity = optional(rudraspirit_mukhi_info($detailedProduct))->deity;
+                if (!$rsDeity && $detailedProduct->tags) {
+                    $rsDeity = explode(',', $detailedProduct->tags)[0];
+                }
+            @endphp
+            @if ($rsDeity)
+                <div style="font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--rs-gold);margin-bottom:14px;">{{ translate('Ruling Deity') }} &middot; {{ $rsDeity }}</div>
             @endif
             <h1 class="rs-serif" style="font-weight:500;font-size:40px;line-height:1.1;color:var(--rs-ink);margin:0 0 14px;">{{ $detailedProduct->getTranslation('name') }}</h1>
 

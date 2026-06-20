@@ -939,6 +939,16 @@
 .aiz-rudraspirit .rs-deal-visual {
     min-height: 360px;
     background: linear-gradient(150deg, var(--rs-gold-light), var(--rs-gold-darker));
+    position: relative;
+    overflow: hidden;
+}
+.aiz-rudraspirit .rs-deal-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
 }
 .aiz-rudraspirit .rs-deal-timer {
     display: flex;

@@ -2,7 +2,7 @@
 
 @section('content')
 @php
-    $rsParent = \App\Models\Category::where('slug', 'rudraksha-beads')->first();
+    $rsParent = rudraspirit_root_category();
     $rsMukhiPicks = $rsParent ? \App\Models\Product::where('category_id', $rsParent->id)->where('published', 1)->orderBy('id')->get() : collect();
     $rsTrendy = filter_products(\App\Models\Product::where('published', 1)->latest())->take(8)->get();
     $rsPosts = \App\Models\Blog::where('status', 1)->latest()->take(3)->get();
@@ -10,37 +10,47 @@
     $rsMukhiCount = $rsMukhiPicks->count();
     $rsLowestPrice = $rsMukhiPicks->count() ? $rsMukhiPicks->min('unit_price') : null;
 
-    $rsHeroSlides = [
-        [
-            'image' => 'Gemini_Generated_Image_9jfh569jfh569jfh.webp',
-            'kicker' => translate('Nepal Origin · Lab Certified'),
-            'title' => translate('Discover'),
-            'title_em' => translate('Our Rudraksha'),
-            'title_end' => '',
-            'text' => translate('Embrace ancient wisdom and spirituality with our hand-picked, lab-certified Rudraksha beads sourced from the Himalayas.'),
-            'cta' => translate('Shop Collection'),
-        ],
-        [
-            'image' => 'Gemini_Generated_Image_uw5h9puw5h9puw5h.webp',
-            'kicker' => translate('Blessed & Energised'),
-            'title' => translate('Crafted'),
-            'title_em' => translate('For Calm'),
-            'title_end' => '',
-            'text' => translate('Connect with the divine vibration of natural Rudraksha. Empower your journey and protect your aura.'),
-            'cta' => translate('Shop Collection'),
-        ],
-        [
-            'image' => 'Gemini_Generated_Image_9keguo9keguo9keg.webp',
-            'kicker' => $rsMukhiCount > 0 ? $rsMukhiCount . ' ' . translate('Sacred Mukhi Types') : translate('Sacred Mukhi Types'),
-            'title' => translate('Worn'),
-            'title_em' => translate('With Intention'),
-            'title_end' => '',
-            'text' => $rsLowestPrice
-                ? translate('From 1 Mukhi to 14 Mukhi — find the bead that resonates with your path, starting from') . ' ' . single_price($rsLowestPrice) . '.'
-                : translate('From 1 Mukhi to 14 Mukhi — find the bead that resonates with your path, worn daily by thousands.'),
-            'cta' => translate('View All Mukhis'),
-        ],
-    ];
+    // Admin-managed hero slides take over when present; otherwise use the built-in defaults.
+    // Guarded so a not-yet-migrated table can never fatal the homepage.
+    try {
+        $rsDbSlides = \App\Models\RudraspiritHeroSlide::where('status', 1)->orderBy('sort_order')->orderBy('id')->get();
+    } catch (\Throwable $e) {
+        $rsDbSlides = collect();
+    }
+    $rsHeroSlides = [];
+
+    if ($rsDbSlides->count() > 0) {
+        foreach ($rsDbSlides as $rsSlide) {
+            $rsHeroSlides[] = [
+                'kicker' => $rsSlide->kicker,
+                'title' => $rsSlide->title,
+                'title_em' => $rsSlide->title_em,
+                'title_end' => '',
+                'text' => $rsSlide->text,
+                'cta' => $rsSlide->cta_text ?: translate('Shop Collection'),
+                'image_url' => $rsSlide->image ? uploaded_asset($rsSlide->image) : static_asset('assets/img/pages/rudraspirit/Gemini_Generated_Image_9jfh569jfh569jfh.webp'),
+                'link' => $rsSlide->cta_link ?: $rsShopUrl,
+            ];
+        }
+    } else {
+        $rsDefaultSlides = [
+            ['img' => 'Gemini_Generated_Image_9jfh569jfh569jfh.webp', 'kicker' => translate('Nepal Origin · Lab Certified'), 'title' => translate('Discover'), 'title_em' => translate('Our Rudraksha'), 'text' => translate('Embrace ancient wisdom and spirituality with our hand-picked, lab-certified Rudraksha beads sourced from the Himalayas.'), 'cta' => translate('Shop Collection')],
+            ['img' => 'Gemini_Generated_Image_uw5h9puw5h9puw5h.webp', 'kicker' => translate('Blessed & Energised'), 'title' => translate('Crafted'), 'title_em' => translate('For Calm'), 'text' => translate('Connect with the divine vibration of natural Rudraksha. Empower your journey and protect your aura.'), 'cta' => translate('Shop Collection')],
+            ['img' => 'Gemini_Generated_Image_9keguo9keguo9keg.webp', 'kicker' => $rsMukhiCount > 0 ? $rsMukhiCount . ' ' . translate('Sacred Mukhi Types') : translate('Sacred Mukhi Types'), 'title' => translate('Worn'), 'title_em' => translate('With Intention'), 'text' => $rsLowestPrice ? translate('From 1 Mukhi to 14 Mukhi — find the bead that resonates with your path, starting from') . ' ' . single_price($rsLowestPrice) . '.' : translate('From 1 Mukhi to 14 Mukhi — find the bead that resonates with your path, worn daily by thousands.'), 'cta' => translate('View All Mukhis')],
+        ];
+        foreach ($rsDefaultSlides as $rsSlide) {
+            $rsHeroSlides[] = [
+                'kicker' => $rsSlide['kicker'],
+                'title' => $rsSlide['title'],
+                'title_em' => $rsSlide['title_em'],
+                'title_end' => '',
+                'text' => $rsSlide['text'],
+                'cta' => $rsSlide['cta'],
+                'image_url' => static_asset('assets/img/pages/rudraspirit/' . $rsSlide['img']),
+                'link' => $rsShopUrl,
+            ];
+        }
+    }
 @endphp
 
 <!-- HERO -->
@@ -51,10 +61,10 @@
                 <div class="rs-hero-kicker">{{ $slide['kicker'] }}</div>
                 <h1 class="rs-hero-title">{{ $slide['title'] }} <em>{{ $slide['title_em'] }}</em> {{ $slide['title_end'] }}</h1>
                 <p class="rs-hero-text">{{ $slide['text'] }}</p>
-                <a href="{{ $rsShopUrl }}" class="rs-btn">{{ $slide['cta'] }} <span>&rarr;</span></a>
+                <a href="{{ $slide['link'] }}" class="rs-btn">{{ $slide['cta'] }} <span>&rarr;</span></a>
             </div>
             <div class="rs-hero-visual">
-                <img src="{{ static_asset('assets/img/pages/rudraspirit/' . $slide['image']) }}" alt="{{ $slide['title'] }} {{ $slide['title_em'] }}">
+                <img src="{{ $slide['image_url'] }}" alt="{{ $slide['title'] }} {{ $slide['title_em'] }}">
             </div>
         </div>
     @endforeach
@@ -120,14 +130,22 @@
         </div>
         <a href="{{ $rsParent ? route('products.category', $rsParent->slug) : route('categories.all') }}" class="rs-btn">{{ translate('Shop Now') }} <span>&rarr;</span></a>
     </div>
-    <div class="rs-deal-visual"></div>
+    <div class="rs-deal-visual">
+        @php
+            $rsDealImage = $rsMukhiPicks->count() && $rsMukhiPicks->last()->thumbnail
+                ? get_image($rsMukhiPicks->last()->thumbnail)
+                : static_asset('assets/img/pages/rudraspirit/Gemini_Generated_Image_2ht5mi2ht5mi2ht5.webp');
+        @endphp
+        <img src="{{ $rsDealImage }}" alt="{{ translate('Limited Time Rudraksha Deal') }}" loading="lazy">
+    </div>
 </section>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        @php $rsDealMs = max(0, (rudraspirit_deal_ends_at() - time()) * 1000); @endphp
         rsStartCountdownBoxes(
             document.getElementById('rs-deal-days'), document.getElementById('rs-deal-hours'),
             document.getElementById('rs-deal-mins'), document.getElementById('rs-deal-secs'),
-            1000 * 60 * 60 * 76
+            {{ $rsDealMs }}
         );
     });
 </script>

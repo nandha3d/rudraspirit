@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Element;
 use App\Models\ElementType;
 use App\Models\Language;
@@ -20,6 +21,7 @@ class WebsiteController extends Controller
         $this->middleware(['permission:view_all_website_pages'])->only('pages');
         $this->middleware(['permission:website_appearance'])->only('appearance');
         $this->middleware(['permission:select_homepage'])->only('select_homepage');
+        $this->middleware(['permission:select_homepage'])->only('rudraspirit_settings');
         $this->middleware(['permission:select_header'])->only('select_header');
         $this->middleware(['permission:authentication_layout_settings'])->only('authentication_layout_settings');
     }
@@ -48,6 +50,11 @@ class WebsiteController extends Controller
     public function select_homepage(Request $request)
     {
         return view('backend.website_settings.select_homepage');
+    }
+    public function rudraspirit_settings(Request $request)
+    {
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('backend.website_settings.rudraspirit_settings', compact('categories'));
     }
 
     public function select_header(Request $request)

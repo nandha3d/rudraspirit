@@ -161,7 +161,22 @@
     ];
 
     $mId = $mukhiNumber ?? 1;
-    $info = $mukhiData[$mId] ?? $mukhiData[1];
+    // Prefer admin-managed DB content; fall back to the built-in reference data.
+    if (!empty($mukhiInfo)) {
+        $info = [
+            'deity' => $mukhiInfo->deity,
+            'planet' => $mukhiInfo->planet,
+            'mantra' => $mukhiInfo->mantra,
+            'chakra' => $mukhiInfo->chakra,
+            'significance' => $mukhiInfo->significance,
+            'benefits_spiritual' => $mukhiInfo->benefits_spiritual,
+            'benefits_mental' => $mukhiInfo->benefits_mental,
+            'benefits_physical' => $mukhiInfo->benefits_physical,
+            'wearing_day' => $mukhiInfo->wearing_day,
+        ];
+    } else {
+        $info = $mukhiData[$mId] ?? $mukhiData[1];
+    }
 @endphp
 
 <main class="aiz-rudraspirit" style="background:var(--rs-cream); min-height:100vh;">

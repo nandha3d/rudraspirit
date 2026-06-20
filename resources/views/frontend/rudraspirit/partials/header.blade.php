@@ -1,5 +1,5 @@
 @php
-    $rsParent = \App\Models\Category::where('slug', 'rudraksha-beads')->first();
+    $rsParent = rudraspirit_root_category();
     $rsMukhiProducts = $rsParent ? \App\Models\Product::where('category_id', $rsParent->id)->where('published', 1)->orderBy('id')->get() : collect();
     $rsTopBanners = \App\Models\TopBanner::where('status', 1)->orderBy('id', 'desc')->get();
     $rsCartCount = count(get_user_cart());
