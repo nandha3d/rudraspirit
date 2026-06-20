@@ -45,7 +45,18 @@ fi
 # 5. Rebuild caches
 echo "⚡ Rebuilding caches..."
 php artisan config:cache 2>&1 || true
-php artisan route:cache 2>&1 || true
+
+# route:cache requires unique route names. This codebase currently has duplicate
+# names (pre-existing addon/resource collisions), so caching would fail. Attempt
+# it anyway — once the duplicates are resolved it will start working — and fall
+# back to dynamic routing cleanly instead of leaving a scary error.
+if php artisan route:cache 2>&1; then
+    echo "✅ Routes cached."
+else
+    echo "⚠️ route:cache skipped (duplicate route names exist). Using dynamic routing."
+    php artisan route:clear 2>&1 || true
+fi
+
 php artisan view:cache 2>&1 || true
 
 echo "✨ Deployment Completed Successfully!"
