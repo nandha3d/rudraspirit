@@ -23,8 +23,8 @@ yarn-error.log
 !/public/assets/css/rudraspirit.css
 !/public/assets/js/rudraspirit.js
 updates/
-composer.lock
-*.lock
+# composer.lock
+# *.lock
 resources/lang/en.json
 updates.zip
 ecommerce.zip
