@@ -1803,3 +1803,28 @@
     overflow: visible;
 }
 
+/* Worldwide address autocomplete (Photon) suggestions */
+.rs-geo-ac { position: relative; }
+.rs-geo-suggestions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 1080;
+    background: #fff;
+    border: 1px solid #e6ddcf;
+    border-radius: 6px;
+    box-shadow: 0 10px 28px rgba(36, 27, 18, 0.14);
+    max-height: 240px;
+    overflow-y: auto;
+}
+.rs-geo-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #241B12;
+    border-bottom: 1px solid #f3ece1;
+}
+.rs-geo-item:last-child { border-bottom: 0; }
+.rs-geo-item:hover { background: #faf5ec; }
+

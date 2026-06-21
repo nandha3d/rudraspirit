@@ -46,10 +46,11 @@ class AddressController extends Controller
         } else {
             $address->user_id   = Auth::user()->id;
         }
+        $geo = $this->resolveGeoIds($request);
         $address->address       = $request->address;
-        $address->country_id    = $request->country_id;
-        $address->state_id      = $request->state_id;
-        $address->city_id       = $request->city_id;
+        $address->country_id    = $geo['country_id'];
+        $address->state_id      = $geo['state_id'];
+        $address->city_id       = $geo['city_id'];
         $address->area_id       = $request->area_id;
         $address->longitude     = $request->longitude;
         $address->latitude      = $request->latitude;
@@ -59,6 +60,78 @@ class AddressController extends Controller
 
         flash(translate('Address info Stored successfully'))->success();
         return back();
+    }
+
+    /**
+     * Resolve country/state/city IDs for an address.
+     * Prefers the classic DB dropdown ids when present; otherwise find-or-creates
+     * the geo records from the worldwide (Photon/OSM) autocomplete text fields so
+     * checkout works for any location without pre-seeded country/state/city data.
+     */
+    private function resolveGeoIds(Request $request): array
+    {
+        if ($request->filled('city_id')) {
+            return [
+                'country_id' => $request->country_id,
+                'state_id'   => $request->state_id,
+                'city_id'    => $request->city_id,
+            ];
+        }
+
+        $countryName = trim((string) $request->geo_country);
+        $countryCode = strtoupper(trim((string) $request->geo_country_code));
+        $stateName   = trim((string) $request->geo_state);
+        $cityName    = trim((string) $request->geo_city);
+        if ($stateName === '') $stateName = $countryName;
+        if ($cityName === '')  $cityName  = $stateName;
+
+        $country = null; $state = null; $city = null;
+
+        // Explicit property assignment (no mass-assignment) to stay safe regardless
+        // of the geo models' fillable/guarded config.
+        if ($countryName !== '' || $countryCode !== '') {
+            $country = \App\Models\Country::query()
+                ->when($countryCode !== '', fn ($q) => $q->where('code', $countryCode))
+                ->when($countryCode === '' && $countryName !== '', fn ($q) => $q->where('name', $countryName))
+                ->first();
+            if (!$country) {
+                $country = new \App\Models\Country;
+                $country->code   = $countryCode !== '' ? substr($countryCode, 0, 2) : strtoupper(substr($countryName, 0, 2));
+                $country->name   = $countryName !== '' ? $countryName : $countryCode;
+                $country->status = 1;
+                $country->save();
+            } elseif (!$country->status) {
+                $country->status = 1;
+                $country->save();
+            }
+        }
+        if ($country && $stateName !== '') {
+            $state = State::where('name', $stateName)->where('country_id', $country->id)->first();
+            if (!$state) {
+                $state = new State;
+                $state->name       = $stateName;
+                $state->country_id = $country->id;
+                $state->status     = 1;
+                $state->save();
+            }
+        }
+        if ($state && $cityName !== '') {
+            $city = City::where('name', $cityName)->where('state_id', $state->id)->first();
+            if (!$city) {
+                $city = new City;
+                $city->name       = $cityName;
+                $city->state_id   = $state->id;
+                $city->country_id = $country->id;
+                $city->status     = 1;
+                $city->save();
+            }
+        }
+
+        return [
+            'country_id' => optional($country)->id,
+            'state_id'   => optional($state)->id,
+            'city_id'    => optional($city)->id,
+        ];
     }
 
     public function billing_store(Request $request)

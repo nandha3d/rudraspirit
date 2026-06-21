@@ -56,15 +56,21 @@
                         </div>
                         @endif
 
-                        <!-- City -->
-                        <div class="row ">
+                        <!-- City / location (worldwide autocomplete via Photon/OpenStreetMap) -->
+                        <div class="row">
                             <div class="col-md-2">
                                 <label>{{ translate('City')}}</label>
                             </div>
                             <div class="col-md-10">
-                                <select class="form-control mb-3 aiz-selectpicker rounded-0" data-live-search="true" name="city_id" required>
-
-                                </select>
+                                <div class="mb-3 rs-geo-ac" data-geo-autocomplete>
+                                    <input type="text" class="form-control rounded-0 rs-geo-input" autocomplete="off"
+                                        placeholder="{{ translate('Search your city / area worldwide...') }}" required>
+                                    <div class="rs-geo-suggestions d-none"></div>
+                                    <input type="hidden" name="geo_city" class="rs-geo-city">
+                                    <input type="hidden" name="geo_state" class="rs-geo-state">
+                                    <input type="hidden" name="geo_country" class="rs-geo-country">
+                                    <input type="hidden" name="geo_country_code" class="rs-geo-country-code">
+                                </div>
                             </div>
                         </div>
 
@@ -144,6 +150,76 @@
         </div>
     </div>
 </div>
+
+<script>
+(function () {
+    // Worldwide address/city autocomplete using Photon (OpenStreetMap) — free, no API key.
+    function initGeoAutocomplete(wrap) {
+        if (wrap.dataset.geoInit) return;
+        wrap.dataset.geoInit = '1';
+        var input = wrap.querySelector('.rs-geo-input');
+        var box   = wrap.querySelector('.rs-geo-suggestions');
+        var hCity = wrap.querySelector('.rs-geo-city');
+        var hState = wrap.querySelector('.rs-geo-state');
+        var hCountry = wrap.querySelector('.rs-geo-country');
+        var hCode = wrap.querySelector('.rs-geo-country-code');
+        var timer;
+
+        input.addEventListener('input', function () {
+            var q = input.value.trim();
+            hCity.value = q; hState.value = ''; hCountry.value = ''; hCode.value = '';
+            clearTimeout(timer);
+            if (q.length < 2) { box.classList.add('d-none'); box.innerHTML = ''; return; }
+            timer = setTimeout(function () {
+                fetch('https://photon.komoot.io/api/?q=' + encodeURIComponent(q) + '&limit=6&lang=en')
+                    .then(function (r) { return r.json(); })
+                    .then(function (data) {
+                        box.innerHTML = '';
+                        var feats = (data && data.features) ? data.features : [];
+                        if (!feats.length) {
+                            box.innerHTML = '<div class="rs-geo-item text-muted">' + '{{ translate('No matches') }}' + '</div>';
+                            box.classList.remove('d-none'); return;
+                        }
+                        feats.forEach(function (f) {
+                            var p = f.properties || {};
+                            var parts = [p.name, p.city, p.state, p.country].filter(Boolean);
+                            var label = parts.filter(function (v, i, a) { return a.indexOf(v) === i; }).join(', ');
+                            var div = document.createElement('div');
+                            div.className = 'rs-geo-item';
+                            div.textContent = label;
+                            div.addEventListener('click', function () {
+                                input.value = label;
+                                hCity.value = p.city || p.name || p.county || q;
+                                hState.value = p.state || p.region || p.county || '';
+                                hCountry.value = p.country || '';
+                                hCode.value = (p.countrycode || '').toUpperCase();
+                                var modal = wrap.closest('.modal') || document;
+                                if (p.postcode) {
+                                    var pc = modal.querySelector('[name=postal_code]');
+                                    if (pc && !pc.value) pc.value = p.postcode;
+                                }
+                                box.classList.add('d-none'); box.innerHTML = '';
+                            });
+                            box.appendChild(div);
+                        });
+                        box.classList.remove('d-none');
+                    })
+                    .catch(function () {});
+            }, 300);
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!wrap.contains(e.target)) { box.classList.add('d-none'); }
+        });
+    }
+    function initAll() {
+        document.querySelectorAll('[data-geo-autocomplete]').forEach(initGeoAutocomplete);
+    }
+    if (document.readyState !== 'loading') initAll();
+    else document.addEventListener('DOMContentLoaded', initAll);
+    window.rsInitGeoAutocomplete = initAll;
+})();
+</script>
 
 <!-- Edit Address Modal -->
 <div class="modal fade" id="edit-address-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
