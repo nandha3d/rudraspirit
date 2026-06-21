@@ -12,13 +12,15 @@ if [ -f .env ]; then
     fi
 fi
 
-# 1. Pull latest changes
-echo "📥 Pulling latest changes..."
-git pull origin main || {
-    echo "⚠️ Pull reported issues; attempting to continue."
+# 1. Fetch and hard-reset to origin/main. A deploy box should always match the
+# remote; this avoids "local changes would be overwritten" aborts from things
+# like line-ending churn in tracked assets. .env is protected by the backup above.
+echo "📥 Fetching latest changes..."
+git fetch origin main && git reset --hard origin/main || {
+    echo "⚠️ Fetch/reset reported issues; attempting to continue."
 }
 
-# Restore the production .env (pull may have removed or reverted it)
+# Restore the production .env (reset may have removed or reverted it)
 if [ -f .env.deploy-backup ]; then
     cp -f .env.deploy-backup .env
 fi
