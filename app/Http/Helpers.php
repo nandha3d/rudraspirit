@@ -2907,8 +2907,13 @@ if (!function_exists('get_wishlists')) {
 if (!function_exists('get_email_template_data')) {
     function get_email_template_data($identifier, $colmn_name = null)
     {
-        $value = EmailTemplate::where('identifier', $identifier)->first()->$colmn_name;
-        return $value;
+        // Guard against a missing template row (e.g. email_templates not seeded) so
+        // mail-sending flows like registration don't 500 on a null property read.
+        $template = EmailTemplate::where('identifier', $identifier)->first();
+        if (!$template) {
+            return null;
+        }
+        return $colmn_name ? $template->$colmn_name : $template;
     }
 }
 
