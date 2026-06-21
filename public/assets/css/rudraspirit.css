@@ -1762,3 +1762,29 @@
     color: var(--rs-cream-deep) !important;
 }
 
+/* Star rating input (write a review) */
+.aiz-rudraspirit .rs-star-input {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+}
+.aiz-rudraspirit .rs-star-input input { display: none; }
+.aiz-rudraspirit .rs-star-input label {
+    font-size: 28px;
+    line-height: 1;
+    color: var(--rs-tan);
+    cursor: pointer;
+    transition: color .15s ease;
+}
+.aiz-rudraspirit .rs-star-input input:checked ~ label,
+.aiz-rudraspirit .rs-star-input label:hover,
+.aiz-rudraspirit .rs-star-input label:hover ~ label {
+    color: var(--rs-gold);
+}
+
+/* PDP image gallery thumbnails */
+.aiz-rudraspirit .rs-pdp-thumb { transition: border-color .15s ease; }
+.aiz-rudraspirit .rs-pdp-thumb.active,
+.aiz-rudraspirit .rs-pdp-thumb:hover { border-color: var(--rs-gold) !important; }
+

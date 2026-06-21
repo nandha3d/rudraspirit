@@ -38,3 +38,13 @@ public/uploads.zip
 
 public/all
 *.pdf
+
+# Local secrets, IDE helpers, DB dumps and archives — never deploy these
+/.env
+/.env.deploy-backup
+/_ide_helper.php
+/*.sql
+*.zip
+/scratch_*
+/fix_*.php
+/extract_*.py

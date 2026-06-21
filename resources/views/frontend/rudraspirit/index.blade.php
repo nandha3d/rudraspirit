@@ -117,6 +117,25 @@
 @endif
 
 <!-- LIMITED DEAL -->
+@php
+    // Use a real, currently-active flash deal when present; otherwise fall back to
+    // the configurable/rolling countdown and the catalog link.
+    try {
+        $rsToday = strtotime(date('Y-m-d H:i:s'));
+        $rsFlashDeal = \App\Models\FlashDeal::where('status', 1)
+            ->where('start_date', '<=', $rsToday)
+            ->where('end_date', '>', $rsToday)
+            ->orderBy('end_date', 'asc')->first();
+    } catch (\Throwable $e) {
+        $rsFlashDeal = null;
+    }
+    $rsDealLink = $rsFlashDeal
+        ? route('flash-deal-details', $rsFlashDeal->slug)
+        : ($rsParent ? route('products.category', $rsParent->slug) : route('categories.all'));
+    $rsDealEndMs = $rsFlashDeal
+        ? max(0, ($rsFlashDeal->end_date - time()) * 1000)
+        : max(0, (rudraspirit_deal_ends_at() - time()) * 1000);
+@endphp
 <section class="rs-deal">
     <div class="rs-deal-content">
         <div class="rs-hero-kicker" style="color:var(--rs-gold-deep);">{{ translate("Don't Miss Out!") }}</div>
@@ -128,7 +147,7 @@
             <div><div id="rs-deal-mins">00</div><span>{{ translate('Mins') }}</span></div>
             <div><div id="rs-deal-secs">00</div><span>{{ translate('Secs') }}</span></div>
         </div>
-        <a href="{{ $rsParent ? route('products.category', $rsParent->slug) : route('categories.all') }}" class="rs-btn">{{ translate('Shop Now') }} <span>&rarr;</span></a>
+        <a href="{{ $rsDealLink }}" class="rs-btn">{{ translate('Shop Now') }} <span>&rarr;</span></a>
     </div>
     <div class="rs-deal-visual">
         @php
@@ -141,11 +160,10 @@
 </section>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        @php $rsDealMs = max(0, (rudraspirit_deal_ends_at() - time()) * 1000); @endphp
         rsStartCountdownBoxes(
             document.getElementById('rs-deal-days'), document.getElementById('rs-deal-hours'),
             document.getElementById('rs-deal-mins'), document.getElementById('rs-deal-secs'),
-            {{ $rsDealMs }}
+            {{ $rsDealEndMs }}
         );
     });
 </script>

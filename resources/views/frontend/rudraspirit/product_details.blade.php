@@ -1,5 +1,57 @@
 @extends('frontend.layouts.app')
 
+@php
+    $rsMetaName = $detailedProduct->getTranslation('name');
+    $rsMetaTitle = $detailedProduct->meta_title ?: $rsMetaName;
+    $rsMetaDesc = $detailedProduct->meta_description ?: \Illuminate\Support\Str::limit(trim(strip_tags($detailedProduct->getTranslation('description'))), 160);
+    $rsMetaImage = $detailedProduct->thumbnail ? get_image($detailedProduct->thumbnail) : static_asset('assets/img/pages/rudraspirit/Gemini_Generated_Image_2ht5mi2ht5mi2ht5.webp');
+    $rsMetaQty = 0;
+    foreach ($detailedProduct->stocks as $rsStock) { $rsMetaQty += $rsStock->qty; }
+    $rsMetaCurrency = optional(get_system_currency())->code ?? 'INR';
+@endphp
+
+@section('meta_title'){{ $rsMetaTitle }}@stop
+@section('meta_description'){{ $rsMetaDesc }}@stop
+@section('meta_keywords'){{ $detailedProduct->tags }}@stop
+
+@section('meta')
+    <meta itemprop="name" content="{{ $rsMetaTitle }}">
+    <meta itemprop="description" content="{{ $rsMetaDesc }}">
+    <meta itemprop="image" content="{{ $rsMetaImage }}">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="{{ $rsMetaTitle }}">
+    <meta property="og:description" content="{{ $rsMetaDesc }}">
+    <meta property="og:image" content="{{ $rsMetaImage }}">
+    <meta property="og:url" content="{{ route('product', $detailedProduct->slug) }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $rsMetaTitle }}">
+    <meta name="twitter:description" content="{{ $rsMetaDesc }}">
+    <meta name="twitter:image" content="{{ $rsMetaImage }}">
+    <script type="application/ld+json">
+    {!! json_encode(array_filter([
+        '@context' => 'https://schema.org/',
+        '@type' => 'Product',
+        'name' => $rsMetaName,
+        'image' => $rsMetaImage,
+        'description' => $rsMetaDesc,
+        'sku' => (string) $detailedProduct->id,
+        'brand' => ['@type' => 'Brand', 'name' => optional($detailedProduct->brand)->name ?: get_setting('website_name', 'Rudra Spirit')],
+        'offers' => [
+            '@type' => 'Offer',
+            'priceCurrency' => $rsMetaCurrency,
+            'price' => (string) $detailedProduct->unit_price,
+            'availability' => $rsMetaQty > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+            'url' => route('product', $detailedProduct->slug),
+        ],
+        'aggregateRating' => $reviews->count() > 0 ? [
+            '@type' => 'AggregateRating',
+            'ratingValue' => (string) round($detailedProduct->rating, 1),
+            'reviewCount' => (string) $reviews->count(),
+        ] : null,
+    ]), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+@endsection
+
 @section('content')
 @php
     $rsRelated = filter_products(\App\Models\Product::where('published', 1)->where('id', '!=', $detailedProduct->id)->where('category_id', $detailedProduct->category_id)->latest())->take(4)->get();
@@ -13,11 +65,26 @@
         <a href="{{ route('home') }}" style="text-decoration:none;color:var(--rs-gold);">{{ translate('Home') }}</a> / {{ $detailedProduct->getTranslation('name') }}
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
-        <div style="position:relative;aspect-ratio:1/1;border-radius:10px;background:linear-gradient(150deg,var(--rs-tan-light),var(--rs-tan));display:flex;align-items:center;justify-content:center;overflow:hidden;">
-            @if ($detailedProduct->thumbnail)
-                <img src="{{ get_image($detailedProduct->thumbnail) }}" alt="{{ $detailedProduct->getTranslation('name') }}" style="width:100%;height:100%;object-fit:cover;">
-            @else
-                <img src="{{ static_asset('assets/img/pages/rudraspirit/Gemini_Generated_Image_2ht5mi2ht5mi2ht5.webp') }}" alt="{{ $detailedProduct->getTranslation('name') }}" style="width:100%;height:100%;object-fit:cover;">
+        @php
+            $rsGallery = array_values(array_filter(explode(',', (string) $detailedProduct->photos)));
+            if (empty($rsGallery) && $detailedProduct->thumbnail) {
+                $rsGallery = [$detailedProduct->thumbnail];
+            }
+            $rsMainImg = !empty($rsGallery) ? get_image($rsGallery[0]) : static_asset('assets/img/pages/rudraspirit/Gemini_Generated_Image_2ht5mi2ht5mi2ht5.webp');
+        @endphp
+        <div>
+            <div style="position:relative;aspect-ratio:1/1;border-radius:10px;background:linear-gradient(150deg,var(--rs-tan-light),var(--rs-tan));display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                <img id="rs-pdp-main-img" src="{{ $rsMainImg }}" alt="{{ $detailedProduct->getTranslation('name') }}" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            @if (count($rsGallery) > 1)
+                <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
+                    @foreach ($rsGallery as $rsIdx => $rsPhoto)
+                        <button type="button" class="rs-pdp-thumb @if ($rsIdx == 0) active @endif" onclick="rsSwapMainImage(this, '{{ get_image($rsPhoto) }}')"
+                            style="width:68px;height:68px;border-radius:8px;overflow:hidden;border:2px solid transparent;background:none;padding:0;cursor:pointer;">
+                            <img src="{{ get_image($rsPhoto) }}" alt="{{ $detailedProduct->getTranslation('name') }} {{ $rsIdx + 1 }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        </button>
+                    @endforeach
+                </div>
             @endif
         </div>
         <div>
@@ -179,12 +246,52 @@
         @if ($reviews->count() > 0)
             @foreach ($reviews as $review)
                 <div style="border-bottom:1px solid var(--rs-cream-deep);padding:18px 0;">
-                    <div style="font-size:17px;color:var(--rs-ink);font-weight:500;">{{ $review->user->name ?? translate('Anonymous') }}</div>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <span style="font-size:17px;color:var(--rs-ink);font-weight:500;">{{ $review->user->name ?? ($review->custom_reviewer_name ?? translate('Anonymous')) }}</span>
+                        <span class="rs-rating-stars" style="color:var(--rs-gold);font-size:13px;">{{ renderStarRating($review->rating) }}</span>
+                    </div>
                     <p style="font-size:16px;color:var(--rs-ink-soft);margin:6px 0 0;">{{ $review->comment }}</p>
+                    @if (!empty($review->photos))
+                        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+                            @foreach (array_filter(explode(',', $review->photos)) as $rsReviewPhoto)
+                                <img src="{{ uploaded_asset($rsReviewPhoto) }}" alt="{{ translate('Review photo') }}" style="width:64px;height:64px;object-fit:cover;border-radius:6px;">
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             @endforeach
         @else
             <p style="font-size:16px;color:var(--rs-ink-muted);">{{ translate('No reviews yet for this product.') }}</p>
+        @endif
+
+        {{-- Write a review — only for customers who received this product --}}
+        @if (isset($review_status) && $review_status == 1)
+            <div style="margin-top:34px;padding-top:28px;border-top:1px solid var(--rs-cream-deep);">
+                <h3 class="rs-serif" style="font-size:21px;font-weight:500;color:var(--rs-ink);margin:0 0 16px;">{{ translate('Write a Review') }}</h3>
+                <form method="POST" action="{{ route('reviews.store') }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $detailedProduct->id }}">
+                    <input type="hidden" name="order_id" value="{{ $order_id ?? '' }}">
+                    <div class="rs-star-input" aria-label="{{ translate('Rating') }}">
+                        @for ($rsStar = 5; $rsStar >= 1; $rsStar--)
+                            <input type="radio" name="rating" id="rs-star-{{ $rsStar }}" value="{{ $rsStar }}" @if ($rsStar == 5) required @endif>
+                            <label for="rs-star-{{ $rsStar }}" title="{{ $rsStar }}">&#9733;</label>
+                        @endfor
+                    </div>
+                    <textarea name="comment" rows="3" required placeholder="{{ translate('Share your experience with this bead...') }}"
+                        style="width:100%;margin-top:14px;padding:12px 14px;border:1px solid var(--rs-tan);border-radius:8px;font-family:inherit;font-size:15px;color:var(--rs-ink);outline:none;"></textarea>
+                    <label style="display:block;margin-top:12px;font-size:13px;color:var(--rs-ink-muted);">
+                        {{ translate('Add photos (optional)') }}
+                        <input type="file" name="photos[]" multiple accept="image/*" style="display:block;margin-top:6px;">
+                    </label>
+                    <button type="submit" class="rs-btn" style="margin-top:16px;">{{ translate('Submit Review') }} <span>&rarr;</span></button>
+                </form>
+            </div>
+        @elseif (!Auth::check())
+            <p style="margin-top:24px;font-size:15px;color:var(--rs-ink-muted);">
+                <a href="javascript:void(0)" onclick="showLoginModal()" style="color:var(--rs-gold);text-decoration:underline;">{{ translate('Log in') }}</a>
+                {{ translate('and purchase this product to leave a review.') }}
+            </p>
         @endif
     </div>
 
@@ -203,6 +310,13 @@
 
 @section('script')
 <script>
+    function rsSwapMainImage(btn, src) {
+        var main = document.getElementById('rs-pdp-main-img');
+        if (main) main.src = src;
+        document.querySelectorAll('.rs-pdp-thumb').forEach(function (el) { el.classList.remove('active'); });
+        btn.classList.add('active');
+    }
+
     $(document).ready(function() {
         // Trigger variant price calculation on page load
         getVariantPrice();

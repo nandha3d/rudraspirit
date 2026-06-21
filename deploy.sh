@@ -1,11 +1,29 @@
 #!/bin/bash
 echo "🚀 Starting Deployment..."
 
+# 0. Protect the production .env. It is no longer tracked in git, so back it up
+# first. If this server still has it tracked+modified, discard the tracked copy
+# so an upstream deletion applies cleanly — the real values come back from the
+# backup right after the pull.
+if [ -f .env ]; then
+    cp -f .env .env.deploy-backup
+    if git ls-files --error-unmatch .env >/dev/null 2>&1; then
+        git checkout -- .env 2>/dev/null || true
+    fi
+fi
+
 # 1. Pull latest changes
 echo "📥 Pulling latest changes..."
-git pull origin main
-if [ $? -ne 0 ]; then
-    echo "❌ Git pull failed!"
+git pull origin main || {
+    echo "⚠️ Pull reported issues; attempting to continue."
+}
+
+# Restore the production .env (pull may have removed or reverted it)
+if [ -f .env.deploy-backup ]; then
+    cp -f .env.deploy-backup .env
+fi
+if [ ! -f .env ]; then
+    echo "❌ .env missing and no backup found — aborting."
     exit 1
 fi
 

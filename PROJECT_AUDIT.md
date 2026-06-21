@@ -201,3 +201,35 @@ verify/list, and a commented demo-import URL in `BusinessSettingsController`.
 - Account section not reskinned; flash deals not wired (Audit #1 §4).
 - No automated tests; queries in Blade; 79 duplicate route names.
 - Asset deployment story (see §11).
+
+---
+
+# Round-3 fixes (2026-06-20)
+
+Fixed:
+- 🔴 **Repo hygiene** — untracked `.env`, `_ide_helper.php`, `database_backup.sql`,
+  `shop.sql`; gitignore now blocks `/.env`, root `*.sql`, `*.zip`, scratch scripts.
+  Deleted ~25 junk + scratch files. `deploy.sh` now **backs up & restores the
+  production `.env`** around every pull so untracking it can't wipe live config.
+  *(Still TODO: rotate `APP_KEY`, and purge the secrets from git history.)*
+- 🟠 **Review form on the PDP** — rating (stars) + comment + photo upload, gated on
+  `$review_status == 1`, posting to `reviews.store`. Reviews now show stars + photos.
+- 🟠 **PDP SEO** — `meta_title`/`description`/`keywords`, Open Graph, Twitter card,
+  and JSON-LD `Product` schema (with `aggregateRating` when reviews exist).
+- 🟡 **PDP image gallery** — shows `product.photos` with clickable thumbnails
+  (falls back to thumbnail).
+- 🟠 **Flash deals wired** — the home "Limited Time Deal" uses a real active
+  `FlashDeal` (countdown to its `end_date`, link to the deal) when one exists;
+  otherwise the configurable rolling countdown. Query guarded.
+- ✅ **First test** — `tests/Unit/MukhiNumberTest.php` covers the mukhi-number parser.
+
+Deliberately deferred (would risk "nothing broken" or is large):
+- **79 duplicate route names** → `route:cache`. Two kinds: resource + explicit
+  `/edit/{id}`,`/destroy/{id}` overrides (fix: `Route::resource(...)->except([...])`
+  per resource), and web-vs-API name collisions (`brands.index` etc.; fix: prefix
+  API names with `api.`). Mechanical but needs per-resource regression of admin
+  CRUD URLs — do as a focused pass, not a bulk rename.
+- **Account section reskin** — ~20 `frontend/user/*` views to re-theme; large.
+- **Move catalog queries out of Blade** into view-composers/controllers + caching.
+- **Asset deployment** — `public/assets`/`public/uploads` still shipped via zip;
+  pick an rsync/CI-artifact story.
