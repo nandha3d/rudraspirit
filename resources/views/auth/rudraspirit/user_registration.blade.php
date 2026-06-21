@@ -3,7 +3,9 @@
 @section('content')
 <div class="rs-auth-card">
     <div class="rs-auth-visual">
-        <img src="{{ uploaded_asset(get_setting('customer_register_page_image')) }}" alt="{{ translate('Customer Register Page Image') }}">
+        <img src="{{ get_setting('customer_register_page_image') ? uploaded_asset(get_setting('customer_register_page_image')) : static_asset('assets/img/pages/rudraspirit/auth-essence.webp') }}"
+             onerror="this.onerror=null;this.src='{{ static_asset('assets/img/pages/rudraspirit/Gemini_Generated_Image_9keguo9keguo9keg.webp') }}';"
+             alt="{{ translate('Customer Register Page Image') }}">
     </div>
 
     <div class="rs-auth-form-side">
