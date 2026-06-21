@@ -21,8 +21,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <meta name="description" content="@yield('meta_description', get_setting('meta_description'))" />
-    <meta name="keywords" content="@yield('meta_keywords', get_setting('meta_keywords'))">
+    @php
+        $rsDefaultDescription = get_setting('meta_description')
+            ?: (get_setting('site_motto')
+            ?: 'Authentic, lab-certified Nepal Rudraksha beads and malas (1 to 14 Mukhi). Shop sacred Rudraksha online with worldwide shipping from ' . get_setting('website_name', 'RudraSpirit') . '.');
+    @endphp
+    <meta name="description" content="@yield('meta_description', $rsDefaultDescription)" />
+    <meta name="keywords" content="@yield('meta_keywords', get_setting('meta_keywords') ?: 'rudraksha, nepal rudraksha, mukhi, rudraksha mala, certified rudraksha')">
 
     @yield('meta')
 
@@ -61,14 +66,14 @@
         @endphp
         <!-- Schema.org markup for Google+ -->
         <meta itemprop="name" content="{{ get_setting('meta_title') }}">
-        <meta itemprop="description" content="{{ get_setting('meta_description') }}">
+        <meta itemprop="description" content="{{ $rsDefaultDescription }}">
         <meta itemprop="image" content="{{ $meta_image }}">
 
         <!-- Twitter Card data -->
         <meta name="twitter:card" content="product">
         <meta name="twitter:site" content="@publisher_handle">
         <meta name="twitter:title" content="{{ get_setting('meta_title') }}">
-        <meta name="twitter:description" content="{{ get_setting('meta_description') }}">
+        <meta name="twitter:description" content="{{ $rsDefaultDescription }}">
         <meta name="twitter:creator" content="@author_handle">
         <meta name="twitter:image" content="{{ $meta_image }}">
 
@@ -77,7 +82,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ route('home') }}" />
         <meta property="og:image" content="{{ $meta_image }}" />
-        <meta property="og:description" content="{{ get_setting('meta_description') }}" />
+        <meta property="og:description" content="{{ $rsDefaultDescription }}" />
         <meta property="og:site_name" content="{{ config('app.name') }}" />
         <meta property="fb:app_id" content="{{ config('rudraspirit.facebook_pixel_id') }}">
     @endif
