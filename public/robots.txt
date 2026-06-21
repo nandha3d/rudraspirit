@@ -1,0 +1,34 @@
+# RudraSpirit — robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /cart
+Disallow: /checkout
+Disallow: /dashboard
+Disallow: /purchase_history
+Disallow: /*?search=
+Disallow: /*?sort_by=
+
+# AI assistants / answer engines — explicitly allowed to read content
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://rudraspirit.com/sitemap.xml

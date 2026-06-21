@@ -24,6 +24,7 @@ yarn-error.log
 !/public/assets/js/rudraspirit.js
 !/public/index.php
 !/public/.htaccess
+!/public/robots.txt
 updates/
 # composer.lock
 # *.lock

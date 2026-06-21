@@ -11,6 +11,19 @@
         ['q' => 'What is your return policy?', 'a' => 'We offer a 14-day return window on unworn items in their original certified packaging.'],
     ];
 @endphp
+<script type="application/ld+json">
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'FAQPage',
+    'mainEntity' => array_map(function ($faq) {
+        return [
+            '@type' => 'Question',
+            'name' => translate($faq['q']),
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => translate($faq['a'])],
+        ];
+    }, $rsFaqs),
+], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+</script>
 <section style="background:var(--rs-cream);padding:54px 32px;text-align:center;">
     <div style="font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--rs-gold);">{{ translate('Home') }} / {{ translate('FAQ') }}</div>
     <h1 class="rs-serif" style="font-weight:500;font-size:45px;letter-spacing:.06em;text-transform:uppercase;color:var(--rs-ink);margin:14px 0 0;">{{ translate('Frequently') }} <em style="color:var(--rs-gold);font-style:italic;">{{ translate('Asked') }}</em></h1>

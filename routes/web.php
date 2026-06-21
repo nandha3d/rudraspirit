@@ -196,9 +196,9 @@ Route::post('/currency', [CurrencyController::class, 'changeCurrency'])->name('c
 // Size Chart Show
 Route::get('/size-charts-show/{id}', [SizeChartController::class, 'show'])->name('size-charts-show');
 
-Route::get('/sitemap.xml', function () {
-    return base_path('sitemap.xml');
-});
+Route::get('/sitemap.xml', [\App\Http\Controllers\SeoController::class, 'sitemap'])->name('seo.sitemap');
+Route::get('/merchant-feed.xml', [\App\Http\Controllers\SeoController::class, 'merchantFeed'])->name('seo.merchant_feed');
+Route::get('/google-merchant-feed.xml', [\App\Http\Controllers\SeoController::class, 'merchantFeed']);
 
 // Classified Product
 Route::controller(CustomerProductController::class)->group(function () {

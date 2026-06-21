@@ -26,6 +26,35 @@
 
     @yield('meta')
 
+    {{-- Canonical + site-wide structured data (Organization, WebSite search box) --}}
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'Organization',
+        'name' => get_setting('website_name'),
+        'url' => route('home'),
+        'logo' => get_setting('header_logo') ? uploaded_asset(get_setting('header_logo')) : static_asset('assets/img/pages/rudraspirit/Logo_02-scaled.webp'),
+        'sameAs' => array_values(array_filter([
+            get_setting('facebook_link'), get_setting('instagram_link'),
+            get_setting('twitter_link'), get_setting('youtube_link'), get_setting('linkedin_link'),
+        ])),
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        'name' => get_setting('website_name'),
+        'url' => route('home'),
+        'potentialAction' => [
+            '@type' => 'SearchAction',
+            'target' => ['@type' => 'EntryPoint', 'urlTemplate' => route('search') . '?keyword={search_term_string}'],
+            'query-input' => 'required name=search_term_string',
+        ],
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+
     @if (!isset($detailedProduct) && !isset($customer_product) && !isset($shop) && !isset($page) && !isset($blog))
         @php
             $meta_image = uploaded_asset(get_setting('meta_image'));

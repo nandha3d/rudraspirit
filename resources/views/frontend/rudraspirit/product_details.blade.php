@@ -50,6 +50,19 @@
         ] : null,
     ]), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
     </script>
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => array_values(array_filter([
+            ['@type' => 'ListItem', 'position' => 1, 'name' => translate('Home'), 'item' => route('home')],
+            optional($detailedProduct->category)->slug
+                ? ['@type' => 'ListItem', 'position' => 2, 'name' => optional($detailedProduct->category)->getTranslation('name'), 'item' => route('products.category', $detailedProduct->category->slug)]
+                : null,
+            ['@type' => 'ListItem', 'position' => optional($detailedProduct->category)->slug ? 3 : 2, 'name' => $rsMetaName, 'item' => route('product', $detailedProduct->slug)],
+        ])),
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
 @endsection
 
 @section('content')
