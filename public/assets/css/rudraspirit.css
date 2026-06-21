@@ -1788,23 +1788,18 @@
 .aiz-rudraspirit .rs-pdp-thumb.active,
 .aiz-rudraspirit .rs-pdp-thumb:hover { border-color: var(--rs-gold) !important; }
 
-/* Last Viewed Products carousel — equal-height, top-aligned cards (no stagger),
-   and drop the stock carousel-box borders that double up with the rs-card. */
-.aiz-rudraspirit #section_last_viewed_products .slick-track {
-    display: flex;
-    align-items: stretch;
-}
-.aiz-rudraspirit #section_last_viewed_products .slick-slide {
-    height: auto;
-}
-.aiz-rudraspirit #section_last_viewed_products .slick-slide > div,
-.aiz-rudraspirit #section_last_viewed_products .carousel-box {
-    height: 100%;
-}
+/* Last Viewed Products carousel — let each card grow to its own content so the
+   action buttons never overflow the card, and drop the stock carousel-box borders
+   that double up with the rudraspirit card. */
 .aiz-rudraspirit #section_last_viewed_products .carousel-box {
     border: 0 !important;
+    padding-bottom: 6px;
+}
+.aiz-rudraspirit #section_last_viewed_products .slick-track {
+    align-items: flex-start;
 }
 .aiz-rudraspirit #section_last_viewed_products .carousel-box .rs-card {
-    height: 100%;
+    height: auto;
+    overflow: visible;
 }
 

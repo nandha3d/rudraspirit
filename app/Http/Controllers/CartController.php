@@ -63,6 +63,7 @@ class CartController extends Controller
             $items[] = [
                 'name' => $product->getTranslation('name'),
                 'qty' => $cart->quantity,
+                'image' => $product->thumbnail ? get_image($product->thumbnail) : uploaded_asset($product->thumbnail_img),
                 'unit_price_formatted' => single_price($unitPrice),
                 'line_total_formatted' => single_price($lineTotal),
             ];

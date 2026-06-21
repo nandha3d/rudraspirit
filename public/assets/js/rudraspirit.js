@@ -99,8 +99,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 var html = '';
                 data.items.forEach(function (it) {
+                    var media = it.image
+                        ? '<span style="width:60px;height:60px;border-radius:8px;overflow:hidden;flex:none;background:#F2E7D8;"><img src="' + it.image + '" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></span>'
+                        : '<span style="width:60px;height:60px;border-radius:8px;background:linear-gradient(150deg,#F2E7D8,#D7BD9C);display:flex;align-items:center;justify-content:center;flex:none;"><span class="rs-bead" style="width:30px;height:30px;"></span></span>';
                     html += '<div class="rs-cart-item">' +
-                        '<span style="width:60px;height:60px;border-radius:8px;background:linear-gradient(150deg,#F2E7D8,#D7BD9C);display:flex;align-items:center;justify-content:center;flex:none;"><span class="rs-bead" style="width:30px;height:30px;"></span></span>' +
+                        media +
                         '<div style="flex:1;"><div style="font-size:14px;font-family:\'Playfair Display\',serif;">' + it.name + '</div><div style="font-size:12px;color:#9A8A76;margin-top:3px;">' + it.qty + ' &times; ' + it.unit_price_formatted + '</div></div>' +
                         '<div style="font-size:13px;color:#7A4E1E;">' + it.line_total_formatted + '</div>' +
                         '</div>';
