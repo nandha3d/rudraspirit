@@ -36,6 +36,14 @@ composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev -
     composer update --no-interaction --prefer-dist --optimize-autoloader --no-dev --ignore-platform-reqs 2>&1 || true
 }
 
+# 2b. Re-apply vendor patches (composer install restores original vendor files).
+# Neutralizes the activeitzone.com activation phone-home / redirect.
+CCR_VENDOR="vendor/mehedi-iitdu/core-component-repository/src/CoreComponentRepository.php"
+if [ -f patches/CoreComponentRepository.php ] && [ -f "$CCR_VENDOR" ]; then
+    cp -f patches/CoreComponentRepository.php "$CCR_VENDOR"
+    echo "🔓 Activation gate patched."
+fi
+
 # 3. Clear caches (these should not fail deployment)
 echo "🧹 Clearing caches..."
 php artisan cache:clear 2>&1 || true

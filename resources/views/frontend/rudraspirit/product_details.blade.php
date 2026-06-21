@@ -66,22 +66,29 @@
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
         @php
-            $rsGallery = array_values(array_filter(explode(',', (string) $detailedProduct->photos)));
-            if (empty($rsGallery) && $detailedProduct->thumbnail) {
-                $rsGallery = [$detailedProduct->thumbnail];
+            // product->photos is a comma-separated list of upload IDs -> uploaded_asset().
+            // product->thumbnail is an Upload object -> get_image().
+            $rsGalleryUrls = [];
+            foreach (array_filter(explode(',', (string) $detailedProduct->photos)) as $rsPid) {
+                $rsGalleryUrls[] = uploaded_asset($rsPid);
             }
-            $rsMainImg = !empty($rsGallery) ? get_image($rsGallery[0]) : static_asset('assets/img/pages/rudraspirit/Gemini_Generated_Image_2ht5mi2ht5mi2ht5.webp');
+            if (empty($rsGalleryUrls)) {
+                $rsGalleryUrls[] = $detailedProduct->thumbnail
+                    ? get_image($detailedProduct->thumbnail)
+                    : static_asset('assets/img/pages/rudraspirit/Gemini_Generated_Image_2ht5mi2ht5mi2ht5.webp');
+            }
+            $rsMainImg = $rsGalleryUrls[0];
         @endphp
         <div>
             <div style="position:relative;aspect-ratio:1/1;border-radius:10px;background:linear-gradient(150deg,var(--rs-tan-light),var(--rs-tan));display:flex;align-items:center;justify-content:center;overflow:hidden;">
                 <img id="rs-pdp-main-img" src="{{ $rsMainImg }}" alt="{{ $detailedProduct->getTranslation('name') }}" style="width:100%;height:100%;object-fit:cover;">
             </div>
-            @if (count($rsGallery) > 1)
+            @if (count($rsGalleryUrls) > 1)
                 <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
-                    @foreach ($rsGallery as $rsIdx => $rsPhoto)
-                        <button type="button" class="rs-pdp-thumb @if ($rsIdx == 0) active @endif" onclick="rsSwapMainImage(this, '{{ get_image($rsPhoto) }}')"
+                    @foreach ($rsGalleryUrls as $rsIdx => $rsImgUrl)
+                        <button type="button" class="rs-pdp-thumb @if ($rsIdx == 0) active @endif" onclick="rsSwapMainImage(this, '{{ $rsImgUrl }}')"
                             style="width:68px;height:68px;border-radius:8px;overflow:hidden;border:2px solid transparent;background:none;padding:0;cursor:pointer;">
-                            <img src="{{ get_image($rsPhoto) }}" alt="{{ $detailedProduct->getTranslation('name') }} {{ $rsIdx + 1 }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+                            <img src="{{ $rsImgUrl }}" alt="{{ $detailedProduct->getTranslation('name') }} {{ $rsIdx + 1 }}" style="width:100%;height:100%;object-fit:cover;display:block;">
                         </button>
                     @endforeach
                 </div>
