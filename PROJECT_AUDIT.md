@@ -139,3 +139,65 @@ echo ".env" >> .gitignore
 > right panel (`index.blade.php` `.rs-deal-visual` + `rudraspirit.css`). The fake
 > countdown there is documented in §2 and left unchanged pending your decision on
 > wiring it to a real deal.
+
+---
+
+# Audit #2 — post-deploy (2026-06-20)
+
+The app was deployed to the Hostinger server (`rudraspirit.com`) during this round.
+The path from 403 → 500 → working storefront surfaced several real issues; this
+section records them and what was fixed.
+
+## 9. 🔴 Vendor license backdoors & phone-home (FIXED this round)
+
+The base CMS contains hidden calls to `activation.activeitzone.com` /
+`activeitzone.com/activation/...`. Three of them were **remote admin-login
+backdoors**: on a `"bad"` response they ran `auth()->login(<first admin user>)`
+and redirected to the admin dashboard — i.e. the vendor (or anyone able to spoof
+that response, or simply an unactivated install) could be handed an admin session.
+
+| Location | Behaviour | Fix |
+|---|---|---|
+| `Payment/StripeController@checkout_payment_detail` | phone-home → **admin login** on "bad" | no-op |
+| `Utility/NgeniusUtility@initPayment` | phone-home → **admin login** on "bad" | returns home, no call |
+| `LanguageController@get_translation` | phone-home → **admin login** on "bad" | returns home, no call |
+| `Payment/IyzicoController@initPayment` | phone-home, echoes "not Activated" | no-op |
+| `CompareController@details` | phone-home + hardcoded `$rn="bad"` (always bailed) | keeps benign behavior, no call |
+| `Utility/CategoryUtility@create_initial_category` | phone-home, disables on "no" | fail-open (`true`) |
+| `Utility/NagadUtility`, `Utility/PayhereUtility` | phone-home for flutter wallet | fail-open |
+
+Left in place (admin-initiated, not a backdoor): `AddonController` addon
+verify/list, and a commented demo-import URL in `BusinessSettingsController`.
+
+## 10. 🟠 Activation wizard removed
+- Admin sidebar **"Features activation"** link removed; `activation.index` now
+  redirects to the dashboard (the purchase-code / Active It Zone wizard is gone).
+- Install wizard was already disabled (`mapInstallRoutes()` commented out).
+- Storefront has no vendor branding (footer uses `website_name`); the only
+  "Active eCommerce" string was a code comment, now reworded.
+
+## 11. 🟠 Deployment / hosting findings
+- **Web root was misconfigured** → 403. Document root is the project root, with no
+  front controller. Fixed: root `.htaccess` forwards into `public/`; added
+  `public/index.php` + `public/.htaccess` (tracked). See commit `c517d3b`.
+- **`public/assets` (50 MB) and `public/uploads` (13 MB) are gitignored** → not
+  deployed by `git pull`, so vendor CSS/JS, fonts and images 404'd (broken layout +
+  images). Shipped as `assets.zip` / `uploads.zip` for manual upload. *Recommendation:*
+  pick a deploy story for assets (rsync/CI artifact, or un-ignore built assets).
+- **Server DB was empty** — `php artisan migrate` created only the ~15 migration
+  tables; the bulk of the schema lives in the install SQL. Imported a clean
+  `mysqldump` (`rudra_server_import.sql`) after the original `database_backup.sql`
+  failed to import (unescaped apostrophes from a hand-rolled backup script).
+- **80 duplicate route names** → `route:cache` cannot run (dynamic routing only).
+  Fixed 1 (`api.razorpay.payment`); 79 remain. Pre-existing.
+- **`public/export_db.php` + `public/import_database.php`** were web-reachable DB
+  export/import endpoints — **removed** (commit `c517d3b`).
+- Server `.env` still needs `APP_ENV=production`, `APP_DEBUG=false`, real `APP_URL`,
+  and `storage:link`.
+
+## 12. Still open (carried forward)
+- `.env` + `APP_KEY` tracked in git; DB dumps in repo (Audit #1 §1).
+- Review form missing on the storefront PDP (Audit #1 §5).
+- Account section not reskinned; flash deals not wired (Audit #1 §4).
+- No automated tests; queries in Blade; 79 duplicate route names.
+- Asset deployment story (see §11).

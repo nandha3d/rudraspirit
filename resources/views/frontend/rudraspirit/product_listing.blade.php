@@ -279,7 +279,7 @@
                 // Populate Grid and Pagination
                 $('#products-row').html(response.product_html);
                 
-                // Active eCommerce renders a custom list template, we replace the pagination with AJAX compatible links
+                // Replace the pagination markup with AJAX-compatible links
                 $('#pagination').html(response.pagination_html);
                 $('#total_product_count').text(response.total_product_count);
 

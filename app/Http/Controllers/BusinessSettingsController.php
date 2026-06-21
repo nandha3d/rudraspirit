@@ -54,9 +54,8 @@ class BusinessSettingsController extends Controller
 
     public function activation(Request $request)
     {
-        CoreComponentRepository::instantiateShopRepository();
-        CoreComponentRepository::initializeCache();
-        return view('backend.setup_configurations.activation');
+        // Activation wizard removed — never expose the purchase-code / vendor activation page.
+        return redirect()->route('admin.dashboard');
     }
 
     public function social_login(Request $request)
