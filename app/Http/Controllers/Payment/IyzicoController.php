@@ -155,7 +155,7 @@ class IyzicoController extends Controller
 
     public function initPayment(Request $request)
     {
-        // Vendor license phone-home (activation.activeitzone.com) removed.
+        // Vendor license phone-home removed.
         return;
     }
 

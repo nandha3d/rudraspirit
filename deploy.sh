@@ -37,7 +37,7 @@ composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev -
 }
 
 # 2b. Re-apply vendor patches (composer install restores original vendor files).
-# Neutralizes the activeitzone.com activation phone-home / redirect.
+# Neutralizes the vendor activation phone-home / redirect.
 CCR_VENDOR="vendor/mehedi-iitdu/core-component-repository/src/CoreComponentRepository.php"
 if [ -f patches/CoreComponentRepository.php ] && [ -f "$CCR_VENDOR" ]; then
     cp -f patches/CoreComponentRepository.php "$CCR_VENDOR"

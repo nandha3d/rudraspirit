@@ -49,3 +49,6 @@ public/all
 /scratch_*
 /fix_*.php
 /extract_*.py
+
+# Runtime logs — never commit
+/storage/logs/*.log

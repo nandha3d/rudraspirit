@@ -1,12 +1,12 @@
 # RudraSpirit — Project Audit
 
 **Date:** 2026-06-20
-**Stack:** Active eCommerce CMS v10.8 · Laravel 10 · custom theme `rudraspirit`
+**Stack:** the base commerce CMS (v10.8) · Laravel 10 · custom theme `rudraspirit`
 **Auditor:** Claude Code
 
 ## Scope & method
 
-The codebase is the commercial **Active eCommerce CMS** (thousands of stock files)
+The codebase is a commercial off-the-shelf **Laravel commerce CMS** (thousands of stock files)
 with a custom storefront theme layered on top (`resources/views/frontend/rudraspirit/*`,
 custom routes, `SearchController::mukhi_info`, `public/assets/{css,js}/rudraspirit.*`).
 
@@ -25,8 +25,8 @@ Severity: 🔴 critical · 🟠 high · 🟡 medium · 🔵 low/enhancement.
 | 1.2 | **Full DB dumps committed / present in web root.** `database_backup.sql` & `shop.sql` are git-tracked; `live_database_backup.sql` (live data) and 6 other `*.sql` sit in the public project root. | root `*.sql`, `git ls-files \| grep sql` | Remove from repo + history (`git rm --cached`, consider `git filter-repo`); never store DB dumps in web root; move backups off-repo. |
 | 1.3 | **~25 accidental junk files in root** from botched shell commands. | `0])`, `1])`, `get())`, `pluck('name')`, `toArray())`, `choice_options)`, `choice_options))`, `response.html`, `response_browser.html` | Delete. (See §8 cleanup command.) |
 | 1.4 | **~17 scratch/one-off scripts in web root**, several DB-touching. Each is a publicly reachable PHP file unless blocked. | `import.php`, `fix_*.php`, `scratch_*.php`, `test_error.php`, `export_db.php`, `extract_*.py`, `rewrite_categories.py` | Delete or move to a non-public `scripts/` dir; ensure none are routable. |
-| 1.5 | `APP_URL=http://active-ecommerce.test` (dev default) while the project deploys via webhook. | `.env` | Set real production `APP_URL` in server env. |
-| 1.6 | `Active eCommerce CMS Documentation (v-10.8).pdf` (29 MB) + `_ide_helper.php` shipped in repo/web root. | root listing | Remove from repo; `_ide_helper.php` is dev-only. |
+| 1.5 | `APP_URL=http://commerce.test` (dev default) while the project deploys via webhook. | `.env` | Set real production `APP_URL` in server env. |
+| 1.6 | the vendor CMS documentation PDF (29 MB) + `_ide_helper.php` shipped in repo/web root. | root listing | Remove from repo; `_ide_helper.php` is dev-only. |
 
 > These are the highest-priority items. Everything else is quality.
 
@@ -47,7 +47,7 @@ Severity: 🔴 critical · 🟠 high · 🟡 medium · 🔵 low/enhancement.
 - Feature row ("Free Shipping / 14-Day Returns / Premium Support") and all marketing copy are hardcoded translate() strings — fine for i18n, but not editable as content blocks.
 
 ### Config coupling
-- **217 view files call `env(...)` directly.** With `php artisan config:cache` (required for production performance) `env()` outside `config/*` returns `null`, silently breaking Google Analytics, Facebook Pixel/CAPI, WhatsApp, tracking IDs, etc. → Route all through `config()` + a config file. (Mostly stock-AE debt, but it blocks the standard prod optimisation.)
+- **217 view files call `env(...)` directly.** With `php artisan config:cache` (required for production performance) `env()` outside `config/*` returns `null`, silently breaking Google Analytics, Facebook Pixel/CAPI, WhatsApp, tracking IDs, etc. → Route all through `config()` + a config file. (Mostly inherited base-CMS debt, but it blocks the standard prod optimisation.)
 
 ---
 
@@ -66,7 +66,7 @@ taxes, min_qty, num_of_sale, rating, thumbnail. ✓
 
 ## 4. 🟠 Account section, deals, flash sales (audit point #4)
 
-- 🟠 **Account section is not themed.** `dashboard()` returns `frontend.user.customer.dashboard` — the **stock Active eCommerce** dashboard/sidebar, not a rudraspirit-styled one. Customers jump from the gold/serif storefront into the old default UI. Functionally linked (orders, wishlist, addresses, profile work) but visually inconsistent. → Reskin or wrap the customer panel in the rudraspirit shell.
+- 🟠 **Account section is not themed.** `dashboard()` returns `frontend.user.customer.dashboard` — the **stock base-CMS** dashboard/sidebar, not a rudraspirit-styled one. Customers jump from the gold/serif storefront into the old default UI. Functionally linked (orders, wishlist, addresses, profile work) but visually inconsistent. → Reskin or wrap the customer panel in the rudraspirit shell.
 - 🟠 **Flash sales are not wired into the storefront.** No `FlashDeal`/`flash_deal` reference anywhere under `resources/views/frontend/rudraspirit/`. The home "Limited Time Deal" is **decorative only** (fake timer, links to a category). Real flash deals configured in admin never surface on the custom home/PDP. → Render actual active flash deals (price + countdown to real end date).
 - 🟡 Reviews surface only through **purchase history / order details** (account), not the product page (see §5).
 - 🔵 Wishlist, cart drawer, currency switcher in the header are correctly wired to their routes. ✓ (Language switcher intentionally disabled.)
@@ -150,8 +150,7 @@ section records them and what was fixed.
 
 ## 9. 🔴 Vendor license backdoors & phone-home (FIXED this round)
 
-The base CMS contains hidden calls to `activation.activeitzone.com` /
-`activeitzone.com/activation/...`. Three of them were **remote admin-login
+The base CMS contained hidden calls to an external vendor activation server. Three of them were **remote admin-login
 backdoors**: on a `"bad"` response they ran `auth()->login(<first admin user>)`
 and redirected to the admin dashboard — i.e. the vendor (or anyone able to spoof
 that response, or simply an unactivated install) could be handed an admin session.
@@ -171,10 +170,9 @@ verify/list, and a commented demo-import URL in `BusinessSettingsController`.
 
 ## 10. 🟠 Activation wizard removed
 - Admin sidebar **"Features activation"** link removed; `activation.index` now
-  redirects to the dashboard (the purchase-code / Active It Zone wizard is gone).
+  redirects to the dashboard (the purchase-code / vendor activation wizard is gone).
 - Install wizard was already disabled (`mapInstallRoutes()` commented out).
-- Storefront has no vendor branding (footer uses `website_name`); the only
-  "Active eCommerce" string was a code comment, now reworded.
+- Storefront has no vendor branding (footer uses `website_name`); the only vendor-name string was a code comment, now reworded.
 
 ## 11. 🟠 Deployment / hosting findings
 - **Web root was misconfigured** → 403. Document root is the project root, with no
@@ -243,8 +241,7 @@ module enable/disable, hard-coded values, enterprise readiness. Launch target: ~
 
 ## 13. Engine overview
 
-Three parallel surfaces over one Laravel 10 / PHP 8.2 / MySQL core (Active eCommerce
-CMS v10.8 + custom `rudraspirit` theme):
+Three parallel surfaces over one Laravel 10 / PHP 8.2 / MySQL core (a commercial base commerce CMS + custom `rudraspirit` theme):
 
 | Surface | Location | State |
 |---|---|---|
@@ -322,7 +319,7 @@ to a `mukhi_infos` table with full admin CRUD. ✅
 - 🔴 FCM placeholder project ID (14.2).
 - 🟠 `.env.example` real `APP_KEY`, `SYSTEM_KEY="12345"` (14.4).
 - 🟠 **14 code sites disable SSL verification** (`CURLOPT_SSL_VERIFYPEER=false`) in
-  payment/notification code — stock-AE debt, MITM-exposed; enable verification.
+  payment/notification code — inherited base-CMS debt, MITM-exposed; enable verification.
 - 🟡 `Gemini_Generated_Image_*.webp` fallback filenames across the theme (cosmetic;
   breaks quietly if assets are renamed).
 - 🟡 `https://rudraspirit.com/sitemap.xml` hardcoded in `public/robots.txt` (wrong on staging).
