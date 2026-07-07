@@ -233,3 +233,118 @@ Deliberately deferred (would risk "nothing broken" or is large):
 - **Move catalog queries out of Blade** into view-composers/controllers + caching.
 - **Asset deployment** — `public/assets`/`public/uploads` still shipped via zip;
   pick an rsync/CI-artifact story.
+
+---
+
+# Audit #4 — Pre-launch full review (2026-07-07)
+
+**Scope:** engine architecture (in & out), mobile-app compatibility, VPS compatibility,
+module enable/disable, hard-coded values, enterprise readiness. Launch target: ~1 week.
+
+## 13. Engine overview
+
+Three parallel surfaces over one Laravel 10 / PHP 8.2 / MySQL core (Active eCommerce
+CMS v10.8 + custom `rudraspirit` theme):
+
+| Surface | Location | State |
+|---|---|---|
+| Blade storefront + admin | `resources/views/*` | Live, themed, SEO'd |
+| V2 REST API (Flutter apps) | `routes/api.php`, `Api/V2/*` (296 routes) | Frozen, intact |
+| V3 headless API | `routes/api_v3*.php`, `Api/V3/*`, `app/Services/*` | Built through Phase 5; tests/docs pending |
+
+V3 is well-architected: service layer, response envelope, Sanctum auth,
+`auth:sanctum`+`admin` on admin routes, per-tier rate limiters, CORS middleware,
+HMAC-signed webhooks. Gaps: Phase 6 (factories/feature tests) not done;
+`config('headless.enabled')` exists but is **never enforced** (dead kill switch);
+`API_V3_*`/`API_CORS_ORIGINS`/`WEBHOOK_*` vars missing from `.env.example`.
+
+## 14. 🔴 Launch blockers
+
+| # | Finding | Impact | Fix |
+|---|---|---|---|
+| 14.1 | **`deploy.sh` runs `php artisan config:cache`, but payment gateways read `env()` directly at runtime** (`RazorpayController: env('RAZOR_KEY')`, `StripeController: env('STRIPE_SECRET')`, all OTP/SMS services, FCM key — 325 `env()` call sites in `app/`, 216 view files). With config cached, Dotenv never loads, so `env()` returns **null** → gateways get empty credentials and **payments/OTP/SMS fail silently**. | Revenue-critical | Short-term: remove `config:cache` from `deploy.sh` (keep `view:cache`). Long-term: move all gateway creds into `config/*` and switch call sites to `config()`. |
+| 14.2 | **Mobile push notifications cannot work.** `app/Utility/NotificationUtility.php:99` posts to the FCM **HTTP v1** endpoint with a **placeholder project ID `myproject-b5ae1`**, legacy `'to'=>` payload shape, legacy `Authorization: key=` header (v1 requires OAuth2 service-account token), and `CURLOPT_SSL_VERIFYPEER=false`. Legacy FCM server keys were shut down by Google in 2024. | All app push dead | Rewrite `sendFirebaseNotification()` for HTTP v1: real project ID, service-account JSON → bearer token, `{"message":{...}}` payload, SSL verification on. |
+| 14.3 | **Admin "Features activation" page is unreachable.** `BusinessSettingsController::activation()` redirects to the dashboard (collateral of removing the vendor purchase-code wizard). The page it should render (`backend/setup_configurations/activation.blade.php`) holds ~30 business toggles: vendor system, guest checkout, coupon system, pickup point, conversation, maintenance mode, HTTPS, social logins, email/customer verification, wallet, classified products… The POST route (`business_settings.update.activation`) still works — only the UI is gone. | Can't manage features | Restore `return view('backend.setup_configurations.activation');` — the view contains no purchase-code fields; it's safe. |
+| 14.4 | **Secret rotation still pending** (carried from Audit #1). Old `.env` + `APP_KEY` remain in git history; `.env.example` ships a real-looking `APP_KEY` and `SYSTEM_KEY="12345"`. If production still uses that key, sessions/cookies are forgeable by anyone with repo access. | Auth integrity | Rotate `APP_KEY` on the server (invalidates sessions — do before launch, off-peak), set a random `SYSTEM_KEY`, strip the key from `.env.example`, optionally purge history with `git filter-repo`. |
+
+## 15. 📱 Mobile app compatibility — **Yes, with conditions**
+
+- The repo ships the stock Flutter apps (`Mobile_App/`): customer v5.70, seller v3.10,
+  delivery-boy v3.90 — all built against the **V2 API**, which is present and frozen
+  (296 routes, Sanctum auth, `app_language` middleware, OTP addon routes, business-settings
+  config endpoint). The engine side is compatible.
+- Required before the apps work: set the base URL + package id inside each Flutter
+  project, add Firebase config (`google-services.json` / `GoogleService-Info.plist`),
+  rebuild and publish. **Verify vendor's app↔CMS version pairing** (CMS v10.8 vs app v5.7).
+- **Push is broken server-side until 14.2 is fixed.**
+- OTP login works only after an SMS provider (Twilio etc.) is configured — and those
+  creds are read via `env()`, so 14.1 applies.
+- A future custom app can target the cleaner V3 API instead; for browser-based
+  frontends set `API_CORS_ORIGINS` (defaults to `*`).
+
+## 16. 🖥 VPS compatibility — **Yes**
+
+Standard Laravel 10 stack; nothing Hostinger-specific in the app itself. VPS checklist:
+
+- PHP 8.2+ (`ext-gd`, `zip`, `mbstring`, `bcmath`, `intl`, `curl`), MySQL 5.7+/8, Composer 2.
+- Set the web-server document root to `public/` and **drop the root `.htaccess`
+  forwarding hack** (that exists only because Hostinger's docroot is the project root).
+- `php artisan storage:link`; `APP_ENV=production`, `APP_DEBUG=false`, real `APP_URL`.
+- Cron: `* * * * * php artisan schedule:run` (note: `Console/Kernel::schedule()` is
+  currently **empty** — nothing scheduled; add queue-retry/backup jobs here).
+- Move `QUEUE_CONNECTION` from `sync` → `database`/`redis` + a supervised
+  `queue:work` worker so mail/notifications stop blocking requests.
+- Redis optional but supported (`predis` installed) for cache/session/queue.
+- `deploy.sh` is webhook/Hostinger-oriented but portable; keep the
+  `patches/CoreComponentRepository.php` re-apply step (neutralizes the vendor
+  activation gate after every `composer install`).
+- `route:cache` still impossible: **84 duplicate route names** (deploy falls back
+  gracefully). `config:cache` must stay OFF until 14.1 is resolved.
+
+## 17. 🧩 Module enable/disable — **Mostly yes, one break**
+
+| Layer | Mechanism | Works? |
+|---|---|---|
+| 11 addons (affiliate, auction, club point, OTP, POS, refund, seller subscription, wholesale, offline payment, Paytm, Cybersource) | Admin → Addons → toggle (`AddonController@activation` sets `addons.activated`, clears the 24 h `addons` cache; code gates via `addon_is_activated()`) | ✅ |
+| ~30 business feature toggles | Features-activation page | ❌ page redirects — see 14.3 |
+| Payment/shipping method activation | separate pages (`payment.activation`, `shipping.activation`) | ✅ |
+| V3 API kill switch | `headless.enabled` | ⚠️ defined but never checked — enforce or remove |
+
+## 18. 🟠 Hard-coded values — status
+
+**Fixed since Audit #1:** tracking/pixel/WhatsApp via `config/rudraspirit.php`; magic
+alert/popup IDs centralized; hero slides DB-driven (with fallback); deal countdown from
+`get_setting('rudraspirit_deal_end')`; root category from
+`get_setting('rudraspirit_root_category')` (default `rudraksha-beads`); mukhi data moved
+to a `mukhi_infos` table with full admin CRUD. ✅
+
+**Remaining:**
+- 🔴 FCM placeholder project ID (14.2).
+- 🟠 `.env.example` real `APP_KEY`, `SYSTEM_KEY="12345"` (14.4).
+- 🟠 **14 code sites disable SSL verification** (`CURLOPT_SSL_VERIFYPEER=false`) in
+  payment/notification code — stock-AE debt, MITM-exposed; enable verification.
+- 🟡 `Gemini_Generated_Image_*.webp` fallback filenames across the theme (cosmetic;
+  breaks quietly if assets are renamed).
+- 🟡 `https://rudraspirit.com/sitemap.xml` hardcoded in `public/robots.txt` (wrong on staging).
+- 🟡 Root leftovers to delete: `scratch_import.php`, `test_v3_endpoints.php`, empty
+  `sitemap.xml` (shadowed by the route but junk in the docroot).
+- 🔵 Payment endpoints (bKash/Khalti/Paymob/Tap) hardcode vendor URLs with env-based
+  sandbox/live switches — normal.
+
+## 19. 🟠 Enterprise-grade verdict — **functional-grade, not yet enterprise**
+
+Solid: layered V3 architecture, addon modularity, license backdoors neutralized,
+secrets untracked, SEO/structured data, hardened deploy script.
+
+Still missing for "enterprise": test suite (3 test files, no CI gate — the GitHub
+workflow only fires the deploy webhook), error tracking (no Sentry/log shipping),
+queue+scheduler unused, no automated DB backups, 84 duplicate route names, SSL-verify
+bypasses, secret rotation pending, no staging environment in evidence.
+
+## 20. One-week launch order
+
+1. **Day 1:** 14.1 (drop `config:cache` from deploy) + verify a live test payment; 14.3 (restore features page — one line); delete root leftovers.
+2. **Day 2:** 14.4 rotate `APP_KEY`/`SYSTEM_KEY` off-peak; re-test login + payments.
+3. **Day 3–4:** 14.2 FCM v1 rewrite if apps launch with the site; queue → database + worker; enable SSL verification in payment code.
+4. **Day 5:** smoke-test checklist: register/login, OTP, cart→checkout on every enabled gateway, order mails, refund flow, admin CRUD, mobile app against prod API.
+5. **Post-launch:** dedupe route names → `route:cache`; feature tests + CI gate; Sentry; scheduled backups.
