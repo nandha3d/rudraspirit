@@ -16,6 +16,17 @@
             @endforeach
         </select>
     </div>
+    <div class="field">
+        <label>Plan (defines module entitlements)</label>
+        <select name="plan_id">
+            <option value="">— No plan (manual entitlements only) —</option>
+            @foreach (\App\Models\Plan::orderBy('sort_order')->orderBy('price')->get() as $planOption)
+                <option value="{{ $planOption->id }}" @selected((int) old('plan_id', $license->plan_id) === $planOption->id)>
+                    {{ $planOption->name }} ({{ count($planOption->moduleIdentifiers()) }} modules)
+                </option>
+            @endforeach
+        </select>
+    </div>
 </div>
 
 <div class="grid">

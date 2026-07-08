@@ -17,6 +17,7 @@
             <div><label>Customer</label><div>{{ $license->customer_name ?: '—' }}</div></div>
             <div><label>Email</label><div>{{ $license->customer_email ?: '—' }}</div></div>
             <div><label>Activation limit</label><div>{{ $license->activations->count() }} / {{ $license->activation_limit }} domains</div></div>
+            <div><label>Plan</label><div>{{ $license->plan?->name ?: '— (manual)' }}</div></div>
         </div>
         @if ($license->notes)
             <div style="margin-top:14px;"><label>Notes</label><div class="muted">{{ $license->notes }}</div></div>
@@ -49,6 +50,13 @@
 
     <div class="card">
         <h2>Addon entitlements</h2>
+        @if ($license->plan && count($license->plan->moduleIdentifiers()))
+            <p class="muted" style="margin-top:0;">
+                From plan <strong>{{ $license->plan->name }}</strong>:
+                @foreach ($license->plan->moduleIdentifiers() as $m) <code>{{ $m }}</code> @endforeach
+                <br><small>Plan modules apply automatically; rows below are per-license extras.</small>
+            </p>
+        @endif
         <table>
             <tr><th>Identifier</th><th>Label</th><th>Expires</th><th></th></tr>
             @forelse ($license->addons as $addon)

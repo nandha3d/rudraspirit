@@ -61,7 +61,7 @@ class LicenseAdminController extends Controller
 
     public function show(License $license): View
     {
-        $license->load(['activations', 'addons']);
+        $license->load(['activations', 'addons', 'plan']);
 
         return view('admin.licenses.show', compact('license'));
     }
@@ -124,6 +124,7 @@ class LicenseAdminController extends Controller
         return $request->validate([
             'license_key'      => ['nullable', 'string', 'max:64'],
             'product'          => ['required', 'string', 'max:100'],
+            'plan_id'          => ['nullable', 'integer', 'exists:plans,id'],
             'customer_name'    => ['nullable', 'string', 'max:150'],
             'customer_email'   => ['nullable', 'email', 'max:150'],
             'status'           => ['required', 'in:active,suspended,revoked'],

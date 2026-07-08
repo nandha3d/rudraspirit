@@ -95,6 +95,9 @@ class LicenseVerifier
             'expires_at'       => optional($license->expires_at)->toIso8601String(),
             'activation_limit' => $license->activation_limit,
             'activations_used' => $license->activations()->count(),
+            'plan'             => $license->plan
+                ? ['name' => $license->plan->name, 'slug' => $license->plan->slug]
+                : null,
             'addons'           => $this->entitledAddons($license),
             'message'          => 'License is valid.',
         ];
@@ -126,20 +129,35 @@ class LicenseVerifier
     /**
      * The list of addon identifiers this license currently entitles.
      *
+     * Union of the license's plan modules (live — upgrading a plan's module
+     * list immediately applies to every license on that plan) and any explicit
+     * per-license addon rows (for one-off extras).
+     *
      * @return array<int, array{identifier:string,label:?string,expires_at:?string}>
      */
     public function entitledAddons(License $license): array
     {
-        return $license->addons()
-            ->get()
-            ->filter(fn ($a) => $a->isEntitled())
-            ->map(fn ($a) => [
-                'identifier' => $a->addon_identifier,
-                'label'      => $a->label,
-                'expires_at' => optional($a->expires_at)->toIso8601String(),
-            ])
-            ->values()
-            ->all();
+        $entitled = [];
+
+        foreach ($license->plan?->moduleIdentifiers() ?? [] as $identifier) {
+            $entitled[$identifier] = [
+                'identifier' => $identifier,
+                'label'      => null,
+                'expires_at' => null, // plan modules live and die with the license
+            ];
+        }
+
+        foreach ($license->addons()->get() as $addon) {
+            if ($addon->isEntitled()) {
+                $entitled[$addon->addon_identifier] = [
+                    'identifier' => $addon->addon_identifier,
+                    'label'      => $addon->label,
+                    'expires_at' => optional($addon->expires_at)->toIso8601String(),
+                ];
+            }
+        }
+
+        return array_values($entitled);
     }
 
     private function fail(string $status, string $message, array $extra = []): array

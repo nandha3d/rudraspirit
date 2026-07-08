@@ -26,18 +26,31 @@ class LicenseClient
     public function check(bool $fresh = false): array
     {
         if (! $this->enabled()) {
-            return ['valid' => true, 'status' => 'disabled', 'addons' => [], 'source' => 'disabled'];
+            // entitle_all: with licensing off there is no entitlement data, so
+            // module gating must not switch anything off.
+            return ['valid' => true, 'status' => 'disabled', 'addons' => [], 'entitle_all' => true, 'source' => 'disabled'];
         }
 
         if ($fresh) {
             Cache::forget(self::CACHE_KEY);
         }
 
-        return Cache::remember(
-            self::CACHE_KEY,
-            now()->addMinutes((int) config('license.cache_ttl', 720)),
-            fn () => $this->fetch(),
-        );
+        $cached = Cache::get(self::CACHE_KEY);
+        if (is_array($cached)) {
+            return $cached;
+        }
+
+        $result = $this->fetch();
+
+        // Definitive answers cache for the full TTL; unreachable results only
+        // briefly, so entitlements resync soon after the server comes back.
+        $ttl = in_array($result['source'] ?? '', ['fail_open', 'fail_closed'], true)
+            ? min(15, (int) config('license.cache_ttl', 720))
+            : (int) config('license.cache_ttl', 720);
+
+        Cache::put(self::CACHE_KEY, $result, now()->addMinutes(max(1, $ttl)));
+
+        return $result;
     }
 
     public function isValid(): bool
@@ -60,9 +73,18 @@ class LicenseClient
 
     public function isAddonEntitled(string $identifier): bool
     {
+        $check = $this->check();
+
         // If the license itself is invalid, nothing is entitled.
-        if (! $this->isValid()) {
+        if (! ($check['valid'] ?? false)) {
             return false;
+        }
+
+        // Fail-open / disabled results carry no entitlement data — in those
+        // cases everything stays entitled so an unreachable license server
+        // never switches off modules on a live store.
+        if (! empty($check['entitle_all'])) {
+            return true;
         }
 
         return in_array($identifier, $this->entitledAddons(), true);
@@ -144,11 +166,13 @@ class LicenseClient
         $failOpen = (bool) config('license.fail_open', true);
 
         return [
-            'valid'      => $failOpen,
-            'status'     => $failOpen ? 'unreachable_fail_open' : 'unreachable_fail_closed',
-            'addons'     => [], // never grant addon entitlements without a real answer
-            'source'     => $failOpen ? 'fail_open' : 'fail_closed',
-            'checked_at' => now()->toIso8601String(),
+            'valid'       => $failOpen,
+            'status'      => $failOpen ? 'unreachable_fail_open' : 'unreachable_fail_closed',
+            'addons'      => [],
+            // Fail-open must not switch off modules: no data ≠ not entitled.
+            'entitle_all' => $failOpen,
+            'source'      => $failOpen ? 'fail_open' : 'fail_closed',
+            'checked_at'  => now()->toIso8601String(),
         ];
     }
 }

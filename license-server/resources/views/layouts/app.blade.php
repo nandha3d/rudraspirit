@@ -61,6 +61,9 @@
         <nav>
             <a href="{{ route('admin.dashboard') }}">Dashboard</a>
             <a href="{{ route('licenses.index') }}">Licenses</a>
+            <a href="{{ route('plans.index') }}">Plans</a>
+            <a href="{{ route('orders.index') }}">Orders</a>
+            <a href="{{ route('public.pricing') }}" target="_blank">Pricing ↗</a>
         </nav>
         <span class="spacer"></span>
         <span class="muted">{{ auth()->user()->email }}</span>

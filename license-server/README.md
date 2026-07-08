@@ -1,9 +1,8 @@
-# License Server
+# Animazon License Server
 
-A standalone Laravel 10 application that issues and validates license keys for
-your products (built to replace the third-party activation service the base
-engine used to phone home to). It is deployed **separately** from the storefront
-— its own database and domain (e.g. `https://license.rudraspirit.com`).
+A standalone Laravel 10 application — deployed at **`https://license.animazon.in`**
+— that issues and validates license keys for the Animazon commerce engine, and
+sells **plans** whose modules power each client deployment.
 
 It does **not** contain any auto-login / backdoor behaviour. A failed check only
 ever reports "not licensed"; it never grants access to anything.
@@ -13,11 +12,19 @@ ever reports "not licensed"; it never grants access to anything.
 ## What it does
 
 - Issue license keys (auto-generated `XXXX-XXXX-XXXX-XXXX` or your own).
+- **Plans & pricing** (Admin → Plans): each plan defines price, billing period,
+  license validity, domain limit and the **modules** it includes. Public pricing
+  page at `/pricing`; JSON catalog at `GET /api/v1/plans` for embedding the
+  pricing section on the main website.
+- **Checkout → order → license**: customers pick a plan, submit the checkout
+  form (optionally redirected to an external payment link you set per plan);
+  admins mark the order paid and issue the license with one click. Issuance is
+  idempotent and copies the plan's limits/validity.
 - **Domain-lock** each key to a limited number of domains (activation limit).
   New domains auto-activate while under the limit; extra domains are rejected.
-- **Expiry** per license (or perpetual).
-- **Status**: active / suspended / revoked.
-- **Per-addon entitlements**, each with its own optional expiry.
+- **Expiry** per license (or perpetual), **status** active / suspended / revoked.
+- **Module entitlements** = the license's plan modules (live — editing a plan
+  updates every license on it) ∪ per-license extras, each with optional expiry.
 - Signs every API response with **HMAC-SHA256** so clients can reject spoofed
   answers.
 - A simple admin panel to manage all of the above.
@@ -113,6 +120,13 @@ activation limit) that domain is recorded automatically.
 
 Body: `{ "key": "...", "domain": "store.com" }` — releases a domain's activation
 slot so it can be reused elsewhere.
+
+### `GET /api/v1/plans`
+
+Public, read-only catalog of active plans (name, price, currency, billing
+period, validity, domain limit, modules, feature bullets, `checkout_url`).
+Use it to render the pricing section on the main website — each card's
+button links to the plan's `checkout_url`.
 
 ---
 

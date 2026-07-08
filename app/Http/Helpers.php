@@ -1778,7 +1778,24 @@ if (!function_exists('addon_is_activated')) {
         });
 
         $activation = $addons->where('unique_identifier', $identifier)->where('activated', 1)->first();
-        return $activation == null ? false : true;
+        if ($activation == null) {
+            return false;
+        }
+
+        // License overlay: in the module-gating enforce modes, an addon is only
+        // active if the deployment's plan/license entitles it. The check reads
+        // the cached license result; any licensing failure falls through to the
+        // local flag so licensing can never crash the storefront.
+        try {
+            $license = app(\App\Services\License\LicenseClient::class);
+            if ($license->enabled() && in_array($license->enforceMode(), ['addons', 'admin'], true)) {
+                return $license->isAddonEntitled($identifier);
+            }
+        } catch (\Throwable $e) {
+            // fall through to the local activation flag
+        }
+
+        return true;
     }
 }
 

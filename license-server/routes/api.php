@@ -19,3 +19,7 @@ Route::prefix('v1/licenses')
         Route::post('verify', [LicenseController::class, 'verify']);
         Route::post('deactivate', [LicenseController::class, 'deactivate']);
     });
+
+// Public plans catalog for the main website's pricing section.
+Route::get('v1/plans', [\App\Http\Controllers\Api\PlanController::class, 'index'])
+    ->middleware('throttle:60,1');

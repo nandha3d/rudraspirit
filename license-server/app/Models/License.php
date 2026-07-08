@@ -14,6 +14,7 @@ class License extends Model
     protected $fillable = [
         'license_key',
         'product',
+        'plan_id',
         'customer_name',
         'customer_email',
         'status',
@@ -37,6 +38,11 @@ class License extends Model
     public function addons(): HasMany
     {
         return $this->hasMany(LicenseAddon::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
     }
 
     public function isExpired(): bool

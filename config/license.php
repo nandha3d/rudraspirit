@@ -13,11 +13,11 @@
 
 return [
 
-    // Full base URL of the license server, e.g. https://license.rudraspirit.com
-    'server_url' => env('LICENSE_SERVER_URL', ''),
+    // Full base URL of the license server.
+    'server_url' => env('LICENSE_SERVER_URL', 'https://license.animazon.in'),
 
     // The product slug this deployment licenses.
-    'product' => env('LICENSE_PRODUCT', 'rudraspirit-engine'),
+    'product' => env('LICENSE_PRODUCT', 'animazon-engine'),
 
     // This deployment's license key.
     'key' => env('LICENSE_KEY', ''),

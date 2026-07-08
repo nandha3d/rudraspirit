@@ -24,7 +24,7 @@ return [
     | server license several products.
     |
     */
-    'default_product' => env('LICENSE_DEFAULT_PRODUCT', 'rudraspirit-engine'),
+    'default_product' => env('LICENSE_DEFAULT_PRODUCT', 'animazon-engine'),
 
     /*
     |--------------------------------------------------------------------------
