@@ -52,3 +52,7 @@ public/all
 
 # Runtime logs — never commit
 /storage/logs/*.log
+
+# Firebase service-account key (never commit)
+/storage/app/firebase/
+*firebase*service-account*.json
