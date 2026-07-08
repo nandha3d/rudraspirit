@@ -1,0 +1,66 @@
+{
+	"name": "Asian Payment Gateway",
+	"unique_identifier": "paytm",
+	"version": "2.2",
+	"minimum_item_version": "9.9.9",
+	"addon_banner": "paytm.png",
+	"directory": [
+		{
+			"name": [
+				"resources/views/paytm",
+				"resources/views/paytm/payment_method"
+			]
+		}
+	],
+	"sql_file": "",
+	"files": [
+		{
+			"root_directory": "addons/paytm/views/paytm/index.blade.php",
+			"update_directory": "resources/views/paytm/index.blade.php"
+		},
+		{
+			"root_directory": "addons/paytm/views/paytm/payment_method/khalti.blade.php",
+			"update_directory": "resources/views/paytm/payment_method/khalti.blade.php"
+		},
+		{
+			"root_directory": "addons/paytm/views/paytm/payment_method/myfatoorah.blade.php",
+			"update_directory": "resources/views/paytm/payment_method/myfatoorah.blade.php"
+		},
+		{
+			"root_directory": "addons/paytm/views/paytm/payment_method/paytm.blade.php",
+			"update_directory": "resources/views/paytm/payment_method/paytm.blade.php"
+		},
+		{
+			"root_directory": "addons/paytm/views/paytm/payment_method/phonepe.blade.php",
+			"update_directory": "resources/views/paytm/payment_method/phonepe.blade.php"
+		},
+		{
+			"root_directory": "addons/paytm/views/paytm/payment_method/toyyibpay.blade.php",
+			"update_directory": "resources/views/paytm/payment_method/toyyibpay.blade.php"
+		},
+		{
+			"root_directory": "addons/paytm/controllers/PaytmController.php",
+			"update_directory": "app/Http/Controllers/Payment/PaytmController.php"
+		},
+		{
+			"root_directory": "addons/paytm/controllers/ToyyibpayController.php",
+			"update_directory": "app/Http/Controllers/Payment/ToyyibpayController.php"
+		},
+		{
+			"root_directory": "addons/paytm/controllers/MyfatoorahController.php",
+			"update_directory": "app/Http/Controllers/Payment/MyfatoorahController.php"
+		},
+		{
+			"root_directory": "addons/paytm/controllers/KhaltiController.php",
+			"update_directory": "app/Http/Controllers/Payment/KhaltiController.php"
+		},
+		{
+			"root_directory": "addons/paytm/controllers/PhonepeController.php",
+			"update_directory": "app/Http/Controllers/Payment/PhonepeController.php"
+		},
+		{
+			"root_directory": "addons/paytm/assets/paytm.png",
+			"update_directory": "public/paytm.png"
+		}
+	]
+}

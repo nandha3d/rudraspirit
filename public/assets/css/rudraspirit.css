@@ -1589,7 +1589,7 @@
     display: block;
 }
 
-/* Override active ecommerce standard borders, shadows, backgrounds on columns */
+/* Override base theme standard borders, shadows, backgrounds on columns */
 .aiz-rudraspirit #products-row .col {
     border: none !important;
     background: transparent !important;

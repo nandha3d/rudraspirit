@@ -95,41 +95,27 @@ class NotificationUtility
     }
 
     public static function sendFirebaseNotification($req)
-    {        
-        $url = 'https://fcm.googleapis.com/v1/projects/myproject-b5ae1/messages:send';
+    {
+        // Push via FCM HTTP v1 (see config/firebase.php). Fails safe: if Firebase
+        // is unconfigured or the send errors, it is logged and skipped so the
+        // calling order flow is never affected.
+        try {
+            app(\App\Services\Firebase\FcmV1Client::class)->send(
+                (string) $req->device_token,
+                (string) $req->title,
+                (string) $req->text,
+                [
+                    'item_type'    => (string) $req->type,
+                    'item_type_id' => (string) $req->id,
+                    'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
+                ],
+            );
+        } catch (\Throwable $e) {
+            \Log::warning('sendFirebaseNotification failed: ' . $e->getMessage());
+        }
 
-        $fields = array
-        (
-            'to' => $req->device_token,
-            'notification' => [
-                'body' => $req->text,
-                'title' => $req->title,
-                'sound' => 'default' /*Default sound*/
-            ],
-            'data' => [
-                'item_type' => $req->type,
-                'item_type_id' => $req->id,
-                'click_action' => 'FLUTTER_NOTIFICATION_CLICK'
-            ]
-        );
-
-        //$fields = json_encode($arrayToSend);
-        $headers = array(
-            'Authorization: key=' . env('FCM_SERVER_KEY'),
-            'Content-Type: application/json'
-        );
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-
-        $result = curl_exec($ch);
-        curl_close($ch);
-
+        // Persist the in-app notification record regardless of push delivery
+        // (unchanged behaviour — this powers the app's notification list).
         $firebase_notification = new FirebaseNotification;
         $firebase_notification->title = $req->title;
         $firebase_notification->text = $req->text;

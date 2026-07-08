@@ -1,0 +1,40 @@
+{
+   "name":"Cybersource",
+   "unique_identifier":"cybersource",
+   "version":"1.0",
+   "minimum_item_version":"9.9.2",
+   "addon_banner":"cybersource.png",
+   "directory":[
+      {
+         "name":[
+            "resources/views/cybersource",
+            "app/Http/Controllers/Cybersource"
+         ]
+      }
+   ],
+   "sql_file":"",
+   "files":[
+      {
+          "root_directory":"addons/cybersource/controllers/Payment/CybersourceController.php",
+          "update_directory":"app/Http/Controllers/Payment/CybersourceController.php"
+      },
+      {
+          "root_directory":"addons/cybersource/controllers/Api/V2/CybersourceController.php",
+          "update_directory":"app/Http/Controllers/Api/V2/CybersourceController.php"
+      },
+      {
+         "root_directory"    : "addons/cybersource/assets/cybersource.png",
+         "update_directory"  : "public/cybersource.png"
+     }
+  ],
+   "folders":[
+      {
+           "root_directory":"addons/cybersource/views/cybersource",
+           "update_directory":"resources/views/cybersource"
+      },
+	  {
+           "root_directory":"addons/cybersource/controllers/Cybersource",
+           "update_directory":"app/Http/Controllers/Cybersource"
+      }
+   ]
+}

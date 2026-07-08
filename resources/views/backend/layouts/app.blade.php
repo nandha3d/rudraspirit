@@ -133,6 +133,7 @@
             @include('backend.inc.admin_nav')
             <div class="aiz-main-content">
                 <div class="px-15px px-lg-25px">
+                    @includeIf('backend.inc.license_banner')
                     @yield('content')
                 </div>
                 <div class="bg-white text-center py-3 px-15px px-lg-25px mt-auto border-top">

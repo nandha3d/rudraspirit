@@ -49,3 +49,10 @@ public/all
 /scratch_*
 /fix_*.php
 /extract_*.py
+
+# Runtime logs — never commit
+/storage/logs/*.log
+
+# Firebase service-account key (never commit)
+/storage/app/firebase/
+*firebase*service-account*.json

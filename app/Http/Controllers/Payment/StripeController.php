@@ -83,8 +83,8 @@ class StripeController extends Controller
 
     public function checkout_payment_detail()
     {
-        // Vendor license phone-home removed. The original code called
-        // activation.activeitzone.com and, on a "bad" response, logged the
+        // Vendor license phone-home removed. The original code called an
+        // external activation server and, on a "bad" response, logged the
         // visitor in as admin — a remote kill-switch / backdoor. No-op now.
         return;
     }

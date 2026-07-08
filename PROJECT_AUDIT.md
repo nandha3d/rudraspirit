@@ -1,12 +1,12 @@
 # RudraSpirit — Project Audit
 
 **Date:** 2026-06-20
-**Stack:** Active eCommerce CMS v10.8 · Laravel 10 · custom theme `rudraspirit`
+**Stack:** the base commerce CMS (v10.8) · Laravel 10 · custom theme `rudraspirit`
 **Auditor:** Claude Code
 
 ## Scope & method
 
-The codebase is the commercial **Active eCommerce CMS** (thousands of stock files)
+The codebase is a commercial off-the-shelf **Laravel commerce CMS** (thousands of stock files)
 with a custom storefront theme layered on top (`resources/views/frontend/rudraspirit/*`,
 custom routes, `SearchController::mukhi_info`, `public/assets/{css,js}/rudraspirit.*`).
 
@@ -25,8 +25,8 @@ Severity: 🔴 critical · 🟠 high · 🟡 medium · 🔵 low/enhancement.
 | 1.2 | **Full DB dumps committed / present in web root.** `database_backup.sql` & `shop.sql` are git-tracked; `live_database_backup.sql` (live data) and 6 other `*.sql` sit in the public project root. | root `*.sql`, `git ls-files \| grep sql` | Remove from repo + history (`git rm --cached`, consider `git filter-repo`); never store DB dumps in web root; move backups off-repo. |
 | 1.3 | **~25 accidental junk files in root** from botched shell commands. | `0])`, `1])`, `get())`, `pluck('name')`, `toArray())`, `choice_options)`, `choice_options))`, `response.html`, `response_browser.html` | Delete. (See §8 cleanup command.) |
 | 1.4 | **~17 scratch/one-off scripts in web root**, several DB-touching. Each is a publicly reachable PHP file unless blocked. | `import.php`, `fix_*.php`, `scratch_*.php`, `test_error.php`, `export_db.php`, `extract_*.py`, `rewrite_categories.py` | Delete or move to a non-public `scripts/` dir; ensure none are routable. |
-| 1.5 | `APP_URL=http://active-ecommerce.test` (dev default) while the project deploys via webhook. | `.env` | Set real production `APP_URL` in server env. |
-| 1.6 | `Active eCommerce CMS Documentation (v-10.8).pdf` (29 MB) + `_ide_helper.php` shipped in repo/web root. | root listing | Remove from repo; `_ide_helper.php` is dev-only. |
+| 1.5 | `APP_URL=http://commerce.test` (dev default) while the project deploys via webhook. | `.env` | Set real production `APP_URL` in server env. |
+| 1.6 | the vendor CMS documentation PDF (29 MB) + `_ide_helper.php` shipped in repo/web root. | root listing | Remove from repo; `_ide_helper.php` is dev-only. |
 
 > These are the highest-priority items. Everything else is quality.
 
@@ -47,7 +47,7 @@ Severity: 🔴 critical · 🟠 high · 🟡 medium · 🔵 low/enhancement.
 - Feature row ("Free Shipping / 14-Day Returns / Premium Support") and all marketing copy are hardcoded translate() strings — fine for i18n, but not editable as content blocks.
 
 ### Config coupling
-- **217 view files call `env(...)` directly.** With `php artisan config:cache` (required for production performance) `env()` outside `config/*` returns `null`, silently breaking Google Analytics, Facebook Pixel/CAPI, WhatsApp, tracking IDs, etc. → Route all through `config()` + a config file. (Mostly stock-AE debt, but it blocks the standard prod optimisation.)
+- **217 view files call `env(...)` directly.** With `php artisan config:cache` (required for production performance) `env()` outside `config/*` returns `null`, silently breaking Google Analytics, Facebook Pixel/CAPI, WhatsApp, tracking IDs, etc. → Route all through `config()` + a config file. (Mostly inherited base-CMS debt, but it blocks the standard prod optimisation.)
 
 ---
 
@@ -66,7 +66,7 @@ taxes, min_qty, num_of_sale, rating, thumbnail. ✓
 
 ## 4. 🟠 Account section, deals, flash sales (audit point #4)
 
-- 🟠 **Account section is not themed.** `dashboard()` returns `frontend.user.customer.dashboard` — the **stock Active eCommerce** dashboard/sidebar, not a rudraspirit-styled one. Customers jump from the gold/serif storefront into the old default UI. Functionally linked (orders, wishlist, addresses, profile work) but visually inconsistent. → Reskin or wrap the customer panel in the rudraspirit shell.
+- 🟠 **Account section is not themed.** `dashboard()` returns `frontend.user.customer.dashboard` — the **stock base-CMS** dashboard/sidebar, not a rudraspirit-styled one. Customers jump from the gold/serif storefront into the old default UI. Functionally linked (orders, wishlist, addresses, profile work) but visually inconsistent. → Reskin or wrap the customer panel in the rudraspirit shell.
 - 🟠 **Flash sales are not wired into the storefront.** No `FlashDeal`/`flash_deal` reference anywhere under `resources/views/frontend/rudraspirit/`. The home "Limited Time Deal" is **decorative only** (fake timer, links to a category). Real flash deals configured in admin never surface on the custom home/PDP. → Render actual active flash deals (price + countdown to real end date).
 - 🟡 Reviews surface only through **purchase history / order details** (account), not the product page (see §5).
 - 🔵 Wishlist, cart drawer, currency switcher in the header are correctly wired to their routes. ✓ (Language switcher intentionally disabled.)
@@ -150,8 +150,7 @@ section records them and what was fixed.
 
 ## 9. 🔴 Vendor license backdoors & phone-home (FIXED this round)
 
-The base CMS contains hidden calls to `activation.activeitzone.com` /
-`activeitzone.com/activation/...`. Three of them were **remote admin-login
+The base CMS contained hidden calls to an external vendor activation server. Three of them were **remote admin-login
 backdoors**: on a `"bad"` response they ran `auth()->login(<first admin user>)`
 and redirected to the admin dashboard — i.e. the vendor (or anyone able to spoof
 that response, or simply an unactivated install) could be handed an admin session.
@@ -171,10 +170,9 @@ verify/list, and a commented demo-import URL in `BusinessSettingsController`.
 
 ## 10. 🟠 Activation wizard removed
 - Admin sidebar **"Features activation"** link removed; `activation.index` now
-  redirects to the dashboard (the purchase-code / Active It Zone wizard is gone).
+  redirects to the dashboard (the purchase-code / vendor activation wizard is gone).
 - Install wizard was already disabled (`mapInstallRoutes()` commented out).
-- Storefront has no vendor branding (footer uses `website_name`); the only
-  "Active eCommerce" string was a code comment, now reworded.
+- Storefront has no vendor branding (footer uses `website_name`); the only vendor-name string was a code comment, now reworded.
 
 ## 11. 🟠 Deployment / hosting findings
 - **Web root was misconfigured** → 403. Document root is the project root, with no
@@ -233,3 +231,117 @@ Deliberately deferred (would risk "nothing broken" or is large):
 - **Move catalog queries out of Blade** into view-composers/controllers + caching.
 - **Asset deployment** — `public/assets`/`public/uploads` still shipped via zip;
   pick an rsync/CI-artifact story.
+
+---
+
+# Audit #4 — Pre-launch full review (2026-07-07)
+
+**Scope:** engine architecture (in & out), mobile-app compatibility, VPS compatibility,
+module enable/disable, hard-coded values, enterprise readiness. Launch target: ~1 week.
+
+## 13. Engine overview
+
+Three parallel surfaces over one Laravel 10 / PHP 8.2 / MySQL core (a commercial base commerce CMS + custom `rudraspirit` theme):
+
+| Surface | Location | State |
+|---|---|---|
+| Blade storefront + admin | `resources/views/*` | Live, themed, SEO'd |
+| V2 REST API (Flutter apps) | `routes/api.php`, `Api/V2/*` (296 routes) | Frozen, intact |
+| V3 headless API | `routes/api_v3*.php`, `Api/V3/*`, `app/Services/*` | Built through Phase 5; tests/docs pending |
+
+V3 is well-architected: service layer, response envelope, Sanctum auth,
+`auth:sanctum`+`admin` on admin routes, per-tier rate limiters, CORS middleware,
+HMAC-signed webhooks. Gaps: Phase 6 (factories/feature tests) not done;
+`config('headless.enabled')` exists but is **never enforced** (dead kill switch);
+`API_V3_*`/`API_CORS_ORIGINS`/`WEBHOOK_*` vars missing from `.env.example`.
+
+## 14. 🔴 Launch blockers
+
+| # | Finding | Impact | Fix |
+|---|---|---|---|
+| 14.1 | ✅ **FIXED.** `deploy.sh` ran `php artisan config:cache`, but payment gateways read `env()` directly at runtime (`RazorpayController: env('RAZOR_KEY')`, `StripeController: env('STRIPE_SECRET')`, all OTP/SMS services, FCM — 325 `env()` call sites in `app/`, 216 view files). Cached config → `env()` returns **null** → **payments/OTP/SMS fail silently**. Fixed by replacing `config:cache` with `config:clear` in `deploy.sh` (env() keeps working; `view:cache` retained). Long-term: migrate gateway creds into `config/*` + `config()`. | Revenue-critical | Done. |
+| 14.2 | ✅ **FIXED (code).** Mobile push posted to the FCM **HTTP v1** endpoint with a **placeholder project ID `myproject-b5ae1`**, legacy `'to'=>` payload, legacy `Authorization: key=` header, and SSL verification off. Rewritten: `sendFirebaseNotification()` now delegates to `App\Services\Firebase\FcmV1Client` — service-account JSON → RS256-signed JWT → OAuth2 bearer token (cached), correct `{"message":{...}}` v1 payload, SSL verification **on**, fail-safe (skips + logs when unconfigured so order flows never break). Config in `config/firebase.php`. **Needs the customer's real Firebase project ID + service-account JSON to go live.** | All app push dead | Code done; awaiting Firebase credentials. |
+| 14.3 | **Admin "Features activation" page is unreachable.** `BusinessSettingsController::activation()` redirects to the dashboard (collateral of removing the vendor purchase-code wizard). The page it should render (`backend/setup_configurations/activation.blade.php`) holds ~30 business toggles: vendor system, guest checkout, coupon system, pickup point, conversation, maintenance mode, HTTPS, social logins, email/customer verification, wallet, classified products… The POST route (`business_settings.update.activation`) still works — only the UI is gone. | Can't manage features | Restore `return view('backend.setup_configurations.activation');` — the view contains no purchase-code fields; it's safe. |
+| 14.4 | **Secret rotation still pending** (carried from Audit #1). Old `.env` + `APP_KEY` remain in git history; `.env.example` ships a real-looking `APP_KEY` and `SYSTEM_KEY="12345"`. If production still uses that key, sessions/cookies are forgeable by anyone with repo access. | Auth integrity | Rotate `APP_KEY` on the server (invalidates sessions — do before launch, off-peak), set a random `SYSTEM_KEY`, strip the key from `.env.example`, optionally purge history with `git filter-repo`. |
+
+## 15. 📱 Mobile app compatibility — **Yes, with conditions**
+
+- The repo ships the stock Flutter apps (`Mobile_App/`): customer v5.70, seller v3.10,
+  delivery-boy v3.90 — all built against the **V2 API**, which is present and frozen
+  (296 routes, Sanctum auth, `app_language` middleware, OTP addon routes, business-settings
+  config endpoint). The engine side is compatible.
+- Required before the apps work: set the base URL + package id inside each Flutter
+  project, add Firebase config (`google-services.json` / `GoogleService-Info.plist`),
+  rebuild and publish. **Verify vendor's app↔CMS version pairing** (CMS v10.8 vs app v5.7).
+- **Push is broken server-side until 14.2 is fixed.**
+- OTP login works only after an SMS provider (Twilio etc.) is configured — and those
+  creds are read via `env()`, so 14.1 applies.
+- A future custom app can target the cleaner V3 API instead; for browser-based
+  frontends set `API_CORS_ORIGINS` (defaults to `*`).
+
+## 16. 🖥 VPS compatibility — **Yes**
+
+Standard Laravel 10 stack; nothing Hostinger-specific in the app itself. VPS checklist:
+
+- PHP 8.2+ (`ext-gd`, `zip`, `mbstring`, `bcmath`, `intl`, `curl`), MySQL 5.7+/8, Composer 2.
+- Set the web-server document root to `public/` and **drop the root `.htaccess`
+  forwarding hack** (that exists only because Hostinger's docroot is the project root).
+- `php artisan storage:link`; `APP_ENV=production`, `APP_DEBUG=false`, real `APP_URL`.
+- Cron: `* * * * * php artisan schedule:run` (note: `Console/Kernel::schedule()` is
+  currently **empty** — nothing scheduled; add queue-retry/backup jobs here).
+- Move `QUEUE_CONNECTION` from `sync` → `database`/`redis` + a supervised
+  `queue:work` worker so mail/notifications stop blocking requests.
+- Redis optional but supported (`predis` installed) for cache/session/queue.
+- `deploy.sh` is webhook/Hostinger-oriented but portable; keep the
+  `patches/CoreComponentRepository.php` re-apply step (neutralizes the vendor
+  activation gate after every `composer install`).
+- `route:cache` still impossible: **84 duplicate route names** (deploy falls back
+  gracefully). `config:cache` must stay OFF until 14.1 is resolved.
+
+## 17. 🧩 Module enable/disable — **Mostly yes, one break**
+
+| Layer | Mechanism | Works? |
+|---|---|---|
+| 11 addons (affiliate, auction, club point, OTP, POS, refund, seller subscription, wholesale, offline payment, Paytm, Cybersource) | Admin → Addons → toggle (`AddonController@activation` sets `addons.activated`, clears the 24 h `addons` cache; code gates via `addon_is_activated()`) | ✅ |
+| ~30 business feature toggles | Features-activation page | ❌ page redirects — see 14.3 |
+| Payment/shipping method activation | separate pages (`payment.activation`, `shipping.activation`) | ✅ |
+| V3 API kill switch | `headless.enabled` | ⚠️ defined but never checked — enforce or remove |
+
+## 18. 🟠 Hard-coded values — status
+
+**Fixed since Audit #1:** tracking/pixel/WhatsApp via `config/rudraspirit.php`; magic
+alert/popup IDs centralized; hero slides DB-driven (with fallback); deal countdown from
+`get_setting('rudraspirit_deal_end')`; root category from
+`get_setting('rudraspirit_root_category')` (default `rudraksha-beads`); mukhi data moved
+to a `mukhi_infos` table with full admin CRUD. ✅
+
+**Remaining:**
+- 🔴 FCM placeholder project ID (14.2).
+- 🟠 `.env.example` real `APP_KEY`, `SYSTEM_KEY="12345"` (14.4).
+- 🟠 **14 code sites disable SSL verification** (`CURLOPT_SSL_VERIFYPEER=false`) in
+  payment/notification code — inherited base-CMS debt, MITM-exposed; enable verification.
+- 🟡 `Gemini_Generated_Image_*.webp` fallback filenames across the theme (cosmetic;
+  breaks quietly if assets are renamed).
+- 🟡 `https://rudraspirit.com/sitemap.xml` hardcoded in `public/robots.txt` (wrong on staging).
+- 🟡 Root leftovers to delete: `scratch_import.php`, `test_v3_endpoints.php`, empty
+  `sitemap.xml` (shadowed by the route but junk in the docroot).
+- 🔵 Payment endpoints (bKash/Khalti/Paymob/Tap) hardcode vendor URLs with env-based
+  sandbox/live switches — normal.
+
+## 19. 🟠 Enterprise-grade verdict — **functional-grade, not yet enterprise**
+
+Solid: layered V3 architecture, addon modularity, license backdoors neutralized,
+secrets untracked, SEO/structured data, hardened deploy script.
+
+Still missing for "enterprise": test suite (3 test files, no CI gate — the GitHub
+workflow only fires the deploy webhook), error tracking (no Sentry/log shipping),
+queue+scheduler unused, no automated DB backups, 84 duplicate route names, SSL-verify
+bypasses, secret rotation pending, no staging environment in evidence.
+
+## 20. One-week launch order
+
+1. **Day 1:** 14.1 (drop `config:cache` from deploy) + verify a live test payment; 14.3 (restore features page — one line); delete root leftovers.
+2. **Day 2:** 14.4 rotate `APP_KEY`/`SYSTEM_KEY` off-peak; re-test login + payments.
+3. **Day 3–4:** 14.2 FCM v1 rewrite if apps launch with the site; queue → database + worker; enable SSL verification in payment code.
+4. **Day 5:** smoke-test checklist: register/login, OTP, cart→checkout on every enabled gateway, order mails, refund flow, admin CRUD, mobile app against prod API.
+5. **Post-launch:** dedupe route names → `route:cache`; feature tests + CI gate; Sentry; scheduled backups.
