@@ -286,9 +286,22 @@ class AddonController extends Controller
     }
 
     public function check_activation( $data){
-        // Purchase-code / license verification is not used by this platform.
-        // Addons ship with the codebase and are managed locally, so uploads are
-        // accepted without contacting any external activation server.
+        // Validate the deployment's license against our own license server
+        // (config/license.php). Only the 'addons' and 'admin' enforce modes
+        // gate addon installation; 'off'/'warn' let uploads through. Returning
+        // TRUE means "allowed"; returning a string is shown to the admin.
+        $license = app(\App\Services\License\LicenseClient::class);
+
+        if (! in_array($license->enforceMode(), ['addons', 'admin'], true)) {
+            return true;
+        }
+
+        $result = $license->check();
+
+        if (! ($result['valid'] ?? false)) {
+            return translate('This deployment is not licensed. Please activate a valid license to install add-ons.');
+        }
+
         return true;
     }
 
