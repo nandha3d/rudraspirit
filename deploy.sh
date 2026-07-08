@@ -72,7 +72,13 @@ fi
 
 # 5. Rebuild caches
 echo "⚡ Rebuilding caches..."
-php artisan config:cache 2>&1 || true
+# NOTE: config is deliberately NOT cached. Many gateway/integration code paths
+# (Razorpay, Stripe, OTP/SMS providers, FCM, etc.) read env() directly at
+# runtime, and `php artisan config:cache` makes env() return null outside
+# config/*. Caching config would therefore silently break live payments and
+# OTP. Keep config CLEARED (uncached) so env() works until those call sites are
+# migrated to config(). view:cache below is safe and stays.
+php artisan config:clear 2>&1 || true
 
 # route:cache requires unique route names. This codebase currently has duplicate
 # names (pre-existing addon/resource collisions), so caching would fail. Attempt
