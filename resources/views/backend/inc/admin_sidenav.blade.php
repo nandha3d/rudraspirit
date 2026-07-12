@@ -1172,6 +1172,43 @@
                 </li>
                 @endcanany
 
+                <!--Accounting (Plan B)-->
+                @can('in_house_product_sale_report')
+                <li class="aiz-side-nav-item">
+                    <a href="#" class="aiz-side-nav-link">
+                        <div class="aiz-side-nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#575b6a" viewBox="0 0 16 16">
+                                <path d="M2 2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2zm0 1.25h12v2H2v-2zM2 6.5h3v6H2v-6zm4.25 0H14v2H6.25v-2zm0 3.25H14v2.75H6.25V9.75z"/>
+                            </svg>
+                        </div>
+                        <span class="aiz-side-nav-text">{{ translate('Accounting') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('accounting.profit_loss') }}" class="aiz-side-nav-link {{ areActiveRoutes(['accounting.profit_loss']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Profit & Loss') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('accounting.expenses') }}" class="aiz-side-nav-link {{ areActiveRoutes(['accounting.expenses']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Expenses') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('accounting.categories') }}" class="aiz-side-nav-link {{ areActiveRoutes(['accounting.categories']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Expense Categories') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('accounting.accounts') }}" class="aiz-side-nav-link {{ areActiveRoutes(['accounting.accounts']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Financial Accounts') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endcan
+
                 <!--Blog System-->
                 @canany(['view_blogs','view_blog_categories'])
                 <li class="aiz-side-nav-item">

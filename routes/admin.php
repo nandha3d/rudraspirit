@@ -584,6 +584,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin', 'prevent-ba
         Route::get('/gst_report/hsn-export', 'hsn_export')->name('gst_report.hsn_export');
     });
 
+    // Accounting (Plan B, Phase 1)
+    Route::controller(\App\Http\Controllers\AccountingController::class)->prefix('accounting')->group(function () {
+        Route::get('/expenses', 'expenses')->name('accounting.expenses');
+        Route::post('/expenses', 'store_expense')->name('accounting.expenses.store');
+        Route::delete('/expenses/{id}', 'destroy_expense')->name('accounting.expenses.destroy');
+        Route::get('/categories', 'categories')->name('accounting.categories');
+        Route::post('/categories', 'store_category')->name('accounting.categories.store');
+        Route::delete('/categories/{id}', 'destroy_category')->name('accounting.categories.destroy');
+        Route::get('/accounts', 'accounts')->name('accounting.accounts');
+        Route::post('/accounts', 'store_account')->name('accounting.accounts.store');
+        Route::delete('/accounts/{id}', 'destroy_account')->name('accounting.accounts.destroy');
+        Route::get('/profit-loss', 'profit_loss')->name('accounting.profit_loss');
+    });
+
     // Earning Report
     Route::group(['prefix' => 'reports'], function () {
         Route::get('/earning-payout-report', [EarningReportController::class, 'index'])->name('earning_payout_report.index');
