@@ -85,7 +85,7 @@ Route::get('/refresh-csrf', function () {
 Route::controller(AizUploadController::class)->group(function () {
     Route::post('/aiz-uploader', 'show_uploader');
     Route::post('/aiz-uploader/upload', 'upload');
-    Route::get('/aiz-uploader/get-uploaded-files', 'get_uploaded_files');
+    Route::get('/aiz-uploader/get-uploaded-files', 'get_uploaded_files')->middleware('auth');
     Route::post('/aiz-uploader/get_file_by_ids', 'get_preview_files');
     Route::get('/aiz-uploader/download/{id}', 'attachment_download')->name('download_attachment');
 });
@@ -101,7 +101,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/social-login/{provider}/callback', 'handleProviderCallback')->name('social.callback');
     //Apple Callback
     Route::post('/apple-callback', 'handleAppleCallback');
-    Route::get('/account-deletion', 'account_deletion')->name('account_delete');
+    Route::get('/account-deletion', 'account_deletion')->name('account_delete')->middleware('auth');
     Route::get('/handle-demo-login', 'handle_demo_login')->name('handleDemoLogin');
 });
 

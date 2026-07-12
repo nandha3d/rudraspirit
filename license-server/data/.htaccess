@@ -1,0 +1,3 @@
+# Belt-and-suspenders: block all direct web access to the database directory.
+Require all denied
+Deny from all

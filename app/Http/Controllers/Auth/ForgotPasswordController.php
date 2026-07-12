@@ -63,11 +63,13 @@ class ForgotPasswordController extends Controller
                 $user->verification_code = rand(100000,999999);
                 $user->save();
                 
+                // Guard against a missing template row (e.g. email_templates not seeded)
+                // so the reset flow falls back to a default mail instead of a 500.
                 $emailTemplate = EmailTemplate::whereIdentifier('password_reset_email_to_all')->first();
-                $emailSubject = $emailTemplate->subject;
+                $emailSubject = $emailTemplate?->subject ?? '[[store_name]] - Password Reset';
                 $emailSubject = str_replace('[[store_name]]', get_setting('site_name'), $emailSubject);
 
-                $email_body = $emailTemplate->default_text;
+                $email_body = $emailTemplate?->default_text ?? 'Hello [[user_email]],<br><br>Your password reset code is <strong>[[code]]</strong>.<br><br>Regards,<br>[[store_name]]';
                 $email_body = str_replace('[[user_email]]', $user->email, $email_body);
                 $email_body = str_replace('[[code]]', $user->verification_code, $email_body);
                 $email_body = str_replace('[[store_name]]', get_setting('site_name'), $email_body);

@@ -65,7 +65,7 @@ class AddonController extends Controller
         if (class_exists('ZipArchive')) {
             if ($request->hasFile('addon_zip')) {
                 
-                if (! self::isLocalhostDomain()) {
+                if (config('license.enabled') && ! self::isLocalhostDomain()) {
                     $result = self::check_activation($request);
 
                     if(isset($result) && $result !== true){
@@ -328,10 +328,11 @@ class AddonController extends Controller
 
     public static function checkActivation( $type, $key){
 
+        $base = config('license.server_url');
         if($type == 'item'){
-            $url = "https://activation.activeitzone.com/item_info/".$key;
+            $url = $base . "/item_info/" . $key;
         }else{
-            $url = "https://activation.activeitzone.com/registered-addon-info/".$key;
+            $url = $base . "/registered-addon-info/" . $key;
         }
         $res = self::sendRequest( $url);
         return $res ? true : false;
@@ -353,7 +354,7 @@ class AddonController extends Controller
     }
 
     public static function script_activation_check($purchase_code) {
-        $url = "https://activeitzone.com/activation/verify-purchase-code/".$purchase_code;
+        $url = config('license.server_url') . "/activation/verify-purchase-code/" . $purchase_code;
         $request_data_json = json_encode(['code' => $purchase_code]);
 
         $header = array(
@@ -376,7 +377,7 @@ class AddonController extends Controller
 
 
     public static function check_registered_addon($purchase_code) {
-        $url = "https://activation.activeitzone.com/registered-addon-list/".$purchase_code;
+        $url = config('license.server_url') . "/registered-addon-list/" . $purchase_code;
 
         $ch = curl_init();
         

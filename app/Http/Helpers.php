@@ -1418,7 +1418,35 @@ if (!function_exists('get_setting')) {
             $setting = $settings->where('type', $key)->where('lang', $lang)->first();
             $setting = !$setting ? $settings->where('type', $key)->first() : $setting;
         }
-        return $setting == null ? $default : $setting->value;
+        $value = $setting == null ? $default : $setting->value;
+
+        // License fallback: when advanced shipping isn't licensed, the shop is
+        // locked to flat/free shipping regardless of the stored setting.
+        if ($key === 'shipping_type'
+            && in_array($value, ['carrier_wise_shipping', 'area_wise_shipping'], true)
+            && function_exists('feature_allowed') && !feature_allowed('shipping_methods')) {
+            return 'flat_rate';
+        }
+
+        // License gating for feature-flag settings: when the mapped feature isn't
+        // licensed the setting reads as OFF everywhere (central, non-configurable).
+        static $rs_setting_feature = [
+            'coupon_system'                  => 'coupons',
+            'wallet_system'                  => 'wallet',
+            'conversation_system'            => 'conversation',
+            'classified_product'             => 'classified_products',
+            'product_query_activation'       => 'product_query',
+            'newsletter_activation'          => 'newsletter',
+            'last_viewed_product_activation' => 'last_viewed',
+            'color_filter_activation'        => 'color_filter',
+            'guest_checkout_activation'      => 'guest_checkout',
+        ];
+        if (isset($rs_setting_feature[$key])
+            && function_exists('feature_allowed') && !feature_allowed($rs_setting_feature[$key])) {
+            return 0;
+        }
+
+        return $value;
     }
 }
 
@@ -1778,7 +1806,104 @@ if (!function_exists('addon_is_activated')) {
         });
 
         $activation = $addons->where('unique_identifier', $identifier)->where('activated', 1)->first();
-        return $activation == null ? false : true;
+        if ($activation == null) {
+            return false;
+        }
+        // An installed+activated addon is only "on" if the license also allows it.
+        return license_module_allowed($identifier);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// License feature entitlements (plan-based). One cached call to the license
+// server returns a map of feature => state ('full' | 'fallback' | 'off').
+// Fail-open: unmanaged domain or any error => everything 'full' so the shop
+// never bricks.
+// ---------------------------------------------------------------------------
+if (!function_exists('license_features')) {
+    function license_features()
+    {
+        if (!config('license.enabled')) {
+            return ['__all__' => 'full'];
+        }
+
+        $cacheKey = 'license_features_map';
+        if (Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        }
+
+        $allowAll = ['__all__' => 'full']; // sentinel for fail-open
+        try {
+            $host = parse_url((string) config('app.url'), PHP_URL_HOST);
+            if (!$host && php_sapi_name() !== 'cli') {
+                $host = request()->getHost();
+            }
+
+            $resp = \Illuminate\Support\Facades\Http::timeout(6)->acceptJson()
+                ->post(rtrim((string) config('license.server_url'), '/') . '/api/features', ['domain' => $host]);
+
+            $data = $resp->json();
+            if (is_array($data) && array_key_exists('managed', $data)) {
+                if (empty($data['managed'])) {
+                    Cache::put($cacheKey, $allowAll, now()->addHours(6));
+                    return $allowAll;
+                }
+                $features = (array) ($data['features'] ?? []);
+                if ($features) {
+                    Cache::put($cacheKey, $features, now()->addHours(6));
+                    return $features;
+                }
+            }
+        } catch (\Throwable $e) {
+            // network/parse error -> fail open, retry soon
+        }
+
+        Cache::put($cacheKey, $allowAll, now()->addMinutes(10));
+        return $allowAll;
+    }
+}
+
+if (!function_exists('feature_state')) {
+    // 'full' | 'fallback' | 'off'  (unknown feature or fail-open => 'full')
+    function feature_state($key)
+    {
+        $f = license_features();
+        if (isset($f['__all__'])) {
+            return 'full';
+        }
+        return $f[$key] ?? 'full';
+    }
+}
+
+if (!function_exists('feature_allowed')) {
+    // fully licensed
+    function feature_allowed($key)
+    {
+        return feature_state($key) === 'full';
+    }
+}
+
+if (!function_exists('feature_is_fallback')) {
+    // essential feature running its locked basic version
+    function feature_is_fallback($key)
+    {
+        return feature_state($key) === 'fallback';
+    }
+}
+
+if (!function_exists('feature_off')) {
+    // not licensed and not essential -> hide
+    function feature_off($key)
+    {
+        return feature_state($key) === 'off';
+    }
+}
+
+if (!function_exists('license_module_allowed')) {
+    // back-compat: an addon module is "allowed" only when its feature is full
+    function license_module_allowed($identifier)
+    {
+        return feature_allowed($identifier);
     }
 }
 

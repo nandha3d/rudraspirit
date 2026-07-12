@@ -1,0 +1,19 @@
+# Route every request through index.php (front controller)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    # Serve real files/dirs directly (none exist publicly, but keeps it safe)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Never serve the SQLite database, source, config or views directly
+<FilesMatch "\.(sqlite|sqlite-wal|sqlite-shm|db)$">
+    Require all denied
+</FilesMatch>
+RedirectMatch 404 ^/data/
+RedirectMatch 404 ^/src/
+RedirectMatch 404 ^/views/
+RedirectMatch 404 ^/config\.php$

@@ -630,7 +630,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin', 'prevent-ba
     });
 
     // Email Template
-    Route::resource('email-templates', EmailTemplateController::class);
+    // index is excluded: EmailTemplateController::index() requires a receiver
+    // type param and is served by the named GET /email-template/{id} route below.
+    Route::resource('email-templates', EmailTemplateController::class)->except(['index']);
     Route::controller(EmailTemplateController::class)->group(function () {
         Route::get('/email-template/{id}', 'index')->name('email-templates.index');
         Route::post('/email-template/update-status', 'updateStatus')->name('email-template.update-status');
