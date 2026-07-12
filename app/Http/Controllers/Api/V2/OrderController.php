@@ -174,6 +174,8 @@ class OrderController extends Controller
                 }
 
                 $order_detail->quantity = $cartItem['quantity'];
+                // Profit engine (Plan A): snapshot product cost at sale time.
+                $order_detail->cost_price = ($product->purchase_price ?? 0) * $cartItem['quantity'];
                 $order_detail->save();
 
                 $product->num_of_sale = $product->num_of_sale + $cartItem['quantity'];

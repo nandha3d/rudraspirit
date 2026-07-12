@@ -37,6 +37,43 @@ class ReportController extends Controller
         return view('backend.reports.stock_report', compact('products', 'sort_by'));
     }
 
+    /**
+     * Profit report (Plan A). Revenue vs cost (COGS) from the per-order cost
+     * snapshot. Read-only aggregate; touches no existing sales logic.
+     */
+    public function profit_report(Request $request)
+    {
+        $from = $request->from ? \Carbon\Carbon::parse($request->from)->startOfDay() : \Carbon\Carbon::now()->startOfMonth();
+        $to   = $request->to ? \Carbon\Carbon::parse($request->to)->endOfDay() : \Carbon\Carbon::now()->endOfDay();
+
+        $base = \Illuminate\Support\Facades\DB::table('order_details')
+            ->join('orders', 'orders.id', '=', 'order_details.order_id')
+            ->whereBetween('orders.created_at', [$from, $to])
+            ->where('orders.delivery_status', '!=', 'cancelled');
+
+        $summary = (clone $base)->selectRaw('
+            COALESCE(SUM(order_details.price),0) as revenue,
+            COALESCE(SUM(order_details.cost_price),0) as cost,
+            COALESCE(SUM(order_details.coupon_discount),0) as discount,
+            COALESCE(SUM(order_details.tax),0) as tax,
+            COALESCE(SUM(order_details.quantity),0) as qty,
+            COUNT(DISTINCT order_details.order_id) as orders
+        ')->first();
+
+        $top = (clone $base)
+            ->join('products', 'products.id', '=', 'order_details.product_id')
+            ->selectRaw('products.id, products.name,
+                SUM(order_details.quantity) as qty,
+                SUM(order_details.price) as revenue,
+                SUM(order_details.cost_price) as cost,
+                (SUM(order_details.price) - SUM(order_details.cost_price)) as profit')
+            ->groupBy('products.id', 'products.name')
+            ->orderByDesc('profit')
+            ->limit(25)->get();
+
+        return view('backend.reports.profit_report', compact('summary', 'top', 'from', 'to'));
+    }
+
     public function in_house_sale_report(Request $request)
     {
         $sort_by = null;

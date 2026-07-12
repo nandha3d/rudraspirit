@@ -1122,6 +1122,14 @@
                             </a>
                         </li>
                         @endcan
+                        @can('in_house_product_sale_report')
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('profit_report.index') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['profit_report.index'])}}">
+                                <span class="aiz-side-nav-text">{{ translate('Profit Report') }}</span>
+                            </a>
+                        </li>
+                        @endcan
                         @can('product_wishlist_report')
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('wish_report.index') }}"

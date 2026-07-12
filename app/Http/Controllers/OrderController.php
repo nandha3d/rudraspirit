@@ -295,6 +295,10 @@ class OrderController extends Controller
                 //End of storing shipping cost
                 $order_detail->quantity = $cartItem['quantity'];
 
+                // Profit engine (Plan A): snapshot the product cost at sale time so
+                // profit reports stay accurate even if purchase_price changes later.
+                $order_detail->cost_price = ($product->purchase_price ?? 0) * $cartItem['quantity'];
+
                 if (addon_is_activated('club_point')) {
                     $order_detail->earn_point = $product->earn_point;
                 }

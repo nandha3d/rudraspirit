@@ -571,6 +571,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin', 'prevent-ba
         Route::get('/in_house_sale_report', 'in_house_sale_report')->name('in_house_sale_report.index');
         Route::get('/seller_sale_report', 'seller_sale_report')->name('seller_sale_report.index');
         Route::get('/stock_report', 'stock_report')->name('stock_report.index');
+        Route::get('/profit_report', 'profit_report')->name('profit_report.index');
         Route::get('/wish_report', 'wish_report')->name('wish_report.index');
         Route::get('/user_search_report', 'user_search_report')->name('user_search_report.index');
         Route::get('/commission-log', 'commission_history')->name('commission-log.index');

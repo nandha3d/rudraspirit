@@ -602,12 +602,21 @@
                             @endif
 
                             <div class="row gutters-5 mt-3">
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <div class="form-group mb-2 mb-lg-3">
                                         <label for="unit-price"
                                             class="col-from-label fs-14 fw-500">{{ translate('Unit Price') }}
                                             <span>*</span></label>
                                         <input type="number" lang="en" min="0" value="{{ $product->unit_price }}" step="0.01" placeholder="{{ translate('Unit price') }}" name="unit_price" class="form-control @error('unit_price') is-invalid @enderror">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2 mb-lg-3">
+                                        <label for="purchase-price" class="col-from-label fs-14 fw-500">
+                                            {{ translate('Cost / Purchase Price') }}
+                                            <span class="fs-12 fw-400 text-muted">({{ translate('for profit calc') }})</span>
+                                        </label>
+                                        <input type="number" lang="en" min="0" value="{{ $product->purchase_price }}" step="0.01" placeholder="{{ translate('0.00') }}" name="purchase_price" class="form-control">
                                     </div>
                                 </div>
 
