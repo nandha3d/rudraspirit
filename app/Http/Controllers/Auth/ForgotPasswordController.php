@@ -46,6 +46,17 @@ class ForgotPasswordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
+    /**
+     * Show the reset-code form at its own GET url (email carried in the query
+     * so it survives a failed reset submit). Prevents the 405 from a stray
+     * GET on the POST-only /password/email route.
+     */
+    public function showResetForm(Request $request)
+    {
+        $email = $request->query('email');
+        return view('auth.' . get_setting('authentication_layout_select') . '.reset_password', compact('email'));
+    }
+
     public function sendResetLinkEmail(Request $request)
     {
 
@@ -78,8 +89,10 @@ class ForgotPasswordController extends Controller
                 $array['content'] = $email_body;
                 Mail::to($user->email)->queue(new MailManager($array));
 
-                $email = $user->email;
-                return view('auth.'.get_setting('authentication_layout_select').'.reset_password', compact('email'));
+                // Post/Redirect/Get: send the user to a GET url for the reset form
+                // so refresh / back / a failed reset submit never hit POST-only
+                // /password/email (which would 405).
+                return redirect()->route('password.reset_form', ['email' => $user->email]);
             }
             else {
                 flash(translate('No account exists with this email'))->error();

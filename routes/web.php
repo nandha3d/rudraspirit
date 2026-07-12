@@ -94,6 +94,13 @@ Route::group(['middleware' => ['prevent-back-history','handle-demo-login']], fun
     Auth::routes(['verify' => true]);
 });
 
+// Password reset: GET form (PRG target) + safety redirect for stray GETs on the
+// POST-only /password/email route (refresh / back / bookmark) -> avoids 405.
+Route::middleware('guest')->controller(\App\Http\Controllers\Auth\ForgotPasswordController::class)->group(function () {
+    Route::get('/password/reset-form', 'showResetForm')->name('password.reset_form');
+    Route::get('/password/email', fn () => redirect()->route('password.request'));
+});
+
 // Login
 Route::controller(LoginController::class)->group(function () {
     Route::get('/logout', 'logout');
