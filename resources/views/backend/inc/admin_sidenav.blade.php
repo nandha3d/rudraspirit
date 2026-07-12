@@ -1130,6 +1130,14 @@
                             </a>
                         </li>
                         @endcan
+                        @can('in_house_product_sale_report')
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('gst_report.index') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['gst_report.index'])}}">
+                                <span class="aiz-side-nav-text">{{ translate('GST Report') }}</span>
+                            </a>
+                        </li>
+                        @endcan
                         @can('product_wishlist_report')
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('wish_report.index') }}"

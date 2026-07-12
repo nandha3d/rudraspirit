@@ -578,6 +578,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin', 'prevent-ba
         Route::get('/wallet-history', 'wallet_transaction_history')->name('wallet-history.index');
     });
 
+    // GST reports (Plan D)
+    Route::controller(\App\Http\Controllers\GstReportController::class)->group(function () {
+        Route::get('/gst_report', 'index')->name('gst_report.index');
+        Route::get('/gst_report/hsn-export', 'hsn_export')->name('gst_report.hsn_export');
+    });
+
     // Earning Report
     Route::group(['prefix' => 'reports'], function () {
         Route::get('/earning-payout-report', [EarningReportController::class, 'index'])->name('earning_payout_report.index');
