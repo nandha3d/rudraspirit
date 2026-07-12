@@ -43,6 +43,7 @@ class ReportController extends Controller
      */
     public function profit_report(Request $request)
     {
+        abort_unless(feature_allowed('profit_reports'), 404);
         $from = $request->from ? \Carbon\Carbon::parse($request->from)->startOfDay() : \Carbon\Carbon::now()->startOfMonth();
         $to   = $request->to ? \Carbon\Carbon::parse($request->to)->endOfDay() : \Carbon\Carbon::now()->endOfDay();
 

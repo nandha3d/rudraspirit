@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class PartnerAuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            abort_unless(feature_allowed('partner_share'), 404);
+            return $next($request);
+        });
+    }
+
     public function showLogin()
     {
         if (Auth::guard('partner')->check()) {

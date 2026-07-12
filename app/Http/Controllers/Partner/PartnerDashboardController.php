@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class PartnerDashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            abort_unless(feature_allowed('partner_share'), 404);
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         $partner = Auth::guard('partner')->user();

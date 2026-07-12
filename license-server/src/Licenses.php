@@ -62,6 +62,12 @@ class Licenses
         'affiliate_system'    => ['Affiliate System',    'Marketing',  3, false, null],
         'delivery_boy'        => ['Delivery Boy',        'Logistics',  3, false, null],
 
+        // --- Finance & reporting (Plan A/B/C/D) ---
+        'profit_reports'      => ['Profit Reports',      'Finance',    3, false, null],
+        'gst_reports'         => ['GST Reports',         'Finance',    3, false, null],
+        'accounting'          => ['Accounting (Expenses & P&L)', 'Finance', 3, false, null],
+        'partner_share'       => ['Partner Profit-Share', 'Finance',   4, false, null],
+
         // --- Enterprise ---
         'pos_system'          => ['Point of Sale (POS)', 'Selling',    4, false, null],
         'auction'             => ['Auction',             'Selling',    4, false, null],

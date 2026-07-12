@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\DB;
  */
 class AccountingController extends Controller
 {
+    public function __construct()
+    {
+        // License gate: accounting requires the 'accounting' feature.
+        $this->middleware(function ($request, $next) {
+            abort_unless(feature_allowed('accounting'), 404);
+            return $next($request);
+        });
+    }
+
     private function demoBlocked(): bool
     {
         if (env('DEMO_MODE') == 'On') {

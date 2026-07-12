@@ -17,6 +17,15 @@ use Illuminate\Support\Facades\Hash;
  */
 class PartnerController extends Controller
 {
+    public function __construct()
+    {
+        // License gate: partner profit-share requires the 'partner_share' feature.
+        $this->middleware(function ($request, $next) {
+            abort_unless(feature_allowed('partner_share'), 404);
+            return $next($request);
+        });
+    }
+
     private function demoBlocked(): bool
     {
         if (env('DEMO_MODE') == 'On') {

@@ -19,6 +19,15 @@ use Carbon\Carbon;
  */
 class GstReportController extends Controller
 {
+    public function __construct()
+    {
+        // License gate: GST reports require the 'gst_reports' feature.
+        $this->middleware(function ($request, $next) {
+            abort_unless(feature_allowed('gst_reports'), 404);
+            return $next($request);
+        });
+    }
+
     private function range(Request $request): array
     {
         $from = $request->from ? Carbon::parse($request->from)->startOfDay() : Carbon::now()->startOfMonth();

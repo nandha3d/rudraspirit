@@ -1123,20 +1123,24 @@
                         </li>
                         @endcan
                         @can('in_house_product_sale_report')
+                        @if (feature_allowed('profit_reports'))
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('profit_report.index') }}"
                                 class="aiz-side-nav-link {{ areActiveRoutes(['profit_report.index'])}}">
                                 <span class="aiz-side-nav-text">{{ translate('Profit Report') }}</span>
                             </a>
                         </li>
+                        @endif
                         @endcan
                         @can('in_house_product_sale_report')
+                        @if (feature_allowed('gst_reports'))
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('gst_report.index') }}"
                                 class="aiz-side-nav-link {{ areActiveRoutes(['gst_report.index'])}}">
                                 <span class="aiz-side-nav-text">{{ translate('GST Report') }}</span>
                             </a>
                         </li>
+                        @endif
                         @endcan
                         @can('product_wishlist_report')
                         <li class="aiz-side-nav-item">
@@ -1172,8 +1176,9 @@
                 </li>
                 @endcanany
 
-                <!--Accounting (Plan B)-->
+                <!--Accounting (Plan B/C) — license gated-->
                 @can('in_house_product_sale_report')
+                @if (feature_allowed('accounting') || feature_allowed('partner_share'))
                 <li class="aiz-side-nav-item">
                     <a href="#" class="aiz-side-nav-link">
                         <div class="aiz-side-nav-icon">
@@ -1185,6 +1190,7 @@
                         <span class="aiz-side-nav-arrow"></span>
                     </a>
                     <ul class="aiz-side-nav-list level-2">
+                        @if (feature_allowed('accounting'))
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('accounting.profit_loss') }}" class="aiz-side-nav-link {{ areActiveRoutes(['accounting.profit_loss']) }}">
                                 <span class="aiz-side-nav-text">{{ translate('Profit & Loss') }}</span>
@@ -1205,13 +1211,17 @@
                                 <span class="aiz-side-nav-text">{{ translate('Financial Accounts') }}</span>
                             </a>
                         </li>
+                        @endif
+                        @if (feature_allowed('partner_share'))
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('partners.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['partners.index','partners.distributions','partners.distribution.show']) }}">
                                 <span class="aiz-side-nav-text">{{ translate('Partners & Profit Share') }}</span>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li>
+                @endif
                 @endcan
 
                 <!--Blog System-->
