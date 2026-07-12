@@ -598,6 +598,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin', 'prevent-ba
         Route::get('/profit-loss', 'profit_loss')->name('accounting.profit_loss');
     });
 
+    // Partner profit-share (Plan C)
+    Route::controller(\App\Http\Controllers\PartnerController::class)->prefix('partners')->group(function () {
+        Route::get('/', 'index')->name('partners.index');
+        Route::post('/', 'store')->name('partners.store');
+        Route::get('/distributions', 'distributions')->name('partners.distributions');
+        Route::post('/distributions/run', 'run_distribution')->name('partners.distribution.run');
+        Route::get('/distributions/{id}', 'show_distribution')->name('partners.distribution.show');
+        Route::delete('/distributions/{id}', 'destroy_distribution')->name('partners.distribution.destroy');
+        Route::post('/shares/{id}/paid', 'mark_paid')->name('partners.share.paid');
+        Route::put('/{id}', 'update')->name('partners.update');
+        Route::delete('/{id}', 'destroy')->name('partners.destroy');
+    });
+
     // Earning Report
     Route::group(['prefix' => 'reports'], function () {
         Route::get('/earning-payout-report', [EarningReportController::class, 'index'])->name('earning_payout_report.index');

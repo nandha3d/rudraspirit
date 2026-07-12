@@ -110,6 +110,16 @@ Route::controller(VerificationController::class)->group(function () {
     Route::get('/verification-confirmation/{code}', 'verification_confirmation')->name('email.verification.confirmation');
 });
 
+// Partner profit-share portal (Plan C) — separate 'partner' auth guard
+Route::prefix('partner')->group(function () {
+    Route::get('login', [\App\Http\Controllers\Partner\PartnerAuthController::class, 'showLogin'])->name('partner.login');
+    Route::post('login', [\App\Http\Controllers\Partner\PartnerAuthController::class, 'login'])->name('partner.login.post');
+    Route::post('logout', [\App\Http\Controllers\Partner\PartnerAuthController::class, 'logout'])->name('partner.logout');
+    Route::middleware('auth:partner')->group(function () {
+        Route::get('dashboard', [\App\Http\Controllers\Partner\PartnerDashboardController::class, 'index'])->name('partner.dashboard');
+    });
+});
+
 Route::resource('shops', ShopController::class)->middleware('handle-demo-login');
 Route::controller(ShopController::class)->group(function () {
     Route::get('/shop/registration/verification', 'verifyRegEmailorPhone')->name('shop-reg.verification');

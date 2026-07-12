@@ -1205,6 +1205,11 @@
                                 <span class="aiz-side-nav-text">{{ translate('Financial Accounts') }}</span>
                             </a>
                         </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('partners.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['partners.index','partners.distributions','partners.distribution.show']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Partners & Profit Share') }}</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 @endcan
