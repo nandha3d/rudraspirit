@@ -1424,7 +1424,38 @@ if (!function_exists('get_setting')) {
 
 function hex2rgba($color, $opacity = false)
 {
-    return (new ColorCodeConverter())->convertHexToRgba($color, $opacity);
+    // Inlined hex->rgb(a) conversion. Intentionally bypasses
+    // AizPackages\ColorCodeConverter::convertHexToRgba(), which phones home
+    // (blocking curl to activation.activeitzone.com) on ~10% of calls and
+    // leaks the domain + addon list. Same output, no telemetry, no latency.
+    $default = 'rgb(230,46,4)';
+
+    if (empty($color)) {
+        return $default;
+    }
+
+    if ($color[0] == '#') {
+        $color = substr($color, 1);
+    }
+
+    if (strlen($color) == 6) {
+        $hex = [$color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5]];
+    } elseif (strlen($color) == 3) {
+        $hex = [$color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2]];
+    } else {
+        return $default;
+    }
+
+    $rgb = array_map('hexdec', $hex);
+
+    if ($opacity) {
+        if (abs($opacity) > 1) {
+            $opacity = 1.0;
+        }
+        return 'rgba(' . implode(',', $rgb) . ',' . $opacity . ')';
+    }
+
+    return 'rgb(' . implode(',', $rgb) . ')';
 }
 
 if (!function_exists('isAdmin')) {
