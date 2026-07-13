@@ -22,6 +22,11 @@ class UpdateCurrencyRates extends Command
 
     public function handle(): int
     {
+        if (! feature_allowed('live_currency_rates')) {
+            $this->warn("Module 'live_currency_rates' is not entitled by the license plan. Skipping.");
+            return self::SUCCESS;
+        }
+
         if (! (bool) get_setting('currency_auto_update', config('currency_rates.enabled', true))) {
             $this->info('Currency auto-update is disabled. Skipping.');
             return self::SUCCESS;

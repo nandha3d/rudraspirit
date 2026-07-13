@@ -238,5 +238,3 @@
         </div>
     </div>
 </div>
-
-@include('frontend.partials.address.pincode_autofill')

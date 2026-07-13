@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
                 'billing_period'   => 'yearly',
                 'duration_days'    => 365,
                 'activation_limit' => 1,
-                'modules'          => ['otp_system', 'offline_payment'],
+                'modules'          => ['otp_system', 'offline_payment', 'indian_pincode'],
                 'features'         => [
                     'Core e-commerce engine',
                     'Web storefront + admin panel',
@@ -58,6 +58,8 @@ class DatabaseSeeder extends Seeder
                 'modules'          => [
                     'otp_system', 'offline_payment', 'affiliate_system',
                     'club_point', 'refund_request',
+                    // RudraSpirit finance/utility add-ons
+                    'indian_pincode', 'live_currency_rates', 'profit_reports', 'accounting',
                 ],
                 'features'         => [
                     'Everything in Starter',
@@ -79,6 +81,9 @@ class DatabaseSeeder extends Seeder
                     'otp_system', 'offline_payment', 'affiliate_system',
                     'club_point', 'refund_request', 'auction',
                     'seller_subscription', 'wholesale', 'pos_system',
+                    // Every RudraSpirit finance/utility add-on (full platform)
+                    'indian_pincode', 'live_currency_rates', 'profit_reports',
+                    'accounting', 'gst_reports', 'partner_share', 'purchase_inventory',
                 ],
                 'features'         => [
                     'Everything in Business',
@@ -114,5 +119,24 @@ class DatabaseSeeder extends Seeder
 
             $this->command?->info("Sample license key: {$license->license_key}");
         }
+
+        // RudraSpirit's own production license — Enterprise plan (entitles every
+        // module). Keyed on email so re-seeding keeps the SAME key (so the shop's
+        // LICENSE_KEY never breaks). Provide RUDRASPIRIT_LICENSE_KEY to pin one.
+        $existingRudraKey = License::where('customer_email', 'admin@rudraspirit.com')->value('license_key');
+        $rudra = License::updateOrCreate(
+            ['customer_email' => 'admin@rudraspirit.com'],
+            [
+                'license_key'      => env('RUDRASPIRIT_LICENSE_KEY') ?: ($existingRudraKey ?: License::generateKey()),
+                'product'          => config('license.default_product'),
+                'plan_id'          => Plan::where('slug', 'enterprise')->value('id'),
+                'customer_name'    => 'RudraSpirit',
+                'status'           => 'active',
+                'activation_limit' => 3,
+                'notes'            => 'Primary production license for rudraspirit.com (all modules).',
+            ],
+        );
+
+        $this->command?->warn("RudraSpirit (Enterprise) license key: {$rudra->license_key}");
     }
 }

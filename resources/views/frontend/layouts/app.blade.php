@@ -1513,5 +1513,8 @@
         echo get_setting('footer_gtm_script');
     @endphp
 
+    {{-- PIN code autofill: one delegated listener covers every address form on the frontend --}}
+    @include('frontend.partials.address.pincode_autofill')
+
 </body>
 </html>

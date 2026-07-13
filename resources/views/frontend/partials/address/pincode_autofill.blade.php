@@ -1,6 +1,8 @@
 {{-- Indian PIN code -> state/district autofill for address forms.
      Self-hosted lookup at /pincode/{pin}. Delegated on document so it also
-     covers modals injected via AJAX. Guarded to run once per page. --}}
+     covers modals injected via AJAX. Guarded to run once per page.
+     Subscription-gated: only emitted when the license entitles 'indian_pincode'. --}}
+@if (feature_allowed('indian_pincode'))
 <script>
 (function () {
     if (window.__rsPincodeInit) return;
@@ -92,3 +94,4 @@
     });
 })();
 </script>
+@endif

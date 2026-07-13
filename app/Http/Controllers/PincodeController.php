@@ -7,6 +7,17 @@ use Illuminate\Http\JsonResponse;
 
 class PincodeController extends Controller
 {
+    public function __construct()
+    {
+        // Subscription-gated module. When the license plan does not entitle
+        // 'indian_pincode', the lookup 404s and the address form silently falls
+        // back to manual entry (storefront is never broken).
+        $this->middleware(function ($request, $next) {
+            abort_unless(feature_allowed('indian_pincode'), 404);
+            return $next($request);
+        });
+    }
+
     /**
      * Look up an Indian PIN code from the self-hosted pincodes table.
      * Public, read-only, throttled. Used by the address form to auto-fill

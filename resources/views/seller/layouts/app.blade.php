@@ -179,5 +179,8 @@
         }
     </script>
 
+    {{-- PIN code autofill: covers seller profile address forms --}}
+    @include('frontend.partials.address.pincode_autofill')
+
 </body>
 </html>
