@@ -23,6 +23,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PincodeController;
 use App\Http\Controllers\Payment\AamarpayController;
 use App\Http\Controllers\Payment\AuthorizenetController;
 use App\Http\Controllers\Payment\BkashController;
@@ -80,6 +81,12 @@ Route::controller(DemoController::class)->group(function () {
 Route::get('/refresh-csrf', function () {
     return csrf_token();
 });
+
+// Indian PIN code lookup (self-hosted) — auto-fills state/district on address forms.
+Route::get('/pincode/{pin}', [PincodeController::class, 'lookup'])
+    ->where('pin', '[0-9]{1,6}')
+    ->middleware('throttle:60,1')
+    ->name('pincode.lookup');
 
 // AIZ Uploader
 Route::controller(AizUploadController::class)->group(function () {
