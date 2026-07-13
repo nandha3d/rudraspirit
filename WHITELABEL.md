@@ -19,7 +19,10 @@ Sets the visible brand (`site_name` / `site_motto`) used across storefront, admi
 page titles and emails. The product default (when no `site_name` is set and no
 `APP_NAME` env) is **Zolo Cart** — see `config/app.php`.
 
-- Logo / favicon: **Admin → Business Settings → Website Setup**.
+- Logo: `php artisan brand:logo "path/to/logo.png"` — registers the image and
+  points header/footer/admin logo settings at it in one step. Or upload via
+  **Admin → Business Settings → Website Setup**.
+- Favicon: **Admin → Business Settings → Website Setup**.
 - `.env`: `APP_NAME="Client Store Name"` (page-title fallback).
 
 ## 2. Domain
