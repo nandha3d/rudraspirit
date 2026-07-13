@@ -7,7 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * White-label deploy helper. The platform product is "Zolo Kart"; each client
+ * White-label deploy helper. The platform product is "Zolo Cart"; each client
  * deployment rebrands to its own store name with a single command:
  *
  *   php artisan brand:set "Client Store Name"

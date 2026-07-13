@@ -1,6 +1,6 @@
-# Zolo Kart — White-Label Deployment Guide
+# Zolo Cart — White-Label Deployment Guide
 
-**Zolo Kart** is the product (this codebase + custom theme + finance/inventory/pincode
+**Zolo Cart** is the product (this codebase + custom theme + finance/inventory/pincode
 modules + licensing). Each client gets the same engine, rebranded and deployed to
 their own domain, licensed per-deployment.
 
@@ -17,7 +17,7 @@ php artisan brand:set "Client Store Name" --motto="Their tagline"
 
 Sets the visible brand (`site_name` / `site_motto`) used across storefront, admin,
 page titles and emails. The product default (when no `site_name` is set and no
-`APP_NAME` env) is **Zolo Kart** — see `config/app.php`.
+`APP_NAME` env) is **Zolo Cart** — see `config/app.php`.
 
 - Logo / favicon: **Admin → Business Settings → Website Setup**.
 - `.env`: `APP_NAME="Client Store Name"` (page-title fallback).
@@ -61,6 +61,6 @@ addon identifiers. Enterprise entitles all of them.
 | Client-specific (per deploy) | Product-wide (ships in repo) |
 |---|---|
 | `site_name` / logo / colors | Theme + modules code |
-| `APP_URL` / domain | `config/app.php` default name = Zolo Kart |
+| `APP_URL` / domain | `config/app.php` default name = Zolo Cart |
 | `LICENSE_KEY` / plan | License client + gating logic |
 | Currency + pincode data | `brand:set`, `pincode:import` tooling |

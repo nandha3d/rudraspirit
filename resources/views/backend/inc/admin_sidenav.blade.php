@@ -6,8 +6,8 @@
                 <img class="mw-100" src="{{ uploaded_asset(get_setting('system_logo_black')) }}" class="brand-icon"
                     alt="{{ get_setting('site_name') }}">
                 @else
-                <img class="mw-100" src="{{ static_asset('assets/img/logo.png') }}" class="brand-icon"
-                    alt="{{ get_setting('site_name') }}">
+                {{-- No logo uploaded: fall back to the brand name as text (white-label default) --}}
+                <span class="brand-text text-white fw-700 fs-18">{{ get_setting('site_name') ?: config('app.name') }}</span>
                 @endif
             </a>
         </div>
