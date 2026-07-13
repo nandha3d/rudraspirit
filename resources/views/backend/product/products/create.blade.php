@@ -33,6 +33,19 @@
                 @csrf
                 <div class="row">
                     <div class="col-xl-8">
+                        @include('backend.product.products.partials.compact_styles')
+
+                        <!-- Compact section tabs -->
+                        <ul class="nav nav-tabs product-section-tabs mb-3" role="tablist">
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#psec-general" role="tab"><i class="las la-info-circle mr-1"></i>{{ translate('General') }}</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#psec-media" role="tab"><i class="las la-photo-video mr-1"></i>{{ translate('Media') }}</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#psec-content" role="tab"><i class="las la-align-left mr-1"></i>{{ translate('Description & SEO') }}</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#psec-pricing" role="tab"><i class="las la-tags mr-1"></i>{{ translate('Price & Variants') }}</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#psec-additional" role="tab"><i class="las la-plus-circle mr-1"></i>{{ translate('Additional') }}</a></li>
+                        </ul>
+
+                        <div class="tab-content product-section-content">
+                        <div class="tab-pane fade show active" id="psec-general" role="tabpanel">
                         <!-- Product Basic Information Start -->
                         <div class="border border-gray-300 rounded-2" id="basic-information">
                             <div class="bg-white border-radius-10px px-3 px-lg-4 py-3 py-lg-4">
@@ -50,7 +63,7 @@
 
                                 <div class="row gutters-5" >
                                     <!-- Product Name -->
-                                    <div class="col-12">
+                                    <div class="col-md-4">
                                         <div class="form-group mb-2 mb-lg-3">
                                             <label for="product-name"
                                                 class="col-from-label fs-14 fw-500">{{ translate('Product Name') }} <span
@@ -92,7 +105,7 @@
                                     @endphp
 
                                     <!-- Single Select -->
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group mb-2 mb-lg-3" id="category">
                                             <label for="category_id" class="col-from-label fs-14 fw-500">
                                                 {{ translate('Select Main Category') }} <span class="text-danger">*</span>
@@ -100,7 +113,7 @@
                                             <select class="form-control aiz-selectpicker" name="category_id" id="category_id" data-live-search="true">
                                                 <option value="" disabled {{ old('category_id', null) ? '' : 'selected' }}>
                                                     {{ translate('Select Main Category') }} </option>
-                                                @php 
+                                                @php
                                                     $selectedCategoryId = old('category_id', null);
                                                     renderSingleCategoryOptions($categories, $selectedCategoryId);
                                                 @endphp
@@ -108,7 +121,7 @@
                                         </div>
                                     </div>
                                     <!-- Brand -->
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group mb-2 mb-lg-3" id="brand">
                                             <label for="brand_id"
                                                 class="col-from-label fs-14 fw-500">{{ translate('Brand') }}</label>
@@ -143,7 +156,7 @@
                                 </div>
                                 <div class="row gutters-5">
                                     <!-- Multi Select -->
-                                    <div class="col-12">
+                                    <div class="col-md-6">
                                         <div class="form-group mb-2 mb-lg-3">
                                             <label for="related-categories" class="col-from-label fs-14 fw-500">
                                                 {{ translate('Related Categories') }} <span class="text-danger">*</span>
@@ -157,35 +170,35 @@
                                         </div>
                                     </div>
                                     <!-- Unit -->
-                                    <div class="col-md-6 col-xl-4">
-                                        <div class="form-group mb-2 mb-lg-3" id="brand">
+                                    <div class="col-md-2">
+                                        <div class="form-group mb-2 mb-lg-3">
                                             <label for="unit" class="col-from-label fs-14 fw-500">{{ translate('Unit') }}
                                                 <span class="text-danger">*</span></label>
-                                                <input type="text" letter-only class="form-control @error('unit') is-invalid @enderror" name="unit" value="{{ old('unit') }}" placeholder="{{ translate('Unit (e.g. KG, Pc etc)') }}">
+                                                <input type="text" letter-only class="form-control @error('unit') is-invalid @enderror" name="unit" value="{{ old('unit') }}" placeholder="{{ translate('KG, Pc') }}">
                                         </div>
                                     </div>
 
                                     <!-- Weight -->
-                                    <div class="col-md-6 col-xl-4">
+                                    <div class="col-md-2">
                                         <div class="form-group mb-2 mb-lg-3">
                                             <label for="weight"
-                                                class="col-from-label fs-14 fw-500">{{ translate('Weight (In Kg)') }}</label>
+                                                class="col-from-label fs-14 fw-500">{{ translate('Weight (Kg)') }}</label>
                                             <input type="number" class="form-control" name="weight" value="0.00"  step="0.001" placeholder="0.00"  placeholder="{{ translate('0.00') }}">
                                         </div>
                                     </div>
 
                                     <!--  Minimum Purchase Qty -->
-                                    <div class="col-md-6 col-xl-4">
+                                    <div class="col-md-2">
                                         <div class="form-group mb-2 mb-lg-3">
                                             <label for="min-qty"
-                                                class="col-from-label fs-14 fw-500">{{ translate('Minimum Purchase Qty*') }} <span
+                                                class="col-from-label fs-14 fw-500">{{ translate('Min Qty') }} <span
                                                     class="text-danger">*</span></label>
                                             <input type="number" lang="en" class="form-control @error('min_qty') is-invalid @enderror" name="min_qty" value="{{ old('min_qty') ?? 1 }}" placeholder="1" min="1" step="1" integer-only required>
                                         </div>
                                     </div>
 
                                     <!-- Barcode -->
-                                    <div class="col-12">
+                                    <div class="col-md-6">
                                         <div class="form-group mb-2 mb-lg-3">
                                             <label for="barcode"
                                                 class="col-from-label fs-14 fw-500">{{ translate('Barcode') }}</label>
@@ -201,7 +214,7 @@
                                     </div>
 
                                     <!-- Tags -->
-                                    <div class="col-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="tags" class="col-from-label fs-14 fw-500">{{ translate('Tags') }}
                                                 <span class="text-danger">*</span></label>
@@ -215,8 +228,9 @@
                             </div>
                         </div>
                         <!-- Product Configuration End -->
+                        </div><!-- /psec-general -->
 
-
+                        <div class="tab-pane fade" id="psec-media" role="tabpanel">
                         <!-- Files & Media Start -->
                         <div class="border border-gray-300 rounded-2 px-3 px-lg-4 py-3 py-lg-4 mt-4">
                             <div class="mb-3 pb-1 border-bottom-dashed">
@@ -378,8 +392,9 @@
                             </div>
                         </div>
                         <!-- Files & Media End -->
+                        </div><!-- /psec-media -->
 
-
+                        <div class="tab-pane fade" id="psec-content" role="tabpanel">
                         <!-- Product Description Start -->
                         <div class="border border-gray-300 rounded-2 mt-4" id="product-description">
                             <div class="bg-white border-radius-10px px-3 px-lg-4 py-3 py-lg-4">
@@ -402,6 +417,7 @@
 
 
                         <!-- SEO Meta Tags Start -->
+                        @if (feature_allowed('seo_tools'))
                         <div class="border border-gray-300 rounded-2 mt-4" id="product-seo-meta-tag">
                             <div class="bg-white border-radius-10px px-3 px-lg-4 py-3 py-lg-4">
                                 <div class="mb-3 pb-1 d-flex align-items-center justify-content-between border-bottom-dashed">
@@ -461,9 +477,19 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="border border-gray-300 rounded-2 mt-4 px-3 px-lg-4 py-3 py-lg-4">
+                            <h5 class="fs-16 fw-700 mb-2">{{ translate('SEO Meta Tags') }}</h5>
+                            <div class="alert alert-light border fs-13 mb-0">
+                                <i class="las la-lock text-warning"></i>
+                                {{ translate('Editable SEO is a premium feature. Meta tags are generated automatically from the product name and description on your plan.') }}
+                            </div>
+                        </div>
+                        @endif
                         <!-- SEO Meta Tags End -->
+                        </div><!-- /psec-content -->
 
-
+                        <div class="tab-pane fade" id="psec-pricing" role="tabpanel">
                         <!-- Product Price & Stock Start -->
                         <div class="border border-gray-300 rounded-2 px-3 px-lg-4 py-3 py-lg-4 mt-4">
                             <div class="mb-3 pb-1 d-flex align-items-center justify-content-between border-bottom-dashed">
@@ -475,6 +501,7 @@
                                 </button>--}}
                             </div>
                             <!-- Product Variation Configuration -->
+                            @if (feature_allowed('product_variations'))
                             <h6 class="fs-14 fw-700">{{translate('Product Variation Configuration')}}</h6>
                             <!-- Colors -->
                             <div class="form-group row gutters-5">
@@ -516,15 +543,29 @@
                             <div class="customer_choice_options mb-4" id="customer_choice_options">
 
                             </div>
-                                
+                            @else
+                            <div class="alert alert-light border fs-13 mb-3">
+                                <i class="las la-lock text-warning"></i>
+                                {{ translate('Product variations are a premium feature. Your plan supports simple products only.') }}
+                            </div>
+                            @endif
 
                             <div class="row gutters-5 mt-3">
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <div class="form-group mb-2 mb-lg-3">
                                         <label for="unit-price"
                                             class="col-from-label fs-14 fw-500">{{ translate('Unit Price') }}
                                             <span>*</span></label>
                                         <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="{{ translate('Unit price') }}" name="unit_price" class="form-control @error('unit_price') is-invalid @enderror">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2 mb-lg-3">
+                                        <label for="purchase-price" class="col-from-label fs-14 fw-500">
+                                            {{ translate('Cost / Purchase Price') }}
+                                            <span class="fs-12 fw-400 text-muted">({{ translate('for profit calc') }})</span>
+                                        </label>
+                                        <input type="number" lang="en" min="0" value="{{ old('purchase_price', 0) }}" step="0.01" placeholder="{{ translate('0.00') }}" name="purchase_price" class="form-control">
                                     </div>
                                 </div>
 
@@ -605,14 +646,47 @@
 
 
                         <!-- Product Variants Start -->
+                        @if (feature_allowed('product_variations'))
                         <div class="border border-gray-300 rounded-2 px-3 px-lg-4 py-3 py-lg-4 mt-4 mb-4 mb-xl-0" id="variant-div-show-hide" style="display: none;">
-                            <h5 class="fs-16 fw-700">{{ translate('Product Variants') }}</h5>
-                            <!-- sku combination -->
-                            <div class="sku_combination" id="sku_combination">
-
+                            <div class="d-flex align-items-center justify-content-between flex-wrap mb-2">
+                                <h5 class="fs-16 fw-700 mb-0">{{ translate('Product Variants') }}</h5>
+                                <div>
+                                    <button type="button" class="btn btn-sm btn-soft-secondary" onclick="rsGenerateAllCombinations()">
+                                        <i class="las la-magic"></i> {{ translate('Generate All Combinations') }}
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-primary" onclick="rsAddVariantRow()">
+                                        <i class="las la-plus"></i> {{ translate('Add Variation') }}
+                                    </button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="variant_rows_mode" value="1">
+                            <p class="fs-12 text-muted mb-2">{{ translate('Each row is one variation. Pick its color/attribute values from the dropdowns, set price, SKU, quantity and photo. Use Duplicate to copy a row and change only what differs.') }}</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered mb-2" id="variant-rows-table">
+                                    <thead></thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="text-muted fs-12 pb-2" id="variant-rows-empty" style="display:none;">
+                                {{ translate('No variations yet. Click Add Variation or Generate All Combinations.') }}
                             </div>
                         </div>
+                        @endif
                         <!-- Product Variants End -->
+                        </div><!-- /psec-pricing -->
+
+                        <div class="tab-pane fade" id="psec-additional" role="tabpanel">
+                            <div class="border border-gray-300 rounded-2 px-3 px-lg-4 py-3 py-lg-4">
+                                <div class="mb-3 pb-1 d-flex align-items-center justify-content-between border-bottom-dashed">
+                                    <h5 class="fs-16 fw-700 mb-0">{{ translate('Additional Features') }}</h5>
+                                </div>
+                                {{-- Extension point: drop any extra product fields / custom content here.
+                                     Give inputs real column names or unset them in the controller before
+                                     $product->update() to avoid "Unknown column" on save. --}}
+                                <p class="fs-13 text-muted mb-0">{{ translate('Use this tab for any extra product content. Add fields or blocks here and they stay grouped and compact instead of stretching the page.') }}</p>
+                            </div>
+                        </div><!-- /psec-additional -->
+                        </div><!-- /product-section-content -->
                     </div>
 
                     <!--Right Side -->
@@ -1202,7 +1276,7 @@
         }
     });
 
-    function add_more_customer_choice_option(i, name){
+    function add_more_customer_choice_option(i, name, preset){
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1227,80 +1301,269 @@
                         </select>\
                     </div>\
                 </div>');
+                if (preset && preset.length) {
+                    $('#customer_choice_options select[name="choice_options_'+ i +'[]"]').val(preset);
+                }
                 AIZ.plugins.bootstrapSelect('refresh');
+                rsRenderVariantTable();
            }
        });
 
 
+    }
+
+    // ===================== Row-based variation editor =====================
+    // Each variation is an explicit row (like WooCommerce): color/attribute
+    // dropdowns + price/sku/qty/photo, with per-row Duplicate and Delete.
+    var rsAllColorNames = @json(\App\Models\Color::orderBy('name')->pluck('name', 'code')->toArray());
+    var rsVariantRows = [];
+    var rsRowSeq = 0;
+
+    function rsStrip(s){ return String(s == null ? '' : s).replace(/ /g, ''); }
+    function rsEsc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+
+    function rsGetConfig(){
+        var cfg = { colorsActive: false, colors: [], attrs: [] };
+        if ($('input[name="colors_active"]').is(':checked')) {
+            $('#colors option:selected').each(function(){
+                cfg.colors.push({ code: $(this).val(), name: rsAllColorNames[$(this).val()] || $(this).val() });
+            });
+            cfg.colorsActive = cfg.colors.length > 0;
+        }
+        $('#customer_choice_options > .form-group').each(function(){
+            var id = $(this).find('input[name="choice_no[]"]').val();
+            var name = $(this).find('input[name="choice[]"]').val();
+            var values = [];
+            $(this).find('select.attribute_choice option:selected').each(function(){ values.push($(this).val()); });
+            if (id) cfg.attrs.push({ id: id, name: name, values: values });
+        });
+        return cfg;
+    }
+
+    function rsEnsureUids(){
+        rsVariantRows.forEach(function(r){ if (r.uid === undefined) r.uid = rsRowSeq++; });
+    }
+
+    function rsSyncRowsFromDom(){
+        $('#variant-rows-table tbody tr').each(function(){
+            var uid = $(this).data('uid');
+            var row = null;
+            for (var i = 0; i < rsVariantRows.length; i++) { if (rsVariantRows[i].uid == uid) { row = rsVariantRows[i]; break; } }
+            if (!row) return;
+            var colorSel = $(this).find('select[data-role="color"]');
+            if (colorSel.length) row.color = colorSel.val() || '';
+            row.opts = row.opts || {};
+            $(this).find('select[data-role="opt"]').each(function(){
+                row.opts[$(this).data('attr')] = $(this).val() || '';
+            });
+            row.price = $(this).find('input[data-role="price"]').val();
+            row.sku = $(this).find('input[data-role="sku"]').val();
+            row.qty = $(this).find('input[data-role="qty"]').val();
+            row.img = $(this).find('input[data-role="img"]').val();
+        });
+    }
+
+    function rsRowKey(row, cfg){
+        var parts = [];
+        if (cfg.colorsActive) parts.push(row.color || '?');
+        cfg.attrs.forEach(function(a){ parts.push(rsStrip(row.opts && row.opts[a.id] || '?')); });
+        return parts.join('|');
+    }
+
+    function rsRenderVariantTable(){
+        rsEnsureUids();
+        var cfg = rsGetConfig();
+        var hasOptions = cfg.colorsActive || cfg.attrs.length > 0;
+
+        if (hasOptions) {
+            $('#variant-div-show-hide').show();
+            $('#show-hide-div').hide();
+            $('input[name="current_stock"]').removeAttr('integer-only');
+        } else {
+            $('#variant-div-show-hide').hide();
+            $('#show-hide-div').show();
+            $('input[name="current_stock"]').attr('integer-only', 'true');
+            rsVariantRows = [];
+            $('#variant-rows-table thead').empty();
+            $('#variant-rows-table tbody').empty();
+            return;
+        }
+
+        var head = '<tr>';
+        if (cfg.colorsActive) head += '<th style="min-width:130px">{{ translate('Color') }}</th>';
+        cfg.attrs.forEach(function(a){ head += '<th style="min-width:130px">' + rsEsc(a.name) + '</th>'; });
+        head += '<th style="min-width:110px">{{ translate('Price') }}</th>' +
+                '<th style="min-width:120px">{{ translate('SKU') }}</th>' +
+                '<th style="min-width:90px">{{ translate('Quantity') }}</th>' +
+                '<th style="min-width:170px">{{ translate('Photo') }}</th>' +
+                '<th class="text-right" style="min-width:100px">{{ translate('Actions') }}</th></tr>';
+        $('#variant-rows-table thead').html(head);
+
+        var counts = {};
+        rsVariantRows.forEach(function(r){ var k = rsRowKey(r, cfg); counts[k] = (counts[k] || 0) + 1; });
+
+        var body = '';
+        rsVariantRows.forEach(function(row){
+            var dup = counts[rsRowKey(row, cfg)] > 1;
+            body += '<tr data-uid="' + row.uid + '"' + (dup ? ' class="table-warning" title="{{ translate('Duplicate combination') }}"' : '') + '>';
+            if (cfg.colorsActive) {
+                body += '<td><select class="form-control form-control-sm" data-role="color" name="variant_color[' + row.uid + ']">';
+                body += '<option value="">{{ translate('Select') }}...</option>';
+                var colorFound = false;
+                cfg.colors.forEach(function(c){
+                    var sel = row.color === c.code ? ' selected' : '';
+                    if (sel) colorFound = true;
+                    body += '<option value="' + rsEsc(c.code) + '"' + sel + '>' + rsEsc(c.name) + '</option>';
+                });
+                if (row.color && !colorFound) {
+                    body += '<option value="' + rsEsc(row.color) + '" selected>' + rsEsc(rsAllColorNames[row.color] || row.color) + '</option>';
+                }
+                body += '</select></td>';
+            }
+            cfg.attrs.forEach(function(a){
+                var cur = row.opts && row.opts[a.id] !== undefined ? row.opts[a.id] : '';
+                body += '<td><select class="form-control form-control-sm" data-role="opt" data-attr="' + a.id + '" name="variant_opt[' + row.uid + '][' + a.id + ']">';
+                body += '<option value="">{{ translate('Select') }}...</option>';
+                var found = false;
+                a.values.forEach(function(v){
+                    var sel = (cur !== '' && rsStrip(v) === rsStrip(cur)) ? ' selected' : '';
+                    if (sel) found = true;
+                    body += '<option value="' + rsEsc(v) + '"' + sel + '>' + rsEsc(v) + '</option>';
+                });
+                if (cur !== '' && !found) body += '<option value="' + rsEsc(cur) + '" selected>' + rsEsc(cur) + '</option>';
+                body += '</select></td>';
+            });
+            body += '<td><input type="number" lang="en" min="0" step="0.01" class="form-control form-control-sm" data-role="price" name="variant_price[' + row.uid + ']" value="' + rsEsc(row.price) + '" required></td>';
+            body += '<td><input type="text" class="form-control form-control-sm" data-role="sku" name="variant_sku[' + row.uid + ']" value="' + rsEsc(row.sku) + '"></td>';
+            body += '<td><input type="number" lang="en" min="0" step="1" class="form-control form-control-sm" data-role="qty" name="variant_qty[' + row.uid + ']" value="' + rsEsc(row.qty === undefined ? 0 : row.qty) + '" required></td>';
+            body += '<td>' +
+                '<div class="input-group input-group-sm" data-toggle="aizuploader" data-type="image">' +
+                    '<div class="input-group-prepend"><div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse') }}</div></div>' +
+                    '<div class="form-control file-amount text-truncate">{{ translate('Choose File') }}</div>' +
+                    '<input type="hidden" data-role="img" name="variant_img[' + row.uid + ']" class="selected-files" value="' + rsEsc(row.img) + '">' +
+                '</div>' +
+                '<div class="file-preview box sm"></div>' +
+            '</td>';
+            body += '<td class="text-right text-nowrap">' +
+                '<button type="button" class="btn btn-soft-info btn-icon btn-circle btn-sm" title="{{ translate('Duplicate') }}" onclick="rsDuplicateRow(' + row.uid + ')"><i class="las la-copy"></i></button> ' +
+                '<button type="button" class="btn btn-soft-danger btn-icon btn-circle btn-sm" title="{{ translate('Delete') }}" onclick="rsDeleteRow(' + row.uid + ')"><i class="las la-trash"></i></button>' +
+            '</td></tr>';
+        });
+        $('#variant-rows-table tbody').html(body);
+        $('#variant-rows-empty').toggle(rsVariantRows.length === 0);
+        if (typeof AIZ !== 'undefined' && AIZ.uploader && AIZ.uploader.previewGenerate) {
+            AIZ.uploader.previewGenerate();
+        }
+    }
+
+    function rsAddVariantRow(){
+        rsSyncRowsFromDom();
+        rsVariantRows.push({
+            uid: rsRowSeq++,
+            color: '',
+            opts: {},
+            price: $('input[name="unit_price"]').val() || 0,
+            sku: '',
+            qty: 10,
+            img: ''
+        });
+        rsRenderVariantTable();
+    }
+
+    function rsDuplicateRow(uid){
+        rsSyncRowsFromDom();
+        var idx = -1;
+        for (var i = 0; i < rsVariantRows.length; i++) { if (rsVariantRows[i].uid == uid) { idx = i; break; } }
+        if (idx < 0) return;
+        var copy = JSON.parse(JSON.stringify(rsVariantRows[idx]));
+        copy.uid = rsRowSeq++;
+        rsVariantRows.splice(idx + 1, 0, copy);
+        rsRenderVariantTable();
+    }
+
+    function rsDeleteRow(uid){
+        rsSyncRowsFromDom();
+        rsVariantRows = rsVariantRows.filter(function(r){ return r.uid != uid; });
+        rsRenderVariantTable();
+    }
+
+    function rsGenerateAllCombinations(){
+        rsSyncRowsFromDom();
+        var cfg = rsGetConfig();
+        var axes = [];
+        if (cfg.colorsActive) axes.push(cfg.colors.map(function(c){ return { type: 'color', value: c.code }; }));
+        cfg.attrs.forEach(function(a){ axes.push(a.values.map(function(v){ return { type: 'opt', attr: a.id, value: v }; })); });
+        axes = axes.filter(function(ax){ return ax.length > 0; });
+        if (!axes.length) {
+            AIZ.plugins.notify('warning', '{{ translate('Select colors or attribute values first.') }}');
+            return;
+        }
+        var combos = [[]];
+        axes.forEach(function(axis){
+            var next = [];
+            combos.forEach(function(c){ axis.forEach(function(x){ next.push(c.concat([x])); }); });
+            combos = next;
+        });
+        var existing = {};
+        rsVariantRows.forEach(function(r){ existing[rsRowKey(r, cfg)] = true; });
+        combos.forEach(function(combo){
+            var row = { uid: rsRowSeq++, color: '', opts: {}, price: $('input[name="unit_price"]').val() || 0, sku: '', qty: 10, img: '' };
+            combo.forEach(function(x){ if (x.type === 'color') row.color = x.value; else row.opts[x.attr] = x.value; });
+            var key = rsRowKey(row, cfg);
+            if (!existing[key]) { existing[key] = true; rsVariantRows.push(row); }
+        });
+        rsRenderVariantTable();
     }
 
     $('input[name="colors_active"]').on('change', function() {
-        if(!$('input[name="colors_active"]').is(':checked')) {
-            $('#colors').prop('disabled', true);
-            AIZ.plugins.bootstrapSelect('refresh');
-        }
-        else {
-            $('#colors').prop('disabled', false);
-            AIZ.plugins.bootstrapSelect('refresh');
-        }
-        update_sku();
+        $('#colors').prop('disabled', !$(this).is(':checked'));
+        AIZ.plugins.bootstrapSelect('refresh');
+        rsSyncRowsFromDom();
+        rsRenderVariantTable();
     });
 
-    $(document).on("change", ".attribute_choice",function() {
-        update_sku();
+    $(document).on("change", ".attribute_choice", function() {
+        rsSyncRowsFromDom();
+        rsRenderVariantTable();
     });
 
     $('#colors').on('change', function() {
-        update_sku();
+        rsSyncRowsFromDom();
+        rsRenderVariantTable();
     });
 
-    $('input[name="unit_price"]').on('keyup', function() {
-        update_sku();
+    // shim: legacy inline handlers (e.g. name onchange) still call update_sku
+    function update_sku(){ rsRenderVariantTable(); }
+
+    $('#aizSubmitForm').on('submit', function(e){
+        rsSyncRowsFromDom();
+        var cfg = rsGetConfig();
+        if (cfg.colorsActive || cfg.attrs.length) {
+            var bad = rsVariantRows.some(function(r){
+                if (cfg.colorsActive && !r.color) return true;
+                return cfg.attrs.some(function(a){ return !(r.opts && r.opts[a.id]); });
+            });
+            if (bad) {
+                e.preventDefault();
+                $(".action-btn").attr("attempted", 'false');
+                AIZ.plugins.notify('warning', '{{ translate('Please choose options for every variation row or remove incomplete rows.') }}');
+                return false;
+            }
+        }
     });
-
-    $('input[name="name"]').on('keyup', function() {
-        update_sku();
-    });
-
-    function delete_row(em){
-        $(em).closest('.form-group row').remove();
-        update_sku();
-    }
-
-    function delete_variant(em){
-        $(em).closest('.variant').remove();
-    }
-
-    function update_sku(){
-        $.ajax({
-           type:"POST",
-           url:'{{ route('products.sku_combination') }}',
-           data:$('#aizSubmitForm').serialize(),
-           success: function(data) {
-                $('#sku_combination').html(data);
-                AIZ.uploader.previewGenerate();
-                AIZ.plugins.sectionFooTable('#sku_combination');
-                if (data.trim().length > 1) {
-                   $('#show-hide-div').hide();
-                   $('#variant-div-show-hide').show();
-                   $('input[name="current_stock"]').removeAttr('integer-only');
-                }
-                else {
-                    $('#show-hide-div').show();
-                    $('#variant-div-show-hide').hide();
-                    $('input[name="current_stock"]').attr('integer-only', 'true');
-                }
-           }
-       });
-    }
 
     $('#choice_attributes').on('change', function() {
+        rsSyncRowsFromDom();
+        var saved = {};
+        rsGetConfig().attrs.forEach(function(a){ saved[a.id] = a.values; });
         $('#customer_choice_options').html(null);
-        $.each($("#choice_attributes option:selected"), function(){
-            add_more_customer_choice_option($(this).val(), $(this).text());
+        var selected = $("#choice_attributes option:selected");
+        if (selected.length === 0) {
+            rsRenderVariantTable();
+        }
+        $.each(selected, function(){
+            add_more_customer_choice_option($(this).val(), $(this).text(), saved[$(this).val()]);
         });
-
-        update_sku();
     });
 
     function fq_bought_product_selection_type(){

@@ -1122,6 +1122,26 @@
                             </a>
                         </li>
                         @endcan
+                        @can('in_house_product_sale_report')
+                        @if (feature_allowed('profit_reports'))
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('profit_report.index') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['profit_report.index'])}}">
+                                <span class="aiz-side-nav-text">{{ translate('Profit Report') }}</span>
+                            </a>
+                        </li>
+                        @endif
+                        @endcan
+                        @can('in_house_product_sale_report')
+                        @if (feature_allowed('gst_reports'))
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('gst_report.index') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['gst_report.index'])}}">
+                                <span class="aiz-side-nav-text">{{ translate('GST Report') }}</span>
+                            </a>
+                        </li>
+                        @endif
+                        @endcan
                         @can('product_wishlist_report')
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('wish_report.index') }}"
@@ -1155,6 +1175,93 @@
                     </ul>
                 </li>
                 @endcanany
+
+                <!--Accounting (Plan B/C) — license gated-->
+                @can('in_house_product_sale_report')
+                @if (feature_allowed('accounting') || feature_allowed('partner_share'))
+                <li class="aiz-side-nav-item">
+                    <a href="#" class="aiz-side-nav-link">
+                        <div class="aiz-side-nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#575b6a" viewBox="0 0 16 16">
+                                <path d="M2 2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2zm0 1.25h12v2H2v-2zM2 6.5h3v6H2v-6zm4.25 0H14v2H6.25v-2zm0 3.25H14v2.75H6.25V9.75z"/>
+                            </svg>
+                        </div>
+                        <span class="aiz-side-nav-text">{{ translate('Accounting') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        @if (feature_allowed('accounting'))
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('accounting.profit_loss') }}" class="aiz-side-nav-link {{ areActiveRoutes(['accounting.profit_loss']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Profit & Loss') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('accounting.expenses') }}" class="aiz-side-nav-link {{ areActiveRoutes(['accounting.expenses']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Expenses') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('accounting.categories') }}" class="aiz-side-nav-link {{ areActiveRoutes(['accounting.categories']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Expense Categories') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('accounting.accounts') }}" class="aiz-side-nav-link {{ areActiveRoutes(['accounting.accounts']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Financial Accounts') }}</span>
+                            </a>
+                        </li>
+                        @endif
+                        @if (feature_allowed('partner_share'))
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('partners.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['partners.index','partners.distributions','partners.distribution.show']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Partners & Profit Share') }}</span>
+                            </a>
+                        </li>
+                        @endif
+                    </ul>
+                </li>
+                @endif
+                @endcan
+
+                <!--Purchase & Inventory (Plan E) — license gated-->
+                @can('in_house_product_sale_report')
+                @if (feature_allowed('purchase_inventory'))
+                <li class="aiz-side-nav-item">
+                    <a href="#" class="aiz-side-nav-link">
+                        <div class="aiz-side-nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#575b6a" viewBox="0 0 16 16">
+                                <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h11A1.5 1.5 0 0 1 15 2.5v2A1.5 1.5 0 0 1 13.5 6h-11A1.5 1.5 0 0 1 1 4.5v-2zM2.5 7A1.5 1.5 0 0 0 1 8.5v5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 13.5 7h-11zM5 9.5h6v1.5H5V9.5z"/>
+                            </svg>
+                        </div>
+                        <span class="aiz-side-nav-text">{{ translate('Purchase & Inventory') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('purchase_orders.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['purchase_orders.index','purchase_orders.create','purchase_orders.show']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Purchase Orders') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('suppliers.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['suppliers.index']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Suppliers') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('inventory.movements') }}" class="aiz-side-nav-link {{ areActiveRoutes(['inventory.movements']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Stock Movements') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('inventory.low_stock') }}" class="aiz-side-nav-link {{ areActiveRoutes(['inventory.low_stock']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Low Stock') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @endcan
 
                 <!--Blog System-->
                 @canany(['view_blogs','view_blog_categories'])

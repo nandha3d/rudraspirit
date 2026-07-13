@@ -85,13 +85,20 @@ Route::get('/refresh-csrf', function () {
 Route::controller(AizUploadController::class)->group(function () {
     Route::post('/aiz-uploader', 'show_uploader');
     Route::post('/aiz-uploader/upload', 'upload');
-    Route::get('/aiz-uploader/get-uploaded-files', 'get_uploaded_files');
+    Route::get('/aiz-uploader/get-uploaded-files', 'get_uploaded_files')->middleware('auth');
     Route::post('/aiz-uploader/get_file_by_ids', 'get_preview_files');
     Route::get('/aiz-uploader/download/{id}', 'attachment_download')->name('download_attachment');
 });
 
 Route::group(['middleware' => ['prevent-back-history','handle-demo-login']], function () {
     Auth::routes(['verify' => true]);
+});
+
+// Password reset: GET form (PRG target) + safety redirect for stray GETs on the
+// POST-only /password/email route (refresh / back / bookmark) -> avoids 405.
+Route::middleware('guest')->controller(\App\Http\Controllers\Auth\ForgotPasswordController::class)->group(function () {
+    Route::get('/password/reset-form', 'showResetForm')->name('password.reset_form');
+    Route::get('/password/email', fn () => redirect()->route('password.request'));
 });
 
 // Login
@@ -101,13 +108,23 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/social-login/{provider}/callback', 'handleProviderCallback')->name('social.callback');
     //Apple Callback
     Route::post('/apple-callback', 'handleAppleCallback');
-    Route::get('/account-deletion', 'account_deletion')->name('account_delete');
+    Route::get('/account-deletion', 'account_deletion')->name('account_delete')->middleware('auth');
     Route::get('/handle-demo-login', 'handle_demo_login')->name('handleDemoLogin');
 });
 
 Route::controller(VerificationController::class)->group(function () {
     Route::get('/email/resend', 'resend')->name('verification.resend');
     Route::get('/verification-confirmation/{code}', 'verification_confirmation')->name('email.verification.confirmation');
+});
+
+// Partner profit-share portal (Plan C) — separate 'partner' auth guard
+Route::prefix('partner')->group(function () {
+    Route::get('login', [\App\Http\Controllers\Partner\PartnerAuthController::class, 'showLogin'])->name('partner.login');
+    Route::post('login', [\App\Http\Controllers\Partner\PartnerAuthController::class, 'login'])->name('partner.login.post');
+    Route::post('logout', [\App\Http\Controllers\Partner\PartnerAuthController::class, 'logout'])->name('partner.logout');
+    Route::middleware('auth:partner')->group(function () {
+        Route::get('dashboard', [\App\Http\Controllers\Partner\PartnerDashboardController::class, 'index'])->name('partner.dashboard');
+    });
 });
 
 Route::resource('shops', ShopController::class)->middleware('handle-demo-login');

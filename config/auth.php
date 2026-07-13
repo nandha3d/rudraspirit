@@ -40,6 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        // Partner profit-share portal (Plan C)
+        'partner' => [
+            'driver' => 'session',
+            'provider' => 'partners',
+        ],
     ],
 
     /*
@@ -63,6 +69,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'partners' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Partner::class,
         ],
 
         // 'users' => [

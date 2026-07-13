@@ -849,6 +849,59 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin', 'prevent-ba
         Route::get('/ai-add-edit-products','add_edit_products')->name('ai-add_edit_products');
     });
 
+    // ---- Finance / Partner / Inventory modules (feature-gated via LicenseClient) ----
+    Route::get('/profit_report', [\App\Http\Controllers\ReportController::class, 'profit_report'])->name('profit_report.index');
+
+    Route::controller(\App\Http\Controllers\GstReportController::class)->group(function () {
+        Route::get('/gst_report', 'index')->name('gst_report.index');
+        Route::get('/gst_report/hsn-export', 'hsn_export')->name('gst_report.hsn_export');
+    });
+
+    Route::controller(\App\Http\Controllers\AccountingController::class)->prefix('accounting')->group(function () {
+        Route::get('/expenses', 'expenses')->name('accounting.expenses');
+        Route::post('/expenses', 'store_expense')->name('accounting.expenses.store');
+        Route::delete('/expenses/{id}', 'destroy_expense')->name('accounting.expenses.destroy');
+        Route::get('/categories', 'categories')->name('accounting.categories');
+        Route::post('/categories', 'store_category')->name('accounting.categories.store');
+        Route::delete('/categories/{id}', 'destroy_category')->name('accounting.categories.destroy');
+        Route::get('/accounts', 'accounts')->name('accounting.accounts');
+        Route::post('/accounts', 'store_account')->name('accounting.accounts.store');
+        Route::delete('/accounts/{id}', 'destroy_account')->name('accounting.accounts.destroy');
+        Route::get('/profit-loss', 'profit_loss')->name('accounting.profit_loss');
+    });
+
+    Route::controller(\App\Http\Controllers\PartnerController::class)->prefix('partners')->group(function () {
+        Route::get('/', 'index')->name('partners.index');
+        Route::post('/', 'store')->name('partners.store');
+        Route::get('/distributions', 'distributions')->name('partners.distributions');
+        Route::post('/distributions/run', 'run_distribution')->name('partners.distribution.run');
+        Route::get('/distributions/{id}', 'show_distribution')->name('partners.distribution.show');
+        Route::delete('/distributions/{id}', 'destroy_distribution')->name('partners.distribution.destroy');
+        Route::post('/shares/{id}/paid', 'mark_paid')->name('partners.share.paid');
+        Route::put('/{id}', 'update')->name('partners.update');
+        Route::delete('/{id}', 'destroy')->name('partners.destroy');
+    });
+
+    Route::controller(\App\Http\Controllers\SupplierController::class)->group(function () {
+        Route::get('/suppliers', 'index')->name('suppliers.index');
+        Route::post('/suppliers', 'store')->name('suppliers.store');
+        Route::put('/suppliers/{id}', 'update')->name('suppliers.update');
+        Route::delete('/suppliers/{id}', 'destroy')->name('suppliers.destroy');
+    });
+    Route::controller(\App\Http\Controllers\PurchaseOrderController::class)->prefix('purchase-orders')->group(function () {
+        Route::get('/', 'index')->name('purchase_orders.index');
+        Route::get('/create', 'create')->name('purchase_orders.create');
+        Route::post('/', 'store')->name('purchase_orders.store');
+        Route::get('/{id}', 'show')->name('purchase_orders.show');
+        Route::post('/{id}/receive', 'receive')->name('purchase_orders.receive');
+        Route::delete('/{id}', 'destroy')->name('purchase_orders.destroy');
+    });
+    Route::controller(\App\Http\Controllers\InventoryController::class)->prefix('inventory')->group(function () {
+        Route::get('/movements', 'movements')->name('inventory.movements');
+        Route::post('/adjust', 'adjust')->name('inventory.adjust');
+        Route::get('/low-stock', 'low_stock')->name('inventory.low_stock');
+    });
+
 
     
     

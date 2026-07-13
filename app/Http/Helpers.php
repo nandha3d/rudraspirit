@@ -3890,9 +3890,59 @@ if (!function_exists('custom_upload_file')) {
         $upload->file_name = $path;
         $upload->user_id = Auth::id();
         $upload->type = $typeMap[$extension];
-        $upload->file_size = filesize(public_path($path)); 
+        $upload->file_size = filesize(public_path($path));
         $upload->save();
 
-        return $upload->id; 
+        return $upload->id;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// License feature gating for the add-on finance/inventory modules.
+// Delegates to the deployment's LicenseClient so these modules obey the same
+// plan entitlements as addons. Mirrors addon_is_activated()'s overlay:
+//   - licensing off / non module-gating enforce mode  -> allowed (fail-open)
+//   - 'addons'/'admin' enforce mode                    -> plan must entitle the key
+//   - any error                                        -> allowed (never brick admin)
+// ---------------------------------------------------------------------------
+if (!function_exists('feature_allowed')) {
+    function feature_allowed($key)
+    {
+        try {
+            $license = app(\App\Services\License\LicenseClient::class);
+            if (!$license->enabled() || !in_array($license->enforceMode(), ['addons', 'admin'], true)) {
+                return true;
+            }
+            return $license->isAddonEntitled($key);
+        } catch (\Throwable $e) {
+            return true;
+        }
+    }
+}
+
+if (!function_exists('feature_state')) {
+    // 'full' | 'fallback' | 'off'. Essential capabilities degrade to a locked
+    // basic version instead of vanishing, so the storefront never breaks.
+    function feature_state($key)
+    {
+        if (feature_allowed($key)) {
+            return 'full';
+        }
+        $essential = ['payment_gateways', 'shipping_methods', 'product_variations', 'seo_tools'];
+        return in_array($key, $essential, true) ? 'fallback' : 'off';
+    }
+}
+
+if (!function_exists('feature_is_fallback')) {
+    function feature_is_fallback($key)
+    {
+        return feature_state($key) === 'fallback';
+    }
+}
+
+if (!function_exists('feature_off')) {
+    function feature_off($key)
+    {
+        return feature_state($key) === 'off';
     }
 }

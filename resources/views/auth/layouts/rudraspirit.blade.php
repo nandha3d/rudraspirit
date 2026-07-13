@@ -72,9 +72,46 @@
         .rs-auth-main {
             flex: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px 20px 60px;
+        }
+        .rs-auth-flash {
+            width: 100%;
+            max-width: 980px;
+            margin-bottom: 16px;
+        }
+        .rs-auth-alert {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 18px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+        }
+        .rs-auth-alert i {
+            font-size: 18px;
+            flex: 0 0 auto;
+        }
+        .rs-auth-alert-danger {
+            background: #FDF0EF;
+            border-color: #F2C6C2;
+            color: #A13A31;
+        }
+        .rs-auth-alert-success {
+            background: #F0F7F0;
+            border-color: #BFDDC0;
+            color: #2F6B33;
+        }
+        .rs-auth-alert-warning,
+        .rs-auth-alert-info,
+        .rs-auth-alert-dark {
+            background: #FBF6EC;
+            border-color: #E7D3AC;
+            color: #7A5B1E;
         }
         .rs-auth-card {
             width: 100%;
@@ -302,6 +339,17 @@
         </div>
 
         <div class="rs-auth-main">
+            @php $rs_flash = session('flash_notification', collect())->toArray(); @endphp
+            @if (count($rs_flash))
+                <div class="rs-auth-flash">
+                    @foreach ($rs_flash as $rs_msg)
+                        <div class="rs-auth-alert rs-auth-alert-{{ $rs_msg['level'] ?? 'dark' }}" role="alert">
+                            <i class="las {{ ($rs_msg['level'] ?? '') == 'success' ? 'la-check-circle' : 'la-exclamation-circle' }}"></i>
+                            <span>{{ $rs_msg['message'] }}</span>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
             @yield('content')
         </div>
     </div>

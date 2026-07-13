@@ -78,6 +78,9 @@
                             <!-- Payment Options -->
                             <div class="card-body text-center px-4 pt-0">
                                 <div class="row gutters-10">
+                                    {{-- Online gateways are a licensed feature. On the basic fallback only
+                                         Cash on Delivery / Offline / Wallet remain available. --}}
+                                    @if (feature_allowed('payment_gateways'))
                                     <!-- Paypal -->
                                     @if (get_setting('paypal_payment') == 1)
                                         <div class="col-6 col-xl-3 col-md-4">
@@ -488,8 +491,9 @@
                                             </label>
                                         </div>
                                     @endif
-                                    <!-- Cash Payment -->
-                                    @if (get_setting('cash_payment') == 1)
+                                    @endif {{-- /feature_allowed('payment_gateways') --}}
+                                    <!-- Cash Payment (locked-on in the basic payment fallback) -->
+                                    @if (get_setting('cash_payment') == 1 || feature_is_fallback('payment_gateways'))
                                         @php
                                             $digital = 0;
                                             $cod_on = 1;
