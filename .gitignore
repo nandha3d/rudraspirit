@@ -3,9 +3,13 @@
 .env.php
 
 /node_modules
-/public/assets
 /public/storage
 /public/uploads
+/public/uploads.zip
+/public/logs/
+/public/shivarudraksha/
+/public/images/products/
+/public/images/*.jpg
 /storage/*.key
 /storage/debugbar
 /vendor
@@ -19,15 +23,6 @@ npm-debug.log
 yarn-error.log
 .DS_Store
 .idea/
-/public/*
-!/public/assets/css/rudraspirit.css
-!/public/assets/css/shivarudraksha.css
-!/public/assets/js/rudraspirit.js
-!/public/data/
-!/public/data/**
-!/public/index.php
-!/public/.htaccess
-!/public/robots.txt
 /.claude/
 /.phpunit.result.cache
 /PROJECT_AUDIT.docx
@@ -37,14 +32,12 @@ yarn-error.log
 updates/
 # composer.lock
 # *.lock
-resources/lang/en.json
 updates.zip
 ecommerce.zip
 install.zip
 /nbproject/private/
 /nbproject
 /public/app-translations
-public/uploads.zip
 
 public/all
 *.pdf
