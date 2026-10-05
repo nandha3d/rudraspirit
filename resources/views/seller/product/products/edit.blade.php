@@ -280,6 +280,11 @@
                     <h5 class="mb-0 h6">{{translate('Product Variation')}}</h5>
                 </div>
                 <div class="card-body">
+                    @php
+                        $colors_decoded = json_decode($product->colors ?? '[]', true) ?? [];
+                        $choice_options_decoded = json_decode($product->choice_options ?? '[]') ?? [];
+                        $attributes_decoded = json_decode($product->attributes ?? '[]', true) ?? [];
+                    @endphp
                     <div class="form-group row">
                         <div class="col-lg-3">
                             <input type="text" class="form-control" value="{{translate('Colors')}}" disabled>
@@ -290,14 +295,14 @@
                                 @foreach (\App\Models\Color::orderBy('name', 'asc')->get() as $key => $color)
                                 <option value="{{ $color->code }}"
                                     data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:{{ $color->code }}'></span><span>{{ $color->name }}</span></span>"
-                                    <?php if(in_array($color->code, json_decode($product->colors))) echo 'selected'?>></option>
+                                    @if(in_array($color->code, $colors_decoded)) selected @endif></option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-lg-1">
                             <label class="aiz-switch aiz-switch-success mb-0">
                                 <input value="1" type="checkbox" name="colors_active"
-                                    <?php if(count(json_decode($product->colors)) > 0) echo "checked";?>>
+                                    @if(count($colors_decoded) > 0) checked @endif>
                                 <span></span>
                             </label>
                         </div>
@@ -312,9 +317,7 @@
                                 id="choice_attributes" class="form-control aiz-selectpicker" multiple
                                 data-placeholder="{{ translate('Choose Attributes') }}">
                                 @foreach (\App\Models\Attribute::all() as $key => $attribute)
-                                <option value="{{ $attribute->id }}" @if($product->attributes != null &&
-                                    in_array($attribute->id, json_decode($product->attributes, true))) selected
-                                    @endif>{{ $attribute->getTranslation('name') }}</option>
+                                <option value="{{ $attribute->id }}" @if(in_array($attribute->id, $attributes_decoded)) selected @endif>{{ $attribute->getTranslation('name') }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -326,18 +329,18 @@
                     </div>
 
                     <div class="customer_choice_options" id="customer_choice_options">
-                        @foreach (json_decode($product->choice_options) as $key => $choice_option)
+                        @foreach ($choice_options_decoded as $key => $choice_option)
                         <div class="form-group row">
                             <div class="col-lg-3">
                                 <input type="hidden" name="choice_no[]" value="{{ $choice_option->attribute_id }}">
                                 <input type="text" class="form-control" name="choice[]"
-                                    value="{{ \App\Models\Attribute::find($choice_option->attribute_id)->getTranslation('name') }}"
+                                    value="{{ optional(\App\Models\Attribute::find($choice_option->attribute_id))->getTranslation('name') }}"
                                     placeholder="{{ translate('Choice Title') }}" disabled>
                             </div>
                             <div class="col-lg-8">
                                 <select class="form-control aiz-selectpicker attribute_choice" data-live-search="true" name="choice_options_{{ $choice_option->attribute_id }}[]" multiple>
                                     @foreach (\App\Models\AttributeValue::where('attribute_id', $choice_option->attribute_id)->get() as $row)
-                                        <option value="{{ $row->value }}" @if( in_array($row->value, $choice_option->values)) selected @endif>
+                                        <option value="{{ $row->value }}" @if(in_array($row->value, $choice_option->values ?? [])) selected @endif>
                                             {{ $row->value }}
                                         </option>
                                     @endforeach

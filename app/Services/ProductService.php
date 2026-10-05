@@ -49,9 +49,16 @@ class ProductService
             $user_id = User::where('user_type', 'admin')->first()->id;
         }
         $tags = array();
-        if ($collection['tags'][0] != null) {
-            foreach (json_decode($collection['tags'][0]) as $key => $tag) {
-                array_push($tags, $tag->value);
+        if (isset($collection['tags']) && is_array($collection['tags']) && !empty($collection['tags'][0])) {
+            $decoded_tags = json_decode($collection['tags'][0]);
+            if (is_array($decoded_tags)) {
+                foreach ($decoded_tags as $key => $tag) {
+                    if (isset($tag->value)) {
+                        array_push($tags, $tag->value);
+                    }
+                }
+            } else {
+                $tags = explode(',', $collection['tags'][0]);
             }
         }
         $collection['tags'] = implode(',', $tags);
@@ -234,9 +241,16 @@ class ProductService
 
 
         $tags = array();
-        if ($collection['tags'][0] != null) {
-            foreach (json_decode($collection['tags'][0]) as $key => $tag) {
-                array_push($tags, $tag->value);
+        if (isset($collection['tags']) && is_array($collection['tags']) && !empty($collection['tags'][0])) {
+            $decoded_tags = json_decode($collection['tags'][0]);
+            if (is_array($decoded_tags)) {
+                foreach ($decoded_tags as $key => $tag) {
+                    if (isset($tag->value)) {
+                        array_push($tags, $tag->value);
+                    }
+                }
+            } else {
+                $tags = explode(',', $collection['tags'][0]);
             }
         }
         $collection['tags'] = implode(',', $tags);

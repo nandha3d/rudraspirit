@@ -74,31 +74,35 @@
 
                                     @php
                                         // Recursive function for single select
-                                        function renderSingleCategoryOptions($categories, $selectedId = null, $level = 0) {
-                                            foreach ($categories as $category) {
-                                                $indent = str_repeat('&nbsp;&nbsp;&nbsp;', $level);
-                                                $selected = ($selectedId == $category->id) ? 'selected' : '';
-                                                echo "<option value=\"{$category->id}\" {$selected}>";
-                                                echo $indent . e($category->getTranslation('name'));
-                                                echo "</option>";
-                                                
-                                                if ($category->childrenCategories && $category->childrenCategories->count() > 0) {
-                                                    renderSingleCategoryOptions($category->childrenCategories, $selectedId, $level + 1);
+                                        if (!function_exists('renderSingleCategoryOptions')) {
+                                            function renderSingleCategoryOptions($categories, $selectedId = null, $level = 0) {
+                                                foreach ($categories as $category) {
+                                                    $indent = str_repeat('&nbsp;&nbsp;&nbsp;', $level);
+                                                    $selected = ($selectedId == $category->id) ? 'selected' : '';
+                                                    echo "<option value=\"{$category->id}\" {$selected}>";
+                                                    echo $indent . e($category->getTranslation('name'));
+                                                    echo "</option>";
+                                                    
+                                                    if ($category->childrenCategories && $category->childrenCategories->count() > 0) {
+                                                        renderSingleCategoryOptions($category->childrenCategories, $selectedId, $level + 1);
+                                                    }
                                                 }
                                             }
                                         }
                                         
                                         // Recursive function for multi select
-                                        function renderMultiCategoryOptions($categories, $selectedIds = [], $level = 0) {
-                                            foreach ($categories as $category) {
-                                                $indent = str_repeat('&nbsp;&nbsp;&nbsp;', $level);
-                                                $selected = (is_array($selectedIds) && in_array($category->id, $selectedIds)) ? 'selected' : '';
-                                                echo "<option value=\"{$category->id}\" {$selected}>";
-                                                echo $indent . e($category->getTranslation('name'));
-                                                echo "</option>";
-                                                
-                                                if ($category->childrenCategories && $category->childrenCategories->count() > 0) {
-                                                    renderMultiCategoryOptions($category->childrenCategories, $selectedIds, $level + 1);
+                                        if (!function_exists('renderMultiCategoryOptions')) {
+                                            function renderMultiCategoryOptions($categories, $selectedIds = [], $level = 0) {
+                                                foreach ($categories as $category) {
+                                                    $indent = str_repeat('&nbsp;&nbsp;&nbsp;', $level);
+                                                    $selected = (is_array($selectedIds) && in_array($category->id, $selectedIds)) ? 'selected' : '';
+                                                    echo "<option value=\"{$category->id}\" {$selected}>";
+                                                    echo $indent . e($category->getTranslation('name'));
+                                                    echo "</option>";
+                                                    
+                                                    if ($category->childrenCategories && $category->childrenCategories->count() > 0) {
+                                                        renderMultiCategoryOptions($category->childrenCategories, $selectedIds, $level + 1);
+                                                    }
                                                 }
                                             }
                                         }
