@@ -48,22 +48,6 @@
 
         <nav id="site-nav">
             <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
-            
-            <div class="shop-menu" onmouseenter="this.querySelector('.shop-dropdown').style.display='block'" onmouseleave="this.querySelector('.shop-dropdown').style.display='none'">
-                <a href="{{ route('rudraspirit.shop') }}" class="{{ request()->routeIs('rudraspirit.shop') ? 'active' : '' }}" style="display:flex;align-items:center;gap:4px;">
-                    Shop <span style="font-size:10px;opacity:.7;">&#9660;</span>
-                </a>
-                <div class="shop-dropdown" style="display:none;">
-                    <a href="{{ route('rudraspirit.shop') }}">&#10022; All Rudraksha</a>
-                    <a href="{{ route('rudraspirit.shop') }}?category=nepal-rudraksha">&#10022; Nepal Rudraksha</a>
-                    <a href="{{ route('rudraspirit.shop') }}?category=indonesia-rudraksha">&#10022; Indonesia Rudraksha</a>
-                    <a href="{{ route('rudraspirit.shop') }}?category=siddha-mala">&#10022; Siddha Mala</a>
-                    <a href="{{ route('rudraspirit.shop') }}?category=gauri-shankar">&#10022; Gauri Shankar</a>
-                    <a href="{{ route('rudraspirit.shop') }}?category=ganesh-rudraksha">&#10022; Ganesh Rudraksha</a>
-                    <a href="{{ route('rudraspirit.shop') }}?category=bracelets-malas">&#10022; Bracelets & Malas</a>
-                    <a href="{{ route('rudraspirit.shop') }}?category=special-rudraksha">&#10022; Special Rudraksha</a>
-                </div>
-            </div>
 
             <a href="{{ route('rudraspirit.guide') }}" class="{{ request()->routeIs('rudraspirit.guide') ? 'active' : '' }}">Rudraksha Guide</a>
 
@@ -126,15 +110,15 @@
                 </a>
             @endauth
 
-            <!-- Cart Trigger (connected to Sliding Cart Drawer) -->
-            <a href="javascript:void(0)" class="rs-cart-trigger" title="{{ translate('View Shopping Bag') }}" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--border);color:var(--maroon);">
+            <!-- Cart Trigger (hidden while products are in contact-for-details mode) -->
+            <a href="javascript:void(0)" class="rs-cart-trigger" title="{{ translate('View Shopping Bag') }}" style="display:none;align-items:center;justify-content:center;position:relative;width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--border);color:var(--maroon);">
                 <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                 <span class="rs-cart-count cart-count" style="position:absolute;top:-4px;right:-4px;background:var(--maroon);color:#fff;font-size:11px;font-weight:800;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;line-height:1;">{{ $rsCartCount }}</span>
             </a>
             <div id="cart_items" class="d-none"></div>
 
-            <!-- WhatsApp Chat CTA -->
-            <a class="green-button" href="https://wa.me/14372671257" target="_blank" rel="noreferrer" style="min-height:40px;padding:0 16px;font-size:13px;">
+            <!-- WhatsApp Chat CTA (Themed unified button) -->
+            <a class="maroon-button" href="https://wa.me/14372671257" target="_blank" rel="noreferrer" style="min-height:40px;padding:0 18px;font-size:13px;text-decoration:none;">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                 Chat
             </a>
@@ -150,34 +134,23 @@
         </span>
         <span>Home</span>
     </a>
-    <a href="{{ route('rudraspirit.shop') }}" class="rs-bottom-nav-item @if (request()->routeIs('rudraspirit.shop')) active @endif">
-        <span class="rs-bottom-nav-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
-        </span>
-        <span>Shop</span>
-    </a>
     <a href="{{ route('rudraspirit.guide') }}" class="rs-bottom-nav-item @if (request()->routeIs('rudraspirit.guide')) active @endif">
         <span class="rs-bottom-nav-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
         </span>
         <span>Guide</span>
     </a>
-    @auth
-        <a href="{{ route('dashboard') }}" class="rs-bottom-nav-item">
-    @else
-        <a href="javascript:void(0)" onclick="showLoginModal()" class="rs-bottom-nav-item">
-    @endauth
+    <a href="{{ route('rudraspirit.recommendations') }}" class="rs-bottom-nav-item @if (request()->routeIs('rudraspirit.recommendations')) active @endif">
         <span class="rs-bottom-nav-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
         </span>
-        <span>Account</span>
+        <span>Recommend</span>
     </a>
-    <a href="javascript:void(0)" class="rs-bottom-nav-item rs-cart-trigger">
-        <span class="rs-bottom-nav-icon" style="position:relative;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-            <span class="rs-cart-count cart-count" style="position:absolute;top:-4px;right:-8px;background:var(--maroon);color:#fff;font-size:10px;width:16px;height:16px;border-radius:50%;display:grid;place-items:center;">{{ $rsCartCount }}</span>
+    <a href="{{ route('rudraspirit.contact') }}" class="rs-bottom-nav-item @if (request()->routeIs('rudraspirit.contact')) active @endif">
+        <span class="rs-bottom-nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
         </span>
-        <span>Cart</span>
+        <span>Contact</span>
     </a>
 </nav>
 

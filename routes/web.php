@@ -565,7 +565,7 @@ Route::get('/faq', function () {
     return view('frontend.rudraspirit.faq');
 })->name('faq');
 Route::get('/shop', function () {
-    return view('frontend.rudraspirit.shop');
+    return redirect('/', 302);
 })->name('rudraspirit.shop');
 
 Route::get('/guide', function () {

@@ -3,7 +3,14 @@
 @section('content')
 @php
     $rsParent = rudraspirit_root_category();
-    $rsFeaturedProducts = \App\Models\Product::where('published', 1)->orderBy('id')->take(3)->get();
+    // Featured products: 1 Mukhi (48), 4 Mukhi (51), 3 Mukhi (50) - 4 Mukhi used in place of 2 Mukhi as requested
+    $rsFeaturedProducts = \App\Models\Product::where('published', 1)
+        ->whereIn('id', [48, 51, 50])
+        ->orderByRaw('FIELD(id, 48, 51, 50)')
+        ->get();
+    if ($rsFeaturedProducts->isEmpty()) {
+        $rsFeaturedProducts = \App\Models\Product::where('published', 1)->orderBy('id')->take(3)->get();
+    }
     
     // Load catalogue metadata
     $catalogueJsonPath = public_path('data/products.json');
@@ -30,8 +37,8 @@
                 Carefully selected Rudraksha beads, malas and spiritual combinations—supplied in Canada, the United States and worldwide.
             </p>
             <div class="hero-actions">
-                <a href="{{ route('rudraspirit.shop') }}" class="maroon-button" style="text-decoration:none;">
-                    Shop Rudraksha
+                <a href="{{ route('rudraspirit.guide') }}" class="maroon-button" style="text-decoration:none;">
+                    Rudraksha Guide
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
                 <a href="{{ route('rudraspirit.recommendations') }}" class="outline-button large" style="text-decoration:none;">
@@ -67,12 +74,12 @@
     </div>
 </section>
 
-<!-- FEATURED COLLECTION (Matching Original Repo Home Screen) -->
+<!-- FEATURED COLLECTION -->
 <section class="home-featured container" style="padding-top:70px;padding-bottom:90px;">
     <div class="section-kicker">FEATURED COLLECTION</div>
     <h2>Discover authentic Nepal Rudraksha</h2>
 
-    <!-- Product Grid (Top 3 Products like original repo) -->
+    <!-- Product Grid (Top 3 Products: 1 Mukhi, 4 Mukhi, 3 Mukhi) -->
     <div class="product-grid" style="margin-top:28px;">
         @foreach ($rsFeaturedProducts as $product)
             @php
@@ -80,7 +87,10 @@
                 $catMeta = ($mukhiNum && isset($catalogueByMukhi[$mukhiNum])) ? $catalogueByMukhi[$mukhiNum] : null;
 
                 $cardImg = uploaded_asset($product->thumbnail_img);
-                if (!$cardImg || strpos($cardImg, 'placeholder') !== false) {
+                // 2nd image replacement guard: if 2-mukhi or broken, fallback to 4-mukhi
+                if ($mukhiNum == 2) {
+                    $cardImg = asset('images/products/4-mukhi-nepal-rudraksha/top.jpg');
+                } elseif (!$cardImg || strpos($cardImg, 'placeholder') !== false) {
                     if ($catMeta && !empty($catMeta['images']['top'])) {
                         $cardImg = asset($catMeta['images']['top']);
                     } else {
@@ -89,14 +99,14 @@
                 }
 
                 $productName = $product->getTranslation('name');
-                $waMessage = rawurlencode("Hello Shiva Rudraksha Inc., I am interested in " . $productName . ". Please share size availability and certificate details.");
+                $waMessage = rawurlencode("Hello Shiva Rudraksha Inc., I am interested in " . $productName . ". Please share size availability, certificate details and price.");
             @endphp
 
             <article class="product-card">
                 <a href="{{ route('product', $product->slug) }}" class="card-open" style="display:block;text-decoration:none;">
                     <div class="gallery-slider">
                         <div class="gallery-image-wrap">
-                            <img src="{{ $cardImg }}" alt="{{ $productName }}" onerror="this.onerror=null;this.src='{{ asset('images/products/1-mukhi-nepal-rudraksha/front.jpg') }}';" loading="lazy">
+                            <img src="{{ $cardImg }}" alt="{{ $productName }}" onerror="this.onerror=null;this.src='{{ asset('images/products/4-mukhi-nepal-rudraksha/top.jpg') }}';" loading="lazy">
                         </div>
                     </div>
                 </a>
@@ -136,28 +146,22 @@
                             View Details
                         </a>
 
-                        <a href="https://wa.me/14372671257?text={{ $waMessage }}" target="_blank" rel="noreferrer" style="text-decoration:none;background:var(--green);color:#fff;" title="Enquire on WhatsApp">
+                        <a href="https://wa.me/14372671257?text={{ $waMessage }}" target="_blank" rel="noreferrer" class="enquire-button" style="text-decoration:none;background:var(--maroon);color:#fff;" title="Enquire on WhatsApp">
                             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                             Enquire
                         </a>
                     </div>
 
+                    {{-- Purchasing disabled on live site: prominent Contact for Details action --}}
                     <div style="margin-top:10px;">
-                        <button type="button" class="card-store-banner" onclick="addToCart({{ $product->id }})" style="width:100%;border:none;cursor:pointer;">
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                            Add to Bag &rarr;
-                        </button>
+                        <a href="https://wa.me/14372671257?text={{ $waMessage }}" target="_blank" rel="noreferrer" class="maroon-button" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;text-decoration:none;font-size:14px;min-height:44px;border-radius:999px;">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            Contact for Details &rarr;
+                        </a>
                     </div>
                 </div>
             </article>
         @endforeach
-    </div>
-
-    <!-- View Full Collection CTA Link -->
-    <div style="text-align:center;margin-top:50px;">
-        <a href="{{ route('rudraspirit.shop') }}" class="maroon-button" style="text-decoration:none;font-size:16px;padding:0 36px;min-height:52px;">
-            View Full Rudraksha Collection &rarr;
-        </a>
     </div>
 </section>
 

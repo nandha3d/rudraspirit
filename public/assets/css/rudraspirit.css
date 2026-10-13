@@ -2104,16 +2104,17 @@ img { max-width: 100%; }
     border-color: var(--maroon, #6f0f13);
 }
 .green-button {
-    color: white !important;
-    background: #25D366 !important;
-    border: 0 !important;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.28) !important;
+    color: #ffffff !important;
+    background: var(--maroon, #6f0f13) !important;
+    border: 1px solid var(--maroon, #6f0f13) !important;
+    box-shadow: 0 4px 14px rgba(111, 15, 19, 0.25) !important;
 }
 .green-button:hover {
-    background: #20ba59 !important;
+    background: var(--maroon-dark, #4f080c) !important;
+    border-color: var(--maroon-dark, #4f080c) !important;
     transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.38) !important;
-    color: #fff !important;
+    box-shadow: 0 6px 18px rgba(111, 15, 19, 0.35) !important;
+    color: #ffffff !important;
 }
 .green-button svg { width: 18px; }
 .maroon-button,
@@ -2290,9 +2291,11 @@ a.maroon-button:focus {
 .card-bottom { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: center; margin-top: 19px; }
 .card-bottom small, .card-bottom strong { display: block; }
 .card-bottom strong { color: var(--maroon); font-size: 24px; }
-.details-button, .card-bottom a { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 5px; border-radius: 999px; font-weight: 800; font-size: 12px; }
-.details-button { border: 1px solid var(--maroon); color: var(--maroon); background: white; }
-.card-bottom a { background: var(--green); color: white; }
+.details-button, .card-bottom a { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 5px; border-radius: 999px; font-weight: 800; font-size: 12px; text-decoration: none; transition: all .2s ease; }
+.details-button, .card-bottom a.details-button { border: 1px solid var(--maroon, #6f0f13) !important; color: var(--maroon, #6f0f13) !important; background: #ffffff !important; }
+.details-button:hover, .card-bottom a.details-button:hover { background: var(--maroon, #6f0f13) !important; color: #ffffff !important; }
+.card-bottom a.enquire-button, .card-bottom a:not(.details-button) { background: var(--maroon, #6f0f13) !important; color: #ffffff !important; border: 1px solid var(--maroon, #6f0f13) !important; }
+.card-bottom a.enquire-button:hover, .card-bottom a:not(.details-button):hover { background: var(--maroon-dark, #4f080c) !important; color: #ffffff !important; }
 
 .store-nav-button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; padding: 0 18px; font-weight: 800; color: white; background: var(--maroon); border: 0; text-decoration: none; transition: transform .2s ease, opacity .2s ease; }
 .store-nav-button:hover { transform: translateY(-1px); opacity: .95; }
@@ -2409,7 +2412,7 @@ footer button { padding: 0; border: 0; background: transparent; color: white; }
 .included-list svg { width: 18px; color: var(--green); }
 .product-action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
 .whatsapp-button, .buy-button { width: 100%; min-height: 56px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; text-decoration: none; font-weight: 900; transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease; }
-.whatsapp-button { background: var(--green); color: white; box-shadow: 0 10px 24px rgba(47,167,71,.18); }
+.whatsapp-button { background: var(--maroon, #6f0f13); color: white; box-shadow: 0 10px 24px rgba(111,15,19,.18); }
 .buy-button { background: var(--maroon); color: white; box-shadow: 0 10px 24px rgba(111,15,19,.18); }
 .whatsapp-button:hover, .buy-button:hover { transform: translateY(-2px); opacity: .94; }
 .whatsapp-button svg, .buy-button svg { width: 20px; height: 20px; }
@@ -2467,7 +2470,7 @@ footer button { padding: 0; border: 0; background: transparent; color: white; }
 .birth-chart-form label svg { width: 16px; color: var(--orange); }
 .birth-chart-form input { min-height: 49px; padding: 0 13px; border: 1px solid var(--border); border-radius: 10px; }
 .birth-chart-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.birth-chart-submit { width: 100%; min-height: 52px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; background: var(--green); color: white; font-weight: 900; }
+.birth-chart-submit { width: 100%; min-height: 52px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; background: var(--maroon, #6f0f13); color: white; font-weight: 900; }
 .birth-chart-error { color: #9b1212; }
 .birth-chart-note { color: var(--muted); font-size: 12px; text-align: center; }
 

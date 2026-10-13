@@ -233,25 +233,18 @@
                         {{ translate('Minimum order qty') }} <strong>{{ $detailedProduct->min_qty }}</strong>
                     </p>
 
-                    @if (!$detailedProduct->digital)
-                    <div style="display:flex;align-items:center;gap:18px;margin-bottom:22px;">
-                        <div class="aiz-plus-minus" style="display:flex;align-items:center;border:1px solid var(--rs-tan);border-radius:999px;">
-                            <button type="button" data-type="minus" data-field="quantity" style="border:none;background:none;padding:12px 18px;cursor:pointer;">&minus;</button>
-                            <input type="number" name="quantity" value="{{ $detailedProduct->min_qty ?? 1 }}" min="{{ $detailedProduct->min_qty ?? 1 }}" class="input-number" style="width:46px;text-align:center;border:none;outline:none;font-size:18px;">
-                            <button type="button" data-type="plus" data-field="quantity" style="border:none;background:none;padding:12px 18px;cursor:pointer;">+</button>
-                        </div>
+                    @php
+                        $rsPdpWaMsg = rawurlencode("Hello Shiva Rudraksha Inc., I am interested in " . $detailedProduct->getTranslation('name') . ". Please share details, size availability and certification.");
+                    @endphp
+                    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;">
+                        <a href="https://wa.me/14372671257?text={{ $rsPdpWaMsg }}" target="_blank" rel="noreferrer" class="maroon-button" style="flex:1;min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-size:15px;border-radius:999px;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            {{ translate('Contact for Details') }}
+                        </a>
+                        <a href="{{ route('rudraspirit.contact') }}" class="outline-button" style="min-height:50px;padding:0 24px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:15px;border-radius:999px;">
+                            {{ translate('Submit Enquiry') }}
+                        </a>
                     </div>
-                    @endif
-
-                    @if ($detailedProduct->variant_product)
-                        <p style="font-size:15px;color:var(--rs-ink-muted);margin:0 0 14px;">{{ translate('Selected') }}: <span id="selected_variant"></span></p>
-                    @endif
-
-                    <div style="display:flex;gap:14px;">
-                        <button type="button" id="added_to_cart_btn" @if (Auth::check() || get_setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif class="rs-btn add-to-cart" style="flex:1;justify-content:center;">{{ translate('Add to Bag') }} <span id="add_to_cart_count">(01)</span></button>
-                        <button type="button" @if (Auth::check() || get_setting('guest_checkout_activation') == 1) onclick="buyNow()" @else onclick="showLoginModal()" @endif class="rs-btn-outline buy-now" style="flex:1;">{{ translate('Buy It Now') }}</button>
-                    </div>
-                    <button type="button" class="out-of-stock d-none rs-btn-outline" style="width:100%;margin-top:14px;" disabled>{{ translate('Out of Stock') }}</button>
                 </form>
             @else
                 <span style="color:var(--rs-danger);font-size:15px;text-transform:uppercase;letter-spacing:.1em;">{{ translate('Out of stock') }}</span>

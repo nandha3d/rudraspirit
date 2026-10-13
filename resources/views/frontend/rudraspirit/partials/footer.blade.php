@@ -12,7 +12,7 @@
                 Carefully selected, authentic Rudraksha beads directly sourced from Nepal and Indonesia. Each bead individually inspected, photographed, and certified.
             </p>
             <div style="display:flex;gap:10px;">
-                <a href="https://wa.me/14372671257" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;padding:7px 14px;border-radius:999px;font-size:12px;font-weight:700;text-decoration:none;">
+                <a href="https://wa.me/14372671257" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;background:#c9933b;color:#2a0a0c;padding:7px 16px;border-radius:999px;font-size:12px;font-weight:700;text-decoration:none;">
                     &#128172; WhatsApp Us
                 </a>
             </div>
@@ -21,7 +21,6 @@
         <div>
             <strong style="display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#f9b233;margin-bottom:16px;">Catalogue & Guide</strong>
             <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
-                <a href="{{ route('rudraspirit.shop') }}" style="color:rgba(255,255,255,.85);text-decoration:none;">All Collections</a>
                 <a href="{{ route('rudraspirit.guide') }}" style="color:rgba(255,255,255,.85);text-decoration:none;">1–21 Mukhi Guide</a>
                 <a href="{{ route('rudraspirit.recommendations') }}" style="color:rgba(255,255,255,.85);text-decoration:none;">Birth Chart Recommendation</a>
                 <a href="{{ route('rudraspirit.lord_shiva') }}" style="color:rgba(255,255,255,.85);text-decoration:none;">Who is Lord Shiva?</a>

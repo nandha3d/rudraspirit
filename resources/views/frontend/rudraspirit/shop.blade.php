@@ -103,18 +103,18 @@
                                 View Details
                             </a>
 
-                            <a href="https://wa.me/14372671257?text={{ $waMessage }}" target="_blank" rel="noreferrer" style="text-decoration:none;background:var(--green);color:#fff;" title="Enquire on WhatsApp">
+                            <a href="https://wa.me/14372671257?text={{ $waMessage }}" target="_blank" rel="noreferrer" class="enquire-button" style="text-decoration:none;background:var(--maroon);color:#fff;" title="Enquire on WhatsApp">
                                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                                 Enquire
                             </a>
                         </div>
 
-                        <!-- Direct Add to Bag CTA -->
+                        <!-- Contact for Details CTA -->
                         <div style="margin-top:10px;">
-                            <button type="button" class="card-store-banner" onclick="addToCart({{ $product->id }})" style="width:100%;border:none;cursor:pointer;">
-                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                                Add to Bag &rarr;
-                            </button>
+                            <a href="https://wa.me/14372671257?text={{ $waMessage }}" target="_blank" rel="noreferrer" class="maroon-button" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;text-decoration:none;font-size:14px;min-height:44px;border-radius:999px;">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                Contact for Details &rarr;
+                            </a>
                         </div>
                     </div>
                 </article>
