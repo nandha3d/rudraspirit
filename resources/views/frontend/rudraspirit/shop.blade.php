@@ -96,7 +96,7 @@
                         <div class="card-bottom">
                             <div>
                                 <small style="font-size:11px;color:var(--muted);text-transform:uppercase;">Price</small>
-                                <strong style="color:var(--maroon);font-size:22px;font-family:Georgia,serif;">{{ single_price($product->unit_price) }}</strong>
+                                <strong style="color:var(--maroon);font-size:14px;font-family:Georgia,serif;line-height:1.2;">On Request</strong>
                             </div>
 
                             <a href="{{ route('product', $product->slug) }}" class="details-button" style="text-decoration:none;">

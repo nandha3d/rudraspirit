@@ -38,10 +38,7 @@
         <div class="rs-card-deity">{{ translate('Ruling Deity') }}: {{ explode(',', $product->tags)[0] }}</div>
     @endif
     <div class="rs-card-price">
-        @if (home_base_price($product) != home_discounted_base_price($product))
-            <del>{{ home_base_price($product) }}</del>
-        @endif
-        {{ home_discounted_base_price($product) }}
+        {{ translate('Price on Request') }}
     </div>
     @if ($product->current_stock > 0)
         <div class="rs-card-stock-status">

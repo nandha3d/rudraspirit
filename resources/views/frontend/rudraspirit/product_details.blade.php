@@ -219,19 +219,15 @@
                         $rsInitialPriceFormatted = single_price($rsInitialPrice);
                     @endphp
 
-                    <!-- Dynamic Price Display -->
-                    <div id="chosen_price_div" style="display:flex;align-items:center;gap:12px;margin-bottom:20px;margin-top:14px;">
-                        <span id="chosen_price" style="font-size:28px;color:var(--rs-gold-deep);font-family:'Playfair Display',serif;font-weight:500;">
-                            {{ $rsInitialPriceFormatted }}
+                    <!-- Price on Request Display -->
+                    <div id="chosen_price_div" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;margin-top:14px;">
+                        <span id="chosen_price" style="font-size:26px;color:var(--rs-gold-deep);font-family:'Playfair Display',serif;font-weight:600;">
+                            {{ translate('Price on Request') }}
                         </span>
                         @if ($rsQty > 0)
-                            <span class="rs-pdp-badge" style="background:var(--rs-success);">{{ translate('In Stock') }}</span>
+                            <span class="rs-pdp-badge" style="background:var(--maroon);color:#fff;">{{ translate('Certified & Available') }}</span>
                         @endif
                     </div>
-                    <p style="font-size:15px;color:var(--rs-ink-muted);margin:0 0 16px;">
-                        <span id="available-quantity">{{ $rsQty }}</span> {{ translate('Available') }} &middot;
-                        {{ translate('Minimum order qty') }} <strong>{{ $detailedProduct->min_qty }}</strong>
-                    </p>
 
                     @php
                         $rsPdpWaMsg = rawurlencode("Hello Shiva Rudraksha Inc., I am interested in " . $detailedProduct->getTranslation('name') . ". Please share details, size availability and certification.");

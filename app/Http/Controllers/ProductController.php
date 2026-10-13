@@ -678,12 +678,13 @@ class ProductController extends Controller
             'fq_bought_product_category_id'
         ]));
 
-        // Product Translations
+        // Product Translations (guard against null lang)
+        $targetLang = $request->lang ?: (get_system_language() ? get_system_language()->code : env('DEFAULT_LANGUAGE', 'en'));
         ProductTranslation::updateOrCreate(
-            $request->only([
-                'lang',
-                'product_id'
-            ]),
+            [
+                'product_id' => $product->id,
+                'lang' => $targetLang
+            ],
             $request->only([
                 'name',
                 'unit',
