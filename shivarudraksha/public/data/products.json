@@ -1,0 +1,1582 @@
+[
+  {
+    "id": "1-mukhi-nepal-rudraksha",
+    "mukhi": 1,
+    "name": "1 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 1 Mukhi Rudraksha, traditionally revered for spiritual growth, inner peace, meditation, and higher consciousness.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Nepal",
+        "price": 150,
+        "images": {
+          "front": "images/products/1-mukhi-nepal-rudraksha/nepali/front.jpg",
+          "back": "images/products/1-mukhi-nepal-rudraksha/nepali/back.jpg",
+          "top": "images/products/1-mukhi-nepal-rudraksha/nepali/top.jpg",
+          "bottom": "images/products/1-mukhi-nepal-rudraksha/nepali/bottom.jpg",
+          "certificate": "images/products/1-mukhi-nepal-rudraksha/nepali/certificate.jpg",
+          "xray": "images/products/1-mukhi-nepal-rudraksha/nepali/xray.jpg"
+        }
+      },
+      {
+        "name": "Indian",
+        "price": 200,
+        "images": {
+          "front": "images/products/1-mukhi-nepal-rudraksha/indian/front.jpg",
+          "back": "images/products/1-mukhi-nepal-rudraksha/indian/back.jpg",
+          "top": "images/products/1-mukhi-nepal-rudraksha/indian/top.jpg",
+          "bottom": "images/products/1-mukhi-nepal-rudraksha/indian/bottom.jpg",
+          "certificate": "images/products/1-mukhi-nepal-rudraksha/indian/certificate.jpg",
+          "xray": "images/products/1-mukhi-nepal-rudraksha/indian/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/1-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/1-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/1-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/1-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/1-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/1-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "2-mukhi-nepal-rudraksha",
+    "mukhi": 2,
+    "name": "2 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 2 Mukhi Rudraksha, traditionally associated with harmony, relationships, unity, and emotional balance.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 0,
+        "images": {
+          "front": "images/products/2-mukhi-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/2-mukhi-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/2-mukhi-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 0,
+        "images": {
+          "front": "images/products/2-mukhi-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/2-mukhi-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/2-mukhi-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 0,
+        "images": {
+          "front": "images/products/2-mukhi-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/2-mukhi-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/2-mukhi-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 0,
+        "images": {
+          "front": "images/products/2-mukhi-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/2-mukhi-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/2-mukhi-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 0,
+        "images": {
+          "front": "images/products/2-mukhi-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/2-mukhi-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/2-mukhi-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/2-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/2-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/2-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/2-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/2-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/2-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "3-mukhi-nepal-rudraksha",
+    "mukhi": 3,
+    "name": "3 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 3 Mukhi Rudraksha, traditionally linked with confidence, positive energy, and releasing past burdens.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Nepal",
+        "price": 60,
+        "images": {
+          "front": "images/products/3-mukhi-nepal-rudraksha/nepali/front.jpg",
+          "back": "images/products/3-mukhi-nepal-rudraksha/nepali/back.jpg",
+          "top": "images/products/3-mukhi-nepal-rudraksha/nepali/top.jpg",
+          "bottom": "images/products/3-mukhi-nepal-rudraksha/nepali/bottom.jpg",
+          "certificate": "images/products/3-mukhi-nepal-rudraksha/nepali/certificate.jpg",
+          "xray": "images/products/3-mukhi-nepal-rudraksha/nepali/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/3-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/3-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/3-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/3-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/3-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/3-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "4-mukhi-nepal-rudraksha",
+    "mukhi": 4,
+    "name": "4 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 4 Mukhi Rudraksha, traditionally associated with learning, memory, creativity, communication, and wisdom.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Nepal",
+        "price": 40,
+        "images": {
+          "front": "images/products/4-mukhi-nepal-rudraksha/nepali/front.jpg",
+          "back": "images/products/4-mukhi-nepal-rudraksha/nepali/back.jpg",
+          "top": "images/products/4-mukhi-nepal-rudraksha/nepali/top.jpg",
+          "bottom": "images/products/4-mukhi-nepal-rudraksha/nepali/bottom.jpg",
+          "certificate": "images/products/4-mukhi-nepal-rudraksha/nepali/certificate.jpg",
+          "xray": "images/products/4-mukhi-nepal-rudraksha/nepali/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/4-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/4-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/4-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/4-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/4-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/4-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "5-mukhi-nepal-rudraksha",
+    "mukhi": 5,
+    "name": "5 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 5 Mukhi Rudraksha, traditionally valued for peace, spiritual practice, daily meditation, and overall well-being.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Nepal",
+        "price": 40,
+        "images": {
+          "front": "images/products/5-mukhi-nepal-rudraksha/nepali/front.jpg",
+          "back": "images/products/5-mukhi-nepal-rudraksha/nepali/back.jpg",
+          "top": "images/products/5-mukhi-nepal-rudraksha/nepali/top.jpg",
+          "bottom": "images/products/5-mukhi-nepal-rudraksha/nepali/bottom.jpg",
+          "certificate": "images/products/5-mukhi-nepal-rudraksha/nepali/certificate.jpg",
+          "xray": "images/products/5-mukhi-nepal-rudraksha/nepali/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/5-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/5-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/5-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/5-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/5-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/5-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "6-mukhi-nepal-rudraksha",
+    "mukhi": 6,
+    "name": "6 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 6 Mukhi Rudraksha, traditionally associated with discipline, focus, confidence, and balanced self-expression.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Nepal",
+        "price": 40,
+        "images": {
+          "front": "images/products/6-mukhi-nepal-rudraksha/nepali/front.jpg",
+          "back": "images/products/6-mukhi-nepal-rudraksha/nepali/back.jpg",
+          "top": "images/products/6-mukhi-nepal-rudraksha/nepali/top.jpg",
+          "bottom": "images/products/6-mukhi-nepal-rudraksha/nepali/bottom.jpg",
+          "certificate": "images/products/6-mukhi-nepal-rudraksha/nepali/certificate.jpg",
+          "xray": "images/products/6-mukhi-nepal-rudraksha/nepali/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/6-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/6-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/6-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/6-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/6-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/6-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "7-mukhi-nepal-rudraksha",
+    "mukhi": 7,
+    "name": "7 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 7 Mukhi Rudraksha, traditionally linked with prosperity, stability, abundance, and positive opportunities.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 30,
+        "images": {
+          "front": "images/products/7-mukhi-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/7-mukhi-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/7-mukhi-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 50,
+        "images": {
+          "front": "images/products/7-mukhi-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/7-mukhi-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/7-mukhi-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 70,
+        "images": {
+          "front": "images/products/7-mukhi-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/7-mukhi-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/7-mukhi-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 100,
+        "images": {
+          "front": "images/products/7-mukhi-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/7-mukhi-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/7-mukhi-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 0,
+        "images": {
+          "front": "images/products/7-mukhi-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/7-mukhi-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/7-mukhi-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/7-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/7-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/7-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/7-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/7-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/7-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "8-mukhi-nepal-rudraksha",
+    "mukhi": 8,
+    "name": "8 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 8 Mukhi Rudraksha, traditionally associated with protection, strength, and spiritual growth.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 60,
+        "images": {
+          "front": "images/products/8-mukhi-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/8-mukhi-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/8-mukhi-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 80,
+        "images": {
+          "front": "images/products/8-mukhi-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/8-mukhi-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/8-mukhi-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 0,
+        "images": {
+          "front": "images/products/8-mukhi-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/8-mukhi-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/8-mukhi-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 200,
+        "images": {
+          "front": "images/products/8-mukhi-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/8-mukhi-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/8-mukhi-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 300,
+        "images": {
+          "front": "images/products/8-mukhi-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/8-mukhi-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/8-mukhi-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/8-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/8-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/8-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/8-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/8-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/8-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "9-mukhi-nepal-rudraksha",
+    "mukhi": 9,
+    "name": "9 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 9 Mukhi Rudraksha, traditionally revered for courage, strength, confidence, and spiritual protection.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 80,
+        "images": {
+          "front": "images/products/9-mukhi-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/9-mukhi-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/9-mukhi-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 100,
+        "images": {
+          "front": "images/products/9-mukhi-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/9-mukhi-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/9-mukhi-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 120,
+        "images": {
+          "front": "images/products/9-mukhi-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/9-mukhi-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/9-mukhi-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 200,
+        "images": {
+          "front": "images/products/9-mukhi-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/9-mukhi-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/9-mukhi-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 300,
+        "images": {
+          "front": "images/products/9-mukhi-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/9-mukhi-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/9-mukhi-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/9-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/9-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/9-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/9-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/9-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/9-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "10-mukhi-nepal-rudraksha",
+    "mukhi": 10,
+    "name": "10 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 10 Mukhi Rudraksha, traditionally associated with peace of mind, positivity, and protection from negative influences.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 60,
+        "images": {
+          "front": "images/products/10-mukhi-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/10-mukhi-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/10-mukhi-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 100,
+        "images": {
+          "front": "images/products/10-mukhi-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/10-mukhi-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/10-mukhi-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 200,
+        "images": {
+          "front": "images/products/10-mukhi-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/10-mukhi-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/10-mukhi-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 300,
+        "images": {
+          "front": "images/products/10-mukhi-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/10-mukhi-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/10-mukhi-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 500,
+        "images": {
+          "front": "images/products/10-mukhi-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/10-mukhi-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/10-mukhi-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/10-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/10-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/10-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/10-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/10-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/10-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "11-mukhi-nepal-rudraksha",
+    "mukhi": 11,
+    "name": "11 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 11 Mukhi Rudraksha, traditionally associated with wisdom, spiritual growth, and protection from negative energies.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 100,
+        "images": {
+          "front": "images/products/11-mukhi-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/11-mukhi-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/11-mukhi-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 150,
+        "images": {
+          "front": "images/products/11-mukhi-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/11-mukhi-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/11-mukhi-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 300,
+        "images": {
+          "front": "images/products/11-mukhi-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/11-mukhi-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/11-mukhi-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 500,
+        "images": {
+          "front": "images/products/11-mukhi-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/11-mukhi-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/11-mukhi-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 600,
+        "images": {
+          "front": "images/products/11-mukhi-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/11-mukhi-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/11-mukhi-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/11-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/11-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/11-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/11-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/11-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/11-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "12-mukhi-nepal-rudraksha",
+    "mukhi": 12,
+    "name": "12 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 12 Mukhi Rudraksha, traditionally associated with confidence, vitality, leadership, and radiant positive energy.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 60,
+        "images": {
+          "front": "images/products/12-mukhi-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/12-mukhi-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/12-mukhi-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 100,
+        "images": {
+          "front": "images/products/12-mukhi-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/12-mukhi-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/12-mukhi-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 200,
+        "images": {
+          "front": "images/products/12-mukhi-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/12-mukhi-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/12-mukhi-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 350,
+        "images": {
+          "front": "images/products/12-mukhi-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/12-mukhi-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/12-mukhi-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 500,
+        "images": {
+          "front": "images/products/12-mukhi-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/12-mukhi-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/12-mukhi-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/12-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/12-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/12-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/12-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/12-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/12-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "13-mukhi-nepal-rudraksha",
+    "mukhi": 13,
+    "name": "13 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 13 Mukhi Rudraksha, traditionally connected with attraction, creativity, fulfillment, and personal success.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 80,
+        "images": {
+          "front": "images/products/13-mukhi-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/13-mukhi-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/13-mukhi-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 130,
+        "images": {
+          "front": "images/products/13-mukhi-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/13-mukhi-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/13-mukhi-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 250,
+        "images": {
+          "front": "images/products/13-mukhi-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/13-mukhi-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/13-mukhi-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 350,
+        "images": {
+          "front": "images/products/13-mukhi-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/13-mukhi-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/13-mukhi-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 500,
+        "images": {
+          "front": "images/products/13-mukhi-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/13-mukhi-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/13-mukhi-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/13-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/13-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/13-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/13-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/13-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/13-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "14-mukhi-nepal-rudraksha",
+    "mukhi": 14,
+    "name": "14 Mukhi Nepal Rudraksha",
+    "category": "Nepal Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 14 Mukhi Rudraksha, traditionally revered for intuition, wisdom, clarity, and confident decision-making.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 0,
+        "images": {
+          "front": "images/products/14-mukhi-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/14-mukhi-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/14-mukhi-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 800,
+        "images": {
+          "front": "images/products/14-mukhi-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/14-mukhi-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/14-mukhi-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 0,
+        "images": {
+          "front": "images/products/14-mukhi-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/14-mukhi-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/14-mukhi-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 0,
+        "images": {
+          "front": "images/products/14-mukhi-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/14-mukhi-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/14-mukhi-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 0,
+        "images": {
+          "front": "images/products/14-mukhi-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/14-mukhi-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/14-mukhi-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/14-mukhi-nepal-rudraksha/front.jpg",
+      "back": "images/products/14-mukhi-nepal-rudraksha/back.jpg",
+      "top": "images/products/14-mukhi-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/14-mukhi-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/14-mukhi-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/14-mukhi-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "12-mukhi-rudraksha-mala",
+    "name": "12 Mukhi Rudraksha Mala",
+    "category": "Bracelets & Malas",
+    "origin": "Indonesia",
+    "description": "Authentic Indonesian 12 Mukhi Rudraksha Mala, traditionally associated with confidence, leadership, vitality, and positive energy. Ideal for meditation, daily wear, and spiritual practice.",
+    "certificateAvailable": false,
+    "stockStatus": "Available",
+    "badge": "Non-Certified",
+    "images": {
+      "front": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/front.jpg",
+      "back": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/back.jpg",
+      "top": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/top.jpg",
+      "bottom": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/bottom.jpg",
+      "certificate": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/certificate.jpg",
+      "xray": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/xray.jpg"
+    },
+    "variants": [
+      {
+        "name": "Small",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Medium",
+        "price": "400",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Large",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Collector",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "13-mukhi-rudraksha-mala",
+    "name": "13 Mukhi Rudraksha Mala",
+    "category": "Bracelets & Malas",
+    "origin": "Indonesia",
+    "description": "Authentic Indonesian 13 Mukhi Rudraksha Mala, traditionally associated with creativity, confidence, fulfillment, and spiritual growth. Ideal for meditation and daily spiritual practice.",
+    "certificateAvailable": false,
+    "stockStatus": "Available",
+    "badge": "Non-Certified",
+    "images": {
+      "front": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/front.jpg",
+      "back": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/back.jpg",
+      "top": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/top.jpg",
+      "bottom": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/bottom.jpg",
+      "certificate": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/certificate.jpg",
+      "xray": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/xray.jpg"
+    },
+    "variants": [
+      {
+        "name": "Small",
+        "price": 0,
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Medium",
+        "price": "500",
+        "images": {
+          "front": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/front.jpg",
+          "back": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/back.jpg",
+          "top": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/top.jpg",
+          "bottom": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/bottom.jpg",
+          "certificate": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/certificate.jpg",
+          "xray": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": "",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Collector",
+        "price": "",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": "",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "12-mukhi-rudraksha-bracelet",
+    "name": "12 Mukhi Rudraksha Bracelet",
+    "category": "Bracelets & Malas",
+    "origin": "Nepal",
+    "description": "Authentic Nepal 12 Mukhi Rudraksha Bracelet, traditionally associated with confidence, leadership, vitality, and positive energy. Comfortable for daily wear and suitable for meditation and spiritual practice.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "images": {
+      "front": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/front.jpg",
+      "back": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/back.jpg",
+      "top": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/top.jpg",
+      "bottom": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/bottom.jpg",
+      "certificate": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/certificate.jpg",
+      "xray": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/xray.jpg"
+    },
+    "variants": [
+      {
+        "name": "Small",
+        "price": "",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Medium",
+        "price": "600",
+        "images": {
+          "front": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/front.jpg",
+          "back": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/back.jpg",
+          "top": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/top.jpg",
+          "bottom": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/bottom.jpg",
+          "certificate": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/certificate.jpg",
+          "xray": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": "",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Collector",
+        "price": "",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": "",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "rkshani-mukhi-rudraksha-bracelet",
+    "name": "Rahu, Ketu and Shani Protection",
+    "category": "Rudraksha Combinations",
+    "origin": "Nepal",
+    "description": "Authentic Handcrafted Rudraksha Bracelet.",
+    "certificateAvailable": false,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "images": {
+      "front": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/front.jpg",
+      "back": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/back.jpg",
+      "top": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/top.jpg",
+      "bottom": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/bottom.jpg",
+      "certificate": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/certificate.jpg",
+      "xray": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/xray.jpg"
+    },
+    "variants": [
+      {
+        "name": "Small",
+        "price": "80",
+        "images": {
+          "front": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/front.jpg",
+          "back": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/back.jpg",
+          "top": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/top.jpg",
+          "bottom": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/bottom.jpg",
+          "certificate": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/certificate.jpg",
+          "xray": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/xray.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "id": "Gowri-Shankar-nepal-rudraksha",
+    "mukhi": "Gowri Shankar",
+    "name": "Gowri Shankar Nepal Rudraksha",
+    "category": "Gaurishankar",
+    "origin": "Nepal",
+    "description": "Authentic Nepal Gauri Shankar Rudraksha, naturally joined twin beads traditionally symbolizing harmony, love, family unity, and spiritual balance.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 0,
+        "images": {
+          "front": "images/products/gowri-shankar-nepal-rudraksha/small/front.jpg",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/small/back.jpg",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/small/top.jpg",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/small/certificate.jpg",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 0,
+        "images": {
+          "front": "images/products/gowri-shankar-nepal-rudraksha/medium/front.jpg",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/medium/back.jpg",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/medium/top.jpg",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 170,
+        "images": {
+          "front": "images/products/gowri-shankar-nepal-rudraksha/large/front.jpg",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/large/back.jpg",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/large/top.jpg",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/large/certificate.jpg",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 200,
+        "images": {
+          "front": "images/products/gowri-shankar-nepal-rudraksha/collector/front.jpg",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/collector/back.jpg",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/collector/top.jpg",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 0,
+        "images": {
+          "front": "images/products/gowri-shankar-nepal-rudraksha/super-collector/front.jpg",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/super-collector/back.jpg",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/gowri-shankar-nepal-rudraksha/front.jpg",
+      "back": "images/products/gowri-shankar-nepal-rudraksha/back.jpg",
+      "top": "images/products/gowri-shankar-nepal-rudraksha/top.jpg",
+      "bottom": "images/products/gowri-shankar-nepal-rudraksha/bottom.jpg",
+      "certificate": "images/products/gowri-shankar-nepal-rudraksha/certificate.jpg",
+      "xray": "images/products/gowri-shankar-nepal-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "Ganesh-nepal-rudraksha",
+    "mukhi": "Ganesh Rudraksha",
+    "name": "Ganesh Rudraksha",
+    "category": "Ganesh Rudraksha",
+    "origin": "Nepal",
+    "description": "Authentic Nepal Gauri Shankar Rudraksha, naturally joined twin beads traditionally symbolizing harmony, love, family unity, and spiritual balance.",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "variants": [
+      {
+        "name": "Small",
+        "price": 0,
+        "images": {
+          "front": "images/products/ganesh-rudraksha/small/front.jpg",
+          "back": "images/products/ganesh-rudraksha/small/back.jpg",
+          "top": "images/products/ganesh-rudraksha/small/top.jpg",
+          "bottom": "images/products/ganesh-rudraksha/small/bottom.jpg",
+          "certificate": "images/products/ganesh-rudraksha/small/certificate.jpg",
+          "xray": "images/products/ganesh-rudraksha/small/xray.jpg"
+        }
+      },
+      {
+        "name": "Medium",
+        "price": 60,
+        "images": {
+          "front": "images/products/ganesh-rudraksha/medium/front.jpg",
+          "back": "images/products/ganesh-rudraksha/medium/back.jpg",
+          "top": "images/products/ganesh-rudraksha/medium/top.jpg",
+          "bottom": "images/products/ganesh-rudraksha/medium/bottom.jpg",
+          "certificate": "images/products/ganesh-rudraksha/medium/certificate.jpg",
+          "xray": "images/products/ganesh-rudraksha/medium/xray.jpg"
+        }
+      },
+      {
+        "name": "Large",
+        "price": 0,
+        "images": {
+          "front": "images/products/ganesh-rudraksha/large/front.jpg",
+          "back": "images/products/ganesh-rudraksha/large/back.jpg",
+          "top": "images/products/ganesh-rudraksha/large/top.jpg",
+          "bottom": "images/products/ganesh-rudraksha/large/bottom.jpg",
+          "certificate": "images/products/ganesh-rudraksha/large/certificate.jpg",
+          "xray": "images/products/ganesh-rudraksha/large/xray.jpg"
+        }
+      },
+      {
+        "name": "Collector",
+        "price": 0,
+        "images": {
+          "front": "images/products/ganesh-rudraksha/collector/front.jpg",
+          "back": "images/products/ganesh-rudraksha/collector/back.jpg",
+          "top": "images/products/ganesh-rudraksha/collector/top.jpg",
+          "bottom": "images/products/ganesh-rudraksha/collector/bottom.jpg",
+          "certificate": "images/products/ganesh-rudraksha/collector/certificate.jpg",
+          "xray": "images/products/ganesh-rudraksha/collector/xray.jpg"
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": 0,
+        "images": {
+          "front": "images/products/ganesh-rudraksha/super-collector/front.jpg",
+          "back": "images/products/ganesh-rudraksha/super-collector/back.jpg",
+          "top": "images/products/ganesh-rudraksha/super-collector/top.jpg",
+          "bottom": "images/products/ganesh-rudraksha/super-collector/bottom.jpg",
+          "certificate": "images/products/ganesh-rudraksha/super-collector/certificate.jpg",
+          "xray": "images/products/ganesh-rudraksha/super-collector/xray.jpg"
+        }
+      }
+    ],
+    "images": {
+      "front": "images/products/ganesh-rudraksha/front.jpg",
+      "back": "images/products/ganesh-rudraksha/back.jpg",
+      "top": "images/products/ganesh-rudraksha/top.jpg",
+      "bottom": "images/products/ganesh-rudraksha/bottom.jpg",
+      "certificate": "images/products/ganesh-rudraksha/certificate.jpg",
+      "xray": "images/products/ganesh-rudraksha/xray.jpg"
+    }
+  },
+  {
+    "id": "mohini-mukhi-rudraksha-mala",
+    "name": "Mohini or Vaseegara Mala",
+    "category": "Rudraksha Combinations",
+    "origin": "Nepal",
+    "description": "",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "images": {
+      "front": "images/products/rudraksha-mala/mohini/front.jpg",
+      "back": "images/products/rudraksha-mala/mohini/back.jpg",
+      "top": "images/products/rudraksha-mala/mohini/top.jpg",
+      "bottom": "images/products/rudraksha-mala/mohini/bottom.jpg",
+      "certificate": "images/products/rudraksha-mala/mohini/certificate.jpg",
+      "xray": "images/products/rudraksha-mala/mohini/xray.jpg"
+    },
+    "variants": [
+      {
+        "name": "Small",
+        "price": "200",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Medium",
+        "price": "350",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Large",
+        "price": "430",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Collector",
+        "price": "500",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": "650",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "Nepali-SidhaMala",
+    "name": "Nepal SidhaMala",
+    "category": "Siddha Mala",
+    "origin": "Nepal",
+    "description": "",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "images": {
+      "front": "images/products/rudraksha-mala/nepal-sidhamala/front.jpg",
+      "back": "images/products/rudraksha-mala/nepal-sidhamala/back.jpg",
+      "top": "images/products/rudraksha-mala/nepal-sidhamala/top.jpg",
+      "bottom": "images/products/rudraksha-mala/nepal-sidhamala/bottom.jpg",
+      "certificate": "images/products/rudraksha-mala/nepal-sidhamala/certificate.jpg",
+      "xray": "images/products/rudraksha-mala/nepal-sidhamala/xray.jpg"
+    },
+    "variants": [
+      {
+        "name": "Small",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Medium",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Large",
+        "price": "1500",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Collector",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "Indo-SidhaMala",
+    "name": "Indonesia SidhaMala",
+    "category": "Siddha Mala",
+    "origin": "Indonesia",
+    "description": "",
+    "certificateAvailable": true,
+    "stockStatus": "Available",
+    "badge": "Certified",
+    "images": {
+      "front": "images/products/rudraksha-mala/indonesia-sidhamala/front.jpg",
+      "back": "images/products/rudraksha-mala/indonesia-sidhamala/back.jpg",
+      "top": "images/products/rudraksha-mala/indonesia-sidhamala/top.jpg",
+      "bottom": "images/products/rudraksha-mala/indonesia-sidhamala/bottom.jpg",
+      "certificate": "images/products/rudraksha-mala/indonesia-sidhamala/certificate.jpg",
+      "xray": "images/products/rudraksha-mala/indonesia-sidhamala/xray.jpg"
+    },
+    "variants": [
+      {
+        "name": "Small",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Medium",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Large",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Collector",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      },
+      {
+        "name": "Super Collector",
+        "price": "0",
+        "images": {
+          "front": "",
+          "back": "",
+          "top": "",
+          "bottom": "",
+          "certificate": "",
+          "xray": ""
+        }
+      }
+    ]
+  }
+]

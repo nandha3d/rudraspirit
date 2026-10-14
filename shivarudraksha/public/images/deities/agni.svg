@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Agni Deva">
+<defs><radialGradient id="g" cx="35%" cy="30%"><stop offset="0" stop-color="#a3222a"/><stop offset="1" stop-color="#650a10"/></radialGradient></defs>
+<circle cx="64" cy="64" r="59" fill="url(#g)" stroke="#d9aa51" stroke-width="3"/>
+<circle cx="64" cy="64" r="51" fill="none" stroke="#f6dda1" stroke-width="1.5"/>
+<text x="64" y="72" text-anchor="middle" font-size="42" font-family="Georgia, serif" fill="#f4ce76">🔥</text>
+</svg>

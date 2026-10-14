@@ -28,7 +28,8 @@ yarn-error.log
 /PROJECT_AUDIT.docx
 /sqlbackups/
 /sqlupdates/
-/shivarudraksha/
+/shivarudraksha/node_modules/
+/shivarudraksha/dist/
 updates/
 # composer.lock
 # *.lock
