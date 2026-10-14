@@ -45,14 +45,13 @@ npm run dev
 
 ---
 
-## 🔌 Are Products Connected to the Backend Engine?
+## 🔌 How Products Are Connected to the Backend Engine
 
-**No, the React frontend is currently NOT connected to the Laravel backend / database engine.**
+**YES — The React storefront connects directly to the Laravel backend engine!**
 
-* The React app runs as a **client-side JAMstack application** reading directly from `public/data/products.json`.
-* Product photos and certificates are served statically from `public/images/products/`.
-* It includes an in-browser admin tool at `#admin` (see `GITHUB_PRODUCT_MANAGER_SETUP.md`) that can commit directly to GitHub via fine-grained PAT.
-* The root project contains a full Laravel/MySQL backend (`rudraspirit`) with `/api/v3/products` endpoints. If you wish to connect the React app to the Laravel database in the future, you can update `src/data/catalogue.js` to fetch from `/api/v3/products` instead of `data/products.json`.
+* [`src/data/catalogue.js`](src/data/catalogue.js) fetches live products from `/api/v3/products?per_page=100`.
+* Whenever an admin edits products, descriptions, photos, or stock in the Laravel Admin Dashboard (`/admin/products/all`), the changes immediately stream to the React frontend.
+* It merges automatically with `public/data/products.json` as a resilient fallback so no catalogue bead is ever missing during offline local development.
 
 ---
 

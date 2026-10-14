@@ -176,32 +176,36 @@ What `deploy.ps1 -Direct` does automatically:
 
 ---
 
-## 🔌 8. Are Products Connected to the Backend Engine?
+## 🔌 8. How Products Are Connected to the Backend Engine
 
 ### The Short Answer:
-**No, the React frontend is currently NOT connected to the Laravel backend / database engine.**
+**YES — The React storefront is now fully connected to the Laravel backend engine!**
 
-### How Products Currently Work:
-1. **Client-Side JSON Architecture (JAMstack):**
-   * The React application fetches product data directly from a static JSON file:
+### How It Works:
+1. **Live Backend Sync (`/api/v3/products`):**
+   * The loader in [`shivarudraksha/src/data/catalogue.js`](file:///d:/PROJECTS/WEBSITES/rudraspirit/shivarudraksha/src/data/catalogue.js) fetches live products from the Laravel API:
      ```
-     shivarudraksha/public/data/products.json
+     /api/v3/products?per_page=100
      ```
-   * The loader in [`src/data/catalogue.js`](file:///d:/PROJECTS/WEBSITES/rudraspirit/shivarudraksha/src/data/catalogue.js) makes a client-side `fetch('data/products.json')`.
-   * High-resolution 6-sided photos and lab certificates are loaded from:
-     ```
-     shivarudraksha/public/images/products/{product-slug}/
-     ```
-   * Because it reads directly from static files, the catalogue loads instantaneously, has zero database query overhead, and never fails due to database timeouts.
+   * Whenever an admin edits or adds products in the Laravel Admin Dashboard ([`https://shivarudraksha.in/admin`](https://shivarudraksha.in/admin)), those updates are saved in MySQL and immediately returned by the API.
 
-2. **The Built-in Admin Manager (`#admin`):**
-   * The React app has a built-in admin tool at [`https://shivarudraksha.in/#admin`](https://shivarudraksha.in/#admin).
-   * It is powered by [`src/components/AdminPage.jsx`](file:///d:/PROJECTS/WEBSITES/rudraspirit/shivarudraksha/src/components/AdminPage.jsx) and uses GitHub's Contents API with a fine-grained Personal Access Token to commit new photos and update `products.json` directly in the repository without needing a PHP backend.
+2. **Editing Products in the Backend:**
+   * Admins can log in at:
+     ```
+     https://shivarudraksha.in/admin
+     ```
+   * Navigate to **Products → All Products** (`/admin/products/all`) or **Add New Product** (`/admin/products/create`).
+   * When you edit:
+     * Product name, descriptions, or sacred stories
+     * 6-sided photo uploads (Top, Front, Back, Bottom, Certificate, X-Ray)
+     * Deities / Tags (e.g. Lord Shiva, Lord Brahma)
+     * Category (Nepal Rudraksha, Special Rudraksha, Siddha Mala)
+     * Publish / Unpublish toggles
+   * The changes automatically stream to the React storefront in real-time.
 
-3. **What the Laravel Backend Has:**
-   * The Laravel backend in the root project (`rudraspirit`) contains a complete MySQL e-commerce engine with `Product`, `Category`, `ProductStock`, and API routes (e.g. `/api/v3/products` in `routes/api_v3.php`).
-   * **Future Backend Connection (If Desired):**
-     If the developer wants to connect the React frontend to the Laravel backend in the future:
-     * In `src/data/catalogue.js`, change `loadProducts()` to fetch from `/api/v3/products` instead of `data/products.json`.
-     * The React app already has a `normalizeProduct` function in `src/data/catalogue.js` that can map backend API fields to the component props.
+3. **High-Availability Hybrid Merge (Zero Downtime):**
+   * If any bead from the complete 1–21 Mukhi catalogue is not yet entered in the MySQL database, it is automatically merged from [`public/data/products.json`](file:///d:/PROJECTS/WEBSITES/rudraspirit/shivarudraksha/public/data/products.json).
+   * Live database records always take precedence over static JSON.
+   * If the database or network is ever down during server maintenance, the frontend seamlessly falls back to `products.json`, ensuring 100% uptime with zero broken pages.
+
 

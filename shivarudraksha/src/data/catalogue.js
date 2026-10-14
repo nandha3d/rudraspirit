@@ -48,14 +48,73 @@ export function normalizeProduct(product) {
 }
 
 export async function loadProducts() {
-  const response = await fetch(
-    `${import.meta.env.BASE_URL}data/products.json?t=${Date.now()}`,
-    { cache: "no-store" }
-  );
+  let backendProducts = [];
 
-  if (!response.ok) {
-    throw new Error("Unable to load product catalogue.");
+  try {
+    // 1. Fetch live products from the Laravel backend engine API
+    const apiEndpoint = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/v3/products?per_page=100&t=${Date.now()}`;
+    const apiResponse = await fetch(apiEndpoint, { cache: "no-store" });
+    if (apiResponse.ok) {
+      const result = await apiResponse.json();
+      if (Array.isArray(result.data) && result.data.length > 0) {
+        backendProducts = result.data.map((item) => {
+          return normalizeProduct({
+            id: item.slug || String(item.id),
+            db_id: item.id,
+            name: item.name,
+            mukhi: item.mukhi || (item.name.match(/(\d+)\s*Mukhi/i)?.[1] ? parseInt(item.name.match(/(\d+)\s*Mukhi/i)[1], 10) : null),
+            category: item.category?.name || "Nepal Rudraksha",
+            origin: item.category?.name?.toLowerCase().includes("indonesia") ? "Indonesia" : "Nepal",
+            description: item.description || "",
+            certificateAvailable: true,
+            stockStatus: item.stockStatus || "Available",
+            badge: item.badge || (item.featured ? "Featured" : "Certified"),
+            price: item.unit_price,
+            variants: item.variants || [],
+            images: item.images || {
+              front: item.photos?.[1] || item.thumbnail_url || item.photos?.[0] || "",
+              back: item.photos?.[2] || "",
+              top: item.photos?.[0] || item.thumbnail_url || "",
+              bottom: item.photos?.[3] || "",
+              certificate: item.photos?.[4] || "",
+              xray: item.photos?.[5] || "",
+            },
+          });
+        });
+      }
+    }
+  } catch (err) {
+    console.warn("Backend API not reachable; falling back to static catalogue:", err);
   }
 
-  return (await response.json()).map(normalizeProduct);
+  // 2. Also load static products.json to ensure full 1–21 Mukhi catalogue is always present
+  try {
+    const jsonResponse = await fetch(
+      `${import.meta.env.BASE_URL}data/products.json?t=${Date.now()}`,
+      { cache: "no-store" }
+    );
+    if (jsonResponse.ok) {
+      const staticProducts = (await jsonResponse.json()).map(normalizeProduct);
+
+      if (backendProducts.length > 0) {
+        // Merge: Live backend products take priority so any edits in /admin immediately override static data
+        const merged = [...backendProducts];
+        for (const sp of staticProducts) {
+          const alreadyInBackend = backendProducts.some(
+            (bp) => bp.id === sp.id || (bp.mukhi && bp.mukhi === sp.mukhi)
+          );
+          if (!alreadyInBackend) {
+            merged.push(sp);
+          }
+        }
+        return merged;
+      }
+
+      return staticProducts;
+    }
+  } catch (jsonErr) {
+    console.error("Static products.json error:", jsonErr);
+  }
+
+  return backendProducts;
 }

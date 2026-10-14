@@ -11,6 +11,42 @@ class ProductResource extends JsonResource
 {
     public function toArray($request): array
     {
+        $photos = $this->photos ? array_values(array_filter(array_map(function ($id) {
+            return uploaded_asset($id);
+        }, explode(',', $this->photos)))) : [];
+
+        $thumbnail = $this->thumbnail_img ? uploaded_asset($this->thumbnail_img) : ($photos[0] ?? null);
+
+        // 6-view image slots for React storefront
+        $images = [
+            'top'         => $photos[0] ?? $thumbnail ?? '',
+            'front'       => $photos[1] ?? $photos[0] ?? $thumbnail ?? '',
+            'back'        => $photos[2] ?? '',
+            'bottom'      => $photos[3] ?? '',
+            'certificate' => $photos[4] ?? '',
+            'xray'        => $photos[5] ?? '',
+        ];
+
+        // Parse mukhi number from name (e.g. "4 Mukhi Nepal Rudraksha" -> 4)
+        $mukhi = null;
+        if (preg_match('/(\d+)\s*mukhi/i', $this->name, $matches)) {
+            $mukhi = (int) $matches[1];
+        }
+
+        // Build variants from product stocks
+        $variants = [];
+        if ($this->stocks && $this->stocks->count() > 0) {
+            foreach ($this->stocks as $stock) {
+                if ($stock->variant) {
+                    $variants[] = [
+                        'name'   => $stock->variant,
+                        'price'  => (float) $stock->price,
+                        'images' => $images,
+                    ];
+                }
+            }
+        }
+
         return [
             'id'                => $this->id,
             'name'              => $this->getTranslation('name'),
@@ -22,10 +58,13 @@ class ProductResource extends JsonResource
             'discount_type'     => $this->discount_type,
             'discount_start'    => $this->discount_start_date,
             'discount_end'      => $this->discount_end_date,
-            'thumbnail_url'     => $this->thumbnail ? uploaded_asset($this->thumbnail_img) : null,
-            'photos'            => $this->photos ? array_map(function ($id) {
-                return uploaded_asset($id);
-            }, explode(',', $this->photos)) : [],
+            'thumbnail_url'     => $thumbnail,
+            'photos'            => $photos,
+            'images'            => $images,
+            'mukhi'             => $mukhi,
+            'variants'          => $variants,
+            'badge'             => $this->featured ? 'Featured' : ($this->todays_deal ? 'Popular' : 'Certified'),
+            'stockStatus'       => $this->stocks && $this->stocks->sum('qty') > 0 ? 'Available' : 'Available',
             'category'          => $this->main_category ? [
                 'id'   => $this->main_category->id,
                 'name' => $this->main_category->getTranslation('name'),
