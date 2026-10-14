@@ -74,6 +74,13 @@ fi
 echo "🕉️ Syncing Shiva Rudraksha branding & catalogue..."
 php artisan shivarudraksha:sync 2>&1 || true
 
+# 4c. Ensure React frontend is active in public/
+if [ -d "shivarudraksha/dist" ]; then
+    echo "⚛️ Ensuring React front public page is active in public/..."
+    cp -f shivarudraksha/dist/index.html public/index.html 2>/dev/null || true
+    cp -rn shivarudraksha/dist/assets/* public/assets/ 2>/dev/null || true
+fi
+
 # 5. Rebuild caches
 echo "⚡ Rebuilding caches..."
 # NOTE: config is deliberately NOT cached. Many gateway/integration code paths
