@@ -43,8 +43,9 @@ if ($LASTEXITCODE -ne 0) {
     Write-Host "No staged changes; pushing current HEAD." -ForegroundColor Yellow
 }
 
-Write-Host "==> Pushing to origin/main..." -ForegroundColor Cyan
+Write-Host "==> Pushing to origin/main & shivarudraksha/main..." -ForegroundColor Cyan
 git push origin main
+git push shivarudraksha main
 
 if ($Direct) {
     Write-Host "==> Running deploy.sh on server over SSH..." -ForegroundColor Cyan
