@@ -9,12 +9,33 @@ export default function ProductCard({ product, onOpen }) {
   const startingPrice =
     availablePrices.length > 0
       ? Math.min(...availablePrices)
+      : Number(product.price || product.unit_price) > 0
+      ? Number(product.price || product.unit_price)
       : null;
 
-  const isAvailable = startingPrice !== null;
+  const isPriceDisabled = Boolean(
+    product.disable_price ||
+    product.coming_soon ||
+    !startingPrice ||
+    product.stockStatus === "Coming Soon"
+  );
+
+  const isComingSoon = Boolean(
+    product.coming_soon ||
+    product.stockStatus === "Coming Soon" ||
+    product.badge === "Coming Soon"
+  );
+
+  const isAvailable = startingPrice !== null && !isComingSoon;
 
   const message = encodeURIComponent(
-    `Hello Shiva Rudraksha Inc., I am interested in ${product.name}. Please share details, size availability, certificate and price.`
+    `Hello Shiva Rudraksha Inc., I am interested in ${product.name}. ${
+      isPriceDisabled
+        ? isComingSoon
+          ? "Since it is Coming Soon, please share advance allocation and dispatch details."
+          : "Please share pricing, certificate and size availability."
+        : "Please share details, size availability, certificate and price."
+    }`
   );
 
   return (
@@ -30,7 +51,7 @@ export default function ProductCard({ product, onOpen }) {
       <div className="card-content">
         <div className="card-badges">
           <span>{product.badge}</span>
-          <span>{isAvailable ? product.stockStatus : "Available"}</span>
+          <span>{isComingSoon ? "Coming Soon" : isAvailable ? product.stockStatus : "Available"}</span>
         </div>
 
         <button
@@ -59,8 +80,40 @@ export default function ProductCard({ product, onOpen }) {
 
         <div className="card-bottom">
           <div>
-            <small style={{ textTransform: "uppercase", fontSize: "11px", color: "var(--muted)" }}>Price</small>
-            <strong style={{ fontSize: "14px", color: "var(--maroon)", fontFamily: "Georgia, serif", lineHeight: 1.2 }}>On Request</strong>
+            <small
+              style={{
+                textTransform: "uppercase",
+                fontSize: "11px",
+                color: "var(--muted)",
+              }}
+            >
+              {isPriceDisabled ? "Status" : "Price"}
+            </small>
+            {isPriceDisabled ? (
+              <strong
+                style={{
+                  fontSize: "13.5px",
+                  color: isComingSoon ? "#b45309" : "var(--maroon)",
+                  fontFamily: "Georgia, serif",
+                  lineHeight: 1.2,
+                  fontWeight: 700,
+                }}
+              >
+                {isComingSoon ? "Coming Soon" : "On Request"}
+              </strong>
+            ) : (
+              <strong
+                style={{
+                  fontSize: "14px",
+                  color: "var(--maroon)",
+                  fontFamily: "Georgia, serif",
+                  lineHeight: 1.2,
+                  fontWeight: 800,
+                }}
+              >
+                ₹{startingPrice.toLocaleString("en-IN")}
+              </strong>
+            )}
           </div>
 
           <button

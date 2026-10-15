@@ -7,7 +7,9 @@ import {
   MessageCircle,
   Search,
   ShieldCheck,
+  ShoppingBag,
   Sparkles,
+  User,
   X,
 } from "lucide-react";
 import Logo from "./components/Logo";
@@ -19,7 +21,11 @@ import PromotionalBanner from "./components/PromotionalBanner";
 import RudrakshaKnowledge from "./components/RudrakshaKnowledge";
 import RudrakshaMaintenance from "./components/RudrakshaMaintenance";
 import LordShiva from "./components/LordShiva";
+import HeroCarousel from "./components/HeroCarousel";
+import CartDrawer from "./components/CartDrawer";
+import Footer from "./components/Footer";
 import { loadProducts } from "./data/catalogue";
+import { getCartCount } from "./data/cartStore";
 
 const categories = [
   "Nepal Rudraksha",
@@ -162,6 +168,14 @@ export default function App() {
   const [shopOpen, setShopOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [knowledgeOpen, setKnowledgeOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(getCartCount());
+
+  useEffect(() => {
+    const handleCartUpdate = () => setCartCount(getCartCount());
+    window.addEventListener("cart-updated", handleCartUpdate);
+    return () => window.removeEventListener("cart-updated", handleCartUpdate);
+  }, []);
 
   useEffect(() => {
     const listener = () => setRoute(window.location.hash || "#home");
@@ -180,7 +194,15 @@ export default function App() {
   useEffect(() => {
     if (!route.startsWith("#product/")) return;
     const id = decodeURIComponent(route.substring("#product/".length));
-    setSelected(products.find((product) => product.id === id) || null);
+    setSelected(
+      products.find(
+        (product) =>
+          product.id === id ||
+          product.slug === id ||
+          String(product.db_id) === id ||
+          (product.mukhi && id.startsWith(`${product.mukhi}-mukhi`))
+      ) || null
+    );
   }, [route, products]);
 
   const visible = useMemo(() => {
@@ -226,10 +248,30 @@ export default function App() {
 
   if (route.startsWith("#product/") && selected) {
     return (
-      <ProductDetails
-        product={selected}
-        onBack={() => navigate("#home")}
-      />
+      <>
+        <ProductDetails
+          product={selected}
+          allProducts={products}
+          onOpenProduct={openProduct}
+          onBack={() => navigate("#home")}
+          onOpenCart={() => setIsCartOpen(true)}
+        />
+        <CartDrawer
+          isOpen={isCartOpen}
+          onClose={() => setIsCartOpen(false)}
+          onNavigate={navigate}
+        />
+        <a
+          className="floating-whatsapp"
+          href="https://wa.me/14372671257"
+          target="_blank"
+          rel="noreferrer"
+          title="WhatsApp Us"
+        >
+          <MessageCircle />
+        </a>
+        <Footer onNavigate={navigate} />
+      </>
     );
   }
 
@@ -269,9 +311,24 @@ export default function App() {
           </nav>
 
           <div className="nav-actions">
-            <button className="outline-button" onClick={() => navigate("#guide")}>Rudraksha Guide</button>
-            <a className="green-button" href="https://wa.me/14372671257" target="_blank" rel="noreferrer">
-              <MessageCircle /> Chat
+            <button
+              type="button"
+              className="header-cart-btn"
+              onClick={() => setIsCartOpen(true)}
+              title="Sacred Items Cart"
+            >
+              <ShoppingBag size={18} />
+              <span className="cart-btn-text">Cart</span>
+              {cartCount > 0 && <span className="header-cart-badge">{cartCount}</span>}
+            </button>
+
+            <a
+              href="/profile"
+              className="header-account-btn"
+              title="My Account & Orders"
+            >
+              <User size={18} />
+              <span className="account-btn-text">Account</span>
             </a>
           </div>
         </div>
@@ -279,32 +336,8 @@ export default function App() {
 
       {active === "home" && (
         <main>
-          <section className="lovable-hero">
-            <div className="container lovable-hero-grid">
-              <div>
-                <span className="source-pill"><Sparkles /> DIRECTLY SOURCED • CERTIFIED</span>
-                <h1>Authentic Certified Rudraksha from <em>Nepal</em>.</h1>
-                <p>
-                  Carefully selected Rudraksha beads, malas and spiritual
-                  combinations—supplied in Canada, the United States and worldwide.
-                </p>
-                <div className="hero-actions">
-                  <button className="maroon-button" onClick={() => navigate("#recommendations")}>Get a Recommendation <ArrowRight /></button>
-                  <button className="outline-button large" onClick={() => navigate("#guide")}>Rudraksha Guide</button>
-                </div>
-                <div className="promise-grid">
-                  <span><BadgeCheck /> Authentic Rudraksha</span>
-                  <span><BadgeCheck /> Certificate Available</span>
-                  <span><BadgeCheck /> Canada-Based Business</span>
-                  <span><BadgeCheck /> Worldwide Shipping</span>
-                  <span><BadgeCheck /> Personal Consultation</span>
-                </div>
-              </div>
-              <div className="hero-product-panel">
-                <img src={`${import.meta.env.BASE_URL}images/products/12-mukhi-nepal-rudraksha/top.jpg`} alt="Certified Nepal Rudraksha" />
-              </div>
-            </div>
-          </section>
+          {/* Full-Width Interactive Hero Carousel */}
+          <HeroCarousel onNavigate={navigate} />
 
           <section className="home-featured container">
             <div className="section-kicker">FEATURED COLLECTION</div>
@@ -521,14 +554,13 @@ export default function App() {
 
       <a className="floating-whatsapp" href="https://wa.me/14372671257" target="_blank" rel="noreferrer"><MessageCircle /></a>
 
-      <footer>
-        <div className="container footer-layout">
-          <Logo />
-          <div><strong>Explore</strong><button onClick={() => navigate("#recommendations")}>Recommendations</button><button onClick={() => navigate("#guide")}>Rudraksha Guide</button><button onClick={() => navigate("#knowledge")}>Rudraksha Knowledge</button><button onClick={() => navigate("#maintenance")}>Maintenance</button><button onClick={() => navigate("#lord-shiva")}>Lord Shiva</button></div>
-          <div><strong>Contact</strong><a href="tel:+14372671257">437-267-1257</a><a href="mailto:shivarudrakshain@gmail.com">shivarudrakshain@gmail.com</a></div>
-          <div><strong>Manage</strong><a href="#admin">Product Manager</a></div>
-        </div>
-      </footer>
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        onNavigate={navigate}
+      />
+
+      <Footer onNavigate={navigate} />
     </>
   );
 }

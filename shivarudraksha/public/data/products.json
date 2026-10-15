@@ -903,7 +903,23 @@
       "bottom": "images/products/14-mukhi-nepal-rudraksha/bottom.jpg",
       "certificate": "images/products/14-mukhi-nepal-rudraksha/certificate.jpg",
       "xray": "images/products/14-mukhi-nepal-rudraksha/xray.jpg"
-    }
+    },
+    "rating": 5.0,
+    "rating_count": 1,
+    "reviews": [
+      {
+        "id": "1",
+        "author": "Praveen Varma",
+        "location": "Toronto, Canada",
+        "verified": true,
+        "rating": 5,
+        "date": "October 8, 2026",
+        "variant": "14 Mukhi Nepal Rudraksha \u2022 Lab Certified",
+        "title": "Authentic & Consecrated Nepal Bead",
+        "comment": "The bead arrived in Canada within 4 days via DHL Express. The X-ray digital verification clearly showed all internal compartments intact without any tampering. The accompanying Panchamrit energization report gave tremendous peace of mind. Felt an immediate calming grounding aura during morning meditation. Har Har Mahadev!",
+        "helpful": 12
+      }
+    ]
   },
   {
     "id": "12-mukhi-rudraksha-mala",

@@ -173,6 +173,8 @@ class ProductService
         unset($collection['button']);
 
         $collection['has_warranty'] = isset($collection['has_warranty']) ? 1 : 0;
+        $collection['disable_price'] = isset($collection['disable_price']) ? 1 : 0;
+        $collection['coming_soon'] = isset($collection['coming_soon']) ? 1 : 0;
 
         $data = $collection->merge(compact(
             'user_id',
@@ -367,6 +369,8 @@ class ProductService
         }
 
         $collection['has_warranty'] = isset($collection['has_warranty']) ? 1 : 0;
+        $collection['disable_price'] = isset($collection['disable_price']) ? 1 : 0;
+        $collection['coming_soon'] = isset($collection['coming_soon']) ? 1 : 0;
         
         unset($collection['button']);
         

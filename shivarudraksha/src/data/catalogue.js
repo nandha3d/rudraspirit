@@ -42,6 +42,9 @@ export function normalizeProduct(product) {
 
   return {
     ...product,
+    rating: typeof product.rating === "number" ? product.rating : parseFloat(product.rating || 0),
+    rating_count: typeof product.rating_count === "number" ? product.rating_count : parseInt(product.rating_count || 0, 10),
+    reviews: Array.isArray(product.reviews) ? product.reviews : [],
     variants,
     images: legacyImages,
   };
@@ -70,7 +73,14 @@ export async function loadProducts() {
             stockStatus: item.stockStatus || "Available",
             badge: item.badge || (item.featured ? "Featured" : "Certified"),
             price: item.unit_price,
+            rating: typeof item.rating === "number" ? item.rating : parseFloat(item.rating || 0),
+            rating_count: typeof item.rating_count === "number" ? item.rating_count : parseInt(item.rating_count || 0, 10),
+            reviews: Array.isArray(item.reviews) ? item.reviews : [],
+            disable_price: Boolean(item.disable_price || item.unit_price <= 0),
+            coming_soon: Boolean(item.coming_soon || item.stockStatus === "Coming Soon"),
             variants: item.variants || [],
+            attributes: item.attributes || [],
+            choice_options: item.choice_options || [],
             images: item.images || {
               front: item.photos?.[1] || item.thumbnail_url || item.photos?.[0] || "",
               back: item.photos?.[2] || "",

@@ -219,15 +219,51 @@
                         $rsInitialPriceFormatted = single_price($rsInitialPrice);
                     @endphp
 
-                    <!-- Price on Request Display -->
-                    <div id="chosen_price_div" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;margin-top:14px;">
-                        <span id="chosen_price" style="font-size:26px;color:var(--rs-gold-deep);font-family:'Playfair Display',serif;font-weight:600;">
-                            {{ translate('Price on Request') }}
-                        </span>
-                        @if ($rsQty > 0)
-                            <span class="rs-pdp-badge" style="background:var(--maroon);color:#fff;">{{ translate('Certified & Available') }}</span>
-                        @endif
-                    </div>
+                    @php
+                        $isComingSoon = (bool) ($detailedProduct->coming_soon ?? false);
+                        $isPriceDisabled = (bool) ($detailedProduct->disable_price ?? false) || $isComingSoon || ($rsInitialPrice <= 0);
+                    @endphp
+
+                    @if ($isComingSoon)
+                        <!-- Coming Soon Display -->
+                        <div id="chosen_price_div" style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px;margin-top:14px;padding:16px 20px;background:#fefce8;border:1px solid #fef08a;border-radius:12px;">
+                            <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#854d0e;">
+                                {{ translate('Sacred Harvest • Consecration in Progress') }}
+                            </div>
+                            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                                <span style="font-size:28px;color:#b45309;font-family:'Playfair Display',serif;font-weight:700;">
+                                    {{ translate('Coming Soon') }}
+                                </span>
+                                <span style="font-size:11px;font-weight:600;padding:4px 10px;background:#fde047;color:#713f12;border-radius:999px;">
+                                    {{ translate('Advance Allocation Open') }}
+                                </span>
+                            </div>
+                            <p style="margin:4px 0 0;font-size:13.5px;color:#78350f;line-height:1.5;">
+                                {{ translate('Authentic Himalayan Nepal bead currently undergoing Prana Pratishtha. Inquire below to connect directly with the owner for early allocation & certified dispatch.') }}
+                            </p>
+                        </div>
+                    @elseif ($isPriceDisabled)
+                        <!-- Price on Request Display -->
+                        <div id="chosen_price_div" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;margin-top:14px;">
+                            <span id="chosen_price" style="font-size:26px;color:var(--rs-gold-deep);font-family:'Playfair Display',serif;font-weight:600;">
+                                {{ translate('Price on Request') }}
+                            </span>
+                            @if ($rsQty > 0)
+                                <span class="rs-pdp-badge" style="background:var(--maroon);color:#fff;">{{ translate('Certified & Available') }}</span>
+                            @endif
+                        </div>
+                    @else
+                        <!-- Regular In-Stock Price Display -->
+                        <div id="chosen_price_div" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;margin-top:14px;">
+                            <span id="chosen_price" style="font-size:32px;color:var(--rs-gold-deep);font-family:'Playfair Display',serif;font-weight:700;">
+                                {{ $rsInitialPriceFormatted }}
+                            </span>
+                            <span style="font-size:13px;color:var(--rs-ink-muted);">{{ translate('Inclusive of all taxes') }}</span>
+                            @if ($rsQty > 0)
+                                <span class="rs-pdp-badge" style="background:#15803d;color:#fff;">{{ translate('In Stock') }}</span>
+                            @endif
+                        </div>
+                    @endif
 
                     @php
                         $rsPdpWaMsg = rawurlencode("Hello Shiva Rudraksha Inc., I am interested in " . $detailedProduct->getTranslation('name') . ". Please share details, size availability and certification.");

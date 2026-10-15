@@ -628,8 +628,37 @@
                                         <input type="number" lang="en" min="0" value="{{ $product->purchase_price }}" step="0.01" placeholder="{{ translate('0.00') }}" name="purchase_price" class="form-control">
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Discount Date Range -->
+                            <!-- Disable Price & Coming Soon Controls -->
+                            <div class="row gutters-5 mb-3">
+                                <div class="col-md-6 mb-2 mb-md-0">
+                                    <div class="d-flex align-items-center justify-content-between p-3 border rounded bg-light h-100">
+                                        <div>
+                                            <label class="fs-14 fw-600 mb-0 d-block">{{ translate('Disable Price (Enquire / Contact Mode)') }}</label>
+                                            <small class="text-muted">{{ translate('Hides price & enables Enquire button to contact owner') }}</small>
+                                        </div>
+                                        <label class="aiz-switch aiz-switch-success mb-0 ml-3">
+                                            <input value="1" type="checkbox" name="disable_price" @if($product->disable_price == 1) checked @endif>
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center justify-content-between p-3 border rounded bg-light h-100">
+                                        <div>
+                                            <label class="fs-14 fw-600 mb-0 d-block">{{ translate('Coming Soon Status') }}</label>
+                                            <small class="text-muted">{{ translate('Shows "Coming Soon" in price section on storefront') }}</small>
+                                        </div>
+                                        <label class="aiz-switch aiz-switch-warning mb-0 ml-3">
+                                            <input value="1" type="checkbox" name="coming_soon" @if($product->coming_soon == 1) checked @endif>
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row gutters-5">
                                 <div class="col-md-6 ">
                                     <div class="form-group mb-2 mb-lg-3" id="brand">
                                         <label for="discount-date-range"

@@ -1,0 +1,461 @@
+/* ==========================================================================
+   FULL-WIDTH INTERACTIVE HERO CAROUSEL
+   Shiva Rudraksha Inc.
+   ========================================================================== */
+
+.hero-carousel-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  height: clamp(600px, 72vh, 780px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #060e1c;
+}
+
+/* Background Slide Stack */
+.hero-carousel-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-carousel-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1), transform 8s ease-out;
+  pointer-events: none;
+}
+
+.hero-carousel-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Soft Directional Overlay so background image is fully visible */
+.hero-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, rgba(5, 12, 24, 0.68) 0%, rgba(5, 12, 24, 0.32) 48%, rgba(5, 12, 24, 0.04) 85%),
+    linear-gradient(180deg, rgba(5, 12, 24, 0.25) 0%, transparent 40%, rgba(5, 12, 24, 0.45) 100%);
+}
+
+/* Foreground Content Container */
+.hero-content-container {
+  position: relative;
+  z-index: 5;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Text directly overlaps the image - No enclosing box hiding the background */
+.hero-text-card {
+  max-width: 660px;
+  background: transparent !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  color: #ffffff;
+  animation: heroCardFadeIn 0.8s ease-out;
+}
+
+@keyframes heroCardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Top Kicker Pill Badge */
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(12, 20, 32, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #fae498;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.hero-sparkle-icon {
+  color: #f7ca54;
+}
+
+/* Headline */
+.hero-headline {
+  font-family: Georgia, "Playfair Display", serif;
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1.15;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 18px;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 6px 24px rgba(0, 0, 0, 0.85);
+}
+
+.hero-highlight {
+  color: #f8c858;
+  font-style: italic;
+  font-weight: 500;
+  text-shadow: 0 2px 12px rgba(248, 200, 88, 0.3), 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* Description */
+.hero-description {
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.68;
+  color: #f3ede4;
+  margin: 0 0 30px;
+  max-width: 580px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.95);
+}
+
+/* Actions Row */
+.hero-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: 999px;
+  border: 0;
+  background: linear-gradient(135deg, #7c141a 0%, #5b080c 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(111, 15, 19, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  transition: all 0.28s ease;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #961921 0%, #6f0a0f 100%);
+  box-shadow: 0 14px 30px rgba(111, 15, 19, 0.55);
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(212, 175, 55, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  color: #fae498;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.28s ease;
+}
+
+.hero-btn-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(212, 175, 55, 0.22);
+  border-color: #ffd976;
+  color: #ffffff;
+}
+
+/* Trust Badges Grid */
+.hero-trust-badges {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 18px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.hero-trust-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #fae8be;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.hero-check-icon {
+  color: #e5be59;
+  flex-shrink: 0;
+}
+
+/* Carousel Navigation Arrows */
+.hero-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  background: rgba(8, 18, 34, 0.65);
+  backdrop-filter: blur(10px);
+  color: #fae498;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.hero-nav-arrow:hover {
+  background: rgba(111, 15, 19, 0.85);
+  border-color: #ffd976;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.hero-nav-prev {
+  left: 24px;
+}
+
+.hero-nav-next {
+  right: 24px;
+}
+
+/* Bottom Pagination Pills */
+.hero-carousel-pagination {
+  position: absolute;
+  bottom: 24px;
+  right: 48px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-dot-btn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hero-dot-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(8, 18, 34, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  color: #c9b99e;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.hero-dot-btn.active .hero-dot-pill {
+  background: #5b080c;
+  border-color: #cca344;
+  color: #fae498;
+  box-shadow: 0 4px 14px rgba(91, 8, 12, 0.5);
+}
+
+.hero-dot-number {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  color: #e5be59;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-carousel-wrap {
+    min-height: 560px;
+    height: auto;
+    padding: 70px 0 60px;
+  }
+
+  .hero-nav-arrow {
+    display: none;
+  }
+
+  .hero-carousel-pagination {
+    position: static;
+    margin-top: 24px;
+    justify-content: center;
+  }
+
+  .hero-trust-badges {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-carousel-wrap {
+    padding: 50px 0 40px;
+  }
+
+  .hero-text-card {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .hero-headline {
+    font-size: 30px;
+  }
+
+  .hero-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-dot-label {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   PRODUCT PAGE COMPACT HERO (LESS HEIGHT THAN HOMEPAGE HERO)
+   ========================================================================== */
+.hero-carousel-wrap.hero-compact {
+  min-height: 290px;
+  height: clamp(290px, 35vh, 370px);
+  padding: 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.hero-carousel-wrap.hero-compact .hero-content-container {
+  width: min(1280px, calc(100% - 48px));
+  padding-top: 10px;
+  padding-bottom: 24px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-text-card {
+  max-width: 740px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-badge-pill {
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  font-size: 10.5px;
+  gap: 6px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-headline {
+  font-size: clamp(1.5rem, 2.3vw, 2.15rem);
+  line-height: 1.18;
+  margin-bottom: 8px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-description {
+  font-size: clamp(13px, 1.05vw, 14.5px);
+  line-height: 1.48;
+  margin-bottom: 12px;
+  max-width: 660px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hero-carousel-wrap.hero-compact .hero-actions-row {
+  margin-bottom: 0;
+  gap: 10px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-btn-primary {
+  padding: 7px 16px;
+  font-size: 13px;
+  gap: 6px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-btn-secondary {
+  padding: 7px 14px;
+  font-size: 13px;
+  gap: 6px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-trust-badges {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .hero-carousel-wrap.hero-compact .hero-trust-badges {
+    display: flex;
+    margin-top: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .hero-carousel-wrap.hero-compact .hero-trust-badge-item {
+    font-size: 11px;
+    gap: 5px;
+    color: rgba(255, 255, 255, 0.88);
+  }
+}
+
+.hero-carousel-wrap.hero-compact .hero-nav-arrow {
+  width: 38px;
+  height: 38px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-carousel-pagination {
+  bottom: 10px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-dot-btn {
+  padding: 3px 8px;
+}
+
+.hero-carousel-wrap.hero-compact .hero-dot-pill {
+  font-size: 11px;
+  gap: 5px;
+}
+
+@media (max-width: 900px) {
+  .hero-carousel-wrap.hero-compact {
+    min-height: 260px;
+    height: auto;
+    padding: 36px 0 30px;
+  }
+
+  .hero-carousel-wrap.hero-compact .hero-carousel-pagination {
+    position: static;
+    margin-top: 16px;
+  }
+}
+

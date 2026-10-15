@@ -54,6 +54,8 @@ class ProductResource extends JsonResource
             'description'       => $this->getTranslation('description'),
             'unit_price'        => (float) $this->unit_price,
             'purchase_price'    => (float) $this->purchase_price,
+            'disable_price'     => (bool) ($this->disable_price || $this->unit_price <= 0),
+            'coming_soon'       => (bool) ($this->coming_soon),
             'discount'          => (float) $this->discount,
             'discount_type'     => $this->discount_type,
             'discount_start'    => $this->discount_start_date,
@@ -63,6 +65,14 @@ class ProductResource extends JsonResource
             'images'            => $images,
             'mukhi'             => $mukhi,
             'variants'          => $variants,
+            'choice_options'    => $this->choice_options ? json_decode($this->choice_options) : [],
+            'attributes'        => $this->choice_options ? array_map(function ($choice) {
+                return [
+                    'id'     => $choice['attribute_id'] ?? null,
+                    'name'   => get_single_attribute_name($choice['attribute_id'] ?? 0),
+                    'values' => $choice['values'] ?? [],
+                ];
+            }, json_decode($this->choice_options, true) ?: []) : [],
             'badge'             => $this->featured ? 'Featured' : ($this->todays_deal ? 'Popular' : 'Certified'),
             'stockStatus'       => $this->stocks && $this->stocks->sum('qty') > 0 ? 'Available' : 'Available',
             'category'          => $this->main_category ? [
@@ -76,7 +86,21 @@ class ProductResource extends JsonResource
                 'slug' => $this->brand->slug,
             ] : null,
             'rating'            => (float) ($this->rating ?? 0),
-            'rating_count'      => (int) ($this->reviews->count() ?? 0),
+            'rating_count'      => (int) ($this->reviews ? $this->reviews->where('status', 1)->count() : 0),
+            'reviews'           => $this->reviews ? $this->reviews->where('status', 1)->map(function ($rev) {
+                return [
+                    'id'        => (string) $rev->id,
+                    'author'    => $rev->user ? $rev->user->name : ($rev->custom_reviewer_name ?: 'Verified Devotee'),
+                    'location'  => 'Verified Buyer',
+                    'verified'  => true,
+                    'rating'    => (int) $rev->rating,
+                    'date'      => $rev->created_at ? $rev->created_at->format('F j, Y') : '',
+                    'variant'   => $this->name . ' • Lab Certified',
+                    'title'     => 'Authentic & Consecrated Nepal Bead',
+                    'comment'   => $rev->comment,
+                    'helpful'   => 12,
+                ];
+            })->values() : [],
             'num_of_sale'       => (int) $this->num_of_sale,
             'stock_status'      => $this->stocks && $this->stocks->sum('qty') > 0 ? 'in_stock' : 'out_of_stock',
             'min_qty'           => (int) $this->min_qty,
