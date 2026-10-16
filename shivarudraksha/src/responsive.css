@@ -1,0 +1,149 @@
+/* Responsive refinements shared by the storefront, guides and product pages. */
+:where(button, a, input, select, textarea) { -webkit-tap-highlight-color: transparent; }
+:where(button, a, input, select, textarea):focus-visible { outline: 3px solid #b87b28; outline-offset: 3px; }
+.mobile-account-link { display: none; }
+@media (max-width: 1100px) {
+  .luxury-nav { gap: 12px; }
+  .luxury-nav .brand-logo { min-width: 0; }
+}
+@media (max-width: 900px) {
+  .container { width: calc(100% - 32px); }
+  .luxury-nav { min-height: 68px; gap: 8px; }
+  .luxury-nav .brand-logo { flex: 1; min-width: 0; gap: 8px; }
+  .luxury-nav .brand-logo img { width: 38px; height: 38px; flex-shrink: 0; }
+  .luxury-nav .brand-logo strong { font-size: clamp(12px, 2.3vw, 18px); line-height: 1.3; }
+  .mobile-menu-button { display: grid; place-items: center; width: 44px; height: 44px; flex: 0 0 44px; order: 3; margin: 0; }
+  .luxury-nav .nav-actions { display: flex; order: 2; flex-shrink: 0; gap: 6px; margin: 0; }
+  .header-cart-btn, .header-account-btn { min-width: 44px; min-height: 44px; justify-content: center; padding: 0 10px; }
+  .luxury-nav nav { top: 100%; max-height: calc(100dvh - 110px); overflow-y: auto; overscroll-behavior: contain; padding: 12px 16px 20px; box-shadow: 0 16px 24px #3b2b2314; }
+  .luxury-nav nav > button, .luxury-nav .shop-menu > button, .luxury-nav .shop-dropdown button { min-height: 46px; white-space: normal; text-align: left; }
+  .luxury-nav .shop-dropdown { width: 100%; }
+  .details-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-top: 28px; padding-bottom: 36px; }
+  .details-layout > *, .birth-chart-layout > *, .guide-summary-grid > *, .footer-layout > * { min-width: 0; }
+  .detail-gallery { position: static; }
+  .detail-main-image { height: auto; aspect-ratio: 1; max-height: 65dvh; }
+  .detail-main-image > img { width: 100%; height: 100%; object-fit: contain; }
+  .birth-chart-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .footer-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .footer-contact-link, .footer-contact-location { overflow-wrap: anywhere; }
+}
+@media (max-width: 620px) {
+  .luxury-nav .header-account-btn { display: none; }
+  .luxury-nav nav .mobile-account-link { display: flex; align-items: center; min-height: 46px; padding: 10px 9px; color: var(--maroon); }
+  .luxury-nav .brand-logo strong { font-size: clamp(12px, 3.1vw, 16px); letter-spacing: .015em; }
+  .home-featured { padding: 32px 0 40px; }
+  .home-featured h2, .page-heading h1, .birth-chart-intro h2 { font-size: clamp(28px, 7.5vw, 36px); line-height: 1.16; }
+  .page-shell { min-height: 0; padding: 32px 0 44px; }
+  .page-heading { margin-bottom: 24px; }
+  .page-heading p, .text-page > p { font-size: 16px; line-height: 1.65; }
+  .text-page .text-page { width: 100%; }
+  .section-kicker, .page-heading > span { letter-spacing: .18em; line-height: 1.6; }
+  .product-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .product-card { min-width: 0; }
+  .card-content { padding: 16px; }
+  .product-name { font-size: 24px; line-height: 1.25; }
+  .card-content > p { min-height: 0; }
+  .card-bottom { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card-bottom > div:first-child { grid-column: 1 / -1; }
+  .card-bottom strong { font-size: 22px; }
+  .details-button, .card-bottom a { min-height: 46px; }
+  .card-meta { gap: 10px; }
+  .category-pills button { min-height: 44px; padding: 8px 12px; }
+  .search-box, .search-box:focus-within { min-width: 0; width: 100%; }
+  .detail-header-inner { min-height: 68px; gap: 12px; flex-wrap: wrap; padding: 10px 0; }
+  .detail-header .brand-logo { min-width: 0; }
+  .detail-header .brand-logo img { width: 34px; height: 34px; }
+  .detail-header .brand-logo strong { font-size: 13px; }
+  .detail-header button { min-height: 44px; }
+  .product-information h1 { font-size: clamp(28px, 8vw, 36px); line-height: 1.15; margin: 14px 0 20px; }
+  .premium-label { font-size: 12px; flex-wrap: wrap; }
+  .thumbnails { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .thumbnails img { height: auto; aspect-ratio: 1; }
+  .thumbnails button { min-height: 44px; }
+  .rs-variant-pills { flex-wrap: wrap; }
+  .rs-variant-pill { min-height: 44px; max-width: 100%; white-space: normal; }
+  .rs-selected-summary { overflow-wrap: anywhere; }
+  .price-headline-row, .product-rating-under-text, .secondary-enquiry-row { flex-wrap: wrap; }
+  .secondary-enquiry-row, .product-commerce-actions { grid-template-columns: minmax(0, 1fr); }
+  .included-list-enhanced, .information-grid { grid-template-columns: minmax(0, 1fr); }
+  .enquire-owner-primary-btn, .whatsapp-button-full { padding: 14px; white-space: normal; }
+  .product-tabs-bar { max-width: 100%; overflow-x: auto; justify-content: flex-start; flex-wrap: nowrap; }
+  .product-tab-pill { flex: 0 0 auto; min-height: 44px; }
+  .tab-panel-header h3, .spiritual-guide-header h2 { font-size: 28px; line-height: 1.2; }
+  .product-tab-panel { padding: 18px 12px; }
+  .reviews-summary-card, .reviews-feed, .review-form-grid { grid-template-columns: minmax(0, 1fr); }
+  .review-modal { width: calc(100% - 24px); max-height: 90dvh; padding: 20px 16px; }
+  .review-modal .form-row { grid-template-columns: minmax(0, 1fr); }
+  .review-modal .modal-actions { flex-wrap: wrap; gap: 10px; }
+  .review-modal .modal-close-btn { min-width: 44px; min-height: 44px; }
+  .guide-card { padding: 18px; }
+  .guide-summary-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .guide-card h2 { font-size: 26px; line-height: 1.2; }
+  .guide-facts { grid-template-columns: minmax(0, 1fr); }
+  .guide-facts strong, .guide-card dd { overflow-wrap: anywhere; }
+  .guide-accordion-trigger { min-height: 48px; text-align: left; }
+  .birth-chart-section, .recommendation-page .birth-chart-section { min-height: 0; padding: 32px 0 44px; }
+  .birth-chart-form { padding: 20px 16px; }
+  .birth-chart-form-heading h3 { font-size: 28px; line-height: 1.2; }
+  .birth-chart-form-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .birth-chart-form label { min-width: 0; }
+  input, select, textarea { min-width: 0; max-width: 100%; font-size: 16px; }
+  .birth-chart-form input, .product-form input, .product-form select, .product-form textarea { width: 100%; }
+  .birth-chart-submit { padding: 12px 16px; line-height: 1.4; }
+  .birth-chart-submit svg { width: 20px; flex-shrink: 0; }
+  .birth-chart-eyebrow { display: inline-flex; gap: 8px; align-items: center; }
+  .birth-chart-eyebrow svg { width: 18px; }
+  .contact-grid { grid-template-columns: minmax(0, 1fr); }
+  .contact-grid > * { gap: 12px; padding: 16px; min-width: 0; }
+  .contact-grid > * > span:last-child { min-width: 0; }
+  .contact-grid strong { font-size: 16px; overflow-wrap: anywhere; }
+  .contact-icon { flex: 0 0 44px; width: 44px; height: 44px; padding: 10px; }
+  .rs-info-page { padding-top: 28px; }
+  .rs-info-hero { padding: 28px 18px; }
+  .rs-info-hero h1 { font-size: 32px; line-height: 1.15; }
+  .rs-info-section { padding: 24px 16px; }
+  .rs-section-title { gap: 12px; align-items: flex-start; }
+  .rs-section-title h2 { font-size: 26px; line-height: 1.25; }
+  .rs-maintenance-grid, .rs-guidance-grid, .rs-shiva-grid, .rs-shiva-story-grid, .rs-steps-grid, .about-features { grid-template-columns: minmax(0, 1fr); }
+  .rs-callout { padding: 18px; }
+  .footer-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .luxury-site-footer { padding-top: 32px; margin-top: 16px; }
+  .footer-links-list button { min-height: 44px; text-align: left; margin: 0; }
+  .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 8px; padding-bottom: 70px; }
+  .footer-bottom-meta { line-height: 1.6; }
+  .floating-whatsapp { width: 48px; height: 48px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); }
+  .floating-whatsapp svg { width: 24px; }
+  .cart-drawer { width: 100%; height: 100dvh; max-height: 100dvh; }
+  .cart-drawer-header, .cart-drawer-body, .cart-drawer-footer { padding: 16px; }
+  .cart-drawer-header, .cart-drawer-footer, .cart-perk-banner { flex-shrink: 0; }
+  .cart-drawer { overflow-y: auto; overscroll-behavior: contain; }
+  .cart-drawer-body { min-height: 120px; flex: 1 0 auto; overflow-y: visible; }
+  .cart-item-info { min-width: 0; }
+  .cart-item-title-row h4 { overflow-wrap: anywhere; }
+  .cart-item-price-row, .cart-summary-line { flex-wrap: wrap; gap: 8px; }
+  .cart-close-btn, .cart-item-remove { width: 44px; height: 44px; flex-shrink: 0; }
+  .cart-qty-control button { min-width: 44px; min-height: 44px; }
+  .cart-drawer-footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+  .fullscreen figure { width: 100%; padding: 16px; }
+  .fullscreen img { max-width: 100%; max-height: 70dvh; }
+  .fullscreen figcaption { padding: 0 12px; line-height: 1.5; }
+  .full-arrow { width: 44px; height: 44px; top: auto; bottom: 16px; transform: none; }
+  .full-arrow.left { left: 20px; }
+  .full-arrow.right { right: 20px; }
+  .admin-login { padding: 24px 16px; }
+  .admin-login > section, .product-form, .product-admin-list { padding: 20px 16px; }
+  .admin-topbar-inner, .admin-heading { flex-wrap: wrap; gap: 12px; }
+  .admin-grid, .field-grid, .upload-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (hover: none) {
+  .gallery-button { opacity: 1; min-width: 44px; min-height: 44px; }
+  .product-card:hover, .guide-card:hover { transform: none; }
+  .product-card:hover .card-gallery > img, .detail-main-image:hover > img { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-carousel-slide, .promotional-track { animation: none; transition: none; }
+}
+
+.gallery-image-open { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; }
+.gallery-image-open img { display: block; width: 100%; height: 100%; object-fit: cover; }

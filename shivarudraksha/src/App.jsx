@@ -283,22 +283,22 @@ export default function App() {
       <header className="luxury-header">
         <div className="luxury-nav container">
           <Logo />
-          <button className="mobile-menu-button" onClick={() => setMobileOpen(!mobileOpen)}>
+          <button type="button" className="mobile-menu-button" aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileOpen} aria-controls="main-navigation" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X /> : <Menu />}
           </button>
 
-          <nav className={mobileOpen ? "open" : ""}>
+          <nav id="main-navigation" aria-label="Main navigation" className={mobileOpen ? "open" : ""} onKeyDown={(event) => { if (event.key === "Escape") { setMobileOpen(false); setKnowledgeOpen(false); document.querySelector(".mobile-menu-button")?.focus(); } }}>
             <button className={active === "home" ? "active" : ""} onClick={() => navigate("#home")}>Home</button>
             <button className={active === "guide" ? "active" : ""} onClick={() => navigate("#guide")}>Rudraksha Guide</button>
-            <div className="shop-menu knowledge-menu" onMouseEnter={() => setKnowledgeOpen(true)} onMouseLeave={() => setKnowledgeOpen(false)}>
+            <div className="shop-menu knowledge-menu" onMouseEnter={() => { if (window.matchMedia("(min-width: 901px) and (hover: hover)").matches) setKnowledgeOpen(true); }} onMouseLeave={() => setKnowledgeOpen(false)}>
               <button
                 className={["knowledge", "maintenance", "lord-shiva"].includes(active) ? "active" : ""}
-                onClick={() => setKnowledgeOpen((open) => !open)}
+                aria-expanded={knowledgeOpen} aria-controls="knowledge-navigation" onClick={() => setKnowledgeOpen((open) => !open)}
               >
                 Knowledge <ChevronDown />
               </button>
               {knowledgeOpen && (
-                <div className="shop-dropdown knowledge-dropdown">
+                <div id="knowledge-navigation" className="shop-dropdown knowledge-dropdown">
                   <button onClick={() => navigate("#lord-shiva")}>Who is Lord Shiva?</button>
                   <button onClick={() => navigate("#maintenance")}>Rudraksha Maintenance</button>
                   <button onClick={() => navigate("#knowledge")}>Energizing & Do’s/Don’ts</button>
@@ -308,6 +308,7 @@ export default function App() {
             <button className={active === "recommendations" ? "active" : ""} onClick={() => navigate("#recommendations")}>Recommendations</button>
             <button className={active === "about" ? "active" : ""} onClick={() => navigate("#about")}>About</button>
             <button className={active === "contact" ? "active" : ""} onClick={() => navigate("#contact")}>Contact</button>
+            <a className="mobile-account-link" href="/profile">Account & Orders</a>
           </nav>
 
           <div className="nav-actions">
@@ -315,7 +316,7 @@ export default function App() {
               type="button"
               className="header-cart-btn"
               onClick={() => setIsCartOpen(true)}
-              title="Sacred Items Cart"
+              title="Sacred Items Cart" aria-label={`Open cart (${cartCount} items)`}
             >
               <ShoppingBag size={18} />
               <span className="cart-btn-text">Cart</span>
