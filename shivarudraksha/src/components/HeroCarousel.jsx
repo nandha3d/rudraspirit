@@ -1,15 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import {
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  Sparkles,
-  ShieldCheck,
-  CheckCircle2,
-  Compass,
-  MessageCircle,
-  Gem,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import "./HeroCarousel.css";
 
 const slides = [
@@ -39,7 +29,7 @@ const slides = [
   },
   {
     id: 2,
-    image: "images/hero/slide-2.jpg",
+    image: "images/hero/siddha-indra-mala-banner-v2.png",
     kicker: "SACRED 1 TO 21 MUKHI ENERGIZED BEADS",
     title: "Master the Energies of the",
     titleHighlight: "Cosmos.",
@@ -64,7 +54,7 @@ const slides = [
   },
   {
     id: 3,
-    image: "images/hero/slide-3.jpg",
+    image: "images/hero/birth-chart-banner-v2.png",
     kicker: "PERSONALIZED VEDIC ASTROLOGY",
     title: "Find Your Divine Bead by",
     titleHighlight: "Birth Chart.",
@@ -88,7 +78,7 @@ const slides = [
   },
 ];
 
-export default function HeroCarousel({ onNavigate, compact = false, product = null }) {
+export default function HeroCarousel({ compact = false, product = null }) {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const autoPlayRef = useRef(null);
@@ -126,7 +116,7 @@ export default function HeroCarousel({ onNavigate, compact = false, product = nu
       },
       {
         id: 2,
-        image: "images/hero/slide-2.jpg",
+        image: "images/hero/siddha-indra-mala-banner-v2.png",
         kicker: "SACRED 1 TO 21 MUKHI ENERGIZED BEADS",
         title: "Master the Energies of the",
         titleHighlight: "Cosmos.",
@@ -151,7 +141,7 @@ export default function HeroCarousel({ onNavigate, compact = false, product = nu
       },
       {
         id: 3,
-        image: "images/hero/slide-3.jpg",
+        image: "images/hero/birth-chart-banner-v2.png",
         kicker: "SHIVA RUDRAKSHA INC. • TORONTO, CANADA",
         title: "Direct Devotee Consultation &",
         titleHighlight: "Support.",
@@ -189,24 +179,12 @@ export default function HeroCarousel({ onNavigate, compact = false, product = nu
     setCurrent(index);
   };
 
-  const handleLinkClick = (link) => {
-    if (!link) return;
-    if (link === "#select-options") {
-      document.querySelector(".product-information")?.scrollIntoView({ behavior: "smooth" });
-    } else if (link === "#spiritual-guide-tab") {
-      document.querySelector(".tabs-wrapper")?.scrollIntoView({ behavior: "smooth" });
-    } else if (onNavigate) {
-      onNavigate(link);
-    }
-  };
 
   useEffect(() => {
     if (isPaused) return;
     autoPlayRef.current = setInterval(nextSlide, 7000);
     return () => clearInterval(autoPlayRef.current);
   }, [current, isPaused, activeSlides.length]);
-
-  const slide = activeSlides[current] || activeSlides[0];
 
   return (
     <section
@@ -227,69 +205,9 @@ export default function HeroCarousel({ onNavigate, compact = false, product = nu
                 backgroundImage: `url(${baseUrl}${s.image})`,
               }}
               role="img"
-              aria-label={s.title}
-            >
-              {/* Overlay with rich golden/midnight gradients for legibility */}
-              <div className="hero-slide-overlay" />
-            </div>
+              aria-label={s.id === 2 ? "Siddha Mala & Indra Mala — Certificate & X-Ray Verification" : s.id === 3 ? "Birth Chart Recommendation — Rudraksha Guidance Based on Vedic Astrology" : s.title} />
           );
         })}
-      </div>
-
-      {/* Foreground Content */}
-      <div className="container hero-content-container">
-        <div className="hero-text-card">
-          <div className="hero-badge-pill">
-            <Sparkles className="hero-sparkle-icon" size={15} />
-            <span>{slide.kicker}</span>
-          </div>
-
-          <h1 className="hero-headline">
-            {slide.title} <span className="hero-highlight">{slide.titleHighlight}</span>
-          </h1>
-
-          <p className="hero-description">{slide.description}</p>
-
-          <div className="hero-actions-row">
-            <button
-              type="button"
-              className="hero-btn-primary"
-              onClick={() => handleLinkClick(slide.primaryCta.link)}
-            >
-              <span>{slide.primaryCta.text}</span>
-              <ArrowRight size={18} />
-            </button>
-
-            {slide.secondaryCta.external ? (
-              <a
-                href={slide.secondaryCta.link}
-                target="_blank"
-                rel="noreferrer"
-                className="hero-btn-secondary"
-              >
-                <MessageCircle size={18} />
-                <span>{slide.secondaryCta.text}</span>
-              </a>
-            ) : (
-              <button
-                type="button"
-                className="hero-btn-secondary"
-                onClick={() => handleLinkClick(slide.secondaryCta.link)}
-              >
-                <span>{slide.secondaryCta.text}</span>
-              </button>
-            )}
-          </div>
-
-          <div className="hero-trust-badges">
-            {slide.badges.map((badge, bIdx) => (
-              <div key={bIdx} className="hero-trust-badge-item">
-                <CheckCircle2 size={15} className="hero-check-icon" />
-                <span>{badge}</span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* Carousel Navigation Arrows */}

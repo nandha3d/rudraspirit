@@ -40,13 +40,9 @@ export default function ProductCard({ product, onOpen }) {
 
   return (
     <article className="product-card">
-      <button
-        type="button"
-        className="card-open"
-        onClick={() => onOpen(product)}
-      >
-        <Gallery product={product} compact />
-      </button>
+      <div className="card-open">
+        <Gallery product={product} compact onOpen={() => onOpen(product)} />
+      </div>
 
       <div className="card-content">
         <div className="card-badges">

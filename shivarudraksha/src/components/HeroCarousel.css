@@ -459,3 +459,29 @@
   }
 }
 
+
+/* Preserve natural image proportions across desktop, compact and mobile views. */
+.hero-carousel-wrap,
+.hero-carousel-wrap.hero-compact {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  background: #fbf7f0;
+}
+.hero-carousel-slide { transform: none; }
+.hero-carousel-wrap .hero-carousel-slide {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fbf7f0;
+}
+.hero-carousel-wrap .hero-carousel-pagination,
+.hero-carousel-wrap.hero-compact .hero-carousel-pagination {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  right: auto;
+  margin: 0;
+  gap: 4px;
+}
