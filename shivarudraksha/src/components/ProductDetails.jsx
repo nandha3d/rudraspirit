@@ -17,7 +17,7 @@ import { useEffect, useMemo, useState } from "react";
 import Gallery from "./Gallery";
 import Logo from "./Logo";
 import PromotionalBanner from "./PromotionalBanner";
-import HeroCarousel from "./HeroCarousel";
+
 import ProductInteractiveTabs from "./ProductInteractiveTabs";
 import ProductReviews from "./ProductReviews";
 import RelatedProducts from "./RelatedProducts";
@@ -292,9 +292,6 @@ export default function ProductDetails({
           <Logo compact />
         </div>
       </header>
-
-      {/* Panoramic Interactive Hero Section for Product Page (Compact Height) */}
-      <HeroCarousel compact={true} product={product} onNavigate={onBack} />
 
       {/* Main Two-Column Layout */}
       <main className="container details-layout">
