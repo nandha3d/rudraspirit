@@ -5,7 +5,7 @@ import "./HeroCarousel.css";
 const slides = [
   {
     id: 1,
-    image: "images/hero/slide-1.jpg",
+    image: "images/hero/slide-1.avif",
     kicker: "DIRECTLY SOURCED FROM THE HIMALAYAS",
     title: "Authentic Certified Rudraksha from",
     titleHighlight: "Nepal.",
@@ -29,7 +29,7 @@ const slides = [
   },
   {
     id: 2,
-    image: "images/hero/siddha-indra-mala-banner-v2.png",
+    image: "images/hero/siddha-indra-mala-banner-v2.avif",
     kicker: "SACRED 1 TO 21 MUKHI ENERGIZED BEADS",
     title: "Master the Energies of the",
     titleHighlight: "Cosmos.",
@@ -54,7 +54,7 @@ const slides = [
   },
   {
     id: 3,
-    image: "images/hero/birth-chart-banner-v2.png",
+    image: "images/hero/birth-chart-banner-v2.avif",
     kicker: "PERSONALIZED VEDIC ASTROLOGY",
     title: "Find Your Divine Bead by",
     titleHighlight: "Birth Chart.",
@@ -90,7 +90,7 @@ export default function HeroCarousel({ compact = false, product = null }) {
     return [
       {
         id: 1,
-        image: "images/hero/slide-1.jpg",
+        image: "images/hero/slide-1.avif",
         kicker: `${(product.origin || "Himalayan").toUpperCase()} SACRED CONSECRATION`,
         title: product.name,
         titleHighlight: "Authentic & Energized.",
@@ -116,7 +116,7 @@ export default function HeroCarousel({ compact = false, product = null }) {
       },
       {
         id: 2,
-        image: "images/hero/siddha-indra-mala-banner-v2.png",
+        image: "images/hero/siddha-indra-mala-banner-v2.avif",
         kicker: "SACRED 1 TO 21 MUKHI ENERGIZED BEADS",
         title: "Master the Energies of the",
         titleHighlight: "Cosmos.",
@@ -141,7 +141,7 @@ export default function HeroCarousel({ compact = false, product = null }) {
       },
       {
         id: 3,
-        image: "images/hero/birth-chart-banner-v2.png",
+        image: "images/hero/birth-chart-banner-v2.avif",
         kicker: "SHIVA RUDRAKSHA INC. • TORONTO, CANADA",
         title: "Direct Devotee Consultation &",
         titleHighlight: "Support.",

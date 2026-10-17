@@ -76,11 +76,11 @@ function GuideAccordionCard({ item }) {
 
         <div className="guide-summary-image">
           <img
-            src={`${import.meta.env.BASE_URL}images/products/${item.mukhi}-mukhi-nepal-rudraksha/top.jpg`}
+            src={`${import.meta.env.BASE_URL}images/products/${item.mukhi}-mukhi-nepal-rudraksha/top.avif`}
             alt={`${item.title || `${item.mukhi} Mukhi Rudraksha`} Super Collector`}
             onError={(event) => {
               const fallback =
-                `${import.meta.env.BASE_URL}images/products/${item.mukhi}-mukhi-nepal-rudraksha/top.jpg`;
+                `${import.meta.env.BASE_URL}images/products/${item.mukhi}-mukhi-nepal-rudraksha/top.avif`;
 
               if (event.currentTarget.src !== fallback) {
                 event.currentTarget.src = fallback;

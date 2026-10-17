@@ -564,45 +564,14 @@ Route::get('/faq', function () {
     }
     return view('frontend.rudraspirit.faq');
 })->name('faq');
-Route::get('/shop', function () {
-    if (file_exists(public_path('index.html'))) return redirect('/#shop', 302);
-    return redirect('/', 302);
-})->name('rudraspirit.shop');
-
-Route::get('/guide', function () {
-    if (file_exists(public_path('index.html'))) return redirect('/#guide', 302);
-    return view('frontend.rudraspirit.guide');
-})->name('rudraspirit.guide');
-
-Route::get('/knowledge', function () {
-    if (file_exists(public_path('index.html'))) return redirect('/#knowledge', 302);
-    return view('frontend.rudraspirit.knowledge');
-})->name('rudraspirit.knowledge');
-
-Route::get('/maintenance', function () {
-    if (file_exists(public_path('index.html'))) return redirect('/#maintenance', 302);
-    return view('frontend.rudraspirit.maintenance');
-})->name('rudraspirit.maintenance');
-
-Route::get('/lord-shiva', function () {
-    if (file_exists(public_path('index.html'))) return redirect('/#lord-shiva', 302);
-    return view('frontend.rudraspirit.lord_shiva');
-})->name('rudraspirit.lord_shiva');
-
-Route::get('/recommendations', function () {
-    if (file_exists(public_path('index.html'))) return redirect('/#recommendations', 302);
-    return view('frontend.rudraspirit.recommendations');
-})->name('rudraspirit.recommendations');
-
-Route::get('/about', function () {
-    if (file_exists(public_path('index.html'))) return redirect('/#about', 302);
-    return view('frontend.rudraspirit.about');
-})->name('rudraspirit.about');
-
-Route::get('/contact', function () {
-    if (file_exists(public_path('index.html'))) return redirect('/#contact', 302);
-    return view('frontend.rudraspirit.contact');
-})->name('rudraspirit.contact');
+Route::get('/shop', fn () => redirect('/#shop', 301))->name('rudraspirit.shop');
+Route::get('/guide', fn () => redirect('/#guide', 301))->name('rudraspirit.guide');
+Route::get('/knowledge', fn () => redirect('/#knowledge', 301))->name('rudraspirit.knowledge');
+Route::get('/maintenance', fn () => redirect('/#maintenance', 301))->name('rudraspirit.maintenance');
+Route::get('/lord-shiva', fn () => redirect('/#lord-shiva', 301))->name('rudraspirit.lord_shiva');
+Route::get('/recommendations', fn () => redirect('/#recommendations', 301))->name('rudraspirit.recommendations');
+Route::get('/about', fn () => redirect('/#about', 301))->name('rudraspirit.about');
+Route::get('/contact', fn () => redirect('/#contact', 301))->name('rudraspirit.contact');
 
 // 3D supplement storefront (page source in resources/forge, models in public/assets/3d).
 // NOTE: the HTML lives OUTSIDE public/ on purpose — a physical public/forge/ dir would let

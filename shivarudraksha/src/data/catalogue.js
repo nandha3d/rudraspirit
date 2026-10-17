@@ -19,24 +19,34 @@ export const emptyImages = () => ({
 export function assetUrl(path) {
   if (!path) return "";
   if (/^(https?:|data:|blob:)/.test(path)) return path;
-  return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+  const clean = path.replace(/^\/+/, "").replace(/\.jpe?g$/i, ".avif");
+  return `${import.meta.env.BASE_URL}${clean}`;
 }
 
+const mapToAvif = (imgObj) => {
+  if (!imgObj || typeof imgObj !== "object") return imgObj;
+  const res = {};
+  for (const [k, v] of Object.entries(imgObj)) {
+    res[k] = typeof v === "string" ? v.replace(/\.jpe?g$/i, ".avif") : v;
+  }
+  return res;
+};
+
 export function normalizeProduct(product) {
-  const legacyImages = {
+  const rawImages = mapToAvif({
     ...emptyImages(),
     ...(product.images || {}),
     front: product.images?.front || product.image || "",
-  };
+  });
 
   const variants =
     Array.isArray(product.variants) && product.variants.length
       ? product.variants.map((variant) => ({
           ...variant,
-          images: {
+          images: mapToAvif({
             ...emptyImages(),
             ...(variant.images || {}),
-          },
+          }),
         }))
       : [];
 
@@ -46,7 +56,7 @@ export function normalizeProduct(product) {
     rating_count: typeof product.rating_count === "number" ? product.rating_count : parseInt(product.rating_count || 0, 10),
     reviews: Array.isArray(product.reviews) ? product.reviews : [],
     variants,
-    images: legacyImages,
+    images: rawImages,
   };
 }
 

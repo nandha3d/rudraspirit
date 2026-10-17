@@ -17,12 +17,12 @@ const guidance = [
 const base = import.meta.env.BASE_URL;
 
 const steps = [
-  { title: "Cleanse", image: `${base}images/knowledge/step-1-cleanse.png`, alt: "Step 1 cleanse Rudraksha with clean plain water" },
-  { title: "Turmeric Water", image: `${base}images/knowledge/step-2-turmeric-water.png`, alt: "Step 2 wash Rudraksha with turmeric water" },
-  { title: "Soak in Cow Ghee", image: `${base}images/knowledge/step-3-cow-ghee.png`, alt: "Step 3 soak Rudraksha in cow ghee for 24 hours" },
-  { title: "Soak in Cow Milk", image: `${base}images/knowledge/step-4-cow-milk.png`, alt: "Step 4 soak Rudraksha in full-fat cow milk for 24 hours" },
-  { title: "Remove & Dry", image: `${base}images/knowledge/step-5-remove-dry.png`, alt: "Step 5 remove Rudraksha and dry it carefully" },
-  { title: "Chant & Energize", image: `${base}images/knowledge/step-6-chant-energize.png`, alt: "Step 6 chant Om Namah Shivaya and energize Rudraksha" },
+  { title: "Cleanse", image: `${base}images/knowledge/step-1-cleanse.avif`, alt: "Step 1 cleanse Rudraksha with clean plain water" },
+  { title: "Turmeric Water", image: `${base}images/knowledge/step-2-turmeric-water.avif`, alt: "Step 2 wash Rudraksha with turmeric water" },
+  { title: "Soak in Cow Ghee", image: `${base}images/knowledge/step-3-cow-ghee.avif`, alt: "Step 3 soak Rudraksha in cow ghee for 24 hours" },
+  { title: "Soak in Cow Milk", image: `${base}images/knowledge/step-4-cow-milk.avif`, alt: "Step 4 soak Rudraksha in full-fat cow milk for 24 hours" },
+  { title: "Remove & Dry", image: `${base}images/knowledge/step-5-remove-dry.avif`, alt: "Step 5 remove Rudraksha and dry it carefully" },
+  { title: "Chant & Energize", image: `${base}images/knowledge/step-6-chant-energize.avif`, alt: "Step 6 chant Om Namah Shivaya and energize Rudraksha" },
 ];
 
 export default function RudrakshaKnowledge() {

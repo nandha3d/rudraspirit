@@ -14,34 +14,34 @@
         "name": "Nepal",
         "price": 150,
         "images": {
-          "front": "images/products/1-mukhi-nepal-rudraksha/nepali/front.jpg",
-          "back": "images/products/1-mukhi-nepal-rudraksha/nepali/back.jpg",
-          "top": "images/products/1-mukhi-nepal-rudraksha/nepali/top.jpg",
-          "bottom": "images/products/1-mukhi-nepal-rudraksha/nepali/bottom.jpg",
-          "certificate": "images/products/1-mukhi-nepal-rudraksha/nepali/certificate.jpg",
-          "xray": "images/products/1-mukhi-nepal-rudraksha/nepali/xray.jpg"
+          "front": "images/products/1-mukhi-nepal-rudraksha/nepali/front.avif",
+          "back": "images/products/1-mukhi-nepal-rudraksha/nepali/back.avif",
+          "top": "images/products/1-mukhi-nepal-rudraksha/nepali/top.avif",
+          "bottom": "images/products/1-mukhi-nepal-rudraksha/nepali/bottom.avif",
+          "certificate": "images/products/1-mukhi-nepal-rudraksha/nepali/certificate.avif",
+          "xray": "images/products/1-mukhi-nepal-rudraksha/nepali/xray.avif"
         }
       },
       {
         "name": "Indian",
         "price": 200,
         "images": {
-          "front": "images/products/1-mukhi-nepal-rudraksha/indian/front.jpg",
-          "back": "images/products/1-mukhi-nepal-rudraksha/indian/back.jpg",
-          "top": "images/products/1-mukhi-nepal-rudraksha/indian/top.jpg",
-          "bottom": "images/products/1-mukhi-nepal-rudraksha/indian/bottom.jpg",
-          "certificate": "images/products/1-mukhi-nepal-rudraksha/indian/certificate.jpg",
-          "xray": "images/products/1-mukhi-nepal-rudraksha/indian/xray.jpg"
+          "front": "images/products/1-mukhi-nepal-rudraksha/indian/front.avif",
+          "back": "images/products/1-mukhi-nepal-rudraksha/indian/back.avif",
+          "top": "images/products/1-mukhi-nepal-rudraksha/indian/top.avif",
+          "bottom": "images/products/1-mukhi-nepal-rudraksha/indian/bottom.avif",
+          "certificate": "images/products/1-mukhi-nepal-rudraksha/indian/certificate.avif",
+          "xray": "images/products/1-mukhi-nepal-rudraksha/indian/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/1-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/1-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/1-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/1-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/1-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/1-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/1-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/1-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/1-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/1-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/1-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/1-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -59,70 +59,70 @@
         "name": "Small",
         "price": 0,
         "images": {
-          "front": "images/products/2-mukhi-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/2-mukhi-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/2-mukhi-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/2-mukhi-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/2-mukhi-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/2-mukhi-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/2-mukhi-nepal-rudraksha/small/front.avif",
+          "back": "images/products/2-mukhi-nepal-rudraksha/small/back.avif",
+          "top": "images/products/2-mukhi-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 0,
         "images": {
-          "front": "images/products/2-mukhi-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/2-mukhi-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/2-mukhi-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/2-mukhi-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/2-mukhi-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/2-mukhi-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/2-mukhi-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/2-mukhi-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/2-mukhi-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 0,
         "images": {
-          "front": "images/products/2-mukhi-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/2-mukhi-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/2-mukhi-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/2-mukhi-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/2-mukhi-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/2-mukhi-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/2-mukhi-nepal-rudraksha/large/front.avif",
+          "back": "images/products/2-mukhi-nepal-rudraksha/large/back.avif",
+          "top": "images/products/2-mukhi-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 0,
         "images": {
-          "front": "images/products/2-mukhi-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/2-mukhi-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/2-mukhi-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/2-mukhi-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/2-mukhi-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/2-mukhi-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/2-mukhi-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/2-mukhi-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/2-mukhi-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 0,
         "images": {
-          "front": "images/products/2-mukhi-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/2-mukhi-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/2-mukhi-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/2-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/2-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/2-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/2-mukhi-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/2-mukhi-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/2-mukhi-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/2-mukhi-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/2-mukhi-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/2-mukhi-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/2-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/2-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/2-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/2-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/2-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/2-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/2-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/2-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/2-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/2-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/2-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/2-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -140,22 +140,22 @@
         "name": "Nepal",
         "price": 60,
         "images": {
-          "front": "images/products/3-mukhi-nepal-rudraksha/nepali/front.jpg",
-          "back": "images/products/3-mukhi-nepal-rudraksha/nepali/back.jpg",
-          "top": "images/products/3-mukhi-nepal-rudraksha/nepali/top.jpg",
-          "bottom": "images/products/3-mukhi-nepal-rudraksha/nepali/bottom.jpg",
-          "certificate": "images/products/3-mukhi-nepal-rudraksha/nepali/certificate.jpg",
-          "xray": "images/products/3-mukhi-nepal-rudraksha/nepali/xray.jpg"
+          "front": "images/products/3-mukhi-nepal-rudraksha/nepali/front.avif",
+          "back": "images/products/3-mukhi-nepal-rudraksha/nepali/back.avif",
+          "top": "images/products/3-mukhi-nepal-rudraksha/nepali/top.avif",
+          "bottom": "images/products/3-mukhi-nepal-rudraksha/nepali/bottom.avif",
+          "certificate": "images/products/3-mukhi-nepal-rudraksha/nepali/certificate.avif",
+          "xray": "images/products/3-mukhi-nepal-rudraksha/nepali/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/3-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/3-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/3-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/3-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/3-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/3-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/3-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/3-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/3-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/3-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/3-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/3-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -173,22 +173,22 @@
         "name": "Nepal",
         "price": 40,
         "images": {
-          "front": "images/products/4-mukhi-nepal-rudraksha/nepali/front.jpg",
-          "back": "images/products/4-mukhi-nepal-rudraksha/nepali/back.jpg",
-          "top": "images/products/4-mukhi-nepal-rudraksha/nepali/top.jpg",
-          "bottom": "images/products/4-mukhi-nepal-rudraksha/nepali/bottom.jpg",
-          "certificate": "images/products/4-mukhi-nepal-rudraksha/nepali/certificate.jpg",
-          "xray": "images/products/4-mukhi-nepal-rudraksha/nepali/xray.jpg"
+          "front": "images/products/4-mukhi-nepal-rudraksha/nepali/front.avif",
+          "back": "images/products/4-mukhi-nepal-rudraksha/nepali/back.avif",
+          "top": "images/products/4-mukhi-nepal-rudraksha/nepali/top.avif",
+          "bottom": "images/products/4-mukhi-nepal-rudraksha/nepali/bottom.avif",
+          "certificate": "images/products/4-mukhi-nepal-rudraksha/nepali/certificate.avif",
+          "xray": "images/products/4-mukhi-nepal-rudraksha/nepali/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/4-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/4-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/4-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/4-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/4-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/4-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/4-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/4-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/4-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/4-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/4-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/4-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -206,22 +206,22 @@
         "name": "Nepal",
         "price": 40,
         "images": {
-          "front": "images/products/5-mukhi-nepal-rudraksha/nepali/front.jpg",
-          "back": "images/products/5-mukhi-nepal-rudraksha/nepali/back.jpg",
-          "top": "images/products/5-mukhi-nepal-rudraksha/nepali/top.jpg",
-          "bottom": "images/products/5-mukhi-nepal-rudraksha/nepali/bottom.jpg",
-          "certificate": "images/products/5-mukhi-nepal-rudraksha/nepali/certificate.jpg",
-          "xray": "images/products/5-mukhi-nepal-rudraksha/nepali/xray.jpg"
+          "front": "images/products/5-mukhi-nepal-rudraksha/nepali/front.avif",
+          "back": "images/products/5-mukhi-nepal-rudraksha/nepali/back.avif",
+          "top": "images/products/5-mukhi-nepal-rudraksha/nepali/top.avif",
+          "bottom": "images/products/5-mukhi-nepal-rudraksha/nepali/bottom.avif",
+          "certificate": "images/products/5-mukhi-nepal-rudraksha/nepali/certificate.avif",
+          "xray": "images/products/5-mukhi-nepal-rudraksha/nepali/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/5-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/5-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/5-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/5-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/5-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/5-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/5-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/5-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/5-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/5-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/5-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/5-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -239,22 +239,22 @@
         "name": "Nepal",
         "price": 40,
         "images": {
-          "front": "images/products/6-mukhi-nepal-rudraksha/nepali/front.jpg",
-          "back": "images/products/6-mukhi-nepal-rudraksha/nepali/back.jpg",
-          "top": "images/products/6-mukhi-nepal-rudraksha/nepali/top.jpg",
-          "bottom": "images/products/6-mukhi-nepal-rudraksha/nepali/bottom.jpg",
-          "certificate": "images/products/6-mukhi-nepal-rudraksha/nepali/certificate.jpg",
-          "xray": "images/products/6-mukhi-nepal-rudraksha/nepali/xray.jpg"
+          "front": "images/products/6-mukhi-nepal-rudraksha/nepali/front.avif",
+          "back": "images/products/6-mukhi-nepal-rudraksha/nepali/back.avif",
+          "top": "images/products/6-mukhi-nepal-rudraksha/nepali/top.avif",
+          "bottom": "images/products/6-mukhi-nepal-rudraksha/nepali/bottom.avif",
+          "certificate": "images/products/6-mukhi-nepal-rudraksha/nepali/certificate.avif",
+          "xray": "images/products/6-mukhi-nepal-rudraksha/nepali/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/6-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/6-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/6-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/6-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/6-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/6-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/6-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/6-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/6-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/6-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/6-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/6-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -272,70 +272,70 @@
         "name": "Small",
         "price": 30,
         "images": {
-          "front": "images/products/7-mukhi-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/7-mukhi-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/7-mukhi-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/7-mukhi-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/7-mukhi-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/7-mukhi-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/7-mukhi-nepal-rudraksha/small/front.avif",
+          "back": "images/products/7-mukhi-nepal-rudraksha/small/back.avif",
+          "top": "images/products/7-mukhi-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 50,
         "images": {
-          "front": "images/products/7-mukhi-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/7-mukhi-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/7-mukhi-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/7-mukhi-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/7-mukhi-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/7-mukhi-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/7-mukhi-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/7-mukhi-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/7-mukhi-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 70,
         "images": {
-          "front": "images/products/7-mukhi-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/7-mukhi-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/7-mukhi-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/7-mukhi-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/7-mukhi-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/7-mukhi-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/7-mukhi-nepal-rudraksha/large/front.avif",
+          "back": "images/products/7-mukhi-nepal-rudraksha/large/back.avif",
+          "top": "images/products/7-mukhi-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 100,
         "images": {
-          "front": "images/products/7-mukhi-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/7-mukhi-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/7-mukhi-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/7-mukhi-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/7-mukhi-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/7-mukhi-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/7-mukhi-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/7-mukhi-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/7-mukhi-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 0,
         "images": {
-          "front": "images/products/7-mukhi-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/7-mukhi-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/7-mukhi-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/7-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/7-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/7-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/7-mukhi-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/7-mukhi-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/7-mukhi-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/7-mukhi-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/7-mukhi-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/7-mukhi-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/7-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/7-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/7-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/7-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/7-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/7-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/7-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/7-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/7-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/7-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/7-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/7-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -353,70 +353,70 @@
         "name": "Small",
         "price": 60,
         "images": {
-          "front": "images/products/8-mukhi-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/8-mukhi-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/8-mukhi-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/8-mukhi-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/8-mukhi-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/8-mukhi-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/8-mukhi-nepal-rudraksha/small/front.avif",
+          "back": "images/products/8-mukhi-nepal-rudraksha/small/back.avif",
+          "top": "images/products/8-mukhi-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 80,
         "images": {
-          "front": "images/products/8-mukhi-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/8-mukhi-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/8-mukhi-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/8-mukhi-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/8-mukhi-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/8-mukhi-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/8-mukhi-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/8-mukhi-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/8-mukhi-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 0,
         "images": {
-          "front": "images/products/8-mukhi-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/8-mukhi-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/8-mukhi-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/8-mukhi-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/8-mukhi-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/8-mukhi-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/8-mukhi-nepal-rudraksha/large/front.avif",
+          "back": "images/products/8-mukhi-nepal-rudraksha/large/back.avif",
+          "top": "images/products/8-mukhi-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 200,
         "images": {
-          "front": "images/products/8-mukhi-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/8-mukhi-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/8-mukhi-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/8-mukhi-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/8-mukhi-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/8-mukhi-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/8-mukhi-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/8-mukhi-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/8-mukhi-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 300,
         "images": {
-          "front": "images/products/8-mukhi-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/8-mukhi-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/8-mukhi-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/8-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/8-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/8-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/8-mukhi-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/8-mukhi-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/8-mukhi-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/8-mukhi-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/8-mukhi-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/8-mukhi-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/8-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/8-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/8-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/8-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/8-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/8-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/8-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/8-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/8-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/8-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/8-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/8-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -434,70 +434,70 @@
         "name": "Small",
         "price": 80,
         "images": {
-          "front": "images/products/9-mukhi-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/9-mukhi-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/9-mukhi-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/9-mukhi-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/9-mukhi-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/9-mukhi-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/9-mukhi-nepal-rudraksha/small/front.avif",
+          "back": "images/products/9-mukhi-nepal-rudraksha/small/back.avif",
+          "top": "images/products/9-mukhi-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 100,
         "images": {
-          "front": "images/products/9-mukhi-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/9-mukhi-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/9-mukhi-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/9-mukhi-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/9-mukhi-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/9-mukhi-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/9-mukhi-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/9-mukhi-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/9-mukhi-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 120,
         "images": {
-          "front": "images/products/9-mukhi-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/9-mukhi-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/9-mukhi-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/9-mukhi-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/9-mukhi-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/9-mukhi-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/9-mukhi-nepal-rudraksha/large/front.avif",
+          "back": "images/products/9-mukhi-nepal-rudraksha/large/back.avif",
+          "top": "images/products/9-mukhi-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 200,
         "images": {
-          "front": "images/products/9-mukhi-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/9-mukhi-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/9-mukhi-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/9-mukhi-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/9-mukhi-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/9-mukhi-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/9-mukhi-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/9-mukhi-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/9-mukhi-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 300,
         "images": {
-          "front": "images/products/9-mukhi-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/9-mukhi-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/9-mukhi-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/9-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/9-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/9-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/9-mukhi-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/9-mukhi-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/9-mukhi-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/9-mukhi-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/9-mukhi-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/9-mukhi-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/9-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/9-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/9-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/9-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/9-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/9-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/9-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/9-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/9-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/9-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/9-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/9-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -515,70 +515,70 @@
         "name": "Small",
         "price": 60,
         "images": {
-          "front": "images/products/10-mukhi-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/10-mukhi-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/10-mukhi-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/10-mukhi-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/10-mukhi-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/10-mukhi-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/10-mukhi-nepal-rudraksha/small/front.avif",
+          "back": "images/products/10-mukhi-nepal-rudraksha/small/back.avif",
+          "top": "images/products/10-mukhi-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 100,
         "images": {
-          "front": "images/products/10-mukhi-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/10-mukhi-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/10-mukhi-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/10-mukhi-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/10-mukhi-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/10-mukhi-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/10-mukhi-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/10-mukhi-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/10-mukhi-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 200,
         "images": {
-          "front": "images/products/10-mukhi-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/10-mukhi-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/10-mukhi-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/10-mukhi-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/10-mukhi-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/10-mukhi-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/10-mukhi-nepal-rudraksha/large/front.avif",
+          "back": "images/products/10-mukhi-nepal-rudraksha/large/back.avif",
+          "top": "images/products/10-mukhi-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 300,
         "images": {
-          "front": "images/products/10-mukhi-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/10-mukhi-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/10-mukhi-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/10-mukhi-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/10-mukhi-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/10-mukhi-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/10-mukhi-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/10-mukhi-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/10-mukhi-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 500,
         "images": {
-          "front": "images/products/10-mukhi-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/10-mukhi-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/10-mukhi-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/10-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/10-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/10-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/10-mukhi-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/10-mukhi-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/10-mukhi-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/10-mukhi-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/10-mukhi-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/10-mukhi-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/10-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/10-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/10-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/10-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/10-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/10-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/10-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/10-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/10-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/10-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/10-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/10-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -596,70 +596,70 @@
         "name": "Small",
         "price": 100,
         "images": {
-          "front": "images/products/11-mukhi-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/11-mukhi-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/11-mukhi-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/11-mukhi-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/11-mukhi-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/11-mukhi-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/11-mukhi-nepal-rudraksha/small/front.avif",
+          "back": "images/products/11-mukhi-nepal-rudraksha/small/back.avif",
+          "top": "images/products/11-mukhi-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 150,
         "images": {
-          "front": "images/products/11-mukhi-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/11-mukhi-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/11-mukhi-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/11-mukhi-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/11-mukhi-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/11-mukhi-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/11-mukhi-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/11-mukhi-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/11-mukhi-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 300,
         "images": {
-          "front": "images/products/11-mukhi-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/11-mukhi-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/11-mukhi-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/11-mukhi-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/11-mukhi-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/11-mukhi-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/11-mukhi-nepal-rudraksha/large/front.avif",
+          "back": "images/products/11-mukhi-nepal-rudraksha/large/back.avif",
+          "top": "images/products/11-mukhi-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 500,
         "images": {
-          "front": "images/products/11-mukhi-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/11-mukhi-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/11-mukhi-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/11-mukhi-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/11-mukhi-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/11-mukhi-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/11-mukhi-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/11-mukhi-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/11-mukhi-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 600,
         "images": {
-          "front": "images/products/11-mukhi-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/11-mukhi-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/11-mukhi-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/11-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/11-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/11-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/11-mukhi-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/11-mukhi-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/11-mukhi-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/11-mukhi-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/11-mukhi-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/11-mukhi-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/11-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/11-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/11-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/11-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/11-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/11-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/11-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/11-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/11-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/11-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/11-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/11-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -677,70 +677,70 @@
         "name": "Small",
         "price": 60,
         "images": {
-          "front": "images/products/12-mukhi-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/12-mukhi-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/12-mukhi-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/12-mukhi-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/12-mukhi-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/12-mukhi-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/12-mukhi-nepal-rudraksha/small/front.avif",
+          "back": "images/products/12-mukhi-nepal-rudraksha/small/back.avif",
+          "top": "images/products/12-mukhi-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 100,
         "images": {
-          "front": "images/products/12-mukhi-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/12-mukhi-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/12-mukhi-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/12-mukhi-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/12-mukhi-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/12-mukhi-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/12-mukhi-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/12-mukhi-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/12-mukhi-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 200,
         "images": {
-          "front": "images/products/12-mukhi-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/12-mukhi-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/12-mukhi-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/12-mukhi-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/12-mukhi-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/12-mukhi-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/12-mukhi-nepal-rudraksha/large/front.avif",
+          "back": "images/products/12-mukhi-nepal-rudraksha/large/back.avif",
+          "top": "images/products/12-mukhi-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 350,
         "images": {
-          "front": "images/products/12-mukhi-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/12-mukhi-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/12-mukhi-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/12-mukhi-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/12-mukhi-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/12-mukhi-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/12-mukhi-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/12-mukhi-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/12-mukhi-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 500,
         "images": {
-          "front": "images/products/12-mukhi-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/12-mukhi-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/12-mukhi-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/12-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/12-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/12-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/12-mukhi-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/12-mukhi-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/12-mukhi-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/12-mukhi-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/12-mukhi-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/12-mukhi-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/12-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/12-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/12-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/12-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/12-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/12-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/12-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/12-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/12-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/12-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/12-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/12-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -758,70 +758,70 @@
         "name": "Small",
         "price": 80,
         "images": {
-          "front": "images/products/13-mukhi-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/13-mukhi-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/13-mukhi-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/13-mukhi-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/13-mukhi-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/13-mukhi-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/13-mukhi-nepal-rudraksha/small/front.avif",
+          "back": "images/products/13-mukhi-nepal-rudraksha/small/back.avif",
+          "top": "images/products/13-mukhi-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 130,
         "images": {
-          "front": "images/products/13-mukhi-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/13-mukhi-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/13-mukhi-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/13-mukhi-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/13-mukhi-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/13-mukhi-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/13-mukhi-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/13-mukhi-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/13-mukhi-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 250,
         "images": {
-          "front": "images/products/13-mukhi-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/13-mukhi-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/13-mukhi-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/13-mukhi-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/13-mukhi-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/13-mukhi-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/13-mukhi-nepal-rudraksha/large/front.avif",
+          "back": "images/products/13-mukhi-nepal-rudraksha/large/back.avif",
+          "top": "images/products/13-mukhi-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 350,
         "images": {
-          "front": "images/products/13-mukhi-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/13-mukhi-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/13-mukhi-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/13-mukhi-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/13-mukhi-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/13-mukhi-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/13-mukhi-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/13-mukhi-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/13-mukhi-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 500,
         "images": {
-          "front": "images/products/13-mukhi-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/13-mukhi-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/13-mukhi-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/13-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/13-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/13-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/13-mukhi-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/13-mukhi-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/13-mukhi-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/13-mukhi-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/13-mukhi-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/13-mukhi-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/13-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/13-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/13-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/13-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/13-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/13-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/13-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/13-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/13-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/13-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/13-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/13-mukhi-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -839,70 +839,70 @@
         "name": "Small",
         "price": 0,
         "images": {
-          "front": "images/products/14-mukhi-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/14-mukhi-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/14-mukhi-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/14-mukhi-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/14-mukhi-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/14-mukhi-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/14-mukhi-nepal-rudraksha/small/front.avif",
+          "back": "images/products/14-mukhi-nepal-rudraksha/small/back.avif",
+          "top": "images/products/14-mukhi-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 800,
         "images": {
-          "front": "images/products/14-mukhi-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/14-mukhi-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/14-mukhi-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/14-mukhi-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/14-mukhi-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/14-mukhi-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/14-mukhi-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/14-mukhi-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/14-mukhi-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 0,
         "images": {
-          "front": "images/products/14-mukhi-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/14-mukhi-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/14-mukhi-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/14-mukhi-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/14-mukhi-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/14-mukhi-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/14-mukhi-nepal-rudraksha/large/front.avif",
+          "back": "images/products/14-mukhi-nepal-rudraksha/large/back.avif",
+          "top": "images/products/14-mukhi-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 0,
         "images": {
-          "front": "images/products/14-mukhi-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/14-mukhi-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/14-mukhi-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/14-mukhi-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/14-mukhi-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/14-mukhi-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/14-mukhi-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/14-mukhi-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/14-mukhi-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 0,
         "images": {
-          "front": "images/products/14-mukhi-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/14-mukhi-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/14-mukhi-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/14-mukhi-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/14-mukhi-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/14-mukhi-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/14-mukhi-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/14-mukhi-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/14-mukhi-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/14-mukhi-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/14-mukhi-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/14-mukhi-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/14-mukhi-nepal-rudraksha/front.jpg",
-      "back": "images/products/14-mukhi-nepal-rudraksha/back.jpg",
-      "top": "images/products/14-mukhi-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/14-mukhi-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/14-mukhi-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/14-mukhi-nepal-rudraksha/xray.jpg"
+      "front": "images/products/14-mukhi-nepal-rudraksha/front.avif",
+      "back": "images/products/14-mukhi-nepal-rudraksha/back.avif",
+      "top": "images/products/14-mukhi-nepal-rudraksha/top.avif",
+      "bottom": "images/products/14-mukhi-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/14-mukhi-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/14-mukhi-nepal-rudraksha/xray.avif"
     },
     "rating": 5.0,
     "rating_count": 1,
@@ -931,12 +931,12 @@
     "stockStatus": "Available",
     "badge": "Non-Certified",
     "images": {
-      "front": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/front.jpg",
-      "back": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/back.jpg",
-      "top": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/top.jpg",
-      "bottom": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/bottom.jpg",
-      "certificate": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/certificate.jpg",
-      "xray": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/xray.jpg"
+      "front": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/front.avif",
+      "back": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/back.avif",
+      "top": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/top.avif",
+      "bottom": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/bottom.avif",
+      "certificate": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/certificate.avif",
+      "xray": "images/products/rudraksha-mala/12-mukhi-rudraksha-mala/xray.avif"
     },
     "variants": [
       {
@@ -1011,12 +1011,12 @@
     "stockStatus": "Available",
     "badge": "Non-Certified",
     "images": {
-      "front": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/front.jpg",
-      "back": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/back.jpg",
-      "top": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/top.jpg",
-      "bottom": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/bottom.jpg",
-      "certificate": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/certificate.jpg",
-      "xray": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/xray.jpg"
+      "front": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/front.avif",
+      "back": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/back.avif",
+      "top": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/top.avif",
+      "bottom": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/bottom.avif",
+      "certificate": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/certificate.avif",
+      "xray": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/xray.avif"
     },
     "variants": [
       {
@@ -1035,12 +1035,12 @@
         "name": "Medium",
         "price": "500",
         "images": {
-          "front": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/front.jpg",
-          "back": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/back.jpg",
-          "top": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/top.jpg",
-          "bottom": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/bottom.jpg",
-          "certificate": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/certificate.jpg",
-          "xray": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/xray.jpg"
+          "front": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/front.avif",
+          "back": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/back.avif",
+          "top": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/top.avif",
+          "bottom": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/bottom.avif",
+          "certificate": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/certificate.avif",
+          "xray": "images/products/rudraksha-mala/13-mukhi-rudraksha-mala/xray.avif"
         }
       },
       {
@@ -1091,12 +1091,12 @@
     "stockStatus": "Available",
     "badge": "Certified",
     "images": {
-      "front": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/front.jpg",
-      "back": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/back.jpg",
-      "top": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/top.jpg",
-      "bottom": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/bottom.jpg",
-      "certificate": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/certificate.jpg",
-      "xray": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/xray.jpg"
+      "front": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/front.avif",
+      "back": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/back.avif",
+      "top": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/top.avif",
+      "bottom": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/bottom.avif",
+      "certificate": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/certificate.avif",
+      "xray": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/xray.avif"
     },
     "variants": [
       {
@@ -1115,12 +1115,12 @@
         "name": "Medium",
         "price": "600",
         "images": {
-          "front": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/front.jpg",
-          "back": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/back.jpg",
-          "top": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/top.jpg",
-          "bottom": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/bottom.jpg",
-          "certificate": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/certificate.jpg",
-          "xray": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/xray.jpg"
+          "front": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/front.avif",
+          "back": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/back.avif",
+          "top": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/top.avif",
+          "bottom": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/bottom.avif",
+          "certificate": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/certificate.avif",
+          "xray": "images/products/rudraksha-bracelet/12-mukhi-rudraksha-bracelet/xray.avif"
         }
       },
       {
@@ -1171,24 +1171,24 @@
     "stockStatus": "Available",
     "badge": "Certified",
     "images": {
-      "front": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/front.jpg",
-      "back": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/back.jpg",
-      "top": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/top.jpg",
-      "bottom": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/bottom.jpg",
-      "certificate": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/certificate.jpg",
-      "xray": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/xray.jpg"
+      "front": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/front.avif",
+      "back": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/back.avif",
+      "top": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/top.avif",
+      "bottom": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/bottom.avif",
+      "certificate": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/certificate.avif",
+      "xray": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/xray.avif"
     },
     "variants": [
       {
         "name": "Small",
         "price": "80",
         "images": {
-          "front": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/front.jpg",
-          "back": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/back.jpg",
-          "top": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/top.jpg",
-          "bottom": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/bottom.jpg",
-          "certificate": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/certificate.jpg",
-          "xray": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/xray.jpg"
+          "front": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/front.avif",
+          "back": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/back.avif",
+          "top": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/top.avif",
+          "bottom": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/bottom.avif",
+          "certificate": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/certificate.avif",
+          "xray": "images/products/rudraksha-mala/rahu-ketu-shani-rudraksha-mala/xray.avif"
         }
       }
     ]
@@ -1208,70 +1208,70 @@
         "name": "Small",
         "price": 0,
         "images": {
-          "front": "images/products/gowri-shankar-nepal-rudraksha/small/front.jpg",
-          "back": "images/products/gowri-shankar-nepal-rudraksha/small/back.jpg",
-          "top": "images/products/gowri-shankar-nepal-rudraksha/small/top.jpg",
-          "bottom": "images/products/gowri-shankar-nepal-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/gowri-shankar-nepal-rudraksha/small/certificate.jpg",
-          "xray": "images/products/gowri-shankar-nepal-rudraksha/small/xray.jpg"
+          "front": "images/products/gowri-shankar-nepal-rudraksha/small/front.avif",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/small/back.avif",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/small/top.avif",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/small/bottom.avif",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/small/certificate.avif",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 0,
         "images": {
-          "front": "images/products/gowri-shankar-nepal-rudraksha/medium/front.jpg",
-          "back": "images/products/gowri-shankar-nepal-rudraksha/medium/back.jpg",
-          "top": "images/products/gowri-shankar-nepal-rudraksha/medium/top.jpg",
-          "bottom": "images/products/gowri-shankar-nepal-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/gowri-shankar-nepal-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/gowri-shankar-nepal-rudraksha/medium/xray.jpg"
+          "front": "images/products/gowri-shankar-nepal-rudraksha/medium/front.avif",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/medium/back.avif",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/medium/top.avif",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/medium/certificate.avif",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 170,
         "images": {
-          "front": "images/products/gowri-shankar-nepal-rudraksha/large/front.jpg",
-          "back": "images/products/gowri-shankar-nepal-rudraksha/large/back.jpg",
-          "top": "images/products/gowri-shankar-nepal-rudraksha/large/top.jpg",
-          "bottom": "images/products/gowri-shankar-nepal-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/gowri-shankar-nepal-rudraksha/large/certificate.jpg",
-          "xray": "images/products/gowri-shankar-nepal-rudraksha/large/xray.jpg"
+          "front": "images/products/gowri-shankar-nepal-rudraksha/large/front.avif",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/large/back.avif",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/large/top.avif",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/large/bottom.avif",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/large/certificate.avif",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 200,
         "images": {
-          "front": "images/products/gowri-shankar-nepal-rudraksha/collector/front.jpg",
-          "back": "images/products/gowri-shankar-nepal-rudraksha/collector/back.jpg",
-          "top": "images/products/gowri-shankar-nepal-rudraksha/collector/top.jpg",
-          "bottom": "images/products/gowri-shankar-nepal-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/gowri-shankar-nepal-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/gowri-shankar-nepal-rudraksha/collector/xray.jpg"
+          "front": "images/products/gowri-shankar-nepal-rudraksha/collector/front.avif",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/collector/back.avif",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/collector/top.avif",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/collector/certificate.avif",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 0,
         "images": {
-          "front": "images/products/gowri-shankar-nepal-rudraksha/super-collector/front.jpg",
-          "back": "images/products/gowri-shankar-nepal-rudraksha/super-collector/back.jpg",
-          "top": "images/products/gowri-shankar-nepal-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/gowri-shankar-nepal-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/gowri-shankar-nepal-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/gowri-shankar-nepal-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/gowri-shankar-nepal-rudraksha/super-collector/front.avif",
+          "back": "images/products/gowri-shankar-nepal-rudraksha/super-collector/back.avif",
+          "top": "images/products/gowri-shankar-nepal-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/gowri-shankar-nepal-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/gowri-shankar-nepal-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/gowri-shankar-nepal-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/gowri-shankar-nepal-rudraksha/front.jpg",
-      "back": "images/products/gowri-shankar-nepal-rudraksha/back.jpg",
-      "top": "images/products/gowri-shankar-nepal-rudraksha/top.jpg",
-      "bottom": "images/products/gowri-shankar-nepal-rudraksha/bottom.jpg",
-      "certificate": "images/products/gowri-shankar-nepal-rudraksha/certificate.jpg",
-      "xray": "images/products/gowri-shankar-nepal-rudraksha/xray.jpg"
+      "front": "images/products/gowri-shankar-nepal-rudraksha/front.avif",
+      "back": "images/products/gowri-shankar-nepal-rudraksha/back.avif",
+      "top": "images/products/gowri-shankar-nepal-rudraksha/top.avif",
+      "bottom": "images/products/gowri-shankar-nepal-rudraksha/bottom.avif",
+      "certificate": "images/products/gowri-shankar-nepal-rudraksha/certificate.avif",
+      "xray": "images/products/gowri-shankar-nepal-rudraksha/xray.avif"
     }
   },
   {
@@ -1289,70 +1289,70 @@
         "name": "Small",
         "price": 0,
         "images": {
-          "front": "images/products/ganesh-rudraksha/small/front.jpg",
-          "back": "images/products/ganesh-rudraksha/small/back.jpg",
-          "top": "images/products/ganesh-rudraksha/small/top.jpg",
-          "bottom": "images/products/ganesh-rudraksha/small/bottom.jpg",
-          "certificate": "images/products/ganesh-rudraksha/small/certificate.jpg",
-          "xray": "images/products/ganesh-rudraksha/small/xray.jpg"
+          "front": "images/products/ganesh-rudraksha/small/front.avif",
+          "back": "images/products/ganesh-rudraksha/small/back.avif",
+          "top": "images/products/ganesh-rudraksha/small/top.avif",
+          "bottom": "images/products/ganesh-rudraksha/small/bottom.avif",
+          "certificate": "images/products/ganesh-rudraksha/small/certificate.avif",
+          "xray": "images/products/ganesh-rudraksha/small/xray.avif"
         }
       },
       {
         "name": "Medium",
         "price": 60,
         "images": {
-          "front": "images/products/ganesh-rudraksha/medium/front.jpg",
-          "back": "images/products/ganesh-rudraksha/medium/back.jpg",
-          "top": "images/products/ganesh-rudraksha/medium/top.jpg",
-          "bottom": "images/products/ganesh-rudraksha/medium/bottom.jpg",
-          "certificate": "images/products/ganesh-rudraksha/medium/certificate.jpg",
-          "xray": "images/products/ganesh-rudraksha/medium/xray.jpg"
+          "front": "images/products/ganesh-rudraksha/medium/front.avif",
+          "back": "images/products/ganesh-rudraksha/medium/back.avif",
+          "top": "images/products/ganesh-rudraksha/medium/top.avif",
+          "bottom": "images/products/ganesh-rudraksha/medium/bottom.avif",
+          "certificate": "images/products/ganesh-rudraksha/medium/certificate.avif",
+          "xray": "images/products/ganesh-rudraksha/medium/xray.avif"
         }
       },
       {
         "name": "Large",
         "price": 0,
         "images": {
-          "front": "images/products/ganesh-rudraksha/large/front.jpg",
-          "back": "images/products/ganesh-rudraksha/large/back.jpg",
-          "top": "images/products/ganesh-rudraksha/large/top.jpg",
-          "bottom": "images/products/ganesh-rudraksha/large/bottom.jpg",
-          "certificate": "images/products/ganesh-rudraksha/large/certificate.jpg",
-          "xray": "images/products/ganesh-rudraksha/large/xray.jpg"
+          "front": "images/products/ganesh-rudraksha/large/front.avif",
+          "back": "images/products/ganesh-rudraksha/large/back.avif",
+          "top": "images/products/ganesh-rudraksha/large/top.avif",
+          "bottom": "images/products/ganesh-rudraksha/large/bottom.avif",
+          "certificate": "images/products/ganesh-rudraksha/large/certificate.avif",
+          "xray": "images/products/ganesh-rudraksha/large/xray.avif"
         }
       },
       {
         "name": "Collector",
         "price": 0,
         "images": {
-          "front": "images/products/ganesh-rudraksha/collector/front.jpg",
-          "back": "images/products/ganesh-rudraksha/collector/back.jpg",
-          "top": "images/products/ganesh-rudraksha/collector/top.jpg",
-          "bottom": "images/products/ganesh-rudraksha/collector/bottom.jpg",
-          "certificate": "images/products/ganesh-rudraksha/collector/certificate.jpg",
-          "xray": "images/products/ganesh-rudraksha/collector/xray.jpg"
+          "front": "images/products/ganesh-rudraksha/collector/front.avif",
+          "back": "images/products/ganesh-rudraksha/collector/back.avif",
+          "top": "images/products/ganesh-rudraksha/collector/top.avif",
+          "bottom": "images/products/ganesh-rudraksha/collector/bottom.avif",
+          "certificate": "images/products/ganesh-rudraksha/collector/certificate.avif",
+          "xray": "images/products/ganesh-rudraksha/collector/xray.avif"
         }
       },
       {
         "name": "Super Collector",
         "price": 0,
         "images": {
-          "front": "images/products/ganesh-rudraksha/super-collector/front.jpg",
-          "back": "images/products/ganesh-rudraksha/super-collector/back.jpg",
-          "top": "images/products/ganesh-rudraksha/super-collector/top.jpg",
-          "bottom": "images/products/ganesh-rudraksha/super-collector/bottom.jpg",
-          "certificate": "images/products/ganesh-rudraksha/super-collector/certificate.jpg",
-          "xray": "images/products/ganesh-rudraksha/super-collector/xray.jpg"
+          "front": "images/products/ganesh-rudraksha/super-collector/front.avif",
+          "back": "images/products/ganesh-rudraksha/super-collector/back.avif",
+          "top": "images/products/ganesh-rudraksha/super-collector/top.avif",
+          "bottom": "images/products/ganesh-rudraksha/super-collector/bottom.avif",
+          "certificate": "images/products/ganesh-rudraksha/super-collector/certificate.avif",
+          "xray": "images/products/ganesh-rudraksha/super-collector/xray.avif"
         }
       }
     ],
     "images": {
-      "front": "images/products/ganesh-rudraksha/front.jpg",
-      "back": "images/products/ganesh-rudraksha/back.jpg",
-      "top": "images/products/ganesh-rudraksha/top.jpg",
-      "bottom": "images/products/ganesh-rudraksha/bottom.jpg",
-      "certificate": "images/products/ganesh-rudraksha/certificate.jpg",
-      "xray": "images/products/ganesh-rudraksha/xray.jpg"
+      "front": "images/products/ganesh-rudraksha/front.avif",
+      "back": "images/products/ganesh-rudraksha/back.avif",
+      "top": "images/products/ganesh-rudraksha/top.avif",
+      "bottom": "images/products/ganesh-rudraksha/bottom.avif",
+      "certificate": "images/products/ganesh-rudraksha/certificate.avif",
+      "xray": "images/products/ganesh-rudraksha/xray.avif"
     }
   },
   {
@@ -1365,12 +1365,12 @@
     "stockStatus": "Available",
     "badge": "Certified",
     "images": {
-      "front": "images/products/rudraksha-mala/mohini/front.jpg",
-      "back": "images/products/rudraksha-mala/mohini/back.jpg",
-      "top": "images/products/rudraksha-mala/mohini/top.jpg",
-      "bottom": "images/products/rudraksha-mala/mohini/bottom.jpg",
-      "certificate": "images/products/rudraksha-mala/mohini/certificate.jpg",
-      "xray": "images/products/rudraksha-mala/mohini/xray.jpg"
+      "front": "images/products/rudraksha-mala/mohini/front.avif",
+      "back": "images/products/rudraksha-mala/mohini/back.avif",
+      "top": "images/products/rudraksha-mala/mohini/top.avif",
+      "bottom": "images/products/rudraksha-mala/mohini/bottom.avif",
+      "certificate": "images/products/rudraksha-mala/mohini/certificate.avif",
+      "xray": "images/products/rudraksha-mala/mohini/xray.avif"
     },
     "variants": [
       {
@@ -1445,12 +1445,12 @@
     "stockStatus": "Available",
     "badge": "Certified",
     "images": {
-      "front": "images/products/rudraksha-mala/nepal-sidhamala/front.jpg",
-      "back": "images/products/rudraksha-mala/nepal-sidhamala/back.jpg",
-      "top": "images/products/rudraksha-mala/nepal-sidhamala/top.jpg",
-      "bottom": "images/products/rudraksha-mala/nepal-sidhamala/bottom.jpg",
-      "certificate": "images/products/rudraksha-mala/nepal-sidhamala/certificate.jpg",
-      "xray": "images/products/rudraksha-mala/nepal-sidhamala/xray.jpg"
+      "front": "images/products/rudraksha-mala/nepal-sidhamala/front.avif",
+      "back": "images/products/rudraksha-mala/nepal-sidhamala/back.avif",
+      "top": "images/products/rudraksha-mala/nepal-sidhamala/top.avif",
+      "bottom": "images/products/rudraksha-mala/nepal-sidhamala/bottom.avif",
+      "certificate": "images/products/rudraksha-mala/nepal-sidhamala/certificate.avif",
+      "xray": "images/products/rudraksha-mala/nepal-sidhamala/xray.avif"
     },
     "variants": [
       {
@@ -1525,12 +1525,12 @@
     "stockStatus": "Available",
     "badge": "Certified",
     "images": {
-      "front": "images/products/rudraksha-mala/indonesia-sidhamala/front.jpg",
-      "back": "images/products/rudraksha-mala/indonesia-sidhamala/back.jpg",
-      "top": "images/products/rudraksha-mala/indonesia-sidhamala/top.jpg",
-      "bottom": "images/products/rudraksha-mala/indonesia-sidhamala/bottom.jpg",
-      "certificate": "images/products/rudraksha-mala/indonesia-sidhamala/certificate.jpg",
-      "xray": "images/products/rudraksha-mala/indonesia-sidhamala/xray.jpg"
+      "front": "images/products/rudraksha-mala/indonesia-sidhamala/front.avif",
+      "back": "images/products/rudraksha-mala/indonesia-sidhamala/back.avif",
+      "top": "images/products/rudraksha-mala/indonesia-sidhamala/top.avif",
+      "bottom": "images/products/rudraksha-mala/indonesia-sidhamala/bottom.avif",
+      "certificate": "images/products/rudraksha-mala/indonesia-sidhamala/certificate.avif",
+      "xray": "images/products/rudraksha-mala/indonesia-sidhamala/xray.avif"
     },
     "variants": [
       {

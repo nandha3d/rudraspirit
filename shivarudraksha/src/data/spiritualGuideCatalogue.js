@@ -17,11 +17,11 @@ export const spiritualGuideData = {
     motto: "Ancient Wisdom for a Better Tomorrow",
     deityMantraSanskrit: "ॐ नमः शिवाय",
     deityMantraEnglish: "OM NAMAH SHIVAYA",
-    deityArt: "images/spiritual-guide/1-mukhi/shiva-banner.jpg",
+    deityArt: "images/spiritual-guide/1-mukhi/shiva-banner.avif",
     brochureCards: {
-      specsCard: "images/spiritual-guide/1-mukhi/card1-specs.jpg",
-      benefitsCard: "images/spiritual-guide/1-mukhi/card2-benefits.jpg",
-      fullSpread: "images/spiritual-guide/1-mukhi/full-spread.jpg",
+      specsCard: "images/spiritual-guide/1-mukhi/card1-specs.avif",
+      benefitsCard: "images/spiritual-guide/1-mukhi/card2-benefits.avif",
+      fullSpread: "images/spiritual-guide/1-mukhi/full-spread.avif",
     },
     specs: [
       {
@@ -120,11 +120,11 @@ export const spiritualGuideData = {
     motto: "Ancient Wisdom for a Better Tomorrow",
     deityMantraSanskrit: "ॐ नमः शिवाय",
     deityMantraEnglish: "OM NAMAH SHIVAYA",
-    deityArt: "images/spiritual-guide/2-mukhi/deity-banner.jpg",
+    deityArt: "images/spiritual-guide/2-mukhi/deity-banner.avif",
     brochureCards: {
-      specsCard: "images/spiritual-guide/2-mukhi/card1-specs.jpg",
-      benefitsCard: "images/spiritual-guide/2-mukhi/card2-benefits.jpg",
-      fullSpread: "images/spiritual-guide/2-mukhi/full-spread.jpg",
+      specsCard: "images/spiritual-guide/2-mukhi/card1-specs.avif",
+      benefitsCard: "images/spiritual-guide/2-mukhi/card2-benefits.avif",
+      fullSpread: "images/spiritual-guide/2-mukhi/full-spread.avif",
     },
     specs: [
       {
@@ -247,11 +247,11 @@ export function getSpiritualGuideForProduct(product) {
     motto: "Ancient Wisdom for a Better Tomorrow",
     deityMantraSanskrit: "ॐ नमः शिवाय",
     deityMantraEnglish: "OM NAMAH SHIVAYA",
-    deityArt: `images/spiritual-guide/${num}-mukhi/deity-banner.jpg`,
+    deityArt: `images/spiritual-guide/${num}-mukhi/deity-banner.avif`,
     brochureCards: {
-      specsCard: `images/spiritual-guide/${num}-mukhi/card1-specs.jpg`,
-      benefitsCard: `images/spiritual-guide/${num}-mukhi/card2-benefits.jpg`,
-      fullSpread: `images/spiritual-guide/${num}-mukhi/full-spread.jpg`,
+      specsCard: `images/spiritual-guide/${num}-mukhi/card1-specs.avif`,
+      benefitsCard: `images/spiritual-guide/${num}-mukhi/card2-benefits.avif`,
+      fullSpread: `images/spiritual-guide/${num}-mukhi/full-spread.avif`,
     },
     specs: [
       { id: "god", label: "Associated God", value: "Lord Shiva / Sacred Deity", icon: "trishul" },

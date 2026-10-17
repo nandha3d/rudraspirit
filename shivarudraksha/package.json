@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && python ../sync_to_public.py",
-    "sync": "python ../sync_to_public.py",
-    "build:rudraspirit": "vite build --base /shivarudraksha/ --outDir ../public/shivarudraksha",
+    "build": "vite build",
+    "sync": "python sync_to_rudraspirit.py",
+    "build:rudraspirit": "vite build --base /shivarudraksha/ --outDir ../rudraspirit/public/shivarudraksha",
     "preview": "vite preview"
   },
   "dependencies": {
