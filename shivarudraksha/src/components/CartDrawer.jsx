@@ -36,6 +36,30 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
     return () => window.removeEventListener("cart-updated", handleCartUpdate);
   }, [isOpen]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const drawer = document.querySelector(".cart-drawer");
+    drawer?.querySelector("button")?.focus();
+    const handleKey = (event) => {
+      if (event.key === "Escape") { onClose(); return; }
+      if (event.key !== "Tab") return;
+      const controls = [...drawer.querySelectorAll('button:not([disabled]), a[href], input, select, textarea, [tabindex="0"]')];
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKey);
+      previousFocus?.focus();
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
@@ -43,7 +67,7 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
       <aside
         className="cart-drawer"
         onClick={(e) => e.stopPropagation()}
-        aria-label="Shopping Cart Drawer"
+        role="dialog" aria-modal="true" aria-label="Shopping Cart Drawer"
       >
         {/* Header */}
         <div className="cart-drawer-header">
@@ -111,7 +135,7 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
                         type="button"
                         className="cart-item-remove"
                         onClick={() => removeFromCart(item.id)}
-                        title="Remove bead"
+                        title="Remove bead" aria-label={`Remove ${item.name} from cart`}
                       >
                         <Trash2 size={16} />
                       </button>
@@ -130,7 +154,7 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
                       <div className="cart-qty-control">
                         <button
                           type="button"
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          aria-label={`Decrease quantity of ${item.name}`} onClick={() => updateQuantity(item.id, item.quantity - 1)}
                           disabled={item.quantity <= 1}
                         >
                           <Minus size={14} />
@@ -138,6 +162,7 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
                         <span>{item.quantity}</span>
                         <button
                           type="button"
+                          aria-label={`Increase quantity of ${item.name}`}
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
                           disabled={item.quantity >= 99}
                         >

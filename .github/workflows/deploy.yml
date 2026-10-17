@@ -6,13 +6,49 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: production-deployment
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
 jobs:
   deploy:
-    name: Deploy to Production via SSH
+    name: Build storefront and deploy to Production via SSH
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: shivarudraksha/package-lock.json
+
+      - name: Install storefront dependencies
+        working-directory: shivarudraksha
+        run: npm ci
+
+      # The package build script calls a sync script with a developer's Windows
+      # paths. Build with Vite directly and transfer the complete dist instead.
+      - name: Build production storefront
+        working-directory: shivarudraksha
+        run: npx --no-install vite build
+
+      - name: Upload compiled storefront to server staging directory
+        uses: appleboy/scp-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: shivarudraksha/dist/*
+          target: public_html/.frontend-release/${{ github.run_id }}
+          strip_components: 2
+          overwrite: true
 
       - name: Deploy on server via SSH
         uses: appleboy/ssh-action@v1.2.0
@@ -23,8 +59,19 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
-            echo "🚀 Connecting to server for automated deployment..."
+            set -eu
             cd ~/public_html
+            RELEASE_DIR=".frontend-release/${{ github.run_id }}"
+            test -s "$RELEASE_DIR/index.html"
+            test -d "$RELEASE_DIR/assets"
             bash deploy.sh
-
-
+            # Publish assets and static catalogue files before the HTML entry
+            # point, so the new bundle and banner paths are available immediately.
+            for entry in "$RELEASE_DIR"/*; do
+              if [ "$(basename "$entry")" != "index.html" ]; then
+                cp -a "$entry" public/
+              fi
+            done
+            cp -f "$RELEASE_DIR/index.html" public/index.html
+            cmp "$RELEASE_DIR/index.html" public/index.html
+            echo "React storefront from ${{ github.sha }} published successfully."

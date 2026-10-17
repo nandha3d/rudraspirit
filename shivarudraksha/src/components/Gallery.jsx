@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import { IMAGE_SLOTS } from "../data/catalogue";
 
-export default function Gallery({ product, compact = false, resetKey = "" }) {
+export default function Gallery({ product, compact = false, onOpen, resetKey = "" }) {
   const images = useMemo(
     () =>
       IMAGE_SLOTS.map((slot) => ({
@@ -49,11 +49,13 @@ export default function Gallery({ product, compact = false, resetKey = "" }) {
   if (compact) {
     return (
       <div className="card-gallery" onTouchStart={touchStart} onTouchEnd={touchEnd}>
+        <button type="button" className="gallery-image-open" onClick={onOpen} aria-label={`View ${product.name}`}>
         <img src={active.src || active.fallbackSrc} onError={(event) => useFallback(event, active.fallbackSrc)} alt={`${product.name} ${active.label}`} />
+        </button>
         {images.length > 1 && (
           <>
             <button
-              className="gallery-button left"
+              className="gallery-button left" aria-label="Previous product image"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -63,7 +65,7 @@ export default function Gallery({ product, compact = false, resetKey = "" }) {
               <ChevronLeft />
             </button>
             <button
-              className="gallery-button right"
+              className="gallery-button right" aria-label="Next product image"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -89,13 +91,13 @@ export default function Gallery({ product, compact = false, resetKey = "" }) {
           onTouchEnd={touchEnd}
         >
           <img src={active.src || active.fallbackSrc} onError={(event) => useFallback(event, active.fallbackSrc)} alt={`${product.name} ${active.label}`} />
-          <button className="gallery-button left" onClick={previous}>
+          <button className="gallery-button left" aria-label="Previous product image" onClick={previous}>
             <ChevronLeft />
           </button>
-          <button className="gallery-button right" onClick={next}>
+          <button className="gallery-button right" aria-label="Next product image" onClick={next}>
             <ChevronRight />
           </button>
-          <button className="expand-button" onClick={() => setFullscreen(true)}>
+          <button className="expand-button" aria-label="Expand product image" onClick={() => setFullscreen(true)}>
             <Expand />
           </button>
           <span className="image-type">{active.label}</span>
@@ -118,7 +120,7 @@ export default function Gallery({ product, compact = false, resetKey = "" }) {
 
       {fullscreen && (
         <div className="fullscreen">
-          <button className="close-fullscreen" onClick={() => setFullscreen(false)}>
+          <button className="close-fullscreen" aria-label="Close product image" onClick={() => setFullscreen(false)}>
             <X />
           </button>
           <button className="full-arrow left" onClick={previous}>
