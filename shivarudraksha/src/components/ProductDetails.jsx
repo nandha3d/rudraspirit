@@ -22,8 +22,10 @@ import ProductInteractiveTabs from "./ProductInteractiveTabs";
 import ProductReviews from "./ProductReviews";
 import RelatedProducts from "./RelatedProducts";
 import RecentlyViewed from "./RecentlyViewed";
+import CurrencySwitcher from "./CurrencySwitcher";
 import { emptyImages } from "../data/catalogue";
 import { addToCart, recordRecentProduct } from "../data/cartStore";
+import { useCurrency } from "../context/CurrencyContext";
 
 export default function ProductDetails({
   product,
@@ -32,6 +34,7 @@ export default function ProductDetails({
   onBack,
   onOpenCart,
 }) {
+  const { formatPrice, getTenantStockStatus } = useCurrency();
   // Record in recently viewed history on mount
   useEffect(() => {
     if (product) {
@@ -289,7 +292,10 @@ export default function ProductDetails({
             <ArrowLeft size={18} />
             <span>Back to catalogue</span>
           </button>
-          <Logo compact />
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            <CurrencySwitcher />
+            <Logo compact />
+          </div>
         </div>
       </header>
 
@@ -468,7 +474,7 @@ export default function ProductDetails({
                 <small>Invest in Sacred Consecrated Heritage</small>
                 <div className="price-headline-row">
                   <strong className="price-amount">
-                    ₹{price.toLocaleString("en-IN")}
+                    {formatPrice(price, selectedVariant || product)}
                   </strong>
                   <span className="tax-inclusive-tag">
                     Inclusive of all taxes
@@ -477,7 +483,7 @@ export default function ProductDetails({
               </div>
               <div className="stock-status-pill in-stock">
                 <span className="stock-dot" />
-                <span>In Stock • Consecrated on Order</span>
+                <span>{getTenantStockStatus(selectedVariant || product)} • Consecrated on Order</span>
               </div>
             </div>
           )}

@@ -1,7 +1,9 @@
 import { MapPin, MessageCircle, ShieldCheck } from "lucide-react";
 import Gallery from "./Gallery";
+import { useCurrency } from "../context/CurrencyContext";
 
 export default function ProductCard({ product, onOpen }) {
+  const { formatPrice } = useCurrency();
   const availablePrices = (product.variants || [])
     .map((variant) => Number(variant.price))
     .filter((price) => Number.isFinite(price) && price > 0);
@@ -111,7 +113,7 @@ export default function ProductCard({ product, onOpen }) {
                   fontWeight: 800,
                 }}
               >
-                ₹{startingPrice.toLocaleString("en-IN")}
+                {formatPrice(startingPrice, product)}
               </strong>
             )}
           </div>

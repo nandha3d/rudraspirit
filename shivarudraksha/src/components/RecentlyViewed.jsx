@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Clock, ArrowRight, Trash2 } from "lucide-react";
 import { getRecentProducts } from "../data/cartStore";
+import { useCurrency } from "../context/CurrencyContext";
 
 export default function RecentlyViewed({ currentProductId, allProducts = [], onOpenProduct }) {
+  const { formatPrice } = useCurrency();
   const [recentItems, setRecentItems] = useState([]);
 
   useEffect(() => {
@@ -60,7 +62,7 @@ export default function RecentlyViewed({ currentProductId, allProducts = [], onO
                 <div className="recent-card-info">
                   <h4>{item.name}</h4>
                   <div className="recent-card-price">
-                    {price > 0 ? `₹${price.toLocaleString("en-IN")}` : "Price on Request"}
+                    {formatPrice(price, fullProduct)}
                   </div>
                 </div>
               </div>

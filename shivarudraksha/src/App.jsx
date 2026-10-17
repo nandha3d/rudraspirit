@@ -23,9 +23,11 @@ import RudrakshaMaintenance from "./components/RudrakshaMaintenance";
 import LordShiva from "./components/LordShiva";
 import HeroCarousel from "./components/HeroCarousel";
 import CartDrawer from "./components/CartDrawer";
+import CurrencySwitcher from "./components/CurrencySwitcher";
 import Footer from "./components/Footer";
 import { loadProducts } from "./data/catalogue";
 import { getCartCount } from "./data/cartStore";
+import { useCurrency } from "./context/CurrencyContext";
 
 const categories = [
   "Nepal Rudraksha",
@@ -159,6 +161,7 @@ function GuideAccordionCard({ item }) {
 }
 
 export default function App() {
+  const { isAvailableForTenant } = useCurrency();
   const [route, setRoute] = useState(window.location.hash || "#home");
   const [products, setProducts] = useState([]);
   const [guide, setGuide] = useState([]);
@@ -207,6 +210,7 @@ export default function App() {
 
   const visible = useMemo(() => {
     return products.filter((product) => {
+      if (!isAvailableForTenant(product)) return false;
       const matchesSearch = `${product.name} ${product.mukhi} ${product.origin}`
         .toLowerCase()
         .includes(search.toLowerCase());
@@ -216,16 +220,17 @@ export default function App() {
         (category === "Nepal Rudraksha" && product.origin === "Nepal");
       return matchesSearch && matchesCategory;
     });
-  }, [products, search, category]);
+  }, [products, search, category, isAvailableForTenant]);
 
   const featuredProducts = useMemo(() => {
     if (!products || !products.length) return [];
-    const p1 = products.find((p) => p.mukhi === 1 || p.id?.includes("1-mukhi"));
-    const p4 = products.find((p) => p.mukhi === 4 || p.id?.includes("4-mukhi"));
-    const p3 = products.find((p) => p.mukhi === 3 || p.id?.includes("3-mukhi"));
+    const available = products.filter(isAvailableForTenant);
+    const p1 = available.find((p) => p.mukhi === 1 || p.id?.includes("1-mukhi"));
+    const p4 = available.find((p) => p.mukhi === 4 || p.id?.includes("4-mukhi"));
+    const p3 = available.find((p) => p.mukhi === 3 || p.id?.includes("3-mukhi"));
     const result = [p1, p4, p3].filter(Boolean);
-    return result.length === 3 ? result : products.slice(0, 3);
-  }, [products]);
+    return result.length === 3 ? result : available.slice(0, 3);
+  }, [products, isAvailableForTenant]);
 
   const navigate = (hash) => {
     const target = hash === "#shop" ? "#home" : hash;
@@ -311,6 +316,8 @@ export default function App() {
           </nav>
 
           <div className="nav-actions">
+            <CurrencySwitcher />
+
             <button
               type="button"
               className="header-cart-btn"

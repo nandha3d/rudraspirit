@@ -17,8 +17,10 @@ import {
   getCartTotal,
   clearCart,
 } from "../data/cartStore";
+import { useCurrency } from "../context/CurrencyContext";
 
 export default function CartDrawer({ isOpen, onClose, onNavigate }) {
+  const { formatPrice, currency } = useCurrency();
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
 
@@ -122,9 +124,7 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
 
                     <div className="cart-item-price-row">
                       <div className="cart-item-price">
-                        {item.price > 0
-                          ? `₹${item.price.toLocaleString("en-IN")}`
-                          : "Price on Request"}
+                        {formatPrice(item.price)}
                       </div>
 
                       <div className="cart-qty-control">
@@ -139,6 +139,7 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
                         <button
                           type="button"
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          disabled={item.quantity >= 99}
                         >
                           <Plus size={14} />
                         </button>
@@ -157,13 +158,15 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
             <div className="cart-summary-line">
               <span>Subtotal</span>
               <strong className="cart-subtotal-val">
-                {total > 0 ? `₹${total.toLocaleString("en-IN")}` : "Price on Request"}
+                {formatPrice(total)}
               </strong>
             </div>
 
             <div className="cart-summary-line minor">
               <span>Vedic Energization Vidhi</span>
-              <span className="cart-free-tag">FREE (₹2,500 value)</span>
+              <span className="cart-free-tag">
+                {currency === "CAD" ? "FREE ($40 value)" : "FREE (₹2,500 value)"}
+              </span>
             </div>
 
             <div className="cart-summary-line minor">
@@ -176,7 +179,7 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
             <div className="cart-summary-line total">
               <span>Total Estimated</span>
               <strong className="cart-grandtotal-val">
-                {total > 0 ? `₹${total.toLocaleString("en-IN")}` : "Price on Request"}
+                {formatPrice(total)}
               </strong>
             </div>
 

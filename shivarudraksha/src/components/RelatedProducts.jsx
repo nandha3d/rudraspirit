@@ -1,6 +1,8 @@
 import { ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
+import { useCurrency } from "../context/CurrencyContext";
 
 export default function RelatedProducts({ currentProduct, allProducts = [], onOpenProduct }) {
+  const { formatPrice } = useCurrency();
   if (!allProducts || allProducts.length <= 1) return null;
 
   // Filter out the current product
@@ -70,9 +72,7 @@ export default function RelatedProducts({ currentProduct, allProducts = [], onOp
                     <div>
                       <small>Starting from</small>
                       <strong>
-                        {displayPrice > 0
-                          ? `₹${displayPrice.toLocaleString("en-IN")}`
-                          : "Price on Request"}
+                        {formatPrice(displayPrice, prod)}
                       </strong>
                     </div>
 
