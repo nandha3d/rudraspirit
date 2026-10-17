@@ -160,14 +160,24 @@
 
         /* Left Side Consecrated Artwork Panel */
         .spiritual-left-panel {
-            position: relative;
-            min-height: 560px;
-            background-color: transparent;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            padding: 40px 32px;
-            box-sizing: border-box;
+            position: relative !important;
+            min-height: 560px !important;
+            background-color: transparent !important;
+            overflow: hidden !important;
+            display: flex !important;
+            align-items: flex-end !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        .spiritual-left-content {
+            position: relative !important;
+            z-index: 2 !important;
+            width: 100% !important;
+            max-width: 380px !important;
+            /* Guaranteed generous margin: 44px left, 44px bottom, 48px top, 36px right */
+            padding: 48px 36px 44px 44px !important;
+            box-sizing: border-box !important;
         }
 
         .spiritual-panel-img {
@@ -260,13 +270,13 @@
 
         /* Right Side Form Panel — Transparent Glass with generous padding */
         .spiritual-right-panel {
-            padding: 44px 32px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 48px 40px 44px 40px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
             background: transparent !important;
-            box-sizing: border-box;
+            box-sizing: border-box !important;
         }
 
         /* Centered & Refined Narrow Form Box (Max 310px width!) */

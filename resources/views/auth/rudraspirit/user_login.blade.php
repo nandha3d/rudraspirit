@@ -5,8 +5,8 @@
 <div class="spiritual-auth-page user-page">
     <div class="spiritual-glass-card">
         <div class="row no-gutters">
-            <!-- Left Side Sacred Altar Art (SAME SACRED IMAGE AS LOGIN) -->
-            <div class="col-lg-6 spiritual-left-panel d-none d-lg-flex">
+            <!-- Left Side Sacred Altar Art with Guaranteed Generous Padding -->
+            <div class="col-lg-6 spiritual-left-panel d-none d-lg-flex" style="padding: 0 !important;">
                 <img 
                     src="{{ static_asset('images/auth/spiritual-card-art.webp') }}" 
                     alt="Sacred Nepal Rudraksha & Himalayan Consecration" 
@@ -14,7 +14,7 @@
                     onerror="this.src='{{ static_asset('images/auth/spiritual-card-art.jpg') }}'"
                 >
                 <div class="spiritual-left-overlay"></div>
-                <div class="spiritual-left-content">
+                <div class="spiritual-left-content" style="padding: 48px 36px 44px 44px !important;">
                     <span class="spiritual-mantra-badge">🕉 ॐ नमः शिवाय</span>
                     <h2>Divine Blessings Await</h2>
                     <p>Welcome back to your sacred Shiva Rudraksha portal. Access your energized bead orders, custom malas, and Vedic Kundali consultations.</p>
@@ -26,9 +26,9 @@
                 </div>
             </div>
 
-            <!-- Right Side Glassmorphic Form -->
-            <div class="col-lg-6 spiritual-right-panel">
-                <div class="spiritual-form-box">
+            <!-- Right Side Glassmorphic Form (Properly Padded & Narrowed Box) -->
+            <div class="col-lg-6 spiritual-right-panel" style="padding: 48px 40px 44px 40px !important;">
+                <div class="spiritual-form-box" style="width: 100% !important; max-width: 310px !important; margin: 0 auto !important;">
                     <!-- Brand Crest Header with larger logo -->
                     <div class="spiritual-brand-header">
                         <div class="spiritual-logo-wrapper">
@@ -143,31 +143,28 @@
                         </div>
                         <div class="d-flex justify-content-center gap-2" style="gap: 12px;">
                             @if (get_setting('google_login') == 1)
-                                <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-outline-light btn-sm px-3 py-2" style="border-radius: 8px; border-color: rgba(212,175,55,0.4); color: #fae498;">
-                                    <i class="lab la-google mr-1"></i> Google
-                                </a>
+                                <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-outline-light btn-sm rounded-circle p-2" style="border-color: rgba(212,175,55,0.4);"><i class="lab la-google text-warning"></i></a>
                             @endif
                             @if (get_setting('facebook_login') == 1)
-                                <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-outline-light btn-sm px-3 py-2" style="border-radius: 8px; border-color: rgba(212,175,55,0.4); color: #fae498;">
-                                    <i class="lab la-facebook-f mr-1"></i> Facebook
-                                </a>
+                                <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-outline-light btn-sm rounded-circle p-2" style="border-color: rgba(212,175,55,0.4);"><i class="lab la-facebook-f text-info"></i></a>
+                            @endif
+                            @if (get_setting('apple_login') == 1)
+                                <a href="{{ route('social.login', ['provider' => 'apple']) }}" class="btn btn-outline-light btn-sm rounded-circle p-2" style="border-color: rgba(212,175,55,0.4);"><i class="lab la-apple text-light"></i></a>
                             @endif
                         </div>
                     @endif
 
-                    <!-- Register Prompt -->
+                    <!-- Don't have an account prompt -->
                     <div class="spiritual-alt-action">
-                        {{ translate("Don't have an account?") }} 
-                        <a href="{{ route('user.registration') }}">{{ translate('Register Free') }}</a>
+                        <span>{{ translate('Do not have an account?') }}</span>
+                        <a href="{{ route('user.registration') }}">{{ translate('Register Now') }}</a>
                     </div>
 
-                    <!-- Go Back -->
-                    <div class="text-center">
-                        <a href="{{ route('home') }}" class="spiritual-back-link">
-                            <i class="las la-arrow-left"></i>
-                            <span>{{ translate('Back to Storefront') }}</span>
-                        </a>
-                    </div>
+                    <!-- Go Back Link -->
+                    <a href="{{ route('home') }}" class="spiritual-back-link">
+                        <i class="las la-arrow-left"></i>
+                        <span>{{ translate('Back to Storefront') }}</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -187,6 +184,10 @@ function togglePasswordVisibility(id, el) {
         el.classList.remove('la-eye-slash');
         el.classList.add('la-eye');
     }
+}
+function toggleEmailPhone(el){
+    $('.phone-form-group').toggleClass('d-none');
+    $('.email-form-group').toggleClass('d-none');
 }
 </script>
 @endsection

@@ -2,8 +2,8 @@
 <div class="spiritual-auth-page">
     <div class="spiritual-glass-card">
         <div class="row no-gutters">
-            <!-- Left Side Sacred Altar Art -->
-            <div class="col-lg-6 spiritual-left-panel d-none d-lg-flex">
+            <!-- Left Side Sacred Altar Art with Guaranteed Generous Padding -->
+            <div class="col-lg-6 spiritual-left-panel d-none d-lg-flex" style="padding: 0 !important;">
                 <img 
                     src="{{ static_asset('images/auth/spiritual-card-art.webp') }}" 
                     alt="Sacred Nepal Rudraksha & Himalayan Consecration" 
@@ -11,7 +11,7 @@
                     onerror="this.src='{{ static_asset('images/auth/spiritual-card-art.jpg') }}'"
                 >
                 <div class="spiritual-left-overlay"></div>
-                <div class="spiritual-left-content">
+                <div class="spiritual-left-content" style="padding: 48px 36px 44px 44px !important;">
                     <span class="spiritual-mantra-badge">🕉 ॐ नमः शिवाय</span>
                     <h2>Sacred Himalayan Consecration</h2>
                     <p>Access the Shiva Rudraksha administrative portal. Sourced directly from sacred groves in Nepal with lab certification and Vedic energization.</p>
@@ -24,8 +24,8 @@
             </div>
 
             <!-- Right Side Glassmorphic Form (Properly Padded & Narrowed Box) -->
-            <div class="col-lg-6 spiritual-right-panel">
-                <div class="spiritual-form-box">
+            <div class="col-lg-6 spiritual-right-panel" style="padding: 48px 40px 44px 40px !important;">
+                <div class="spiritual-form-box" style="width: 100% !important; max-width: 310px !important; margin: 0 auto !important;">
                     <!-- Brand Crest Header with larger logo -->
                     <div class="spiritual-brand-header">
                         <div class="spiritual-logo-wrapper">
