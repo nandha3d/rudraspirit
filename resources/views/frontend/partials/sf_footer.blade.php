@@ -28,7 +28,7 @@
     <div class="in">
         <div>
             <div class="bd">{{ $cfg['emoji'] }} <b>{{ $cfg['brand'] }}</b></div>
-            <p>{{ $cfg['tag'] }}. Free shipping, cash on delivery and easy returns — powered by the Zolo Cart engine.</p>
+            <p>{{ $cfg['tag'] }}. Free shipping, cash on delivery and easy returns — powered by the shivarudrakshainc engine.</p>
         </div>
         <div><h4>Shop</h4><ul>
             <li><a href="{{ url('/' . $sfSlug) }}">Home</a></li>
@@ -42,10 +42,10 @@
         </ul></div>
         <div><h4>More</h4><ul>
             <li><a href="https://animazon.in/marketplace/">All templates</a></li>
-            <li><a href="{{ route('home') }}">Zolo Cart</a></li>
+            <li><a href="{{ route('home') }}">shivarudrakshainc</a></li>
         </ul></div>
     </div>
-    <div class="bar">© {{ date('Y') }} {{ $cfg['brand'] }} — a Zolo Cart storefront template · built on the live engine</div>
+    <div class="bar">© {{ date('Y') }} {{ $cfg['brand'] }} — a shivarudrakshainc storefront template · built on the live engine</div>
 </footer>
 @else
     @include('frontend.inc.footer')

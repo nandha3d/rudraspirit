@@ -18,7 +18,7 @@
 
     @php
         $siteName = get_setting('website_name') ?: (get_setting('site_name') ?: 'Shiva Rudraksha');
-        if (in_array(trim($siteName), ['Rudra Spirit', 'RudraSpirit', 'Zolo Cart'])) {
+        if (in_array(trim($siteName), ['Rudra Spirit', 'RudraSpirit', 'shivarudrakshainc'])) {
             $siteName = 'Shiva Rudraksha';
         }
         $siteMotto = get_setting('site_motto') ?: 'Authentic Certified Rudraksha from Nepal';

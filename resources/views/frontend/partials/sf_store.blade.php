@@ -59,5 +59,5 @@
             @empty <p style="color:var(--muted)">No products yet.</p> @endforelse
         </div>
     </div>
-    <div class="sf-foot">{{ $s['brand'] }} — a Zolo Cart storefront template · every feature on the live engine · <a href="{{ route('home') }}">Zolo Cart</a></div>
+    <div class="sf-foot">{{ $s['brand'] }} — a shivarudrakshainc storefront template · every feature on the live engine · <a href="{{ route('home') }}">shivarudrakshainc</a></div>
 </div>

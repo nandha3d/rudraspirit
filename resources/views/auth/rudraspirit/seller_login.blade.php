@@ -1,157 +1,145 @@
 @extends('auth.layouts.authentication')
 
 @section('content')
-    <!-- aiz-main-wrapper -->
-    <div class="aiz-main-wrapper d-flex flex-column justify-content-md-center bg-white">
-        <section class="bg-white overflow-hidden">
-            <div class="row">
-                <div class="col-xxl-6 col-xl-9 col-lg-10 col-md-7 mx-auto py-lg-4">
-                    <div class="card shadow-none rounded-0 border-0">
-                        <div class="row no-gutters">
-                            <!-- Left Side Image-->
-                            <div class="col-lg-6">
-                                <img src="{{ uploaded_asset(get_setting('seller_login_page_image')) }}" alt="{{ translate('Seller Login Page Image') }}" class="img-fit h-100">
-                            </div>
-                
-                            <!-- Right Side -->
-                            <div class="col-lg-6 p-4 p-lg-5 d-flex flex-column justify-content-center border right-content" style="height: auto;">
-                                <!-- Site Icon -->
-                                <div class="size-48px mb-3 mx-auto mx-lg-0">
-                                    <img src="{{ uploaded_asset(get_setting('site_icon')) }}" alt="{{ translate('Site Icon')}}" class="img-fit h-100">
-                                </div>
-
-                                <!-- Titles -->
-                                <div class="text-center text-lg-left">
-                                    <h1 class="fs-20 fs-md-24 fw-700 text-primary" style="text-transform: uppercase;">{{ translate('Welcome Back !')}}</h1>
-                                    <h5 class="fs-14 fw-400 text-dark">{{ translate('Login To Your Seller Account')}}</h5>
-                                </div>
-                                <!-- Login form -->
-                                <div class="pt-3">
-                                    <div class="">
-                                        <form class="form-default" id="seller-login-form" role="form" action="{{ route('login') }}" method="POST">
-                                            @csrf
-                                            
-                                            <div class="form-group">
-                                                <label for="email" class="fs-12 fw-700 text-soft-dark">{{  translate('Email') }}</label>
-                                                <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} rounded-0" value="{{ old('email') }}" placeholder="{{  translate('johndoe@example.com') }}" name="email" id="email" autocomplete="off">
-                                                @if ($errors->has('email'))
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('email') }}</strong>
-                                                    </span>
-                                                @endif
-                                            </div>
-                                                
-                                            <!-- password -->
-                                            <div class="form-group">
-                                                <label for="password" class="fs-12 fw-700 text-soft-dark">{{  translate('Password') }}</label>
-                                                <div class="position-relative">
-                                                    <input type="password" class="form-control rounded-0 {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ translate('Password')}}" name="password" id="password">
-                                                    <i class="password-toggle las la-2x la-eye"></i>
-                                                </div>
-                                            </div>
-
-                                             <!-- Recaptcha -->
-                                            @if(get_setting('google_recaptcha') == 1 && get_setting('recaptcha_seller_login') == 1)
-                                                
-                                                @if ($errors->has('g-recaptcha-response'))
-                                                    <span class="border invalid-feedback rounded p-2 mb-3 bg-danger text-white" role="alert" style="display: block;">
-                                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                                    </span>
-                                                @endif
-                                            @endif
-
-                                            <div class="row mb-2">
-                                                <!-- Remember Me -->
-                                                <div class="col-6">
-                                                    <label class="aiz-checkbox">
-                                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                        <span class="has-transition fs-12 fw-400 text-gray-dark hov-text-primary">{{  translate('Remember Me') }}</span>
-                                                        <span class="aiz-square-check"></span>
-                                                    </label>
-                                                </div>
-                                                <!-- Forgot password -->
-                                                <div class="col-6 text-right">
-                                                    <a href="{{ route('password.request') }}" class="text-reset fs-12 fw-400 text-gray-dark hov-text-primary"><u>{{ translate('Forgot password?')}}</u></a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Submit Button -->
-                                            <div class="mb-4 mt-4">
-                                                <button type="submit" class="btn btn-primary btn-block fw-700 fs-14 rounded-0">{{  translate('Login') }}</button>
-                                            </div>
-                                        </form>
-
-                                        <!-- DEMO MODE -->
-                                        @if (env("DEMO_MODE") == "On")
-                                            <div class="mb-4">
-                                                <table class="table table-bordered mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>{{ translate('Seller Account')}}</td>
-                                                            <td class="text-center">
-                                                                <button class="btn btn-info btn-sm" onclick="autoFillSeller()">{{ translate('Copy credentials') }}</button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        @endif
-                                    </div>
-
-                                    <!-- Register Now -->
-                                    <p class="fs-12 text-gray mb-0">
-                                        {{ translate('Dont have an account?')}}
-                                        <a href="{{ route(get_setting('seller_registration_verify') === '1' ? 'shop-reg.verification' : 'shops.create') }}" class="ml-2 fs-14 fw-700 animate-underline-primary">{{ translate('Register Now')}}</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Go Back -->
-                        <div class="mt-3 mr-4 mr-md-0">
-                            <a href="{{ url()->previous() }}" class="ml-auto fs-14 fw-700 d-flex align-items-center text-primary" style="max-width: fit-content;">
-                                <i class="las la-arrow-left fs-20 mr-1"></i>
-                                {{ translate('Back to Previous Page')}}
-                            </a>
-                        </div>
+<!-- Shiva Rudraksha Inc. - Spiritual Glassmorphism Seller Login -->
+<div class="spiritual-auth-page">
+    <div class="spiritual-glass-card">
+        <div class="row no-gutters">
+            <!-- Left Side Sacred Altar Art -->
+            <div class="col-lg-6 spiritual-left-panel d-none d-lg-flex">
+                <img 
+                    src="{{ static_asset('images/auth/spiritual-card-art.webp') }}" 
+                    alt="Sacred Nepal Rudraksha & Himalayan Consecration" 
+                    class="spiritual-panel-img"
+                    onerror="this.src='{{ static_asset('images/auth/spiritual-card-art.jpg') }}'"
+                >
+                <div class="spiritual-left-overlay"></div>
+                <div class="spiritual-left-content">
+                    <span class="spiritual-mantra-badge">🕉 ॐ नमः शिवाय</span>
+                    <h2>Sacred Artisan Sanctuary</h2>
+                    <p>Access the Shiva Rudraksha verified merchant portal. Manage consecrated inventory, artisan certifications, and global temple dispatches.</p>
+                    <div class="spiritual-badges-row">
+                        <span class="spiritual-pill">✦ Verified Merchant</span>
+                        <span class="spiritual-pill">✦ Direct Temple Sourcing</span>
+                        <span class="spiritual-pill">✦ Fair Value Pricing</span>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Right Side Glassmorphic Form -->
+            <div class="col-lg-6 spiritual-right-panel">
+                <!-- Brand Crest Header -->
+                <div class="spiritual-brand-header">
+                    <div class="spiritual-logo-wrapper">
+                        <div class="spiritual-logo-glow"></div>
+                        <img 
+                            src="{{ static_asset('images/brand/shiva-rudraksha-logo.png') }}" 
+                            alt="Shiva Rudraksha Inc."
+                            onerror="this.src='{{ static_asset('images/brand/shiva-rudraksha-logo.png') }}'"
+                        >
+                    </div>
+                    <h1>{{ translate('Artisan & Seller Portal') }}</h1>
+                    <p>{{ translate('Sign in to your merchant dashboard') }}</p>
+                </div>
+
+                <!-- Form -->
+                <form class="form-default spiritual-form" id="seller-login-form" role="form" action="{{ route('login') }}" method="POST">
+                    @csrf
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email">{{ translate('Email Address') }}</label>
+                        <div class="spiritual-input-wrap">
+                            <input 
+                                type="email" 
+                                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
+                                value="{{ old('email') }}" 
+                                placeholder="{{ translate('seller@example.com') }}" 
+                                name="email" 
+                                id="email" 
+                                autocomplete="off"
+                                required
+                            >
+                        </div>
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback d-block mt-1 text-danger" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="password">{{ translate('Password') }}</label>
+                        <div class="spiritual-input-wrap">
+                            <input 
+                                type="password" 
+                                class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" 
+                                placeholder="{{ translate('Enter your password') }}" 
+                                name="password" 
+                                id="password"
+                                required
+                            >
+                            <i class="password-toggle las la-eye" onclick="togglePasswordVisibility('password', this)"></i>
+                        </div>
+                        @if ($errors->has('password'))
+                            <span class="invalid-feedback d-block mt-1 text-danger" role="alert">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <!-- Remember Me & Forgot Password Row -->
+                    <div class="spiritual-meta-row">
+                        <label class="spiritual-checkbox">
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <span>{{ translate('Remember Me') }}</span>
+                        </label>
+
+                        <a href="{{ route('password.request') }}" class="spiritual-forgot-link">
+                            {{ translate('Forgot password?') }}
+                        </a>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="spiritual-btn-submit">
+                        <span>{{ translate('Access Seller Portal') }}</span>
+                        <i class="las la-arrow-right"></i>
+                    </button>
+                </form>
+
+                @if (get_setting('vendor_system_activation') == 1)
+                    <div class="spiritual-alt-action">
+                        {{ translate('Apply to become a verified merchant?') }} 
+                        <a href="{{ route('shops.create') }}">{{ translate('Register Shop') }}</a>
+                    </div>
+                @endif
+
+                <!-- Go Back -->
+                <div class="text-center">
+                    <a href="{{ route('home') }}" class="spiritual-back-link">
+                        <i class="las la-arrow-left"></i>
+                        <span>{{ translate('Back to Storefront') }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-@endsection
+</div>
 
-@section('script')
-    <script type="text/javascript">
-        function autoFillSeller(){
-            $('#email').val('seller@example.com');
-            $('#password').val('123456');
-        }
-    </script>
-    @if(get_setting('google_recaptcha') == 1 && get_setting('recaptcha_seller_login') == 1)
-        <script src="https://www.google.com/recaptcha/api.js?render={{ env('CAPTCHA_KEY') }}"></script>
-        
-        <script type="text/javascript">
-                document.getElementById('seller-login-form').addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    grecaptcha.ready(function() {
-                        grecaptcha.execute(`{{ env('CAPTCHA_KEY') }}`, {action: 'seller_login'}).then(function(token) {
-                            var input = document.createElement('input');
-                            input.setAttribute('type', 'hidden');
-                            input.setAttribute('name', 'g-recaptcha-response');
-                            input.setAttribute('value', token);
-                            e.target.appendChild(input);
-
-                            var actionInput = document.createElement('input');
-                            actionInput.setAttribute('type', 'hidden');
-                            actionInput.setAttribute('name', 'recaptcha_action');
-                            actionInput.setAttribute('value', 'recaptcha_seller_login');
-                            e.target.appendChild(actionInput);
-                            
-                            e.target.submit();
-                        });
-                    });
-                });
-        </script>
-    @endif
-
+<script>
+function togglePasswordVisibility(id, el) {
+    var input = document.getElementById(id);
+    if (!input) return;
+    if (input.type === 'password') {
+        input.type = 'text';
+        el.classList.remove('la-eye');
+        el.classList.add('la-eye-slash');
+    } else {
+        input.type = 'password';
+        el.classList.remove('la-eye-slash');
+        el.classList.add('la-eye');
+    }
+}
+</script>
 @endsection

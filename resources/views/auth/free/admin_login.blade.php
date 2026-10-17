@@ -5,8 +5,8 @@
             <!-- Left Side Sacred Altar Art -->
             <div class="col-lg-6 spiritual-left-panel d-none d-lg-flex">
                 <img 
-                    src="{{ uploaded_asset(get_setting('admin_login_page_image')) ?: static_asset('images/auth/spiritual-card-art.webp') }}" 
-                    alt="Sacred Nepal Rudraksha & Himalayan Altar" 
+                    src="{{ static_asset('images/auth/spiritual-card-art.webp') }}" 
+                    alt="Sacred Nepal Rudraksha & Himalayan Consecration" 
                     class="spiritual-panel-img"
                     onerror="this.src='{{ static_asset('images/auth/spiritual-card-art.jpg') }}'"
                 >
@@ -14,7 +14,7 @@
                 <div class="spiritual-left-content">
                     <span class="spiritual-mantra-badge">🕉 ॐ नमः शिवाय</span>
                     <h2>Sacred Himalayan Consecration</h2>
-                    <p>Access the Shiva Rudraksha administrative portal. Sourced directly from holy groves in Nepal with lab certification and Prana Pratishtha energization.</p>
+                    <p>Access the Shiva Rudraksha administrative portal. Sourced directly from sacred groves in Nepal with lab certification and Vedic energization.</p>
                     <div class="spiritual-badges-row">
                         <span class="spiritual-pill">✦ 100% Nepal Origin</span>
                         <span class="spiritual-pill">✦ Govt. Lab Certified</span>
@@ -30,13 +30,13 @@
                     <div class="spiritual-logo-wrapper">
                         <div class="spiritual-logo-glow"></div>
                         <img 
-                            src="{{ uploaded_asset(get_setting('site_icon')) ?: static_asset('images/brand/shiva-rudraksha-logo.png') }}" 
+                            src="{{ static_asset('images/brand/shiva-rudraksha-logo.png') }}" 
                             alt="Shiva Rudraksha Inc."
                             onerror="this.src='{{ static_asset('images/brand/shiva-rudraksha-logo.png') }}'"
                         >
                     </div>
-                    <h1>{{ translate('Welcome to') }} {{ env('APP_NAME', 'Shiva Rudraksha') }}</h1>
-                    <p>{{ translate('Sign in to your sacred account') }}</p>
+                    <h1>{{ translate('Welcome to') }} {{ env('APP_NAME', 'shivarudrakshainc') }}</h1>
+                    <p>{{ translate('Sign in to your administrative account') }}</p>
                 </div>
 
                 <!-- Form -->
@@ -51,7 +51,7 @@
                                 type="email" 
                                 class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
                                 value="{{ old('email') }}" 
-                                placeholder="{{ translate('johndoe@example.com') }}" 
+                                placeholder="{{ translate('admin@shivarudrakshainc.com') }}" 
                                 name="email" 
                                 id="email" 
                                 autocomplete="off"
@@ -77,7 +77,7 @@
                                 id="password"
                                 required
                             >
-                            <i class="password-toggle las la-eye"></i>
+                            <i class="password-toggle las la-eye" onclick="togglePasswordVisibility('password', this)"></i>
                         </div>
                         @if ($errors->has('password'))
                             <span class="invalid-feedback d-block mt-1 text-danger" role="alert">
@@ -109,12 +109,12 @@
 
                     <!-- Submit Button -->
                     <button type="submit" class="spiritual-btn-submit">
-                        <span>{{ translate('Login') }}</span>
+                        <span>{{ translate('Login to Portal') }}</span>
                         <i class="las la-arrow-right"></i>
                     </button>
                 </form>
 
-                <!-- DEMO MODE -->
+                <!-- DEMO MODE AUTOFILL -->
                 @if (env("DEMO_MODE") == "On")
                     <div class="mt-4 p-3" style="background: rgba(255,255,255,0.06); border-radius: 12px; border: 1px dashed rgba(212,175,55,0.4);">
                         <div class="d-flex justify-content-between align-items-center text-white small">
@@ -126,12 +126,28 @@
 
                 <!-- Go Back -->
                 <div class="text-center">
-                    <a href="{{ url()->previous() }}" class="spiritual-back-link">
+                    <a href="{{ route('home') }}" class="spiritual-back-link">
                         <i class="las la-arrow-left"></i>
-                        <span>{{ translate('Back to Previous Page') }}</span>
+                        <span>{{ translate('Back to Storefront') }}</span>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+function togglePasswordVisibility(id, el) {
+    var input = document.getElementById(id);
+    if (!input) return;
+    if (input.type === 'password') {
+        input.type = 'text';
+        el.classList.remove('la-eye');
+        el.classList.add('la-eye-slash');
+    } else {
+        input.type = 'password';
+        el.classList.remove('la-eye-slash');
+        el.classList.add('la-eye');
+    }
+}
+</script>
