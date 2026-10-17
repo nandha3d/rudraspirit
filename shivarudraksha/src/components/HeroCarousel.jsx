@@ -186,6 +186,29 @@ export default function HeroCarousel({ compact = false, product = null }) {
     return () => clearInterval(autoPlayRef.current);
   }, [current, isPaused, activeSlides.length]);
 
+  const [loadedSlides, setLoadedSlides] = useState(() => new Set([0]));
+
+  useEffect(() => {
+    setLoadedSlides((prev) => {
+      if (prev.has(current)) return prev;
+      const next = new Set(prev);
+      next.add(current);
+      return next;
+    });
+
+    const nextIdx = (current + 1) % activeSlides.length;
+    const timer = setTimeout(() => {
+      setLoadedSlides((prev) => {
+        if (prev.has(nextIdx)) return prev;
+        const next = new Set(prev);
+        next.add(nextIdx);
+        return next;
+      });
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, [current, activeSlides.length]);
+
   return (
     <section
       className={`hero-carousel-wrap ${compact ? "hero-compact" : ""}`}
@@ -197,13 +220,16 @@ export default function HeroCarousel({ compact = false, product = null }) {
       <div className="hero-carousel-bg-container">
         {activeSlides.map((s, idx) => {
           const isActive = idx === current;
+          const shouldLoad = loadedSlides.has(idx) || idx === 0;
           return (
             <div
               key={s.id}
               className={`hero-carousel-slide ${isActive ? "active" : ""}`}
-              style={{
-                backgroundImage: `url(${baseUrl}${s.image})`,
-              }}
+              style={
+                shouldLoad
+                  ? { backgroundImage: `url(${baseUrl}${s.image})` }
+                  : undefined
+              }
               role="img"
               aria-label={s.id === 2 ? "Siddha Mala & Indra Mala — Certificate & X-Ray Verification" : s.id === 3 ? "Birth Chart Recommendation — Rudraksha Guidance Based on Vedic Astrology" : s.title} />
           );

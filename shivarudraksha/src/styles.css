@@ -17,7 +17,8 @@ body { margin: 0; background: var(--cream); }
 button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
 a { color: inherit; text-decoration: none; }
-img { max-width: 100%; }
+img { max-width: 100%; height: auto; }
+.guide-card, .home-featured, footer { content-visibility: auto; contain-intrinsic-size: 0 350px; }
 .container { width: min(1210px, calc(100% - 40px)); margin: auto; }
 
 .luxury-header { position: sticky; top: 0; z-index: 100; background: rgba(255,250,240,.97); border-bottom: 1px solid #e8dccb; backdrop-filter: blur(12px); }
@@ -228,10 +229,88 @@ footer button { padding: 0; border: 0; background: transparent; color: white; }
 .full-arrow.left { left: 20px; }
 .full-arrow.right { right: 20px; }
 
-/* Preserve admin and birth chart styles */
-.admin-page { min-height: 100vh; background: #f8f1e6; }
-.admin-login { min-height: calc(100vh - 80px); display: grid; place-items: center; padding: 40px; }
-.admin-login > section { width: min(520px,100%); padding: 35px; background: white; border: 1px solid var(--border); border-radius: 22px; }
+/* Spiritual Admin and Repository Connection Styles */
+.admin-page { 
+  min-height: 100vh; 
+  background-color: #080a10;
+  background-image: 
+    linear-gradient(180deg, rgba(8, 10, 18, 0.72) 0%, rgba(12, 8, 16, 0.65) 50%, rgba(6, 6, 10, 0.92) 100%),
+    url("/images/auth/spiritual-login-bg.webp");
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: fixed;
+  color: #f7f3eb;
+}
+.admin-page .admin-topbar {
+  background: rgba(14, 11, 20, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+.admin-page .admin-topbar button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #fae498;
+  border-radius: 999px;
+  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-page .admin-topbar button:hover {
+  background: rgba(212, 175, 55, 0.2);
+  color: #ffffff;
+}
+.admin-login { 
+  min-height: calc(100vh - 80px); 
+  display: grid; 
+  place-items: center; 
+  padding: 40px 20px; 
+}
+.admin-login > section { 
+  width: min(520px, 100%); 
+  padding: 42px 36px; 
+  background: rgba(14, 11, 20, 0.75); 
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(212, 175, 55, 0.4); 
+  border-radius: 24px; 
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(212, 175, 55, 0.12);
+  color: #f7f3eb;
+}
+.admin-login section h1 {
+  font-family: Georgia, serif;
+  color: #fae498;
+  font-size: 23px;
+  margin: 6px 0 10px;
+}
+.admin-login section span {
+  color: #d4af37;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  font-size: 11.5px;
+}
+.admin-login section p {
+  color: #d1c7b7;
+  font-size: 13.5px;
+}
+.admin-login label {
+  color: #e8d7b8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.admin-login input {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(212, 175, 55, 0.32) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+}
+.admin-login input:focus {
+  border-color: #fae498 !important;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.35) !important;
+  outline: none !important;
+}
 .admin-login form, .product-form { display: grid; gap: 15px; }
 .admin-login label, .product-form label { display: grid; gap: 6px; }
 .admin-login input, .product-form input, .product-form textarea, .product-form select { min-height: 45px; border: 1px solid var(--border); border-radius: 9px; padding: 9px; }
@@ -247,6 +326,15 @@ footer button { padding: 0; border: 0; background: transparent; color: white; }
 .upload-card img { width: 100%; height: 125px; object-fit: cover; }
 .upload-card input { display: none; }
 .save-button, .admin-login form button { min-height: 48px; border: 0; border-radius: 999px; background: var(--maroon); color: white; }
+.admin-login form button {
+  background: linear-gradient(135deg, #7c1218 0%, #9e1d23 45%, #630c10 100%) !important;
+  border: 1px solid rgba(250, 228, 152, 0.6) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 999px;
+  box-shadow: 0 10px 28px rgba(124, 18, 24, 0.55);
+}
 .product-admin-list article { display: grid; grid-template-columns: 70px 1fr auto; gap: 10px; padding: 12px 0; border-bottom: 1px solid #eee0ce; }
 .product-admin-list article img { width: 70px; height: 70px; object-fit: cover; border-radius: 9px; }
 .product-admin-list article span, .product-admin-list article b, .product-admin-list article em { display: block; font-size: 12px; }

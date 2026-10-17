@@ -6,6 +6,10 @@ export default function Logo({ compact = false }) {
       <img
         src={assetUrl("images/brand/shiva-rudraksha-logo.png")}
         alt="Shiva Rudraksha Inc."
+        width={compact ? "50" : "45"}
+        height={compact ? "50" : "45"}
+        fetchPriority="high"
+        decoding="async"
       />
       {!compact && (
         <span>

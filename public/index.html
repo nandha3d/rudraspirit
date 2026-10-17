@@ -7,10 +7,21 @@
       name="description"
       content="Shiva Rudraksha Inc. — authentic certified Nepal Rudraksha catalogue."
     />
+    <meta name="theme-color" content="#fff8ec" />
     <link rel="icon" type="image/png" href="./images/brand/shiva-rudraksha-logo.png" />
+    <!-- Preload Critical LCP Hero Banner & Brand Assets for instant first paint -->
+    <link rel="preload" as="image" type="image/avif" href="./images/hero/slide-1.avif" fetchpriority="high" />
+    <link rel="preload" as="image" type="image/png" href="./images/brand/shiva-rudraksha-logo.png" />
+    <style>
+      /* Critical instantaneous background & layout stabilization (zero CLS) */
+      body { margin: 0; background: #fff8ec; font-family: Inter, system-ui, -apple-system, sans-serif; color: #3b2b23; }
+      #root { min-height: 100vh; }
+    </style>
     <title>Shiva Rudraksha Inc.</title>
-    <script type="module" crossorigin src="./assets/index-2bOYs1it.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Xn0sF-el.css">
+    <script type="module" crossorigin src="./assets/index-C7yh3utZ.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/vendor-icons-BKK0IFIb.js">
+    <link rel="modulepreload" crossorigin href="./assets/vendor-react-agmrKcRA.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-D46McHlN.css">
   </head>
   <body>
     <div id="root"></div>

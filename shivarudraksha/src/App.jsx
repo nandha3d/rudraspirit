@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, lazy, Suspense } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -14,17 +14,19 @@ import {
 } from "lucide-react";
 import Logo from "./components/Logo";
 import ProductCard from "./components/ProductCard";
-import ProductDetails from "./components/ProductDetails";
-import Admin from "./components/Admin";
-import BirthChartRecommendation from "./components/BirthChartRecommendation";
 import PromotionalBanner from "./components/PromotionalBanner";
-import RudrakshaKnowledge from "./components/RudrakshaKnowledge";
-import RudrakshaMaintenance from "./components/RudrakshaMaintenance";
-import LordShiva from "./components/LordShiva";
 import HeroCarousel from "./components/HeroCarousel";
-import CartDrawer from "./components/CartDrawer";
 import CurrencySwitcher from "./components/CurrencySwitcher";
 import Footer from "./components/Footer";
+
+// Ultra-fast Code Splitting: Lazy-load non-initial route panels on demand
+const ProductDetails = lazy(() => import("./components/ProductDetails"));
+const Admin = lazy(() => import("./components/Admin"));
+const BirthChartRecommendation = lazy(() => import("./components/BirthChartRecommendation"));
+const RudrakshaKnowledge = lazy(() => import("./components/RudrakshaKnowledge"));
+const RudrakshaMaintenance = lazy(() => import("./components/RudrakshaMaintenance"));
+const LordShiva = lazy(() => import("./components/LordShiva"));
+const CartDrawer = lazy(() => import("./components/CartDrawer"));
 import { loadProducts } from "./data/catalogue";
 import { getCartCount } from "./data/cartStore";
 import { useCurrency } from "./context/CurrencyContext";
@@ -78,6 +80,10 @@ function GuideAccordionCard({ item }) {
           <img
             src={`${import.meta.env.BASE_URL}images/products/${item.mukhi}-mukhi-nepal-rudraksha/top.avif`}
             alt={`${item.title || `${item.mukhi} Mukhi Rudraksha`} Super Collector`}
+            loading="lazy"
+            decoding="async"
+            width="180"
+            height="180"
             onError={(event) => {
               const fallback =
                 `${import.meta.env.BASE_URL}images/products/${item.mukhi}-mukhi-nepal-rudraksha/top.avif`;
@@ -174,6 +180,8 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartCount, setCartCount] = useState(getCartCount());
 
+  const active = route.replace("#", "") || "home";
+
   useEffect(() => {
     const handleCartUpdate = () => setCartCount(getCartCount());
     window.addEventListener("cart-updated", handleCartUpdate);
@@ -186,13 +194,19 @@ export default function App() {
     return () => window.removeEventListener("hashchange", listener);
   }, []);
 
+  // Instant catalogue initialization
   useEffect(() => {
     loadProducts().then(setProducts).catch(console.error);
+  }, []);
+
+  // Load 50KB guide data on demand only when visiting #guide route
+  useEffect(() => {
+    if (guide.length > 0 || active !== "guide") return;
     fetch(`${import.meta.env.BASE_URL}data/rudraksha-guide.json`)
       .then((response) => response.json())
       .then(setGuide)
       .catch(console.error);
-  }, []);
+  }, [active, guide.length]);
 
   useEffect(() => {
     if (!route.startsWith("#product/")) return;
@@ -248,12 +262,16 @@ export default function App() {
   };
 
   if (route === "#admin") {
-    return <Admin onBack={() => navigate("#home")} />;
+    return (
+      <Suspense fallback={<div className="page-shell container"><p style={{ padding: "40px 0", textAlign: "center" }}>Loading Admin…</p></div>}>
+        <Admin onBack={() => navigate("#home")} />
+      </Suspense>
+    );
   }
 
   if (route.startsWith("#product/") && selected) {
     return (
-      <>
+      <Suspense fallback={<div className="page-shell container"><p style={{ padding: "40px 0", textAlign: "center" }}>Loading Product Details…</p></div>}>
         <ProductDetails
           product={selected}
           allProducts={products}
@@ -261,11 +279,15 @@ export default function App() {
           onBack={() => navigate("#home")}
           onOpenCart={() => setIsCartOpen(true)}
         />
-        <CartDrawer
-          isOpen={isCartOpen}
-          onClose={() => setIsCartOpen(false)}
-          onNavigate={navigate}
-        />
+        {isCartOpen && (
+          <Suspense fallback={null}>
+            <CartDrawer
+              isOpen={isCartOpen}
+              onClose={() => setIsCartOpen(false)}
+              onNavigate={navigate}
+            />
+          </Suspense>
+        )}
         <a
           className="floating-whatsapp"
           href="https://wa.me/14372671257"
@@ -276,11 +298,9 @@ export default function App() {
           <MessageCircle />
         </a>
         <Footer onNavigate={navigate} />
-      </>
+      </Suspense>
     );
   }
-
-  const active = route.replace("#", "") || "home";
 
   return (
     <>
@@ -416,15 +436,29 @@ export default function App() {
       )}
 
 
-      {active === "knowledge" && <RudrakshaKnowledge />}
+      {active === "knowledge" && (
+        <Suspense fallback={<div className="page-shell container"><p style={{ padding: "40px 0", textAlign: "center" }}>Loading Knowledge…</p></div>}>
+          <RudrakshaKnowledge />
+        </Suspense>
+      )}
 
-      {active === "maintenance" && <RudrakshaMaintenance />}
+      {active === "maintenance" && (
+        <Suspense fallback={<div className="page-shell container"><p style={{ padding: "40px 0", textAlign: "center" }}>Loading Maintenance…</p></div>}>
+          <RudrakshaMaintenance />
+        </Suspense>
+      )}
 
-      {active === "lord-shiva" && <LordShiva />}
+      {active === "lord-shiva" && (
+        <Suspense fallback={<div className="page-shell container"><p style={{ padding: "40px 0", textAlign: "center" }}>Loading…</p></div>}>
+          <LordShiva />
+        </Suspense>
+      )}
 
       {active === "recommendations" && (
         <main className="recommendation-page">
-          <BirthChartRecommendation />
+          <Suspense fallback={<div className="page-shell container"><p style={{ padding: "40px 0", textAlign: "center" }}>Loading Recommendations…</p></div>}>
+            <BirthChartRecommendation />
+          </Suspense>
         </main>
       )}
 
@@ -562,11 +596,15 @@ export default function App() {
 
       <a className="floating-whatsapp" href="https://wa.me/14372671257" target="_blank" rel="noreferrer"><MessageCircle /></a>
 
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        onNavigate={navigate}
-      />
+      {isCartOpen && (
+        <Suspense fallback={null}>
+          <CartDrawer
+            isOpen={isCartOpen}
+            onClose={() => setIsCartOpen(false)}
+            onNavigate={navigate}
+          />
+        </Suspense>
+      )}
 
       <Footer onNavigate={navigate} />
     </>

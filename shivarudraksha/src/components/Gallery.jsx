@@ -50,7 +50,15 @@ export default function Gallery({ product, compact = false, onOpen, resetKey = "
     return (
       <div className="card-gallery" onTouchStart={touchStart} onTouchEnd={touchEnd}>
         <button type="button" className="gallery-image-open" onClick={onOpen} aria-label={`View ${product.name}`}>
-        <img src={active.src || active.fallbackSrc} onError={(event) => useFallback(event, active.fallbackSrc)} alt={`${product.name} ${active.label}`} />
+          <img
+            src={active.src || active.fallbackSrc}
+            onError={(event) => useFallback(event, active.fallbackSrc)}
+            alt={`${product.name} ${active.label}`}
+            loading="lazy"
+            decoding="async"
+            width="400"
+            height="400"
+          />
         </button>
         {images.length > 1 && (
           <>
@@ -90,7 +98,14 @@ export default function Gallery({ product, compact = false, onOpen, resetKey = "
           onTouchStart={touchStart}
           onTouchEnd={touchEnd}
         >
-          <img src={active.src || active.fallbackSrc} onError={(event) => useFallback(event, active.fallbackSrc)} alt={`${product.name} ${active.label}`} />
+          <img
+            src={active.src || active.fallbackSrc}
+            onError={(event) => useFallback(event, active.fallbackSrc)}
+            alt={`${product.name} ${active.label}`}
+            decoding="async"
+            width="600"
+            height="600"
+          />
           <button className="gallery-button left" aria-label="Previous product image" onClick={previous}>
             <ChevronLeft />
           </button>
@@ -111,7 +126,15 @@ export default function Gallery({ product, compact = false, onOpen, resetKey = "
               className={i === index ? "active" : ""}
               onClick={() => setIndex(i)}
             >
-              <img src={item.src || item.fallbackSrc} onError={(event) => useFallback(event, item.fallbackSrc)} alt={item.label} />
+              <img
+                src={item.src || item.fallbackSrc}
+                onError={(event) => useFallback(event, item.fallbackSrc)}
+                alt={item.label}
+                loading="lazy"
+                decoding="async"
+                width="64"
+                height="64"
+              />
               <span>{item.label}</span>
             </button>
           ))}

@@ -60,81 +60,130 @@ export function normalizeProduct(product) {
   };
 }
 
+let inMemoryProductsCache = null;
+const CACHE_KEY = "shiva_catalogue_v2";
+
 export async function loadProducts() {
+  // 1. Instant Cache: Return in-memory or sessionStorage cached catalogue in 0ms
+  if (inMemoryProductsCache && inMemoryProductsCache.length > 0) {
+    return inMemoryProductsCache;
+  }
+
+  try {
+    const sessionCached = sessionStorage.getItem(CACHE_KEY);
+    if (sessionCached) {
+      const parsed = JSON.parse(sessionCached);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        inMemoryProductsCache = parsed;
+        // Trigger background refresh silently
+        refreshProductsInBackground();
+        return parsed;
+      }
+    }
+  } catch {
+    // Non-blocking fallback
+  }
+
+  return await fetchAndMergeProducts();
+}
+
+async function refreshProductsInBackground() {
+  try {
+    const fresh = await fetchAndMergeProducts();
+    if (fresh && fresh.length > 0) {
+      inMemoryProductsCache = fresh;
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(fresh));
+    }
+  } catch {
+    // Silently continue with cached
+  }
+}
+
+async function fetchAndMergeProducts() {
   let backendProducts = [];
+  let staticProducts = [];
 
-  try {
-    // 1. Fetch live products from the Laravel backend engine API
-    const apiEndpoint = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/v3/products?per_page=100&t=${Date.now()}`;
-    const apiResponse = await fetch(apiEndpoint, { cache: "no-store" });
-    if (apiResponse.ok) {
-      const result = await apiResponse.json();
-      if (Array.isArray(result.data) && result.data.length > 0) {
-        backendProducts = result.data.map((item) => {
-          return normalizeProduct({
-            id: item.slug || String(item.id),
-            db_id: item.id,
-            name: item.name,
-            mukhi: item.mukhi || (item.name.match(/(\d+)\s*Mukhi/i)?.[1] ? parseInt(item.name.match(/(\d+)\s*Mukhi/i)[1], 10) : null),
-            category: item.category?.name || "Nepal Rudraksha",
-            origin: item.category?.name?.toLowerCase().includes("indonesia") ? "Indonesia" : "Nepal",
-            description: item.description || "",
-            certificateAvailable: true,
-            stockStatus: item.stockStatus || "Available",
-            badge: item.badge || (item.featured ? "Featured" : "Certified"),
-            price: item.unit_price,
-            rating: typeof item.rating === "number" ? item.rating : parseFloat(item.rating || 0),
-            rating_count: typeof item.rating_count === "number" ? item.rating_count : parseInt(item.rating_count || 0, 10),
-            reviews: Array.isArray(item.reviews) ? item.reviews : [],
-            disable_price: Boolean(item.disable_price || item.unit_price <= 0),
-            coming_soon: Boolean(item.coming_soon || item.stockStatus === "Coming Soon"),
-            variants: item.variants || [],
-            attributes: item.attributes || [],
-            choice_options: item.choice_options || [],
-            images: item.images || {
-              front: item.photos?.[1] || item.thumbnail_url || item.photos?.[0] || "",
-              back: item.photos?.[2] || "",
-              top: item.photos?.[0] || item.thumbnail_url || "",
-              bottom: item.photos?.[3] || "",
-              certificate: item.photos?.[4] || "",
-              xray: item.photos?.[5] || "",
-            },
-          });
-        });
-      }
-    }
-  } catch (err) {
-    console.warn("Backend API not reachable; falling back to static catalogue:", err);
-  }
+  // Parallel fetch: fetch live API with 2.5s timeout & static products.json concurrently
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 2500);
 
-  // 2. Also load static products.json to ensure full 1–21 Mukhi catalogue is always present
-  try {
-    const jsonResponse = await fetch(
-      `${import.meta.env.BASE_URL}data/products.json?t=${Date.now()}`,
-      { cache: "no-store" }
+  const apiEndpoint = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/v3/products?per_page=100`;
+  const staticEndpoint = `${import.meta.env.BASE_URL}data/products.json`;
+
+  const [apiResult, staticResult] = await Promise.allSettled([
+    fetch(apiEndpoint, { signal: controller.signal })
+      .then(async (res) => (res.ok ? res.json() : null))
+      .catch(() => null),
+    fetch(staticEndpoint)
+      .then(async (res) => (res.ok ? res.json() : []))
+      .catch(() => []),
+  ]);
+
+  clearTimeout(timeoutId);
+
+  // Parse backend API products
+  if (apiResult.status === "fulfilled" && apiResult.value?.data && Array.isArray(apiResult.value.data)) {
+    backendProducts = apiResult.value.data.map((item) =>
+      normalizeProduct({
+        id: item.slug || String(item.id),
+        db_id: item.id,
+        name: item.name,
+        mukhi: item.mukhi || (item.name.match(/(\d+)\s*Mukhi/i)?.[1] ? parseInt(item.name.match(/(\d+)\s*Mukhi/i)[1], 10) : null),
+        category: item.category?.name || "Nepal Rudraksha",
+        origin: item.category?.name?.toLowerCase().includes("indonesia") ? "Indonesia" : "Nepal",
+        description: item.description || "",
+        certificateAvailable: true,
+        stockStatus: item.stockStatus || "Available",
+        badge: item.badge || (item.featured ? "Featured" : "Certified"),
+        price: item.unit_price,
+        rating: typeof item.rating === "number" ? item.rating : parseFloat(item.rating || 0),
+        rating_count: typeof item.rating_count === "number" ? item.rating_count : parseInt(item.rating_count || 0, 10),
+        reviews: Array.isArray(item.reviews) ? item.reviews : [],
+        disable_price: Boolean(item.disable_price || item.unit_price <= 0),
+        coming_soon: Boolean(item.coming_soon || item.stockStatus === "Coming Soon"),
+        variants: item.variants || [],
+        attributes: item.attributes || [],
+        choice_options: item.choice_options || [],
+        images: item.images || {
+          front: item.photos?.[1] || item.thumbnail_url || item.photos?.[0] || "",
+          back: item.photos?.[2] || "",
+          top: item.photos?.[0] || item.thumbnail_url || "",
+          bottom: item.photos?.[3] || "",
+          certificate: item.photos?.[4] || "",
+          xray: item.photos?.[5] || "",
+        },
+      })
     );
-    if (jsonResponse.ok) {
-      const staticProducts = (await jsonResponse.json()).map(normalizeProduct);
-
-      if (backendProducts.length > 0) {
-        // Merge: Live backend products take priority so any edits in /admin immediately override static data
-        const merged = [...backendProducts];
-        for (const sp of staticProducts) {
-          const alreadyInBackend = backendProducts.some(
-            (bp) => bp.id === sp.id || (bp.mukhi && bp.mukhi === sp.mukhi)
-          );
-          if (!alreadyInBackend) {
-            merged.push(sp);
-          }
-        }
-        return merged;
-      }
-
-      return staticProducts;
-    }
-  } catch (jsonErr) {
-    console.error("Static products.json error:", jsonErr);
   }
 
-  return backendProducts;
+  // Parse static catalogue products
+  if (staticResult.status === "fulfilled" && Array.isArray(staticResult.value) && staticResult.value.length > 0) {
+    staticProducts = staticResult.value.map(normalizeProduct);
+  }
+
+  let finalProducts = staticProducts;
+
+  if (backendProducts.length > 0) {
+    const merged = [...backendProducts];
+    for (const sp of staticProducts) {
+      const alreadyInBackend = backendProducts.some(
+        (bp) => bp.id === sp.id || (bp.mukhi && bp.mukhi === sp.mukhi)
+      );
+      if (!alreadyInBackend) {
+        merged.push(sp);
+      }
+    }
+    finalProducts = merged;
+  }
+
+  if (finalProducts.length > 0) {
+    inMemoryProductsCache = finalProducts;
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(finalProducts));
+    } catch {
+      // quota or private mode ignore
+    }
+  }
+
+  return finalProducts;
 }

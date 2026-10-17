@@ -122,6 +122,10 @@ export default function CartDrawer({ isOpen, onClose, onNavigate }) {
                     <img
                       src={item.image || "/images/brand/shiva-rudraksha-logo.png"}
                       alt={item.name}
+                      loading="lazy"
+                      decoding="async"
+                      width="60"
+                      height="60"
                       onError={(e) => {
                         e.currentTarget.src = "/images/brand/shiva-rudraksha-logo.png";
                       }}

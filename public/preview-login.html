@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiva Rudraksha Inc. | Sacred Portal Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    
+    <style>
+        :root{
+            --maroon: #6f0f13;
+            --maroon-dark: #4f080c;
+            --maroon-glow: #8e181d;
+            --gold: #d4af37;
+            --gold-light: #fae498;
+            --gold-dark: #b8860b;
+            --primary: #7a1116;
+            --hov-primary: #981c22;
+            --soft-primary: rgba(122, 17, 22, 0.2);
+            --dark: #0a0e17;
+            --text-gold: #fae498;
+            --text-muted: #d1c7b7;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background: #080a10;
+            color: #f7f3eb;
+            overflow-x: hidden;
+        }
+
+        .spiritual-auth-page {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 16px;
+            background-color: #080a10;
+            background-image: 
+                radial-gradient(circle at 50% 25%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(8, 10, 18, 0.72) 0%, rgba(12, 8, 16, 0.65) 50%, rgba(6, 6, 10, 0.92) 100%),
+                url("/images/auth/spiritual-login-bg.webp");
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .spiritual-auth-page::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.22) 0%, rgba(111, 15, 19, 0.18) 45%, transparent 75%);
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+        }
+
+        .spiritual-glass-card {
+            position: relative;
+            z-index: 10;
+            width: min(1040px, 100%);
+            background: rgba(14, 11, 20, 0.72);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(212, 175, 55, 0.38);
+            border-radius: 24px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.8),
+                0 0 50px rgba(212, 175, 55, 0.12),
+                inset 0 1px 1px rgba(255, 255, 255, 0.25);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .spiritual-left-panel {
+            position: relative;
+            min-height: 520px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-color: #120c14;
+        }
+
+        .spiritual-left-panel img.spiritual-panel-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.02);
+            transition: transform 6s ease;
+        }
+
+        .spiritual-left-panel:hover img.spiritual-panel-img {
+            transform: scale(1.07);
+        }
+
+        .spiritual-left-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg, 
+                rgba(10, 8, 14, 0.3) 0%, 
+                rgba(10, 8, 14, 0.5) 45%, 
+                rgba(8, 6, 12, 0.95) 100%
+            );
+            z-index: 2;
+        }
+
+        .spiritual-left-content {
+            position: relative;
+            z-index: 3;
+            padding: 36px 30px;
+            color: #ffffff;
+        }
+
+        .spiritual-mantra-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(111, 15, 19, 0.75);
+            border: 1px solid rgba(212, 175, 55, 0.65);
+            border-radius: 999px;
+            color: #fae498;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+        }
+
+        .spiritual-left-content h2 {
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff9ea;
+            letter-spacing: 0.04em;
+            line-height: 1.25;
+            margin: 0 0 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .spiritual-left-content p {
+            font-size: 13.5px;
+            color: #d8cebd;
+            line-height: 1.55;
+            margin: 0 0 16px;
+        }
+
+        .spiritual-badges-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .spiritual-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #fae498;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 6px;
+            padding: 4px 10px;
+            backdrop-filter: blur(4px);
+        }
+
+        .spiritual-right-panel {
+            padding: 46px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(14, 10, 18, 0.5);
+        }
+
+        .spiritual-brand-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .spiritual-logo-wrapper {
+            position: relative;
+            width: 68px;
+            height: 68px;
+            margin-bottom: 14px;
+            display: grid;
+            place-items: center;
+        }
+
+        .spiritual-logo-glow {
+            position: absolute;
+            inset: -6px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.45) 0%, rgba(111, 15, 19, 0.25) 55%, transparent 75%);
+            border-radius: 50%;
+            filter: blur(10px);
+            z-index: 1;
+        }
+
+        .spiritual-logo-wrapper img {
+            position: relative;
+            z-index: 2;
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+        }
+
+        .spiritual-brand-header h1 {
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #fae498;
+            margin: 0 0 6px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 14px rgba(212, 175, 55, 0.35);
+        }
+
+        .spiritual-brand-header p {
+            font-size: 13px;
+            color: #d1c7b7;
+            margin: 0;
+            letter-spacing: 0.02em;
+        }
+
+        .spiritual-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .spiritual-form label {
+            display: block;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #e8d7b8;
+            margin-bottom: 8px;
+        }
+
+        .spiritual-input-wrap {
+            position: relative;
+        }
+
+        .spiritual-input-wrap .form-control {
+            width: 100%;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(212, 175, 55, 0.32);
+            border-radius: 12px;
+            color: #ffffff;
+            padding: 10px 16px;
+            font-size: 14px;
+            transition: all 0.25s ease;
+        }
+
+        .spiritual-input-wrap .form-control::placeholder {
+            color: rgba(230, 220, 205, 0.45);
+        }
+
+        .spiritual-input-wrap .form-control:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #fae498;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+            outline: none;
+        }
+
+        .spiritual-input-wrap .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d4af37;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .spiritual-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 6px 0 24px;
+            font-size: 12.5px;
+        }
+
+        .spiritual-checkbox {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #d5cbbb;
+            cursor: pointer;
+            margin: 0;
+            user-select: none;
+        }
+
+        .spiritual-checkbox input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #d4af37;
+            cursor: pointer;
+        }
+
+        .spiritual-forgot-link {
+            color: #fae498;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .spiritual-forgot-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .spiritual-btn-submit {
+            position: relative;
+            width: 100%;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #7c1218 0%, #9e1d23 45%, #630c10 100%);
+            border: 1px solid rgba(250, 228, 152, 0.6);
+            border-radius: 999px;
+            color: #ffffff;
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 14.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 10px 28px rgba(124, 18, 24, 0.55);
+            transition: all 0.3s ease;
+        }
+
+        .spiritual-btn-submit:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #8c151c 0%, #b22129 45%, #6f0e13 100%);
+            box-shadow: 0 14px 34px rgba(124, 18, 24, 0.7), 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .spiritual-back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: #fae498;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .spiritual-back-link:hover {
+            color: #ffffff;
+            transform: translateX(-4px);
+        }
+
+        @media (max-width: 900px) {
+            .spiritual-glass-card {
+                grid-template-columns: 1fr;
+            }
+            .spiritual-left-panel {
+                min-height: 240px;
+            }
+            .spiritual-right-panel {
+                padding: 34px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="spiritual-auth-page">
+    <div class="spiritual-glass-card">
+        <!-- Left Side Sacred Altar Art -->
+        <div class="spiritual-left-panel">
+            <img 
+                src="/images/auth/spiritual-card-art.webp" 
+                alt="Sacred Nepal Rudraksha & Himalayan Altar" 
+                class="spiritual-panel-img"
+            >
+            <div class="spiritual-left-overlay"></div>
+            <div class="spiritual-left-content">
+                <span class="spiritual-mantra-badge">🕉 ॐ नमः शिवाय</span>
+                <h2>Sacred Himalayan Consecration</h2>
+                <p>Access the Shiva Rudraksha administrative portal. Sourced directly from holy groves in Nepal with lab certification and Prana Pratishtha energization.</p>
+                <div class="spiritual-badges-row">
+                    <span class="spiritual-pill">✦ 100% Nepal Origin</span>
+                    <span class="spiritual-pill">✦ Govt. Lab Certified</span>
+                    <span class="spiritual-pill">✦ Vedic Energized</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side Glassmorphic Form -->
+        <div class="spiritual-right-panel">
+            <div class="spiritual-brand-header">
+                <div class="spiritual-logo-wrapper">
+                    <div class="spiritual-logo-glow"></div>
+                    <img 
+                        src="/images/brand/shiva-rudraksha-logo.png" 
+                        alt="Shiva Rudraksha Inc."
+                    >
+                </div>
+                <h1>Welcome to Shiva Rudraksha</h1>
+                <p>Sign in to your sacred account</p>
+            </div>
+
+            <form class="spiritual-form" id="login-form" role="form" method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="spiritual-input-wrap">
+                        <input 
+                            type="email" 
+                            class="form-control" 
+                            placeholder="johndoe@example.com" 
+                            name="email" 
+                            id="email" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="spiritual-input-wrap">
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            placeholder="Enter your password" 
+                            name="password" 
+                            id="password"
+                            required
+                        >
+                        <i class="las la-eye password-toggle"></i>
+                    </div>
+                </div>
+
+                <div class="spiritual-meta-row">
+                    <label class="spiritual-checkbox">
+                        <input type="checkbox" name="remember">
+                        <span>Remember Me</span>
+                    </label>
+
+                    <a href="#" class="spiritual-forgot-link">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <button type="submit" class="spiritual-btn-submit">
+                    <span>Login</span>
+                    <i class="las la-arrow-right"></i>
+                </button>
+            </form>
+
+            <div style="text-align: center;">
+                <a href="/" class="spiritual-back-link">
+                    <i class="las la-arrow-left"></i>
+                    <span>Back to Storefront</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -53,6 +53,10 @@ export default function RelatedProducts({ currentProduct, allProducts = [], onOp
                   <img
                     src={thumb}
                     alt={prod.name}
+                    loading="lazy"
+                    decoding="async"
+                    width="80"
+                    height="80"
                     onError={(e) => {
                       e.currentTarget.src = "/images/brand/shiva-rudraksha-logo.png";
                     }}

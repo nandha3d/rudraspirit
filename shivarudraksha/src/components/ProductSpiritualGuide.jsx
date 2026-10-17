@@ -269,6 +269,8 @@ export default function ProductSpiritualGuide({ product }) {
                   src={`${baseUrl}${guide.deityArt}`}
                   alt={`${guide.title} Deity Sacred Artwork`}
                   className="sg-deity-img"
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     e.currentTarget.src = `${baseUrl}${guide.brochureCards.specsCard}`;
                   }}
@@ -413,6 +415,7 @@ export default function ProductSpiritualGuide({ product }) {
                     src={`${baseUrl}${guide.brochureCards.specsCard}`}
                     alt={`${guide.title} Vedic Specifications`}
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="sg-brochure-overlay">
                     <Maximize2 size={24} />
@@ -438,6 +441,7 @@ export default function ProductSpiritualGuide({ product }) {
                     src={`${baseUrl}${guide.brochureCards.benefitsCard}`}
                     alt={`${guide.title} Traditional Benefits`}
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="sg-brochure-overlay">
                     <Maximize2 size={24} />
