@@ -6,6 +6,7 @@ const slides = [
   {
     id: 1,
     image: "images/hero/slide-1.avif",
+    mobileImage: "images/hero/slide-1-mobile.avif",
     kicker: "DIRECTLY SOURCED FROM THE HIMALAYAS",
     title: "Authentic Certified Rudraksha from",
     titleHighlight: "Nepal.",
@@ -30,6 +31,7 @@ const slides = [
   {
     id: 2,
     image: "images/hero/siddha-indra-mala-banner-v2.avif",
+    mobileImage: "images/hero/siddha-indra-mala-banner-v2-mobile.avif",
     kicker: "SACRED 1 TO 21 MUKHI ENERGIZED BEADS",
     title: "Master the Energies of the",
     titleHighlight: "Cosmos.",
@@ -55,6 +57,7 @@ const slides = [
   {
     id: 3,
     image: "images/hero/birth-chart-banner-v2.avif",
+    mobileImage: "images/hero/birth-chart-banner-v2-mobile.avif",
     kicker: "PERSONALIZED VEDIC ASTROLOGY",
     title: "Find Your Divine Bead by",
     titleHighlight: "Birth Chart.",
@@ -216,22 +219,48 @@ export default function HeroCarousel({ compact = false, product = null }) {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background Slides */}
+      {/* Semantic Accessible Level 1 Heading for the Page */}
+      <h1 className="sr-only">Shiva Rudraksha Inc. — Authentic Certified Nepal Rudraksha Catalogue</h1>
+
+      {/* Background Slides Stack */}
       <div className="hero-carousel-bg-container">
         {activeSlides.map((s, idx) => {
           const isActive = idx === current;
           const shouldLoad = loadedSlides.has(idx) || idx === 0;
+          const altText = s.id === 2
+            ? "Siddha Mala & Indra Mala — Certificate & X-Ray Verification"
+            : s.id === 3
+            ? "Birth Chart Recommendation — Rudraksha Guidance Based on Vedic Astrology"
+            : "Shiva Rudraksha Inc. — Authentic Certified Nepal Rudraksha";
+
           return (
             <div
               key={s.id}
               className={`hero-carousel-slide ${isActive ? "active" : ""}`}
-              style={
-                shouldLoad
-                  ? { backgroundImage: `url(${baseUrl}${s.image})` }
-                  : undefined
-              }
-              role="img"
-              aria-label={s.id === 2 ? "Siddha Mala & Indra Mala — Certificate & X-Ray Verification" : s.id === 3 ? "Birth Chart Recommendation — Rudraksha Guidance Based on Vedic Astrology" : s.title} />
+              aria-hidden={!isActive}
+            >
+              {shouldLoad && (
+                <picture className="hero-carousel-picture">
+                  {s.mobileImage && (
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet={`${baseUrl}${s.mobileImage}`}
+                      type="image/avif"
+                    />
+                  )}
+                  <img
+                    src={`${baseUrl}${s.image}`}
+                    alt={altText}
+                    width="1376"
+                    height="768"
+                    fetchPriority={idx === 0 ? "high" : "low"}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    decoding={idx === 0 ? "sync" : "async"}
+                    className="hero-carousel-img"
+                  />
+                </picture>
+              )}
+            </div>
           );
         })}
       </div>

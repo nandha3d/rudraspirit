@@ -52,13 +52,16 @@ export default function ProductCard({ product, onOpen }) {
           <span>{isComingSoon ? "Coming Soon" : isAvailable ? product.stockStatus : "Available"}</span>
         </div>
 
-        <button
-          type="button"
-          className="product-name"
-          onClick={() => onOpen(product)}
-        >
-          {product.name}
-        </button>
+        <h3 className="product-title-wrap">
+          <button
+            type="button"
+            className="product-name"
+            onClick={() => onOpen(product)}
+            aria-label={`View details for ${product.name}`}
+          >
+            {product.name}
+          </button>
+        </h3>
 
         <p>{product.description}</p>
 
@@ -118,6 +121,7 @@ export default function ProductCard({ product, onOpen }) {
             type="button"
             className="details-button"
             onClick={() => onOpen(product)}
+            aria-label={`View details for ${product.name}`}
           >
             View details
           </button>
@@ -126,9 +130,10 @@ export default function ProductCard({ product, onOpen }) {
             href={`https://wa.me/14372671257?text=${message}`}
             target="_blank"
             rel="noreferrer"
-            title="Enquire on WhatsApp"
+            title={`Enquire about ${product.name} on WhatsApp`}
+            aria-label={`Enquire about ${product.name} on WhatsApp`}
           >
-            <MessageCircle />
+            <MessageCircle aria-hidden="true" />
             Enquire
           </a>
         </div>

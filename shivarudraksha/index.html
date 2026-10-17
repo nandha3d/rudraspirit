@@ -3,21 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shiva Rudraksha Inc. — Authentic Certified Nepal Rudraksha</title>
     <meta
       name="description"
-      content="Shiva Rudraksha Inc. — authentic certified Nepal Rudraksha catalogue."
+      content="Directly sourced authentic certified Nepal Rudraksha beads, Siddha Malas, and personalized Vedic recommendations from Shiva Rudraksha Inc., Canada."
     />
+    <link rel="canonical" href="https://shivarudrakshainc.com/" />
     <meta name="theme-color" content="#fff8ec" />
+
+    <!-- Open Graph & Social Sharing -->
+    <meta property="og:site_name" content="Shiva Rudraksha Inc." />
+    <meta property="og:title" content="Shiva Rudraksha Inc. — Authentic Certified Nepal Rudraksha" />
+    <meta property="og:description" content="Directly sourced authentic certified Nepal Rudraksha beads, Siddha Malas, and personalized Vedic recommendations." />
+    <meta property="og:url" content="https://shivarudrakshainc.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://shivarudrakshainc.com/images/hero/slide-1.avif" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shiva Rudraksha Inc. — Authentic Certified Nepal Rudraksha" />
+    <meta name="twitter:description" content="Directly sourced authentic certified Nepal Rudraksha beads, Siddha Malas, and personalized Vedic recommendations." />
+    <meta name="twitter:image" content="https://shivarudrakshainc.com/images/hero/slide-1.avif" />
+
     <link rel="icon" type="image/png" href="./images/brand/shiva-rudraksha-logo.png" />
-    <!-- Preload Critical LCP Hero Banner & Brand Assets for instant first paint -->
-    <link rel="preload" as="image" type="image/avif" href="./images/hero/slide-1.avif" fetchpriority="high" />
-    <link rel="preload" as="image" type="image/png" href="./images/brand/shiva-rudraksha-logo.png" />
+
+    <!-- Preload Critical Above-The-Fold Assets (Responsive Mobile & Desktop) -->
+    <link rel="preload" as="image" type="image/avif" href="./images/hero/slide-1-mobile.avif" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" type="image/avif" href="./images/hero/slide-1.avif" media="(min-width: 769px)" fetchpriority="high" />
+    <link rel="preload" as="image" type="image/webp" href="./images/brand/shiva-rudraksha-logo.webp" fetchpriority="high" />
+
+    <!-- Schema.org JSON-LD Structured Data for Search Engines & AI Browsing Agents -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://shivarudrakshainc.com/#organization",
+          "name": "Shiva Rudraksha Inc.",
+          "url": "https://shivarudrakshainc.com/",
+          "logo": "https://shivarudrakshainc.com/images/brand/shiva-rudraksha-logo.png",
+          "description": "Authentic certified Nepal Rudraksha beads and Siddha Malas sourced directly from Himalayan groves.",
+          "telephone": "+1-437-267-1257",
+          "email": "shivarudrakshain@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Scarborough",
+            "addressRegion": "Ontario",
+            "addressCountry": "Canada"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://shivarudrakshainc.com/#website",
+          "url": "https://shivarudrakshainc.com/",
+          "name": "Shiva Rudraksha Inc.",
+          "publisher": { "@id": "https://shivarudrakshainc.com/#organization" }
+        }
+      ]
+    }
+    </script>
+
     <style>
-      /* Critical instantaneous background & layout stabilization (zero CLS) */
-      body { margin: 0; background: #fff8ec; font-family: Inter, system-ui, -apple-system, sans-serif; color: #3b2b23; }
+      /* Critical Instantaneous Layout Stabilization (Zero Cumulative Layout Shift) */
+      body {
+        margin: 0;
+        background: #fff8ec;
+        font-family: Inter, system-ui, -apple-system, sans-serif;
+        color: #2b1f18;
+      }
       #root { min-height: 100vh; }
+      .promotional-banner { min-height: 42px; background: #4f080c; }
+      @media (max-width: 620px) { .promotional-banner { min-height: 38px; } }
+      .luxury-header { min-height: 82px; background: rgba(255, 250, 240, 0.97); }
+      .hero-carousel-wrap {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        background: #fbf7f0;
+        overflow: hidden;
+      }
     </style>
-    <title>Shiva Rudraksha Inc.</title>
   </head>
   <body>
     <div id="root"></div>

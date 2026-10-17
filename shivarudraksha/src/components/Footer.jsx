@@ -37,7 +37,7 @@ export default function Footer({ onNavigate }) {
         {/* Vedic Guide & Sacred Heritage */}
         <div className="footer-links-col">
           <strong className="footer-col-title">Vedic Guide & Heritage</strong>
-          <nav className="footer-links-list">
+          <nav className="footer-links-list" aria-label="Footer navigation">
             <button type="button" onClick={() => handleNav("#guide")}>
               1–21 Mukhi Guide
             </button>

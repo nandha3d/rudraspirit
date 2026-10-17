@@ -27,15 +27,17 @@ export default function CurrencySwitcher() {
         onClick={() => setOpen((prev) => !prev)}
         aria-label="Select currency"
         aria-expanded={open}
+        aria-haspopup="listbox"
+        aria-controls="currency-listbox-menu"
       >
         <span className="currency-flag">{currencyConfig.flag}</span>
         <span className="currency-code">{currencyConfig.code}</span>
         <span className="currency-symbol">({currencyConfig.symbol})</span>
-        <ChevronDown size={14} className={`currency-chevron ${open ? "rotate" : ""}`} />
+        <ChevronDown size={14} className={`currency-chevron ${open ? "rotate" : ""}`} aria-hidden="true" />
       </button>
 
       {open && (
-        <div className="currency-dropdown-menu">
+        <div className="currency-dropdown-menu" id="currency-listbox-menu" role="listbox" aria-label="Available currencies">
           <div className="currency-dropdown-header">Select Currency</div>
           {Object.values(currencies).map((c) => {
             const isSelected = c.code === currency;
@@ -43,6 +45,8 @@ export default function CurrencySwitcher() {
               <button
                 key={c.code}
                 type="button"
+                role="option"
+                aria-selected={isSelected}
                 className={`currency-option-item ${isSelected ? "selected" : ""}`}
                 onClick={() => {
                   setCurrency(c.code);
@@ -55,7 +59,7 @@ export default function CurrencySwitcher() {
                   <small className="option-country">{c.country}</small>
                 </div>
                 <span className="option-symbol">{c.symbol}</span>
-                {isSelected && <span className="option-check">✓</span>}
+                {isSelected && <span className="option-check" aria-hidden="true">✓</span>}
               </button>
             );
           })}
